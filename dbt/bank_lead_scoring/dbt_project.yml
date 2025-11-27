@@ -1,0 +1,16 @@
+name: "bank_lead_scoring"
+version: "1.0.0"
+config-version: 2
+
+profile: "bank_lead_scoring"
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  bank_lead_scoring:
+    marts:
+      +materialized: view

@@ -1,0 +1,1 @@
+{"_invocation_id": "69ea9c4b-43a7-4a11-857f-a671d52f667c", "linked": {"0": {"name": "model.bank_lead_scoring.mart_customers_universe", "type": "model"}, "1": {"name": "model.bank_lead_scoring.mart_leads_unified", "type": "model"}}}

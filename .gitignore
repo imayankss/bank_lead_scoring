@@ -1,0 +1,31 @@
+# Python environments
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Data & artifacts (keep these local; repo should be code + config)
+data/raw/
+data/cache/
+data/warehouse/
+cache/
+logs/
+mlruns/
+*.duckdb
+*.db
+
+# Airflow runtime stuff
+airflow/logs/
+airflow/*.pid
+
+# Local config / secrets
+.env
+
+# Streamlit & UI cache
+.streamlit/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/

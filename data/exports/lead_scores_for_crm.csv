@@ -1,0 +1,483 @@
+cust_id,lead_score_0_100,cltv_decile,cltv_category_q,recommended_action,priority_flag
+C00135,100,1,Very High,Call + RM follow-up,1
+C00251,71,1,Very High,Call + RM follow-up,1
+C00212,67,1,Very High,Call + RM follow-up,1
+C00399,67,1,Very High,Call + RM follow-up,1
+C00020,61,1,Very High,Call + RM follow-up,1
+C00184,60,1,Very High,Call + RM follow-up,1
+C00108,55,1,Very High,Call + RM follow-up,1
+C00113,50,1,Very High,Call + RM follow-up,1
+C00248,49,1,Very High,Call + RM follow-up,1
+C00392,48,1,Very High,Call + RM follow-up,1
+C00025,47,1,Very High,Call + RM follow-up,1
+C00450,47,1,Very High,Call + RM follow-up,1
+C00036,46,1,Very High,Call + RM follow-up,1
+C00255,46,1,Very High,Call + RM follow-up,1
+C00129,44,1,Very High,Call + RM follow-up,1
+C00395,44,1,Very High,Call + RM follow-up,1
+C00465,44,1,Very High,Call + RM follow-up,1
+C00019,43,1,Very High,Call + RM follow-up,1
+C00088,43,1,Very High,Call + RM follow-up,1
+C00028,42,1,Very High,Call + RM follow-up,1
+C00193,41,1,Very High,Call + RM follow-up,1
+C00309,41,1,Very High,Call + RM follow-up,1
+C00375,40,1,Very High,Call + RM follow-up,1
+C00011,38,1,Very High,Call + RM follow-up,1
+C00219,37,1,Very High,Call + RM follow-up,1
+C00486,37,1,Very High,Call + RM follow-up,1
+C00048,36,1,Very High,Call + RM follow-up,1
+C00291,36,1,Very High,Call + RM follow-up,1
+C00305,36,1,Very High,Call + RM follow-up,1
+C00279,35,1,Very High,Call + RM follow-up,1
+C00050,33,1,Very High,Call + RM follow-up,1
+C00360,33,1,Very High,Call + RM follow-up,1
+C00430,33,1,Very High,Call + RM follow-up,1
+C00444,33,1,Very High,Call + RM follow-up,1
+C00403,32,1,Very High,Call + RM follow-up,1
+C00024,31,1,Very High,Call + RM follow-up,1
+C00124,31,1,Very High,Call + RM follow-up,1
+C00380,31,1,Very High,Call + RM follow-up,1
+C00094,30,1,Very High,Call + RM follow-up,1
+C00128,30,1,Very High,Call + RM follow-up,1
+C00196,30,1,Very High,Call + RM follow-up,1
+C00335,30,1,Very High,Call + RM follow-up,1
+C00421,30,1,Very High,Call + RM follow-up,1
+C00258,29,1,Very High,Call + RM follow-up,1
+C00497,29,1,Very High,Call + RM follow-up,1
+C00127,28,1,High,Call + RM follow-up,1
+C00180,28,1,Very High,Call + RM follow-up,1
+C00181,28,1,Very High,Call + RM follow-up,1
+C00472,28,1,Very High,Call + RM follow-up,1
+C00434,27,2,High,Call within 48h,1
+C00484,27,2,High,Call within 48h,1
+C00021,26,2,High,Call within 48h,1
+C00068,26,2,High,Call within 48h,1
+C00095,26,2,High,Call within 48h,1
+C00235,26,2,High,Call within 48h,1
+C00314,26,2,High,Call within 48h,1
+C00461,26,2,High,Call within 48h,1
+C00213,25,2,High,Call within 48h,1
+C00008,24,2,High,Call within 48h,1
+C00150,24,2,High,Call within 48h,1
+C00159,24,2,High,Call within 48h,1
+C00167,24,2,High,Call within 48h,1
+C00202,24,2,High,Call within 48h,1
+C00252,24,2,High,Call within 48h,1
+C00276,24,2,High,Call within 48h,1
+C00401,24,2,High,Call within 48h,1
+C00408,24,2,High,Call within 48h,1
+C00424,24,2,High,Call within 48h,1
+C00431,24,2,High,Call within 48h,1
+C00009,23,2,High,Call within 48h,1
+C00043,23,2,High,Call within 48h,1
+C00077,23,2,High,Call within 48h,1
+C00106,23,2,High,Call within 48h,1
+C00215,23,2,High,Call within 48h,1
+C00039,22,2,High,Call within 48h,1
+C00086,22,2,High,Call within 48h,1
+C00097,22,2,High,Call within 48h,1
+C00118,22,2,High,Call within 48h,1
+C00183,22,2,High,Call within 48h,1
+C00189,22,2,High,Call within 48h,1
+C00253,22,2,High,Call within 48h,1
+C00287,22,2,High,Call within 48h,1
+C00296,22,2,High,Call within 48h,1
+C00404,22,2,High,Call within 48h,1
+C00435,22,2,High,Call within 48h,1
+C00442,22,2,High,Call within 48h,1
+C00460,22,2,High,Call within 48h,1
+C00234,21,2,High,Call within 48h,1
+C00340,21,2,High,Call within 48h,1
+C00345,21,2,High,Call within 48h,1
+C00046,20,2,High,Call within 48h,1
+C00047,20,2,High,Call within 48h,1
+C00107,20,2,High,Call within 48h,1
+C00149,20,2,High,Call within 48h,1
+C00154,20,2,High,Call within 48h,1
+C00217,20,2,High,Call within 48h,1
+C00365,20,2,High,Call within 48h,1
+C00487,20,2,High,Call within 48h,1
+C00001,19,3,High,Call within 48h,0
+C00060,19,3,High,Call within 48h,0
+C00247,19,3,High,Call within 48h,0
+C00326,19,3,High,Call within 48h,0
+C00398,19,3,High,Call within 48h,0
+C00433,19,3,High,Call within 48h,0
+C00488,19,3,High,Call within 48h,0
+C00002,18,3,High,Call within 48h,0
+C00035,18,3,High,Call within 48h,0
+C00042,18,3,High,Call within 48h,0
+C00070,18,3,High,Call within 48h,0
+C00125,18,3,High,Call within 48h,0
+C00133,18,3,High,Call within 48h,0
+C00138,18,3,High,Call within 48h,0
+C00168,18,3,High,Call within 48h,0
+C00308,18,3,High,Call within 48h,0
+C00332,18,3,High,Call within 48h,0
+C00366,18,3,High,Call within 48h,0
+C00476,18,3,High,Call within 48h,0
+C00012,17,3,High,Call within 48h,0
+C00026,17,3,High,Call within 48h,0
+C00057,17,3,High,Call within 48h,0
+C00161,17,3,High,Call within 48h,0
+C00164,17,3,High,Call within 48h,0
+C00191,17,3,High,Call within 48h,0
+C00197,17,3,High,Call within 48h,0
+C00224,17,3,High,Call within 48h,0
+C00310,17,3,High,Call within 48h,0
+C00325,17,3,High,Call within 48h,0
+C00338,17,3,High,Call within 48h,0
+C00379,17,3,High,Call within 48h,0
+C00383,17,3,High,Call within 48h,0
+C00446,17,3,High,Call within 48h,0
+C00078,16,3,High,Call within 48h,0
+C00115,16,3,High,Call within 48h,0
+C00117,16,3,Medium,Call within 48h,0
+C00144,16,3,High,Call within 48h,0
+C00147,16,3,High,Call within 48h,0
+C00199,16,3,High,Call within 48h,0
+C00211,16,3,Medium,Call within 48h,0
+C00216,16,3,Medium,Call within 48h,0
+C00225,16,3,High,Call within 48h,0
+C00242,16,3,High,Call within 48h,0
+C00388,16,3,Medium,Call within 48h,0
+C00459,16,3,High,Call within 48h,0
+C00462,16,3,High,Call within 48h,0
+C00482,16,3,High,Call within 48h,0
+C00018,15,4,Medium,Nurture email/SMS,0
+C00067,15,4,Medium,Nurture email/SMS,0
+C00134,15,4,Medium,Nurture email/SMS,0
+C00222,15,4,Medium,Nurture email/SMS,0
+C00228,15,4,Medium,Nurture email/SMS,0
+C00307,15,4,Medium,Nurture email/SMS,0
+C00357,15,4,Medium,Nurture email/SMS,0
+C00363,15,4,Medium,Nurture email/SMS,0
+C00374,15,3,Medium,Call within 48h,0
+C00428,15,4,Medium,Nurture email/SMS,0
+C00469,15,4,Medium,Nurture email/SMS,0
+C00489,15,4,Medium,Nurture email/SMS,0
+C00045,14,4,Medium,Nurture email/SMS,0
+C00054,14,4,Medium,Nurture email/SMS,0
+C00056,14,4,Medium,Nurture email/SMS,0
+C00069,14,4,Medium,Nurture email/SMS,0
+C00198,14,4,Medium,Nurture email/SMS,0
+C00277,14,4,Medium,Nurture email/SMS,0
+C00342,14,4,Medium,Nurture email/SMS,0
+C00364,14,4,Medium,Nurture email/SMS,0
+C00385,14,4,Medium,Nurture email/SMS,0
+C00389,14,4,Medium,Nurture email/SMS,0
+C00416,14,4,Medium,Nurture email/SMS,0
+C00418,14,4,Medium,Nurture email/SMS,0
+C00443,14,4,Medium,Nurture email/SMS,0
+C00478,14,4,Medium,Nurture email/SMS,0
+C00037,13,4,Medium,Nurture email/SMS,0
+C00084,13,4,Medium,Nurture email/SMS,0
+C00111,13,4,Medium,Nurture email/SMS,0
+C00114,13,4,Medium,Nurture email/SMS,0
+C00176,13,4,Medium,Nurture email/SMS,0
+C00257,13,4,Medium,Nurture email/SMS,0
+C00263,13,4,Medium,Nurture email/SMS,0
+C00265,13,4,Medium,Nurture email/SMS,0
+C00396,13,4,Medium,Nurture email/SMS,0
+C00406,13,4,Medium,Nurture email/SMS,0
+C00440,13,4,Medium,Nurture email/SMS,0
+C00480,13,4,Medium,Nurture email/SMS,0
+C00013,12,4,Medium,Nurture email/SMS,0
+C00151,12,4,Medium,Nurture email/SMS,0
+C00170,12,4,Medium,Nurture email/SMS,0
+C00175,12,5,Medium,Nurture email/SMS,0
+C00190,12,4,Medium,Nurture email/SMS,0
+C00245,12,5,Medium,Nurture email/SMS,0
+C00266,12,4,Medium,Nurture email/SMS,0
+C00268,12,4,Medium,Nurture email/SMS,0
+C00271,12,5,Medium,Nurture email/SMS,0
+C00281,12,4,Medium,Nurture email/SMS,0
+C00294,12,5,Medium,Nurture email/SMS,0
+C00303,12,4,Medium,Nurture email/SMS,0
+C00321,12,4,Medium,Nurture email/SMS,0
+C00344,12,4,Medium,Nurture email/SMS,0
+C00455,12,5,Medium,Nurture email/SMS,0
+C00457,12,4,Medium,Nurture email/SMS,0
+C00033,11,5,Medium,Nurture email/SMS,0
+C00098,11,5,Medium,Nurture email/SMS,0
+C00188,11,5,Medium,Nurture email/SMS,0
+C00240,11,5,Medium,Nurture email/SMS,0
+C00274,11,5,Medium,Nurture email/SMS,0
+C00341,11,5,Medium,Nurture email/SMS,0
+C00350,11,5,Medium,Nurture email/SMS,0
+C00378,11,5,Medium,Nurture email/SMS,0
+C00427,11,5,Medium,Nurture email/SMS,0
+C00436,11,5,Medium,Nurture email/SMS,0
+C00441,11,5,Medium,Nurture email/SMS,0
+C00474,11,5,Medium,Nurture email/SMS,0
+C00481,11,5,Medium,Nurture email/SMS,0
+C00492,11,5,Medium,Nurture email/SMS,0
+C00496,11,5,Medium,Nurture email/SMS,0
+C00030,10,5,Medium,Nurture email/SMS,0
+C00034,10,5,Medium,Nurture email/SMS,0
+C00073,10,5,Medium,Nurture email/SMS,0
+C00079,10,5,Medium,Nurture email/SMS,0
+C00142,10,5,Medium,Nurture email/SMS,0
+C00204,10,5,Medium,Nurture email/SMS,0
+C00256,10,5,Medium,Nurture email/SMS,0
+C00284,10,5,Medium,Nurture email/SMS,0
+C00312,10,5,Medium,Nurture email/SMS,0
+C00329,10,5,Medium,Nurture email/SMS,0
+C00347,10,5,Medium,Nurture email/SMS,0
+C00437,10,5,Medium,Nurture email/SMS,0
+C00463,10,5,Medium,Nurture email/SMS,0
+C00491,10,5,Medium,Nurture email/SMS,0
+C00044,9,5,Medium,Nurture email/SMS,0
+C00058,9,5,Medium,Nurture email/SMS,0
+C00119,9,5,Medium,Nurture email/SMS,0
+C00140,9,5,Medium,Nurture email/SMS,0
+C00192,9,5,Medium,Nurture email/SMS,0
+C00227,9,5,Medium,Nurture email/SMS,0
+C00278,9,5,Medium,Nurture email/SMS,0
+C00304,9,5,Medium,Nurture email/SMS,0
+C00331,9,5,Medium,Nurture email/SMS,0
+C00352,9,5,Medium,Nurture email/SMS,0
+C00361,9,5,Medium,Nurture email/SMS,0
+C00370,9,5,Medium,Nurture email/SMS,0
+C00458,9,5,Medium,Nurture email/SMS,0
+C00071,8,6,Medium,Nurture email/SMS,0
+C00074,8,6,Medium,Nurture email/SMS,0
+C00085,8,6,Medium,Nurture email/SMS,0
+C00131,8,6,Medium,Nurture email/SMS,0
+C00200,8,6,Medium,Nurture email/SMS,0
+C00205,8,6,Medium,Nurture email/SMS,0
+C00208,8,6,Medium,Nurture email/SMS,0
+C00231,8,6,Medium,Nurture email/SMS,0
+C00244,8,6,Medium,Nurture email/SMS,0
+C00270,8,6,Medium,Nurture email/SMS,0
+C00288,8,6,Medium,Nurture email/SMS,0
+C00295,8,6,Medium,Nurture email/SMS,0
+C00319,8,6,Medium,Nurture email/SMS,0
+C00328,8,6,Medium,Nurture email/SMS,0
+C00353,8,6,Medium,Nurture email/SMS,0
+C00414,8,6,Medium,Nurture email/SMS,0
+C00429,8,5,Medium,Nurture email/SMS,0
+C00475,8,6,Medium,Nurture email/SMS,0
+C00096,7,6,Medium,Nurture email/SMS,0
+C00101,7,6,Medium,Nurture email/SMS,0
+C00157,7,6,Medium,Nurture email/SMS,0
+C00171,7,6,Medium,Nurture email/SMS,0
+C00174,7,6,Medium,Nurture email/SMS,0
+C00237,7,6,Medium,Nurture email/SMS,0
+C00282,7,6,Medium,Nurture email/SMS,0
+C00292,7,6,Medium,Nurture email/SMS,0
+C00368,7,6,Medium,Nurture email/SMS,0
+C00451,7,6,Medium,Nurture email/SMS,0
+C00495,7,6,Medium,Nurture email/SMS,0
+C00003,6,6,Medium,Nurture email/SMS,0
+C00007,6,6,Medium,Nurture email/SMS,0
+C00017,6,6,Medium,Nurture email/SMS,0
+C00031,6,6,Medium,Nurture email/SMS,0
+C00038,6,6,Medium,Nurture email/SMS,0
+C00076,6,6,Medium,Nurture email/SMS,0
+C00104,6,6,Medium,Nurture email/SMS,0
+C00153,6,6,Medium,Nurture email/SMS,0
+C00229,6,6,Medium,Nurture email/SMS,0
+C00260,6,6,Medium,Nurture email/SMS,0
+C00311,6,6,Medium,Nurture email/SMS,0
+C00313,6,6,Medium,Nurture email/SMS,0
+C00336,6,6,Medium,Nurture email/SMS,0
+C00377,6,6,Medium,Nurture email/SMS,0
+C00419,6,6,Medium,Nurture email/SMS,0
+C00452,6,6,Medium,Nurture email/SMS,0
+C00010,5,7,Low,Low-touch cohort,0
+C00027,5,7,Low,Low-touch cohort,0
+C00089,5,7,Low,Low-touch cohort,0
+C00090,5,7,Low,Low-touch cohort,0
+C00092,5,7,Low,Low-touch cohort,0
+C00126,5,6,Medium,Nurture email/SMS,0
+C00132,5,6,Low,Nurture email/SMS,0
+C00137,5,7,Low,Low-touch cohort,0
+C00148,5,7,Low,Low-touch cohort,0
+C00165,5,7,Low,Low-touch cohort,0
+C00182,5,6,Medium,Nurture email/SMS,0
+C00221,5,7,Low,Low-touch cohort,0
+C00275,5,7,Low,Low-touch cohort,0
+C00289,5,7,Low,Low-touch cohort,0
+C00334,5,7,Low,Low-touch cohort,0
+C00339,5,7,Low,Low-touch cohort,0
+C00349,5,6,Low,Nurture email/SMS,0
+C00372,5,7,Low,Low-touch cohort,0
+C00467,5,7,Low,Low-touch cohort,0
+C00471,5,7,Low,Low-touch cohort,0
+C00473,5,7,Low,Low-touch cohort,0
+C00477,5,7,Low,Low-touch cohort,0
+C00015,4,7,Low,Low-touch cohort,0
+C00016,4,7,Low,Low-touch cohort,0
+C00061,4,7,Low,Low-touch cohort,0
+C00063,4,7,Low,Low-touch cohort,0
+C00066,4,7,Low,Low-touch cohort,0
+C00081,4,7,Low,Low-touch cohort,0
+C00082,4,7,Low,Low-touch cohort,0
+C00112,4,7,Low,Low-touch cohort,0
+C00173,4,7,Low,Low-touch cohort,0
+C00179,4,7,Low,Low-touch cohort,0
+C00194,4,7,Low,Low-touch cohort,0
+C00230,4,7,Low,Low-touch cohort,0
+C00269,4,7,Low,Low-touch cohort,0
+C00358,4,7,Low,Low-touch cohort,0
+C00367,4,7,Low,Low-touch cohort,0
+C00412,4,7,Low,Low-touch cohort,0
+C00422,4,7,Low,Low-touch cohort,0
+C00449,4,7,Low,Low-touch cohort,0
+C00500,4,7,Low,Low-touch cohort,0
+C00052,3,8,Low,Low-touch cohort,0
+C00072,3,8,Low,Low-touch cohort,0
+C00087,3,8,Low,Low-touch cohort,0
+C00099,3,7,Low,Low-touch cohort,0
+C00120,3,7,Low,Low-touch cohort,0
+C00122,3,8,Low,Low-touch cohort,0
+C00145,3,7,Low,Low-touch cohort,0
+C00156,3,7,Low,Low-touch cohort,0
+C00166,3,8,Low,Low-touch cohort,0
+C00218,3,7,Low,Low-touch cohort,0
+C00223,3,7,Low,Low-touch cohort,0
+C00236,3,8,Low,Low-touch cohort,0
+C00238,3,8,Low,Low-touch cohort,0
+C00243,3,8,Low,Low-touch cohort,0
+C00261,3,8,Low,Low-touch cohort,0
+C00267,3,8,Low,Low-touch cohort,0
+C00272,3,8,Low,Low-touch cohort,0
+C00320,3,7,Low,Low-touch cohort,0
+C00327,3,7,Low,Low-touch cohort,0
+C00330,3,8,Low,Low-touch cohort,0
+C00356,3,7,Low,Low-touch cohort,0
+C00362,3,8,Low,Low-touch cohort,0
+C00373,3,8,Low,Low-touch cohort,0
+C00381,3,7,Low,Low-touch cohort,0
+C00391,3,8,Low,Low-touch cohort,0
+C00445,3,8,Low,Low-touch cohort,0
+C00456,3,8,Low,Low-touch cohort,0
+C00468,3,8,Low,Low-touch cohort,0
+C00470,3,7,Low,Low-touch cohort,0
+C00004,2,8,Low,Low-touch cohort,0
+C00032,2,8,Low,Low-touch cohort,0
+C00064,2,8,Low,Low-touch cohort,0
+C00091,2,8,Low,Low-touch cohort,0
+C00109,2,8,Low,Low-touch cohort,0
+C00121,2,8,Low,Low-touch cohort,0
+C00139,2,8,Low,Low-touch cohort,0
+C00146,2,8,Low,Low-touch cohort,0
+C00152,2,8,Low,Low-touch cohort,0
+C00177,2,8,Low,Low-touch cohort,0
+C00187,2,8,Low,Low-touch cohort,0
+C00207,2,8,Low,Low-touch cohort,0
+C00239,2,9,Very Low,Low-touch cohort,0
+C00246,2,8,Low,Low-touch cohort,0
+C00264,2,8,Low,Low-touch cohort,0
+C00300,2,8,Low,Low-touch cohort,0
+C00301,2,8,Low,Low-touch cohort,0
+C00306,2,8,Low,Low-touch cohort,0
+C00323,2,8,Low,Low-touch cohort,0
+C00337,2,8,Low,Low-touch cohort,0
+C00343,2,8,Low,Low-touch cohort,0
+C00387,2,8,Low,Low-touch cohort,0
+C00397,2,8,Low,Low-touch cohort,0
+C00400,2,8,Low,Low-touch cohort,0
+C00405,2,8,Low,Low-touch cohort,0
+C00409,2,9,Very Low,Low-touch cohort,0
+C00413,2,8,Low,Low-touch cohort,0
+C00439,2,8,Low,Low-touch cohort,0
+C00453,2,8,Low,Low-touch cohort,0
+C00454,2,8,Low,Low-touch cohort,0
+C00479,2,8,Low,Low-touch cohort,0
+C00490,2,8,Low,Low-touch cohort,0
+C00499,2,9,Very Low,Low-touch cohort,0
+C00022,1,9,Very Low,Low-touch cohort,0
+C00040,1,9,Very Low,Low-touch cohort,0
+C00041,1,9,Very Low,Low-touch cohort,0
+C00053,1,9,Very Low,Low-touch cohort,0
+C00055,1,9,Very Low,Low-touch cohort,0
+C00062,1,9,Very Low,Low-touch cohort,0
+C00065,1,9,Very Low,Low-touch cohort,0
+C00093,1,9,Very Low,Low-touch cohort,0
+C00110,1,9,Very Low,Low-touch cohort,0
+C00123,1,9,Very Low,Low-touch cohort,0
+C00130,1,9,Very Low,Low-touch cohort,0
+C00141,1,9,Very Low,Low-touch cohort,0
+C00155,1,9,Very Low,Low-touch cohort,0
+C00160,1,9,Very Low,Low-touch cohort,0
+C00172,1,9,Very Low,Low-touch cohort,0
+C00210,1,9,Very Low,Low-touch cohort,0
+C00220,1,9,Very Low,Low-touch cohort,0
+C00254,1,9,Very Low,Low-touch cohort,0
+C00259,1,9,Very Low,Low-touch cohort,0
+C00316,1,9,Very Low,Low-touch cohort,0
+C00318,1,9,Very Low,Low-touch cohort,0
+C00324,1,9,Very Low,Low-touch cohort,0
+C00333,1,9,Very Low,Low-touch cohort,0
+C00346,1,9,Very Low,Low-touch cohort,0
+C00382,1,9,Very Low,Low-touch cohort,0
+C00394,1,9,Very Low,Low-touch cohort,0
+C00411,1,9,Very Low,Low-touch cohort,0
+C00420,1,9,Very Low,Low-touch cohort,0
+C00426,1,9,Very Low,Low-touch cohort,0
+C00432,1,9,Very Low,Low-touch cohort,0
+C00438,1,9,Very Low,Low-touch cohort,0
+C00448,1,9,Very Low,Low-touch cohort,0
+C00464,1,9,Very Low,Low-touch cohort,0
+C00005,0,10,Very Low,Low-touch cohort,0
+C00023,0,10,Very Low,Low-touch cohort,0
+C00029,0,10,Very Low,Low-touch cohort,0
+C00049,0,10,Very Low,Low-touch cohort,0
+C00051,0,10,Very Low,Low-touch cohort,0
+C00059,0,10,Very Low,Low-touch cohort,0
+C00075,0,10,Very Low,Low-touch cohort,0
+C00080,0,10,Very Low,Low-touch cohort,0
+C00083,0,9,Very Low,Low-touch cohort,0
+C00100,0,10,Very Low,Low-touch cohort,0
+C00102,0,10,Very Low,Low-touch cohort,0
+C00103,0,10,Very Low,Low-touch cohort,0
+C00105,0,9,Very Low,Low-touch cohort,0
+C00116,0,10,Very Low,Low-touch cohort,0
+C00143,0,10,Very Low,Low-touch cohort,0
+C00158,0,10,Very Low,Low-touch cohort,0
+C00163,0,9,Very Low,Low-touch cohort,0
+C00169,0,10,Very Low,Low-touch cohort,0
+C00185,0,10,Very Low,Low-touch cohort,0
+C00195,0,10,Very Low,Low-touch cohort,0
+C00201,0,10,Very Low,Low-touch cohort,0
+C00203,0,10,Very Low,Low-touch cohort,0
+C00206,0,10,Very Low,Low-touch cohort,0
+C00209,0,10,Very Low,Low-touch cohort,0
+C00214,0,9,Very Low,Low-touch cohort,0
+C00233,0,10,Very Low,Low-touch cohort,0
+C00241,0,10,Very Low,Low-touch cohort,0
+C00249,0,10,Very Low,Low-touch cohort,0
+C00250,0,10,Very Low,Low-touch cohort,0
+C00262,0,10,Very Low,Low-touch cohort,0
+C00283,0,10,Very Low,Low-touch cohort,0
+C00285,0,9,Very Low,Low-touch cohort,0
+C00290,0,10,Very Low,Low-touch cohort,0
+C00293,0,10,Very Low,Low-touch cohort,0
+C00297,0,10,Very Low,Low-touch cohort,0
+C00298,0,10,Very Low,Low-touch cohort,0
+C00299,0,9,Very Low,Low-touch cohort,0
+C00302,0,9,Very Low,Low-touch cohort,0
+C00315,0,9,Very Low,Low-touch cohort,0
+C00317,0,10,Very Low,Low-touch cohort,0
+C00322,0,10,Very Low,Low-touch cohort,0
+C00348,0,9,Very Low,Low-touch cohort,0
+C00351,0,10,Very Low,Low-touch cohort,0
+C00354,0,10,Very Low,Low-touch cohort,0
+C00355,0,10,Very Low,Low-touch cohort,0
+C00359,0,10,Very Low,Low-touch cohort,0
+C00371,0,10,Very Low,Low-touch cohort,0
+C00376,0,10,Very Low,Low-touch cohort,0
+C00386,0,9,Very Low,Low-touch cohort,0
+C00402,0,10,Very Low,Low-touch cohort,0
+C00410,0,10,Very Low,Low-touch cohort,0
+C00415,0,10,Very Low,Low-touch cohort,0
+C00417,0,10,Very Low,Low-touch cohort,0
+C00423,0,10,Very Low,Low-touch cohort,0
+C00425,0,10,Very Low,Low-touch cohort,0
+C00447,0,9,Very Low,Low-touch cohort,0
+C00466,0,10,Very Low,Low-touch cohort,0
+C00483,0,10,Very Low,Low-touch cohort,0
+C00493,0,10,Very Low,Low-touch cohort,0
+C00498,0,9,Very Low,Low-touch cohort,0

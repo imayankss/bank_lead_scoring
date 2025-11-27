@@ -1,0 +1,7 @@
+{
+  "weights": {
+    "rules_pct": 0.6,
+    "ml_pct": 0.4
+  },
+  "champion": "unified_lgbm"
+}

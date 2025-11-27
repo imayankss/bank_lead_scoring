@@ -1,0 +1,65 @@
+import duckdb, pandas as pd, streamlit as st
+
+st.set_page_config(page_title="Lead Scoring CRM", layout="wide")
+
+con = duckdb.connect("data/warehouse/cltv.duckdb", read_only=True)
+df = con.execute("""
+  SELECT
+    cust_id,
+    lead_score_0_100,
+    cltv_decile,
+    cltv_category_q,
+    recommended_action,
+    priority_flag,
+    ml_proba,
+    hybrid_score_0_100,
+    champion_model,
+    nbp_1, nbp_1_score,
+    nbp_2, nbp_2_score,
+    nbp_3, nbp_3_score
+  FROM ans.crm_export_with_nbp
+""").fetchdf()
+con.close()
+
+st.sidebar.header("Filters")
+min_dec, max_dec = st.sidebar.slider("CLTV decile range", 1, 10, (1, 10))
+min_hybrid = st.sidebar.slider("Min hybrid score", 0, 100, 0)
+prio = st.sidebar.selectbox("Priority", ["All", "Only priority (1)", "Only non-priority (0)"])
+
+q = st.sidebar.text_input("Search (cust_id / action / product)", "")
+
+if prio == "Only priority (1)":
+    df = df[df["priority_flag"] == 1]
+elif prio == "Only non-priority (0)":
+    df = df[df["priority_flag"] == 0]
+
+df = df[(df["cltv_decile"] >= min_dec) & (df["cltv_decile"] <= max_dec)]
+df = df[df["hybrid_score_0_100"] >= min_hybrid]
+
+if q:
+    ql = q.lower()
+    def _m(s: pd.Series) -> pd.Series:
+        return s.fillna("").str.lower().str.contains(ql, na=False)
+    df = df[
+        _m(df["cust_id"])
+        | _m(df["recommended_action"])
+        | _m(df["nbp_1"]) | _m(df["nbp_2"]) | _m(df["nbp_3"])
+    ]
+
+st.title("Lead Scoring Export — Hybrid (Rules + ML)")
+champ = df["champion_model"].iloc[0] if (len(df) and "champion_model" in df.columns) else "n/a"
+st.caption(f"Source: ans.crm_export_with_nbp · Champion: {champ}")
+
+st.metric("Rows", int(len(df)))
+
+st.dataframe(
+    df.sort_values(["hybrid_score_0_100", "ml_proba", "lead_score_0_100"], ascending=[False, False, False]),
+    use_container_width=True
+)
+
+st.download_button(
+    "Download CSV",
+    df.to_csv(index=False).encode(),
+    file_name="lead_scores_for_crm_final_view.csv",
+    mime="text/csv",
+)

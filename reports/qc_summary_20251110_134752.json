@@ -1,0 +1,51 @@
+{
+  "row_counts": {
+    "schema.general_acct_mast_table": 877,
+    "schema.htd": 40111,
+    "schema.chrg_tran_log_tbl": 1497,
+    "ans.acc_car": 500,
+    "ans.acc_cltv_final_py": 482,
+    "ans.customer_lead_scores": 482
+  },
+  "null_rates": {},
+  "referential_breaks": {
+    "acid_in_htd_in_gam": 0,
+    "acid_in_chrg_in_gam": 0,
+    "cust_in_final_in_gam": 0
+  },
+  "cltv_stats": {
+    "count_star()": 1
+  },
+  "cltv_quantiles": {
+    "min": 206,
+    "avg": 688,
+    "max": 1984
+  },
+  "lead_bucket_counts": [
+    {
+      "cltv_category_q": "Medium",
+      "n": 147
+    },
+    {
+      "cltv_category_q": "Low",
+      "n": 98
+    },
+    {
+      "cltv_category_q": "Very Low",
+      "n": 96
+    },
+    {
+      "cltv_category_q": "High",
+      "n": 93
+    },
+    {
+      "cltv_category_q": "Very High",
+      "n": 48
+    }
+  ],
+  "thresholds": {
+    "null_rate_max": 0.2,
+    "ri_max_breaks": 0
+  },
+  "status": "OK"
+}

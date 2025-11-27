@@ -1,0 +1,130 @@
+metadata:
+  version: "1.0.0"
+  effective_from: "2025-01-01"
+  currency: "INR"
+  owner_team: "retail_risk_analytics"
+  description: "Eligibility and prioritization rules for retail products"
+
+global:
+  # absolute guardrails across all products
+  max_overall_dti: 0.60            # total EMIs / net monthly income
+  min_age: 18
+  max_age: 75
+
+products:
+
+  HOME_LOAN:
+    product_family: MORTGAGE
+    secured_flag: true
+    priority_score: 90              # used for tie-breaking
+    constraints:
+      age:
+        min: 23
+        max: 65
+      income_monthly:
+        min: 30000
+      credit_score:
+        min: 700
+      risk_bucket_allowed: ["A", "B", "C"]
+      dti_ratio_max: 0.50          # slightly higher allowed than unsecured
+      loan_to_value_max: 0.80
+      min_relationship_months: 6
+      must_have_products_any_of: ["SAVINGS", "SALARY"]
+      exclude_if_existing_products_any_of: ["HOME_LOAN"]
+      geography_whitelist_tiers: [1, 2]    # e.g., city tiers allowed
+
+  VEHICLE_LOAN:
+    product_family: AUTO_LOAN
+    secured_flag: true
+    priority_score: 80
+    constraints:
+      age:
+        min: 21
+        max: 65
+      income_monthly:
+        min: 25000
+      credit_score:
+        min: 680
+      risk_bucket_allowed: ["A", "B", "C", "D"]
+      dti_ratio_max: 0.45
+      loan_to_value_max: 0.90
+      min_relationship_months: 3
+      exclude_if_existing_products_any_of: []
+      allowed_occupations_any_of: ["SALARIED", "SELF_EMPLOYED"]
+
+  EDUCATION_LOAN:
+    product_family: EDUCATION
+    secured_flag: true
+    priority_score: 70
+    constraints:
+      age:
+        min: 18
+        max: 35
+      income_monthly:
+        min: 0                  # can be zero for students
+      credit_score:
+        min: 650
+      risk_bucket_allowed: ["A", "B", "C", "D"]
+      dti_ratio_max: 0.45
+      requires_coapplicant: true
+      coapplicant_credit_score_min: 680
+      coapplicant_income_monthly_min: 25000
+      min_relationship_months: 0
+
+  PERSONAL_LOAN:
+    product_family: PERSONAL_LOAN
+    secured_flag: false
+    priority_score: 85
+    constraints:
+      age:
+        min: 23
+        max: 60
+      income_monthly:
+        min: 30000
+      credit_score:
+        min: 700
+      risk_bucket_allowed: ["A", "B"]
+      dti_ratio_max: 0.40
+      max_unsecured_exposure_to_income: 0.75   # (all unsecured outstanding) / annual_income
+      min_relationship_months: 6
+      exclude_if_existing_products_any_of: ["PERSONAL_LOAN"]
+      max_recent_delinquency_days: 0          # no recent delinquencies
+
+  CREDIT_CARD:
+    product_family: CREDIT_CARD
+    secured_flag: false
+    priority_score: 75
+    constraints:
+      age:
+        min: 21
+        max: 70
+      income_monthly:
+        min: 20000           # typical entry-level credit card income threshold :contentReference[oaicite:1]{index=1}
+      credit_score:
+        min: 680
+      risk_bucket_allowed: ["A", "B"]
+      dti_ratio_max: 0.40
+      max_cc_utilization: 0.80
+      min_relationship_months: 3
+      allow_if_secured_fd_min: 50000      # secured card: relax income/score if FD lien
+      exclude_if_existing_products_any_of: ["CREDIT_CARD_PREMIUM"]
+      geography_blacklist_tiers: [4]      # optional
+
+  TOP_UP_HOME_LOAN:
+    product_family: MORTGAGE_TOPUP
+    secured_flag: true
+    priority_score: 65
+    constraints:
+      age:
+        min: 25
+        max: 65
+      income_monthly:
+        min: 40000
+      credit_score:
+        min: 720
+      risk_bucket_allowed: ["A", "B"]
+      dti_ratio_max: 0.50
+      loan_to_value_max: 0.80
+      must_have_products_any_of: ["HOME_LOAN"]
+      min_vintage_existing_home_loan_months: 12
+      max_delinquency_last_12m: 0

@@ -1,0 +1,8 @@
+CLTV model performance (synthetic data):
+
+AUC_base_without_AA = 0.9994
+AUC_with_AA_features = 1.0000
+
+Interpretation:
+- AA features give a small but positive lift on this synthetic dataset.
+- In a real bank dataset, the same setup can show how AA (wallet share, balances, digital usage) improves lead ranking quality.

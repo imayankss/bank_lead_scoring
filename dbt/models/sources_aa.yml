@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    tables:
+      - name: aa_customer_map
+
+  - name: warehouse
+    schema: warehouse
+    tables:
+      - name: mart_customer_360_aa
+
+  - name: processed
+    schema: processed
+    tables:
+      - name: modeling_dataset_v2

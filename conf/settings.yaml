@@ -1,0 +1,23 @@
+project:
+  db_path: data/warehouse/cltv.duckdb
+  src_dir: data/raw/synthetic_bank_data_set
+  cache_dir: data/warehouse/cache
+  end_date: 2025-09-30
+  top_k_pct: 20
+cltv:
+  bins: [200, 700, 2000, 3550]   # from your quantiles
+  labels: ["Very Low","Low","Medium","High","Very High"]
+scoring:
+  hybrid_weights:
+    rules_pct: 0.6
+    ml_pct: 0.4
+stage:
+  threads: 8
+  memory: "2GB"
+  strict: true
+  indexes: true
+exports:
+  crm: data/exports/lead_scores_for_crm.csv
+  crm_hybrid: data/exports/lead_scores_for_crm_hybrid.csv
+  features_parquet: data/processed/customer_features.parquet
+  features_csv: data/processed/customer_features.csv

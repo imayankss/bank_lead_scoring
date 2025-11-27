@@ -1,0 +1,145 @@
+x-airflow-env: &airflow_env
+  AIRFLOW__CORE__EXECUTOR: LocalExecutor
+  AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+  AIRFLOW__API__AUTH_BACKENDS: airflow.api.auth.backend.basic_auth
+  AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+  AIRFLOW__CORE__FERNET_KEY: ${AIRFLOW_FERNET_KEY}
+  AIRFLOW__WEBSERVER__SECRET_KEY: ${AIRFLOW_SECRET_KEY}
+  _PIP_ADDITIONAL_REQUIREMENTS: apache-airflow-providers-postgres==5.11.0
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: bls_postgres
+    env_file: ../.env
+    ports: ["5432:5432"]
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB} || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  pgadmin:
+    image: dpage/pgadmin4:8.13
+    container_name: bls_pgadmin
+    env_file: ../.env
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports: ["5050:80"]
+    restart: unless-stopped
+
+  airflow-init:
+    image: apache/airflow:2.10.2
+    container_name: bls_airflow_init
+    env_file: ../.env
+    environment: *airflow_env
+    user: "${AIRFLOW_UID:-50000}:0"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ../airflow/dags:/opt/airflow/dags
+      - ../airflow/logs:/opt/airflow/logs
+      - ../airflow/plugins:/opt/airflow/plugins
+    command: >
+      bash -c "
+      airflow db migrate &&
+      airflow users create
+        --role Admin
+        --username ${AIRFLOW_USER}
+        --password ${AIRFLOW_PASSWORD}
+        --email ${AIRFLOW_EMAIL}
+        --firstname ${AIRFLOW_FIRSTNAME}
+        --lastname ${AIRFLOW_LASTNAME} || true
+      "
+
+  airflow-webserver:
+    image: apache/airflow:2.10.2
+    container_name: bls_airflow_web
+    env_file: ../.env
+    environment: *airflow_env
+    user: "${AIRFLOW_UID:-50000}:0"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+    ports: ["8080:8080"]
+    command: webserver
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:8080/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+    volumes:
+      - ../airflow/dags:/opt/airflow/dags
+      - ../airflow/logs:/opt/airflow/logs
+      - ../airflow/plugins:/opt/airflow/plugins
+    restart: unless-stopped
+
+  airflow-scheduler:
+    image: apache/airflow:2.10.2
+    container_name: bls_airflow_scheduler
+    env_file: ../.env
+    environment: *airflow_env
+    user: "${AIRFLOW_UID:-50000}:0"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      airflow-init:
+        condition: service_completed_successfully
+    command: scheduler
+    volumes:
+      - ../airflow/dags:/opt/airflow/dags
+      - ../airflow/logs:/opt/airflow/logs
+      - ../airflow/plugins:/opt/airflow/plugins
+    restart: unless-stopped
+
+  dbt:
+    image: python:3.11-slim
+    container_name: bls_dbt
+    working_dir: /usr/app
+    volumes:
+      - ../dbt:/usr/app
+    entrypoint: ["bash","-lc","pip install --no-cache-dir dbt-core==1.8.7 dbt-postgres==1.8.2 && tail -f /dev/null"]
+    environment:
+      DBT_PROFILES_DIR: /usr/app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  api:
+    image: python:3.11-slim
+    container_name: bls_api
+    env_file: ../.env
+    working_dir: /app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ..:/app
+    command: bash -lc "pip install -r requirements.txt && uvicorn src.api.main:app --host 0.0.0.0 --port 8000"
+    ports: ["8000:8000"]
+    restart: unless-stopped
+
+  dashboard:
+    image: python:3.11-slim
+    container_name: bls_dashboard
+    env_file: ../.env
+    working_dir: /app
+    depends_on:
+      api:
+        condition: service_started
+    volumes:
+      - ..:/app
+    command: bash -lc "pip install -r requirements.txt && streamlit run src/dashboard/app.py --server.port=8501 --server.address=0.0.0.0"
+    ports: ["8501:8501"]
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

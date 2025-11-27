@@ -1,0 +1,410 @@
+from __future__ import annotations
+
+from pathlib import Path
+import pandas as pd
+from src.common.config import settings
+
+
+# ---------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------
+def project_root_from_this_file() -> Path:
+    """
+    This script lives in src/etl/.
+    parents[0] = src/etl
+    parents[1] = src
+    parents[2] = project root
+    """
+    return Path(__file__).resolve().parents[2]
+
+
+def load_csv(path: Path, **kwargs) -> pd.DataFrame:
+    df = pd.read_csv(path, **kwargs)
+    for c in df.select_dtypes(include="object").columns:
+        df[c] = df[c].astype(str).str.strip()
+    return df
+
+
+def aggregate_cbs_accounts(cbs_acct: pd.DataFrame) -> pd.DataFrame:
+    """
+    Aggregate core CBS account metrics per customer.
+    Assumes columns: cust_id, acid, sanct_lim, clr_bal_amt, is_loan_account, is_overdue, is_npa, dpd_days
+    Adjust if your column names differ.
+    """
+    grp = (
+        cbs_acct.groupby("cust_id")
+        .agg(
+            cbs_num_accounts=("acid", "nunique"),
+            cbs_total_sanct_lim=("sanct_lim", "sum"),
+            cbs_total_clr_bal_amt=("clr_bal_amt", "sum"),
+            cbs_loan_acct_cnt=("is_loan_account", "sum") if "is_loan_account" in cbs_acct.columns else ("acid", "count"),
+            cbs_any_overdue=("is_overdue", "max") if "is_overdue" in cbs_acct.columns else ("acid", "size"),
+            cbs_any_npa=("is_npa", "max") if "is_npa" in cbs_acct.columns else ("acid", "size"),
+            cbs_max_dpd_days=("dpd_days", "max") if "dpd_days" in cbs_acct.columns else ("acid", "size"),
+        )
+        .reset_index()
+    )
+    return grp
+
+
+def aggregate_cbs_txn(cbs_txn: pd.DataFrame) -> pd.DataFrame:
+    """
+    Aggregate CBS transaction behavior per customer.
+    Assumes: cust_id, tran_amt, tran_date, tran_particular.
+    """
+    df = cbs_txn.copy()
+    if "tran_date" not in df.columns:
+        # nothing to do
+        return pd.DataFrame({"cust_id": df["cust_id"].unique()})
+
+    df["tran_date"] = pd.to_datetime(df["tran_date"], errors="coerce")
+    max_date = df["tran_date"].max()
+    df["days_from_max"] = (max_date - df["tran_date"]).dt.days
+
+    base = pd.DataFrame({"cust_id": df["cust_id"].unique()}).set_index("cust_id")
+
+    for window in (30, 90, 365):
+        mask = df["days_from_max"] <= window
+        sub = df[mask]
+        grp = sub.groupby("cust_id").agg(
+            **{
+                f"cbs_txn_cnt_{window}d": ("tran_amt", "count"),
+                f"cbs_txn_sum_{window}d": ("tran_amt", "sum"),
+                f"cbs_txn_avg_{window}d": ("tran_amt", "mean"),
+            }
+        )
+        base = base.join(grp, how="left")
+
+    last_txn = df.groupby("cust_id")["tran_date"].max().to_frame("cbs_last_txn_date")
+    base = base.join(last_txn, how="left")
+    base["cbs_txn_recency_days"] = (max_date - base["cbs_last_txn_date"]).dt.days
+
+    # EMI count last 365 days
+    if "tran_particular" in df.columns:
+        emi_mask = (df["days_from_max"] <= 365) & df["tran_particular"].str.contains("EMI", na=False)
+        emi_grp = (
+            df[emi_mask]
+            .groupby("cust_id")["tran_amt"]
+            .count()
+            .to_frame("cbs_emi_txn_cnt_365d")
+        )
+        base = base.join(emi_grp, how="left")
+
+    return base.reset_index()
+
+
+def build_modeling_dataset() -> pd.DataFrame:
+    root = project_root_from_this_file()
+    raw_root = root / "data" / "raw"
+    syn_root = raw_root
+    aa_root = raw_root
+
+    # ---------------------------------------------------------
+    # 1. Load core tables
+    # ---------------------------------------------------------
+    print("[1/6] Loading raw tables...")
+
+    # Leads (marketing / CRM)
+    leads = load_csv(raw_root / "fct_lead.csv")
+
+    # Product ownership bridge
+    prod_own = load_csv(raw_root / "fact_product_ownership.csv")
+
+    # Customer master (CBS)
+    cust = load_csv(syn_root / "schema_customer_master.csv")
+
+    # Product dimension
+    dim_prod = load_csv(raw_root / "dim_product_boi_2025.csv")
+    # Lead→Product mapping dim
+    lead_prod_map = load_csv(raw_root / "dim_lead_product_map.csv")
+    # Lead→Source mapping dim
+    lead_source_map = load_csv(raw_root / "dim_lead_source_map.csv")
+
+    # Source (channel) dimension
+    dim_source = load_csv(raw_root / "dim_source.csv")
+
+    # Branch dimension
+    dim_branch = load_csv(raw_root / "dim_branch.csv")
+
+    # Account-level 12m averages
+    acc_car = load_csv(syn_root / "ans_acc_car.csv")
+
+    # CBS accounts and transactions
+    cbs_acct = load_csv(syn_root / "prod_ods_cbsind_general_acct_mast_table.csv")
+    cbs_txn = load_csv(syn_root / "prod_ods_cbsind_hist_tran_dtl_table.csv")
+
+    # AA mart + mapping (if present)
+    aa_mart_path = aa_root / "mart_customer_360_aa.csv"
+    aa_map_path = aa_root / "aa_customer_map.csv"
+    aa_mart = load_csv(aa_mart_path) if aa_mart_path.exists() else None
+    aa_map = load_csv(aa_map_path) if aa_map_path.exists() else None
+
+    # Force IDs to string
+    for df, col in [
+        (leads, "cust_id"),
+        (prod_own, "cust_id"),
+        (prod_own, "product_id"),
+        (cust, "cust_id"),
+    ]:
+        if col in df.columns:
+            df[col] = df[col].astype(str)
+
+        # ---------------------------------------------------------
+    # 2. Build label_conv using product ownership (ID-based)
+    # ---------------------------------------------------------
+    print("[2/6] Building labels from fact_product_ownership...")
+
+    # Ensure lead_id
+    if "lead_id" not in leads.columns:
+        leads["lead_id"] = leads.index.astype(str)
+
+    # ---- Ensure cust_id exists in leads ----------------------
+    if "cust_id" not in leads.columns:
+        if "Customer_ID" in leads.columns:
+            def _to_cust_id(x: str) -> str:
+                s = str(x).strip()
+                if s.startswith("CUST"):
+                    num = s[4:]
+                    try:
+                        n = int(num)
+                        return f"C{n:05d}"
+                    except ValueError:
+                        return s
+                return s
+
+            leads["cust_id"] = leads["Customer_ID"].apply(_to_cust_id)
+        else:
+            raise ValueError(
+                "fct_lead.csv must contain either 'cust_id' or 'Customer_ID' "
+                "to link leads to core customers."
+            )
+
+    leads["cust_id"] = leads["cust_id"].astype(str)
+
+    # ---- Lead product mapping via dim_lead_product_map -------
+    if "Chosen_Product" in leads.columns:
+        product_choice_col = "Chosen_Product"
+    elif "Best_First_Option" in leads.columns:
+        product_choice_col = "Best_First_Option"
+    else:
+        raise ValueError(
+            "fct_lead.csv must contain 'Chosen_Product' or 'Best_First_Option' "
+            "to derive target product."
+        )
+
+    leads["lead_product_name_norm"] = (
+        leads[product_choice_col].astype(str).str.strip().str.upper()
+    )
+
+    if "lead_product_name_norm" not in lead_prod_map.columns:
+        lead_prod_map["lead_product_name_norm"] = (
+            lead_prod_map["lead_product_name"].astype(str).str.strip().str.upper()
+        )
+
+    leads = leads.merge(
+        lead_prod_map[["lead_product_name_norm", "product_id"]],
+        on="lead_product_name_norm",
+        how="left",
+    )
+
+    # Canonical target product for modeling (P001..P005)
+    leads["target_product_id"] = leads["product_id"].astype(str)
+
+    # ---- Lead source mapping via dim_lead_source_map ---------
+    if "Lead_Source" in leads.columns and "Lead_Source" in lead_source_map.columns:
+        leads = leads.merge(lead_source_map, on="Lead_Source", how="left")
+    else:
+        print("   [WARN] Lead_Source mapping unavailable; no source_id derived in leads.")
+
+    # ---- Label from fact_product_ownership -------------------
+    prod_own["cust_id"] = prod_own["cust_id"].astype(str)
+    prod_own["product_id"] = prod_own["product_id"].astype(str)
+
+    owned_pairs = set(zip(prod_own["cust_id"], prod_own["product_id"]))
+
+    def _label(row):
+        return int((row["cust_id"], row["target_product_id"]) in owned_pairs)
+
+    leads["label_conv"] = leads.apply(_label, axis=1)
+
+    # Optional: time-window conversion label based on CBS account opening dates (90 days)
+    # Default to same as label_conv, then refine if dates are available
+    leads["label_conv_90d"] = leads["label_conv"]
+    try:
+        import pandas as pd  # already imported at top, but safe
+
+        # We expect cbs_acct to be loaded earlier in build_modeling_dataset
+        # and to contain: cust_id, product_id, acct_opn_date
+        cbs = cbs_acct[["cust_id", "product_id", "acct_opn_date"]].copy()
+        cbs["cust_id"] = cbs["cust_id"].astype(str)
+        cbs["product_id"] = cbs["product_id"].astype(str)
+        cbs["acct_opn_date"] = pd.to_datetime(cbs["acct_opn_date"], errors="coerce")
+
+        if "Date_Of_Lead" in leads.columns:
+            leads["lead_date"] = pd.to_datetime(leads["Date_Of_Lead"], errors="coerce")
+
+            tmp = leads[["lead_id", "cust_id", "target_product_id", "lead_date"]].merge(
+                cbs,
+                left_on=["cust_id", "target_product_id"],
+                right_on=["cust_id", "product_id"],
+                how="left",
+            )
+
+            tmp["days_to_open"] = (tmp["acct_opn_date"] - tmp["lead_date"]).dt.days
+
+            within_90 = tmp[
+                (tmp["days_to_open"] >= 0) &
+                (tmp["days_to_open"] <= 90)
+            ]
+
+            conv_ids_90 = set(within_90["lead_id"])
+            leads["label_conv_90d"] = leads["lead_id"].isin(conv_ids_90).astype(int)
+        else:
+            print("   [WARN] Date_Of_Lead column missing; label_conv_90d falls back to label_conv.")
+    except Exception as e:
+        print(f"   [WARN] Could not compute label_conv_90d from CBS accounts: {e}")
+
+# ---------------------------------------------------------
+    # 3. Join dims: customer, source, product, branch, acc_car
+    # ---------------------------------------------------------
+    print("[3/6] Joining dimensions...")
+
+    df = leads.copy()
+
+    # Customer
+    df = df.merge(cust, on="cust_id", how="left", suffixes=("", "_cust"))
+
+    # Source
+    if "source_id" in df.columns and "source_id" in dim_source.columns:
+        df = df.merge(dim_source, on="source_id", how="left", suffixes=("", "_src"))
+    else:
+        print("   [WARN] No source_id join (missing in leads or dim_source).")
+
+    # Product
+    if "product_id" in dim_prod.columns:
+        df = df.merge(
+            dim_prod.add_prefix("prod_"),
+            left_on="target_product_id",
+            right_on="prod_product_id",
+            how="left",
+        )
+    else:
+        print("   [WARN] dim_product_boi_2025 has no product_id column; adjust script.")
+
+    # Branch – join on sol_id from customer
+    if "sol_id" in df.columns and "sol_id" in dim_branch.columns:
+        df = df.merge(dim_branch, on="sol_id", how="left", suffixes=("", "_branch"))
+    else:
+        print("   [WARN] No sol_id join to dim_branch; check dim_branch columns.")
+
+    # 12-month balances
+    df = df.merge(acc_car, on="cust_id", how="left", suffixes=("", "_acc_car"))
+
+    # ---------------------------------------------------------
+    # 4. Aggregate CBS accounts and transactions, join
+    # ---------------------------------------------------------
+    print("[4/6] Aggregating CBS accounts & transactions...")
+
+    # CBS accounts
+    if not cbs_acct.empty:
+        cbs_acct["cust_id"] = cbs_acct["cust_id"].astype(str)
+        cbs_acct_agg = aggregate_cbs_accounts(cbs_acct)
+        df = df.merge(cbs_acct_agg, on="cust_id", how="left")
+    else:
+        print("   [WARN] CBS account table empty.")
+
+    # CBS transactions
+    if not cbs_txn.empty:
+        cbs_txn["cust_id"] = cbs_txn["cust_id"].astype(str)
+        cbs_txn_agg = aggregate_cbs_txn(cbs_txn)
+        df = df.merge(cbs_txn_agg, on="cust_id", how="left")
+    else:
+        print("   [WARN] CBS transaction table empty.")
+
+    # ---------------------------------------------------------
+    # 5. AA 360 features (anchor bank) – optional
+    # ---------------------------------------------------------
+    print("[5/6] Joining AA 360 features (if available)...")
+
+    if aa_mart is not None and aa_map is not None:
+        # Anchor only
+        anchor = aa_map[aa_map["bank_code"] == "ANCHOR"].copy()
+        if "cust_id" in anchor.columns:
+            anchor["cust_id"] = anchor["cust_id"].astype(str)
+
+        aa = anchor.merge(aa_mart, on="aa_customer_id", how="left")
+        # Select and rename a few AA features
+        keep_cols = [
+            "aa_customer_id",
+            "cust_id",
+            "total_balance_all_banks",
+            "anchor_balance",
+            "competitor_balance",
+            "num_accounts",
+            "num_anchor_accounts",
+            "num_comp_accounts",
+            "txn_count_total",
+            "txns_last_90d",
+            "avg_txn_amount",
+            "digital_usage_ratio",
+            "avg_monthly_inflows",
+            "avg_monthly_outflows",
+        ]
+        keep_cols = [c for c in keep_cols if c in aa.columns]
+        aa = aa[keep_cols].copy()
+
+        rename_map = {
+            "num_accounts": "aa_num_accounts",
+            "num_anchor_accounts": "aa_num_anchor_accounts",
+            "num_comp_accounts": "aa_num_comp_accounts",
+            "txn_count_total": "aa_txn_count_total",
+            "txns_last_90d": "aa_txn_count_90d",
+            "avg_txn_amount": "aa_avg_txn_amount",
+            "digital_usage_ratio": "aa_digital_usage_ratio",
+            "avg_monthly_inflows": "aa_avg_monthly_inflows",
+            "avg_monthly_outflows": "aa_avg_monthly_outflows",
+        }
+        aa = aa.rename(columns=rename_map)
+
+        # Aggregate at cust_id (just in case)
+        aa_agg = (
+            aa.groupby("cust_id")
+            .agg({c: "mean" for c in aa.columns if c not in ("cust_id", "aa_customer_id")})
+            .reset_index()
+        )
+
+        df = df.merge(aa_agg, on="cust_id", how="left")
+    else:
+        print("   [WARN] AA mart or aa_customer_map missing; skipping AA join.")
+
+    # ---------------------------------------------------------
+    # 6. Final housekeeping
+    # ---------------------------------------------------------
+    print("[6/6] Finalizing dataset...")
+
+    # Optional: ensure label_conv is int
+    df["label_conv"] = df["label_conv"].astype(int)
+
+    # Do NOT drop rows here; let modeling code decide about NaNs
+    # Just save
+    return df
+
+
+def main() -> None:
+    root = project_root_from_this_file()
+    processed_dir = root / "data" / "processed"
+    processed_dir.mkdir(parents=True, exist_ok=True)
+
+    df = build_modeling_dataset()
+
+    out_path = processed_dir / "modeling_dataset_leads_unified.csv"
+    df.to_csv(out_path, index=False)
+
+    print(f"[OK] modeling_dataset_leads_unified.csv written:")
+    print(f"     Path : {out_path}")
+    print(f"     Rows : {df.shape[0]}")
+    print(f"     Cols : {df.shape[1]}")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,14 @@
+seeds:
+  bank_lead_scoring_project:
+    dim_product_boi_2025:
+      path: data/raw/dim_product_boi_2025.csv
+      +schema: reference
+      +quote_columns: true
+    dim_source:
+      path: data/raw/dim_source.csv
+      +schema: reference
+      +quote_columns: true
+    dim_product_family:
+      path: data/raw/dim_product_family.csv
+      +schema: reference
+      +quote_columns: true

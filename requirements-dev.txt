@@ -1,0 +1,6 @@
+pandas
+pytest
+hypothesis
+pandera[io]
+dbt-core
+dbt-postgres
