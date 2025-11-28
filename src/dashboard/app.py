@@ -3,7 +3,10 @@ from __future__ import annotations
 
 import os
 import sys
+from datetime import datetime
+from typing import Dict, Iterable, List, Tuple
 
+import altair as alt
 import pandas as pd
 import streamlit as st
 from st_aggrid import AgGrid, GridOptionsBuilder, GridUpdateMode
@@ -19,39 +22,38 @@ from src.dashboard.data_access import (
     load_hero_slice,
 )
 
+
 # ---------------------------------------------------------
-# Page + modal styling
+# Page styling
 # ---------------------------------------------------------
-st.set_page_config(page_title="Customer 360 — Unified Lead Scoring", layout="wide")
+st.set_page_config(
+    page_title="CRM Leads Dashboard",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
 
 st.markdown(
     """
 <style>
-/* 16:9 responsive modal box styling */
+/* filter strip + metric cards */
+.crm-filter-row {
+  background: #f7f9fc;
+  border: 1px solid #e1e7f5;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+.crm-metric-card {
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #eef1f7;
+  padding: 1rem;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
+}
 [data-testid="stDialog"] > div[role="dialog"],
 [data-testid="stModal"] > div[role="dialog"] {
-  aspect-ratio: 16 / 9;
-  width: min(90vw, 1400px);
-  height: auto;
-  max-width: none !important;
-  border-radius: 16px;
-  overflow: hidden;
-  padding: 0 !important;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
-}
-
-/* Inner content fills full area */
-[data-testid="stDialog"] > div[role="dialog"] > div,
-[data-testid="stModal"] > div[role="dialog"] > div {
-  width: 100%;
-  height: 100%;
-}
-
-/* Scroll if content overflows */
-[data-testid="stDialog"] [data-testid="stVerticalBlock"],
-[data-testid="stModal"] [data-testid="stVerticalBlock"] {
-  max-height: 100%;
-  overflow-y: auto;
+  width: min(90vw, 1200px);
+  border-radius: 18px;
 }
 </style>
 """,
@@ -60,329 +62,574 @@ st.markdown(
 
 
 # ---------------------------------------------------------
-# Helper formatting
+# Constants + helpers
 # ---------------------------------------------------------
-def _fmt_int(x):
+LEAD_BUCKET_ORDER = ["0_30d", "31_60d", "61_90d", "91_365d", "GT_365d"]
+
+# Human-friendly labels for lead recency (age of last lead)
+RECENCY_LABEL_MAP = {
+    "0_30d": "0–30 days",
+    "31_60d": "31–60 days",
+    "61_90d": "61–90 days",
+    "91_365d": "91–365 days",
+    "GT_365d": ">365 days",
+    "Unknown": "No recent lead",
+}
+
+PRODUCT_NAME_MAP = {
+    "P001": "Current / CASA",
+    "P002": "Credit Card",
+    "P003": "Loan & Lending",
+    "P004": "Investment / Wealth",
+    "P005": "Savings & Deposits",
+}
+
+PRODUCT_CATEGORY_MAP = {
+    "P001": "CASA",
+    "P002": "Cards",
+    "P003": "Lending",
+    "P004": "Investment",
+    "P005": "Deposit",
+}
+
+STATUS_FRIENDLY = {
+    "A1_HIGH_LEAD_NO_LOAN_UPSELL": "High priority · Upsell (no existing loan)",
+    "A2_HIGH_LEAD_WITH_LOAN_CROSSSELL": "High priority · Cross-sell (has loan)",
+    "B1_MEDIUM_WARM": "Medium priority · Warm follow-up",
+    "B2_LOW_WARM": "Low priority · Warm / nurture",
+    "C1_COLD": "Very low priority · Cold / long-term nurture",
+}
+
+
+def _fmt_int(x) -> int:
     try:
         return int(x) if pd.notna(x) else 0
     except Exception:
         return 0
 
 
-def _fmt_f2(x):
+def _fmt_float(x, digits=2) -> str:
     try:
-        return f"{float(x):.2f}"
+        return f"{float(x):.{digits}f}"
     except Exception:
-        return "0.00"
+        return f"{0:.{digits}f}"
 
 
 @st.cache_data(show_spinner=False)
-def load_dashboard_data():
-    """
-    Load all dashboard data from DuckDB via the data_access helpers.
-    Cached so that UI interactions don’t re-query each time.
-    """
+def load_dashboard_data() -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     df_360 = load_customer_360_dashboard(limit=None)
     df_summary = load_customer_360_summary()
     df_hero = load_hero_slice()
     return df_360, df_summary, df_hero
 
 
+def enrich_customer_frame(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Create cosmetic fields used by the CRM dashboard layout.
+    """
+    out = df.copy()
+
+    # Geography
+    out["center"] = out["region"].fillna("Unknown")
+    out["zone"] = out["zone"].fillna("Unknown")
+    out["branch"] = out["zone"].fillna("Unknown") + " Hub"
+
+    # Product labelling
+    out["product_name"] = (
+        out["last_prod_product_id"].map(PRODUCT_NAME_MAP).fillna("Unclassified")
+    )
+    out["product_category"] = (
+        out["last_prod_product_id"].map(PRODUCT_CATEGORY_MAP).fillna("Other")
+    )
+
+    # Friendly status label
+    out["status_label"] = out["action_bucket"].map(STATUS_FRIENDLY).fillna(
+        out["action_bucket"].fillna("Unassigned")
+    )
+
+    # Dates
+    out["creation_date"] = pd.to_datetime(out["last_lead_date"], errors="coerce")
+    out["creation_month"] = out["creation_date"].dt.strftime("%b-%Y").fillna("Unknown")
+
+    # Recency buckets + human label
+    out["lead_recency_bucket"] = pd.Categorical(
+        out["lead_recency_bucket"].fillna("Unknown"),
+        categories=LEAD_BUCKET_ORDER + ["Unknown"],
+        ordered=True,
+    )
+    out["lead_recency_label"] = (
+        out["lead_recency_bucket"].astype(str).map(RECENCY_LABEL_MAP).fillna("Unknown")
+    )
+
+    # Scores with safe defaults
+    out["hybrid_score_0_100_final"] = out["hybrid_score_0_100_final"].fillna(0)
+    out["ml_unified_customer_proba"] = out["ml_unified_customer_proba"].fillna(0.0)
+    out["cltv_profit_final"] = out["cltv_profit_final"].fillna(0.0)
+
+    return out
+
+
+def _dropdown_filter(label: str, options: Iterable[str]) -> str:
+    """
+    Single-select dropdown with 'All' option.
+    Returns a string (one of the options or 'All').
+    """
+    opts = sorted({str(o) for o in options if pd.notna(o)})
+    if not opts:
+        return st.selectbox(label, ["All"])
+    return st.selectbox(label, ["All"] + opts)
+
+
+def build_filter_controls(df: pd.DataFrame) -> Dict[str, object]:
+    """
+    Main filter ribbon at the top + advanced filters in sidebar.
+    """
+    # ---------------------------
+    # MAIN FILTER STRIP (top)
+    # ---------------------------
+    st.markdown("### Lead filters")
+    with st.container():
+        st.markdown('<div class="crm-filter-row">', unsafe_allow_html=True)
+
+        # Row 1: Center / Zone / Branch / Status
+        row1 = st.columns(4)
+        with row1[0]:
+            center = _dropdown_filter("Center", df["center"].unique())
+        with row1[1]:
+            zone = _dropdown_filter("Zone", df["zone"].unique())
+        with row1[2]:
+            branch = _dropdown_filter("Branch", df["branch"].unique())
+        with row1[3]:
+            status = _dropdown_filter("Status", df["status_label"].unique())
+
+        # Row 2: Product category / Product / Source / Month
+        row2 = st.columns(4)
+        with row2[0]:
+            prod_cat = _dropdown_filter("Product category", df["product_category"].unique())
+        with row2[1]:
+            product = _dropdown_filter("Product", df["product_name"].unique())
+        with row2[2]:
+            source = _dropdown_filter("Source", df["last_lead_source"].unique())
+        with row2[3]:
+            month = _dropdown_filter("Lead month", df["creation_month"].unique())
+
+        st.markdown("</div>", unsafe_allow_html=True)
+
+    # ---------------------------
+    # SIDEBAR FILTERS (left)
+    # ---------------------------
+    with st.sidebar:
+        st.markdown("### Advanced lead filters")
+
+        min_score = st.slider("Hybrid score ≥", 0, 100, 0)
+
+        date_min = df["creation_date"].min()
+        date_max = df["creation_date"].max()
+        default_range = (
+            date_min.date() if pd.notna(date_min) else datetime(2020, 1, 1).date(),
+            date_max.date() if pd.notna(date_max) else datetime.today().date(),
+        )
+        date_range = st.date_input(
+            "Creation date window",
+            value=default_range,
+            format="YYYY-MM-DD",
+        )
+
+        search = st.text_input(
+            "Search cust ID / name / source",
+            placeholder="E.g. C00010, Arjun, Campaign",
+        )
+
+    return {
+        "center": center,
+        "zone": zone,
+        "branch": branch,
+        "status_label": status,
+        "product_category": prod_cat,
+        "product_name": product,
+        "last_lead_source": source,
+        "creation_month": month,
+        "min_score": min_score,
+        "date_range": date_range,
+        "search": search,
+    }
+
+
+
+
+def apply_filters(df: pd.DataFrame, filters: Dict[str, object]) -> pd.DataFrame:
+    view = df.copy()
+
+    # Columns controlled by dropdowns
+    for col in [
+        "center",
+        "zone",
+        "branch",
+        "status_label",
+        "product_category",
+        "product_name",
+        "last_lead_source",
+        "creation_month",
+    ]:
+        selected = filters.get(col)
+        if selected and selected != "All":
+            view = view[view[col] == selected]
+
+    # Hybrid score threshold
+    view = view[view["hybrid_score_0_100_final"] >= filters.get("min_score", 0)]
+
+    # Date range
+    date_range = filters.get("date_range")
+    if isinstance(date_range, (list, tuple)) and len(date_range) == 2:
+        start, end = date_range
+        if start and end:
+            view = view[
+                (view["creation_date"].dt.date >= start)
+                & (view["creation_date"].dt.date <= end)
+            ]
+
+    # Text search
+    search = (filters.get("search") or "").strip().lower()
+    if search:
+        mask = (
+            view["cust_id"].astype(str).str.lower().str.contains(search, na=False)
+            | view["full_name"].astype(str).str.lower().str.contains(search, na=False)
+            | view["last_lead_source"].astype(str).str.lower().str.contains(search, na=False)
+        )
+        view = view[mask]
+
+    return view.reset_index(drop=True)
+
+
+
+def render_metric_cards(df_full: pd.DataFrame, df_filtered: pd.DataFrame):
+    total_customers = len(df_full)
+    filtered_customers = len(df_filtered)
+    total_leads = int(df_full["lead_cnt"].fillna(0).sum())
+    leads_in_view = int(df_filtered["lead_cnt"].fillna(0).sum())
+    expected_conversion = df_filtered["ml_unified_customer_proba"].sum()
+    avg_cltv = df_filtered["cltv_profit_final"].mean() if filtered_customers else 0
+
+    cols = st.columns(4)
+    metric_payload = [
+        ("Total customers", f"{total_customers:,}", f"Leads {total_leads:,}"),
+        ("Customers in view", f"{filtered_customers:,}", f"Leads {leads_in_view:,}"),
+        ("Expected conversions", f"{expected_conversion:.1f}", "Sum(ML proba)"),
+        ("Avg CLTV (₹)", f"{avg_cltv:,.0f}", "Filtered subset"),
+    ]
+    for col, payload in zip(cols, metric_payload):
+        with col:
+            st.markdown('<div class="crm-metric-card">', unsafe_allow_html=True)
+            st.caption(payload[2])
+            st.metric(payload[0], payload[1])
+            st.markdown("</div>", unsafe_allow_html=True)
+
+
+def build_product_category_chart(df: pd.DataFrame):
+    if df.empty:
+        st.info("No data for selected filters.")
+        return
+
+    agg = (
+        df.groupby("product_category")
+        .agg(
+            total_leads=("lead_cnt", "sum"),
+            expected_converted=("ml_unified_customer_proba", "sum"),
+        )
+        .reset_index()
+    )
+    chart = (
+        alt.Chart(agg)
+        .mark_bar()
+        .encode(
+            x=alt.X("product_category", title="Product category"),
+            y=alt.Y("total_leads", title="Total leads"),
+            tooltip=["product_category", "total_leads", "expected_converted"],
+            color=alt.Color("product_category", legend=None),
+        )
+    )
+    st.altair_chart(chart, use_container_width=True)
+
+    chart_conv = (
+        alt.Chart(agg)
+        .mark_bar(color="#0f9d58")
+        .encode(
+            x=alt.X("product_category", title="Product category"),
+            y=alt.Y("expected_converted", title="Expected conversions"),
+            tooltip=["product_category", "expected_converted", "total_leads"],
+        )
+    )
+    st.altair_chart(chart_conv, use_container_width=True)
+
+
+def build_product_drill(df: pd.DataFrame):
+    if df.empty:
+        st.info("No data for product drill.")
+        return
+    product = (
+        df.groupby("product_name")
+        .agg(
+            total_leads=("lead_cnt", "sum"),
+            avg_score=("hybrid_score_0_100_final", "mean"),
+            cltv=("cltv_profit_final", "sum"),
+        )
+        .reset_index()
+        .sort_values("total_leads", ascending=False)
+    )
+    st.dataframe(product, use_container_width=True, hide_index=True)
+
+
+def build_pending_matrix(df: pd.DataFrame, dimensions: List[str]) -> pd.DataFrame:
+    if df.empty:
+        return pd.DataFrame(columns=dimensions + LEAD_BUCKET_ORDER + ["Totals"])
+    tmp = df.copy()
+    grouped = (
+        tmp.groupby(dimensions + ["lead_recency_bucket"])
+        .size()
+        .reset_index(name="pending_leads")
+    )
+    pivot = grouped.pivot_table(
+        index=dimensions,
+        columns="lead_recency_bucket",
+        values="pending_leads",
+        fill_value=0,
+        aggfunc="sum",
+    )
+    pivot = pivot.reindex(columns=LEAD_BUCKET_ORDER, fill_value=0)
+    pivot["Totals"] = pivot.sum(axis=1)
+    return pivot.reset_index()
+
+
 def render_customer_card(row: pd.Series, full_df: pd.DataFrame):
-    st.markdown(f"### {row.get('full_name', 'Customer')} (`{row['cust_id']}`)")
-    c1, c2 = st.columns([2, 1], gap="large")
+    st.markdown(f"### {row.get('full_name', 'Customer')} | `{row.get('cust_id')}`")
+    info_cols = st.columns(3)
+    info_cols[0].metric("Hybrid score", _fmt_int(row.get("hybrid_score_0_100_final")))
+    info_cols[1].metric("ML probability", _fmt_float(row.get("ml_unified_customer_proba"), 3))
+    info_cols[2].metric("CLTV (₹)", f"{_fmt_int(row.get('cltv_profit_final')):,}")
 
-    with c1:
-        # Scores
+    profile_cols = st.columns(2)
+    with profile_cols[0]:
+        st.subheader("Customer profile", divider="gray")
         st.write(
-            f"- **Hybrid score**: "
-            f"{_fmt_int(row.get('hybrid_score_0_100_final'))} "
-            f"| **ML proba**: "
-            f"{float(row.get('ml_unified_customer_proba') or 0):.3f} "
-            f"| **CLTV profit (final)**: "
-            f"{_fmt_int(row.get('cltv_profit_final'))}"
+            f"**Age / Gender**: {_fmt_int(row.get('age'))} / {row.get('gender', '—')}"
+        )
+        st.write(f"**Income segment**: {row.get('income_segment', '—')}")
+        st.write(
+            f"**Location**: {row.get('branch', '—')} · {row.get('center', '—')} · {row.get('zone', '—')}"
         )
         st.write(
-            f"- **CLTV decile**: {_fmt_int(row.get('cltv_decile_final'))} "
-            f"| **Priority segment**: {row.get('priority_segment')} "
-            f"| **Action bucket**: {row.get('action_bucket')}"
+            f"**Area type**: {row.get('urban_rural_flag', '—')} · Risk: {row.get('risk_bucket', '—')}"
         )
+        st.write(f"**PIN / City**: {row.get('pin_code', '—')} / {row.get('region', '—')}")
+        st.write(f"**Phone**: {row.get('phone_number', 'Not available')}")
 
-        # Profile
-        st.write(
-            f"- **Profile**: {row.get('gender', 'N/A')}, "
-            f"age={_fmt_int(row.get('age'))}, "
-            f"income={_fmt_f2(row.get('income_annual_inr'))} INR "
-            f"({row.get('income_segment', 'N/A')})"
-        )
-        st.write(
-            f"- **Risk / Location**: risk_bucket={row.get('risk_bucket', 'N/A')}, "
-            f"region={row.get('region', 'N/A')}, "
-            f"zone={row.get('zone', 'N/A')}, "
-            f"urban_rural={row.get('urban_rural_flag', 'N/A')}"
-        )
+    with profile_cols[1]:
+        st.subheader("Relationship snapshot", divider="gray")
+        st.write(f"**Products held**: {_fmt_int(row.get('num_products'))}")
+        st.write(f"**Lead count**: {_fmt_int(row.get('lead_cnt'))}")
+        st.write(f"**Last source**: {row.get('last_lead_source', '—')}")
+        st.write(f"**Last lead date**: {row.get('last_lead_date', '—')}")
+        st.write(f"**Recency bucket**: {row.get('lead_recency_bucket', '—')}")
+        st.write(f"**Recommended action**: {row.get('status_label', row.get('action_bucket'))}")
 
-        # Products / balances
-        st.write(
-            f"- **Products**: num_products={_fmt_int(row.get('num_products'))}, "
-            f"loan_flag={_fmt_int(row.get('label_has_loan_product'))}, "
-            f"any_product={_fmt_int(row.get('label_has_any_product'))}"
-        )
-        st.write(
-            f"- **Balances**: "
-            f"CBS total clr bal={_fmt_f2(row.get('cbs_total_clr_bal_amt'))}, "
-            f"AA inflows={_fmt_f2(row.get('aa_avg_monthly_inflows'))}, "
-            f"AA outflows={_fmt_f2(row.get('aa_avg_monthly_outflows'))}"
-        )
+        balances = [
+            ("CBS balance", row.get("cbs_total_clr_bal_amt")),
+            ("AA inflows", row.get("aa_avg_monthly_inflows")),
+            ("AA outflows", row.get("aa_avg_monthly_outflows")),
+        ]
+        for label, value in balances:
+            st.write(f"- {label}: {_fmt_float(value)}")
 
-        # Lead behavior
-        st.write(
-            f"- **Leads**: lead_cnt={_fmt_int(row.get('lead_cnt'))}, "
-            f"has_any_lead={_fmt_int(row.get('label_has_any_lead'))}, "
-            f"last_source={row.get('last_lead_source', 'N/A')}, "
-            f"last_date={row.get('last_lead_date', 'N/A')}, "
-            f"recency={_fmt_int(row.get('lead_recency_days'))} days "
-            f"({row.get('lead_recency_bucket', 'N/A')})"
-        )
-        st.write(
-            f"- **Last product**: last_prod_product_id="
-            f"{row.get('last_prod_product_id', 'N/A')}"
-        )
-
-        with st.expander("Raw row"):
-            st.dataframe(pd.DataFrame([row]).T, use_container_width=True)
-
-    with c2:
-        st.markdown("**Download**")
-        st.download_button(
-            "Download this customer",
-            full_df[full_df["cust_id"] == row["cust_id"]].to_csv(index=False).encode(),
-            file_name=f"customer_{row['cust_id']}.csv",
-            mime="text/csv",
-        )
+    st.write("---")
+    st.dataframe(pd.DataFrame([row]), use_container_width=True)
+    st.download_button(
+        "Download customer (CSV)",
+        full_df[full_df["cust_id"] == row["cust_id"]].to_csv(index=False).encode(),
+        file_name=f"customer_{row['cust_id']}.csv",
+        mime="text/csv",
+    )
 
 
 # ---------------------------------------------------------
 # MAIN APP
 # ---------------------------------------------------------
-df_360, df_summary, df_hero = load_dashboard_data()
+df_360_raw, df_summary, df_hero = load_dashboard_data()
+df_360 = enrich_customer_frame(df_360_raw)
 
-st.title("Customer 360 — Unified Lead Scoring")
+# Developer-facing snapshot so we know what data exists when iterating on UI.
+with st.expander("Data snapshot · tables + key columns", expanded=False):
+    st.markdown(
+        """
+**DuckDB sources**
+- `df_360_raw` ⇢ `ans.customer_360_dashboard_v2`
+- `df_summary` ⇢ `ans.customer_360_dashboard_summary`
+- `df_hero` ⇢ `ans.customer_360_hero_slice`
 
-# ---------- sidebar filters ----------
-st.sidebar.header("Filters")
+**Shapes**
+- df_360_raw: `{}` rows × `{}` cols
+- df_summary: `{}` rows × `{}` cols
+- df_hero: `{}` rows × `{}` cols
 
-priority_options = sorted(df_360["priority_segment"].dropna().unique().tolist())
-priority_selected = st.sidebar.multiselect(
-    "Priority segment", options=priority_options, default=priority_options
-)
+**Key customer fields (df_360_raw)**
+`cust_id`, `full_name`, `gender`, `age`, `region`, `zone`, `priority_segment`,
+`action_bucket`, `lead_cnt`, `last_lead_date`, `lead_recency_days`,
+`lead_recency_bucket`, `last_lead_source`, `last_prod_product_id`,
+`hybrid_score_0_100_final`, `ml_unified_customer_proba`, `cltv_profit_final`,
+`cltv_decile_final`, `num_products`, `label_has_any_product`, `label_has_any_lead`
 
-action_options = sorted(df_360["action_bucket"].dropna().unique().tolist())
-action_selected = st.sidebar.multiselect(
-    "Action bucket", options=action_options, default=action_options
-)
+**Summary fields (df_summary)**
+`priority_segment`, `action_bucket`, `lead_recency_bucket`,
+`last_lead_source`, `n_customers`, `avg_hybrid_score`, `avg_ml_proba`, `avg_cltv`
 
-recency_options = sorted(df_360["lead_recency_bucket"].dropna().unique().tolist())
-recency_selected = st.sidebar.multiselect(
-    "Lead recency bucket", options=recency_options, default=recency_options
-)
-
-source_options = sorted(df_360["last_lead_source"].dropna().unique().tolist())
-source_selected = st.sidebar.multiselect(
-    "Last lead source", options=source_options, default=source_options
-)
-
-min_hybrid = st.sidebar.slider("Min hybrid score (0–100)", 0, 100, 0)
-
-q = st.sidebar.text_input("Search (cust_id / full_name / source)", "")
-
-# ---------- apply filters ----------
-df_view = df_360.copy()
-
-if priority_selected:
-    df_view = df_view[df_view["priority_segment"].isin(priority_selected)]
-if action_selected:
-    df_view = df_view[df_view["action_bucket"].isin(action_selected)]
-if recency_selected:
-    df_view = df_view[df_view["lead_recency_bucket"].isin(recency_selected)]
-if source_selected:
-    df_view = df_view[df_view["last_lead_source"].isin(source_selected)]
-
-df_view = df_view[df_view["hybrid_score_0_100_final"] >= min_hybrid]
-
-if q:
-    ql = q.lower()
-
-    def _m(s: pd.Series) -> pd.Series:
-        return s.fillna("").str.lower().str.contains(ql, na=False)
-
-    df_view = df_view[
-        _m(df_view["cust_id"])
-        | _m(df_view["full_name"])
-        | _m(df_view["last_lead_source"])
-    ]
-
-# ---------- header KPIs ----------
-total_customers = len(df_360)
-filtered_customers = len(df_view)
-high_share = (
-    (df_view["priority_segment"] == "HIGH").mean() * 100 if filtered_customers else 0.0
-)
-
-cA, cB, cC = st.columns(3)
-cA.metric("Total customers", int(total_customers))
-cB.metric("Filtered customers", int(filtered_customers))
-cC.metric("HIGH share (filtered)", f"{high_share:.1f}%")
-
-# ---------------------------------------------------------
-# Tabs: Overview | Segment Summary | Customer Explorer | Hero Outreach
-# ---------------------------------------------------------
-tab_overview, tab_summary, tab_customers, tab_hero = st.tabs(
-    ["Overview", "Segment summary", "Customer explorer", "Hero outreach"]
-)
-
-# ---------- Overview tab ----------
-with tab_overview:
-    st.subheader("Overview (filtered subset)")
-
-    c1, c2 = st.columns(2)
-    # Priority distribution
-    if filtered_customers:
-        priority_counts = (
-            df_view["priority_segment"].value_counts().reset_index()
+**Hero slice fields (df_hero)**
+Subset of df_360_raw with the same columns, pre-filtered for HIGH + recent digital.
+        """.format(
+            df_360_raw.shape[0],
+            df_360_raw.shape[1],
+            df_summary.shape[0],
+            df_summary.shape[1],
+            df_hero.shape[0],
+            df_hero.shape[1],
         )
-        priority_counts.columns = ["priority_segment", "n"]
-        c1.write("Priority mix")
-        c1.bar_chart(
-            priority_counts.set_index("priority_segment")["n"],
-            use_container_width=True,
-        )
-
-        # Action bucket distribution
-        action_counts = df_view["action_bucket"].value_counts().reset_index()
-        action_counts.columns = ["action_bucket", "n"]
-        c2.write("Action bucket mix")
-        c2.bar_chart(
-            action_counts.set_index("action_bucket")["n"],
-            use_container_width=True,
-        )
-
-    st.write("---")
-    st.write("Top 10 customers by hybrid score (filtered)")
-    top10 = (
-        df_view.sort_values(
-            ["hybrid_score_0_100_final", "ml_unified_customer_proba", "cltv_profit_final"],
-            ascending=[False, False, False],
-        )
-        .head(10)
-        .loc[
-            :,
-            [
-                "cust_id",
-                "full_name",
-                "priority_segment",
-                "action_bucket",
-                "lead_recency_bucket",
-                "last_lead_source",
-                "hybrid_score_0_100_final",
-                "ml_unified_customer_proba",
-                "cltv_profit_final",
-            ],
-        ]
     )
-    st.dataframe(top10, use_container_width=True)
 
-# ---------- Segment summary tab ----------
+latest_date = df_360["creation_date"].max()
+date_label = latest_date.strftime("%d %b %Y") if pd.notna(latest_date) else "—"
+st.title("CRM Leads Dashboard")
+st.caption(f"Data as on {date_label}. DuckDB source · unified scoring + CLTV.")
+
+filters = build_filter_controls(df_360)
+df_view = apply_filters(df_360, filters)
+
+render_metric_cards(df_360, df_view)
+
+st.markdown("### All leads")
+st.caption("Single customer = unified view of lead history, scoring and CLTV.")
+table_cols = [
+    ("cust_id", "Cust ID"),
+    ("full_name", "Customer"),
+    ("center", "Center"),
+    ("zone", "Zone"),
+    ("branch", "Branch"),
+    ("product_name", "Product"),
+    ("last_lead_source", "Source"),
+    ("status_label", "Status"),
+    ("lead_recency_label", "Lead age"),   # <-- use the friendly label
+    ("hybrid_score_0_100_final", "Hybrid score"),
+    ("ml_unified_customer_proba", "ML proba"),
+    ("cltv_profit_final", "CLTV (₹)"),
+]
+
+existing_cols = [c for c, _ in table_cols if c in df_view.columns]
+grid_df = df_view[existing_cols].rename(columns=dict(table_cols))
+grid_df = grid_df.sort_values(
+    ["Hybrid score", "ML proba", "CLTV (₹)"], ascending=[False, False, False]
+).reset_index(drop=True)
+
+gb = GridOptionsBuilder.from_dataframe(grid_df)
+gb.configure_selection(selection_mode="single", use_checkbox=False)
+gb.configure_grid_options(animateRows=True, rowHeight=32)
+gb.configure_columns(
+    {
+        "Hybrid score": {
+            "type": ["numericColumn"],
+            "valueFormatter": "Math.round(value)",
+            "width": 110,
+            "maxWidth": 120,
+        },
+        "ML proba": {
+            "type": ["numericColumn"],
+            "valueFormatter": "Number(value).toFixed(3)",
+            "width": 110,
+            "maxWidth": 120,
+        },
+        "CLTV (₹)": {
+            "type": ["numericColumn"],
+            "valueFormatter": "Math.round(value)",
+            "width": 110,
+            "maxWidth": 120,
+        },
+    }
+)
+
+# Optional: also control some text columns so the grid looks tighter
+gb.configure_column("Cust ID", width=90, pinned="left")
+gb.configure_column("Customer", width=170)
+gb.configure_column("Center", width=90)
+gb.configure_column("Zone", width=80)
+gb.configure_column("Branch", width=140)
+gb.configure_column("Product", width=150)
+gb.configure_column("Source", width=130)
+gb.configure_column("Status", width=160)
+gb.configure_column("Lead age", width=120)
+
+grid_options = gb.build()
+
+grid = AgGrid(
+    grid_df,
+    gridOptions=grid_options,
+    update_mode=GridUpdateMode.SELECTION_CHANGED,
+    enable_enterprise_modules=False,
+    height=420,
+    theme="streamlit",
+)
+
+selected_rows = grid.get("selected_rows", [])
+if hasattr(selected_rows, "to_dict"):
+    selected_rows = selected_rows.to_dict(orient="records")
+if isinstance(selected_rows, list) and selected_rows:
+    selected_id = selected_rows[0].get("Cust ID")
+    if selected_id and st.session_state.get("selected_customer") != selected_id:
+        st.session_state["selected_customer"] = selected_id
+        match = df_360[df_360["cust_id"] == selected_id]
+        if not match.empty:
+
+            @st.dialog(f"Customer {selected_id}")
+            def _customer_modal():
+                render_customer_card(match.iloc[0], df_360)
+
+            _customer_modal()
+
+st.download_button(
+    "Download filtered leads (CSV)",
+    df_view.to_csv(index=False).encode(),
+    file_name="crm_leads_filtered.csv",
+    mime="text/csv",
+)
+
+st.markdown("---")
+st.markdown("### Product category view")
+c1, c2 = st.columns([1.2, 0.8])
+with c1:
+    build_product_category_chart(df_view)
+with c2:
+    build_product_drill(df_view)
+
+st.markdown("---")
+st.markdown("### Operational breakdowns")
+tab_sources, tab_products, tab_summary = st.tabs(
+    ["Source wise pending", "Product wise pending", "Segment summary"]
+)
+
+with tab_sources:
+    source_table = build_pending_matrix(df_view, ["zone", "last_lead_source"])
+    st.dataframe(source_table, use_container_width=True, hide_index=True)
+
+with tab_products:
+    product_table = build_pending_matrix(df_view, ["zone", "product_name"])
+    st.dataframe(product_table, use_container_width=True, hide_index=True)
+
 with tab_summary:
-    st.subheader("Segment summary (priority × action × recency × source)")
+    st.caption("Priority × Action × Recency × Source (pre-aggregated view)")
     st.dataframe(df_summary, use_container_width=True)
 
-# ---------- Customer explorer tab ----------
-with tab_customers:
-    st.subheader("Customer explorer")
-
-    show_cols = [
-        "cust_id",
-        "full_name",
-        "priority_segment",
-        "action_bucket",
-        "lead_recency_bucket",
-        "last_lead_source",
-        "hybrid_score_0_100_final",
-        "ml_unified_customer_proba",
-        "cltv_profit_final",
-        "cltv_decile_final",
-        "num_products",
-        "label_has_loan_product",
-        "label_has_any_lead",
-    ]
-    existing = [c for c in show_cols if c in df_view.columns]
-    grid_df = (
-        df_view.sort_values(
-            ["hybrid_score_0_100_final", "ml_unified_customer_proba", "cltv_profit_final"],
-            ascending=[False, False, False],
-        )[existing]
-        .reset_index(drop=True)
-    )
-
-    gb = GridOptionsBuilder.from_dataframe(grid_df)
-    gb.configure_selection(selection_mode="single", use_checkbox=False)
-    gb.configure_grid_options(animateRows=True, rowHeight=32)
-    go = gb.build()
-
-    grid = AgGrid(
-        grid_df,
-        gridOptions=go,
-        update_mode=GridUpdateMode.SELECTION_CHANGED,
-        enable_enterprise_modules=False,
-        height=420,
-        theme="streamlit",
-    )
-
-    sel = grid.get("selected_rows", [])
-    if hasattr(sel, "to_dict"):
-        sel = sel.to_dict(orient="records")
-    if isinstance(sel, list) and len(sel) > 0:
-        clicked = sel[0].get("cust_id")
-        if clicked and st.session_state.get("opened_for") != clicked:
-            st.session_state["opened_for"] = clicked
-            row = df_360[df_360["cust_id"] == clicked]
-            if len(row):
-
-                @st.dialog(f"Customer {clicked}")
-                def _dlg():
-                    render_customer_card(row.iloc[0], df_360)
-
-                _dlg()
-
-    st.write("---")
-    st.subheader("Customer detail (manual)")
-    options = df_view["cust_id"].tolist()
-    cust_pick = st.selectbox(
-        "Select customer", options, index=0 if options else None, key="manual_cust"
-    )
-    if cust_pick:
-        render_customer_card(
-            df_360[df_360["cust_id"] == cust_pick].iloc[0], df_360
-        )
-
-    st.write("---")
-    st.download_button(
-        "Download filtered customers (CSV)",
-        df_view.to_csv(index=False).encode(),
-        file_name="customer_360_filtered.csv",
-        mime="text/csv",
-    )
-
-# ---------- Hero outreach tab ----------
-with tab_hero:
-    st.subheader("Hero slice — HIGH, A1/A2, recent, digital sources")
-    st.caption("This is the pre-computed ‘top outreach list’ you built in DuckDB.")
-    st.dataframe(df_hero, use_container_width=True)
-
-    st.download_button(
-        "Download hero outreach list (CSV)",
-        df_hero.to_csv(index=False).encode(),
-        file_name="customer_360_hero_slice_high_recent_digital.csv",
-        mime="text/csv",
-    )
+st.markdown("---")
+st.markdown("### Hero outreach lists")
+st.caption("Pre-filtered HIGH priority + recent digital sources from DuckDB.")
+st.dataframe(df_hero, use_container_width=True)
+st.download_button(
+    "Download hero outreach list (CSV)",
+    df_hero.to_csv(index=False).encode(),
+    file_name="customer_360_hero_slice_high_recent_digital.csv",
+    mime="text/csv",
+)
