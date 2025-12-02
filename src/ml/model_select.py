@@ -5,10 +5,6 @@ from sklearn.ensemble import HistGradientBoostingClassifier
 from lightgbm import LGBMClassifier
 from xgboost import XGBClassifier
 from src.common.config import settings
-from src.scoring.lead_scoring import build_crm_export
-
-
-from src.common.config import settings
 
 DB = str(settings.project.db_path)
 rw = settings.scoring.rules_pct

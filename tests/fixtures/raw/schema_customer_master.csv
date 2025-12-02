@@ -1,0 +1,10 @@
+cust_id,cif_id,full_name,gender,dob,age,aadhaar_no,pan_no,income_annual_inr,income_segment,occupation,credit_score,sol_id,branch_name,city,state,phone,email,risk_bucket,pd_12m,lgd_pct,ead_factor
+C00001,CIF00100000,Kunal Ghosh,M,2006-10-01,19,730460361506,XVLRA7312B,362519.91,MID,Trader,610,1409,Chennai South Branch,Chennai,Tamil Nadu,9584287804,kunal.ghosh@example.in,MEDIUM,0.04,0.5,0.8
+C00002,CIF00100001,Vihaan Yadav,M,1982-10-01,43,169184530726,SXCPU9377V,156284.35,LOW,Farmer,565,6947,Chennai North Branch,Chennai,Tamil Nadu,9399952932,vihaan.yadav@example.in,HIGH,0.1,0.6,0.9
+C00003,CIF00100002,Atharv Gupta,M,1954-10-01,71,205665488065,TEUBS9234T,1000000.0,MID,Self-employed,682,9317,Hyderabad Main Branch,Hyderabad,Telangana,9928212185,atharv.gupta@example.in,MEDIUM,0.04,0.5,0.8
+C00004,CIF00100003,Aarav Naidu,M,1953-09-30,72,705331656915,DSDPD8980O,1000000.0,MID,Teacher,780,9201,Lucknow North Branch,Lucknow,Uttar Pradesh,9316558853,aarav.naidu@example.in,LOW,0.01,0.4,0.7
+C00005,CIF00100004,Rahul Nair,M,1984-09-30,41,673563951416,KZBUI1403Q,1937661.27,HIGH,Consultant,740,2584,Kochi Bazaar Branch,Kochi,Kerala,9021632966,rahul.nair@example.in,LOW,0.01,0.4,0.7
+C00006,CIF00100005,Manav Iyer,M,1970-10-01,55,944793638569,WDEBF9678W,148884.44,LOW,Student,632,3677,Jaipur Industrial Branch,Jaipur,Rajasthan,9935887472,manav.iyer@example.in,MEDIUM,0.04,0.5,0.8
+C00007,CIF00100006,Yash Bansal,M,1982-10-01,43,585201075319,QLGGV2371J,381878.63,MID,Engineer,645,3340,Patna Bazaar Branch,Patna,Bihar,9675624988,yash.bansal@example.in,MEDIUM,0.04,0.5,0.8
+C00008,CIF00100007,Manav Verma,M,1967-10-01,58,392539950241,FHIFU9723F,376458.4,MID,Engineer,769,5803,Ranchi North Branch,Ranchi,Jharkhand,9842539186,manav.verma@example.in,LOW,0.01,0.4,0.7
+C00009,CIF00100008,Ishaan Gupta,M,2006-10-01,19,820038363041,PYTXF1355B,644496.03,MID,Salaried,764,4582,Bengaluru City Branch,Bengaluru,Karnataka,9188751686,ishaan.gupta@example.in,LOW,0.01,0.4,0.7

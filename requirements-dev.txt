@@ -1,6 +1,9 @@
-pandas
+# requirements-dev.txt
+
+-r requirements.txt
+
+# Extra testing / data-quality tooling
 pytest
+pytest-cov
 hypothesis
 pandera[io]
-dbt-core
-dbt-postgres

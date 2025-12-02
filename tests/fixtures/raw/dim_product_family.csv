@@ -1,0 +1,10 @@
+product_family_id,product_family,default_product_type,default_segment,default_secured_flag
+1,Credit Card,Card,Retail,0
+2,Dairy / Agri Loan,Loan,Agri,1
+3,Deposit,Other,Retail,0
+4,Education Loan,Loan,Retail,0
+5,Food & Agro Loan,Loan,MSME,1
+6,Gold Loan,Loan,Agri,1
+7,Home Loan,Loan,Retail,1
+8,Insurance,Insurance,Retail,0
+9,MSME Business Loan,Loan,MSME,1

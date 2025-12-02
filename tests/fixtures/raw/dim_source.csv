@@ -1,0 +1,10 @@
+source_id,source_name,source_group,channel_type,is_self_service
+1,Analytics,Digital,Owned,1
+2,Branch,Physical,Owned,0
+3,Business Correspondent,Physical,Owned,0
+4,Campaign,Digital,Owned,0
+5,ChatBot,Digital,Owned,1
+6,CIBIL,Partner,3rd Party,0
+7,Contact Center,Physical,Owned,0
+8,EPL Branch,Physical,Owned,0
+9,EPL Web,Digital,Owned,1

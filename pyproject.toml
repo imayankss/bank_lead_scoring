@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bank-lead-scoring"
+version = "0.1.0"
+description = "End-to-end ELT, CLTV calculation, and ML-based lead scoring for a synthetic banking dataset."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Proprietary" }
+authors = [
+  { name = "Mayank Suryavanshi" }
+]
+
+dependencies = [
+  "duckdb",
+  "pandas",
+  "numpy",
+  "pyarrow",
+  "scikit-learn",
+  "lightgbm",
+  "xgboost",
+  "joblib",
+  "sqlalchemy",
+  "psycopg2-binary",
+  "dbt-core",
+  "dbt-postgres",
+  "fastapi",
+  "uvicorn[standard]",
+  "streamlit",
+  "streamlit-aggrid",
+  "altair",
+  "pydantic>=2,<3",
+  "PyYAML",
+  "pandera",
+  "python-dotenv",
+  "typer",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov"]
+airflow = ["apache-airflow"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src", "src.*"]

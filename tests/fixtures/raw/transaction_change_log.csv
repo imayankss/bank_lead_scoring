@@ -1,0 +1,10 @@
+Change_ID,Transaction_ID,Changed_By,Change_Type,Old_Value,New_Value,Change_Timestamp,Reason
+CHG00000001,TXN000004240,System,Amount Correction,8468.06,8507.934599577527,2022-09-05 18:11:05,Manual review
+CHG00000002,TXN000002361,System,Merchant Update,Education,Travel,2022-12-04 09:55:59,Customer dispute
+CHG00000003,TXN000000814,System,Amount Correction,4448.07,4612.7227443435395,2022-04-23 02:33:29,Manual review
+CHG00000004,TXN000000856,System,Merchant Update,Travel,Groceries,2024-12-28 11:05:05,Bank correction
+CHG00000005,TXN000002066,System,Merchant Update,Travel,Healthcare,2025-09-17 23:34:53,Customer dispute
+CHG00000006,TXN000000682,Ops_User_2,Channel Update,ATM,Branch,2022-12-06 15:40:48,Customer dispute
+CHG00000007,TXN000001965,Ops_User_25,Status Update,Completed,Completed,2022-07-22 09:29:51,Manual review
+CHG00000008,TXN000004313,System,Merchant Update,Groceries,Salary,2022-01-16 01:02:45,Chargeback
+CHG00000009,TXN000000074,System,Status Update,Completed,Completed,2025-10-28 08:16:36,Customer dispute

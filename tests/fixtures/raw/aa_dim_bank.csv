@@ -1,0 +1,5 @@
+bank_code,bank_name,bank_type,country
+ANCHOR,Bank of India,anchor,India
+BANK_A,State Bank of India (SBI),competitor,India
+BANK_B,Bank of Baroda,competitor,India
+KOTAK,Kotak Bank,competitor,India

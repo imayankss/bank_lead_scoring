@@ -1,8 +1,8 @@
 {
   "gate_delta": 0.01,
   "weights": {
-    "rules_pct": 0.6,
-    "ml_pct": 0.4,
+    "rules_pct": 0.4,
+    "ml_pct": 0.6,
     "hgb": 0.4,
     "xgb": 0.35,
     "lgbm": 0.25

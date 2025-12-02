@@ -1,9 +1,13 @@
 from datetime import datetime
 from airflow import DAG
+import os
+from pathlib import Path
 from airflow.operators.bash import BashOperator
 
 # Hard-coded project root; change if your path differs
-PROJECT_ROOT = "/Users/mayanksuryavanshi/bank_lead_scoring_project"
+PROJECT_ROOT = Path(
+    os.environ.get("BLS_PROJECT_ROOT", Path(__file__).resolve().parents[2])
+).resolve()
 VENV_ACTIVATE = ". .venv/bin/activate"
 
 default_args = {
@@ -21,27 +25,27 @@ with DAG(
 ) as dag:
 
     build_leads = BashOperator(
-        task_id="build_modeling_dataset_leads_unified",
-        bash_command=(
-            f"cd {PROJECT_ROOT} && {VENV_ACTIVATE} && "
-            "python3 src/etl/build_modeling_dataset_leads_unified.py"
-        ),
-    )
+    task_id="build_modeling_dataset_leads_unified",
+    bash_command=(
+        f"cd {PROJECT_ROOT} && {VENV_ACTIVATE} && "
+        "python3 src/etl/build_modeling_dataset_leads_unified.py"
+    ),
+)
 
-    build_customers = BashOperator(
-        task_id="build_modeling_dataset_customers_universe",
-        bash_command=(
-            f"cd {PROJECT_ROOT} && {VENV_ACTIVATE} && "
-            "python3 src/etl/build_modeling_dataset_customers_universe.py"
-        ),
-    )
+build_customers = BashOperator(
+    task_id="build_modeling_dataset_customers_universe",
+    bash_command=(
+        f"cd {PROJECT_ROOT} && {VENV_ACTIVATE} && "
+        "python3 src/etl/build_modeling_dataset_customers_universe.py"
+    ),
+)
 
-    load_to_postgres = BashOperator(
-        task_id="load_processed_to_postgres",
-        bash_command=(
-            f"cd {PROJECT_ROOT} && {VENV_ACTIVATE} && "
-            "python3 src/etl/load_processed_to_postgres.py"
-        ),
-    )
+load_to_postgres = BashOperator(
+    task_id="load_processed_to_postgres",
+    bash_command=(
+        f"cd {PROJECT_ROOT} && {VENV_ACTIVATE} && "
+        "python3 src/etl/load_processed_to_postgres.py"
+    ),
+)
 
-    build_leads >> build_customers >> load_to_postgres
+build_leads >> build_customers >> load_to_postgres

@@ -1,0 +1,10 @@
+Customer_ID,First_Name,Last_Name,Gender,DOB,Email,Phone,City,State,Postal_Code,Date_Of_Lead,Lead_Source,Occupation,Annual_Income,Marital_Status,Customer_Segment,Risk_Score,Best_First_Option,Best_Second_Option,Chosen_Product,chosen_product_id,best_first_product_id
+CUST000001,Arjun,Sharma,Male,1973-09-18,arjun.sharma1@gmail.com,7819600133,Bengaluru,Karnataka,401704,2022-01-30,Campaign,Homemaker,300000,Single,Priority,858,Fixed Deposit,Personal Loan,Fixed Deposit,,
+CUST000002,Aarav,Gupta,Female,2002-07-05,aarav.gupta2@yahoo.com,9511615594,Kolkata,West Bengal,417419,2023-08-06,Social Media,Business,2500000,Single,SME,849,Current Account,Fixed Deposit,Current Account,,
+CUST000003,Dhriti,Nair,Other,1994-04-16,dhriti.nair3@gmail.com,7341316475,Delhi,Delhi,366702,2021-08-20,Referral,Self-Employed,800000,Divorced,Priority,573,Current Account,Home Loan,Current Account,,
+CUST000004,Ishaan,Bose,Other,1980-10-27,ishaan.bose4@yahoo.com,7503056413,Jaipur,Rajasthan,368607,2022-04-18,Branch Walk-in,Homemaker,500000,Divorced,SME,705,Mutual Fund,Home Loan,Mutual Fund,,
+CUST000005,Vidhi,Khandelwal,Female,1972-11-17,vidhi.khandelwal5@bankmail.com,8328710122,Lucknow,Uttar Pradesh,690099,2024-12-21,Campaign,Business,200000,Widowed,Retail,694,Fixed Deposit,Mutual Fund,Fixed Deposit,,
+CUST000006,Aarav,Singh,Female,2001-05-23,aarav.singh6@gmail.com,8627048281,Hyderabad,Telangana,926449,2024-07-26,Third-Party Lead,Business,200000,Divorced,Priority,456,Credit Card,Home Loan,Credit Card,,
+CUST000007,Anjali,Sharma,Female,1995-10-04,anjali.sharma7@gmail.com,8430391171,Mumbai,Maharashtra,746059,2022-10-04,Branch Walk-in,Business,200000,Married,SME,862,Home Loan,Car Loan,Home Loan,9.0,9.0
+CUST000008,Rohit,Mehta,Other,1991-09-13,rohit.mehta8@bankmail.com,7578713315,Kolkata,West Bengal,142938,2021-09-16,Campaign,Salaried,1200000,Married,Priority,307,Current Account,Savings Account,Current Account,,
+CUST000009,Riya,Kumar,Female,1989-12-27,riya.kumar9@yahoo.com,7299737631,Ahmedabad,Gujarat,787568,2022-01-09,Referral,Salaried,500000,Widowed,SME,720,Mutual Fund,Savings Account,Savings Account,,

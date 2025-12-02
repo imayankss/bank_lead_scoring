@@ -1,115 +1,105 @@
-# src/common/config.py
 from __future__ import annotations
 
-from dataclasses import dataclass
-from datetime import date
+import os
 from pathlib import Path
-from typing import Any, List
 
+from pydantic import BaseModel
 import yaml
 
+# ---------------------------------------------------------------------------
+# Project root: env override + fallback to repo structure
+# ---------------------------------------------------------------------------
 
-# Resolve project root as the repo root (…/bank_lead_scoring_project)
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-CONF_PATH = PROJECT_ROOT / "conf" / "settings.yaml"
+_env_root = os.environ.get("BLS_PROJECT_ROOT")
+if _env_root:
+    PROJECT_ROOT = Path(_env_root)
+else:
+    # This file lives under <ROOT>/src/common/config.py
+    PROJECT_ROOT = Path(__file__).resolve().parents[2]
+
+PROJECT_ROOT = PROJECT_ROOT.resolve()
+
+CONF_DIR = PROJECT_ROOT / "conf"
+DATA_DIR = PROJECT_ROOT / "data"
+WAREHOUSE_DIR = DATA_DIR / "warehouse"
 
 
-@dataclass
-class ProjectConfig:
+# ---------------------------------------------------------------------------
+# Settings models
+# ---------------------------------------------------------------------------
+
+class ProjectSettings(BaseModel):
+    """Project-level paths (DuckDB, source code, cache)."""
     db_path: Path
     src_dir: Path
     cache_dir: Path
-    end_date: date
-    top_k_pct: int
+
+    class Config:
+        extra = "allow"  # don't explode if YAML has extra keys
 
 
-@dataclass
-class CltvConfig:
-    bins: List[float]
-    labels: List[str]
-
-
-@dataclass
-class ScoringConfig:
-    rules_pct: float
-    ml_pct: float
-
-
-@dataclass
-class StageConfig:
-    threads: int
-    memory: str
-    strict: bool
-    indexes: bool
-
-
-@dataclass
-class ExportConfig:
-    crm: Path
+class ExportSettings(BaseModel):
+    """Export/output paths used in the project."""
     crm_hybrid: Path
-    features_parquet: Path
-    features_csv: Path
+
+    class Config:
+        extra = "allow"
 
 
-@dataclass
-class Settings:
-    project: ProjectConfig
-    cltv: CltvConfig
-    scoring: ScoringConfig
-    stage: StageConfig
-    exports: ExportConfig
+class ScoringConfig(BaseModel):
+    """
+    Hybrid scoring weights:
+    - rules_pct: share for lead_score_0_100 (rules-based)
+    - ml_pct:    share for ML probability (scaled 0–100)
+    """
+    rules_pct: float = 0.4  # 40% rules-based score
+    ml_pct: float = 0.6     # 60% ML model score
+
+    class Config:
+        extra = "allow"
 
 
-def _load_raw_settings() -> dict[str, Any]:
-    with open(CONF_PATH, "r") as f:
-        return yaml.safe_load(f)
+class Settings(BaseModel):
+    project: ProjectSettings
+    exports: ExportSettings
+    scoring: ScoringConfig = ScoringConfig()
+
+    class Config:
+        extra = "allow"
 
 
-def _build_settings(raw: dict[str, Any]) -> Settings:
-    project_raw = raw["project"]
-    cltv_raw = raw["cltv"]
-    scoring_raw = raw["scoring"]["hybrid_weights"]
-    stage_raw = raw["stage"]
-    exports_raw = raw["exports"]
+# ---------------------------------------------------------------------------
+# Loader
+# ---------------------------------------------------------------------------
 
-    # Normalize end_date into a date object
-    raw_end = project_raw["end_date"]
-    if isinstance(raw_end, date):
-        end_dt = raw_end
-    else:
-        end_dt = date.fromisoformat(str(raw_end))
+def _load_settings() -> Settings:
+    settings_path = CONF_DIR / "settings.yaml"
+    with open(settings_path, "r") as f:
+        raw = yaml.safe_load(f) or {}
 
-    return Settings(
-        project=ProjectConfig(
-            db_path=(PROJECT_ROOT / project_raw["db_path"]).resolve(),
-            src_dir=(PROJECT_ROOT / project_raw["src_dir"]).resolve(),
-            cache_dir=(PROJECT_ROOT / project_raw["cache_dir"]).resolve(),
-            end_date=end_dt,
-            top_k_pct=int(project_raw["top_k_pct"]),
-        ),
-        cltv=CltvConfig(
-            bins=list(cltv_raw["bins"]),
-            labels=list(cltv_raw["labels"]),
-        ),
-        scoring=ScoringConfig(
-            rules_pct=float(scoring_raw["rules_pct"]),
-            ml_pct=float(scoring_raw["ml_pct"]),
-        ),
-        stage=StageConfig(
-            threads=int(stage_raw["threads"]),
-            memory=str(stage_raw["memory"]),
-            strict=bool(stage_raw["strict"]),
-            indexes=bool(stage_raw["indexes"]),
-        ),
-        exports=ExportConfig(
-            crm=(PROJECT_ROOT / exports_raw["crm"]).resolve(),
-            crm_hybrid=(PROJECT_ROOT / exports_raw["crm_hybrid"]).resolve(),
-            features_parquet=(PROJECT_ROOT / exports_raw["features_parquet"]).resolve(),
-            features_csv=(PROJECT_ROOT / exports_raw["features_csv"]).resolve(),
-        ),
-    )
+    # ----- project defaults -----
+    project_raw = raw.get("project", {}) or {}
+    if "db_path" not in project_raw:
+        project_raw["db_path"] = str(WAREHOUSE_DIR / "cltv.duckdb")
+    if "src_dir" not in project_raw:
+        project_raw["src_dir"] = str(PROJECT_ROOT / "src")
+    if "cache_dir" not in project_raw:
+        project_raw["cache_dir"] = str(PROJECT_ROOT / ".cache")
+    raw["project"] = project_raw
+
+    # ----- exports defaults -----
+    exports_raw = raw.get("exports", {}) or {}
+    if "crm_hybrid" not in exports_raw:
+        exports_raw["crm_hybrid"] = str(DATA_DIR / "processed" / "crm_export_hybrid.csv")
+    raw["exports"] = exports_raw
+
+    # ----- scoring defaults (optional in YAML) -----
+    # If missing, ScoringConfig() defaults (0.4 / 0.6) will be used.
+    if "scoring" not in raw:
+        raw["scoring"] = {}
+
+    return Settings(**raw)
 
 
-# Singleton settings object to import elsewhere
-_raw = _load_raw_settings()
-settings = _build_settings(_raw)
+settings = _load_settings()
+

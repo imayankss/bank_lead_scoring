@@ -1,0 +1,10 @@
+sol_id,branch_name,city,state,region,zone,urban_rural_flag
+1409,Chennai South Branch,Chennai,Tamil Nadu,SOUTH,SOUTH,URBAN
+5012,Lucknow City Branch,Lucknow,Uttar Pradesh,NORTH,NORTH,URBAN
+2679,Kolkata South Branch,Kolkata,West Bengal,EAST,EAST,URBAN
+2424,Ranchi Central Branch,Ranchi,Jharkhand,EAST,EAST,RURAL_SEMIURBAN
+1520,Bhubaneswar Main Branch,Bhubaneswar,Odisha,EAST,EAST,RURAL_SEMIURBAN
+4582,Bengaluru City Branch,Bengaluru,Karnataka,SOUTH,SOUTH,URBAN
+1434,Guwahati Central Branch,Guwahati,Assam,EAST,EAST,RURAL_SEMIURBAN
+9928,Ahmedabad Industrial Branch,Ahmedabad,Gujarat,WEST,WEST,URBAN
+8359,Jaipur Central Branch,Jaipur,Rajasthan,WEST,WEST,URBAN
