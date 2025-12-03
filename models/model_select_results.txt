@@ -1,0 +1,47 @@
+
+############################################################
+
+Model              : logreg_baseline
+Accuracy           :  49.60%
+AUC-ROC            :  0.595
+Average Precision  :  0.401 (PR-AUC)
+Precision (pos=1)  :  36.56%
+Recall   (pos=1)   :  74.23%
+Confusion Matrix (rows=true, cols=pred)
+             Pred 0    Pred 1
+True 0   :     127      210
+True 1   :      42      121
+
+Model              : unified_lgbm
+Accuracy           :  63.00%
+AUC-ROC            :  0.593
+Average Precision  :  0.396 (PR-AUC)
+Precision (pos=1)  :  41.67%
+Recall   (pos=1)   :  33.74%
+Confusion Matrix (rows=true, cols=pred)
+             Pred 0    Pred 1
+True 0   :     260       77
+True 1   :     108       55
+
+Model              : xgb_cls  <-- CHAMPION
+Accuracy           :  65.00%
+AUC-ROC            :  0.607
+Average Precision  :  0.415 (PR-AUC)
+Precision (pos=1)  :  45.45%
+Recall   (pos=1)   :  36.81%
+Confusion Matrix (rows=true, cols=pred)
+             Pred 0    Pred 1
+True 0   :     265       72
+True 1   :     103       60
+
+Model              : hist_gb
+Accuracy           :  63.00%
+AUC-ROC            :  0.602
+Average Precision  :  0.402 (PR-AUC)
+Precision (pos=1)  :  41.54%
+Recall   (pos=1)   :  33.13%
+Confusion Matrix (rows=true, cols=pred)
+             Pred 0    Pred 1
+True 0   :     261       76
+True 1   :     109       54
+############################################################
