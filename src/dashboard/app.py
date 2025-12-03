@@ -7,8 +7,10 @@ from datetime import datetime
 from typing import Dict, Iterable, List, Tuple
 
 import altair as alt
+from pathlib import Path
 import pandas as pd
 import streamlit as st
+from src.common.config import PROJECT_ROOT
 from st_aggrid import AgGrid, GridOptionsBuilder, GridUpdateMode
 
 # Ensure project root is on sys.path so `src.*` imports work when run via Streamlit
@@ -115,12 +117,39 @@ def _fmt_float(x, digits=2) -> str:
         return f"{0:.{digits}f}"
 
 
-@st.cache_data(show_spinner=False)
-def load_dashboard_data() -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
-    df_360 = load_customer_360_dashboard(limit=None)
+@st.cache_data
+def load_dashboard_data():
+    # 1) Load original dashboard tables
+    df_360_raw = load_customer_360_dashboard()
     df_summary = load_customer_360_summary()
     df_hero = load_hero_slice()
-    return df_360, df_summary, df_hero
+
+    # 2) Attach AGE-RULE based NBP names
+    #    (Education Loan / Home Loan / Insurance / Deposit / Gold Loan / Credit Card / Vehicle Loan)
+    nbp_path = "data/processed/unified_nbp_customers.csv"
+    if os.path.exists(nbp_path):
+        nbp_df = pd.read_csv(nbp_path)
+
+        # Build a small frame with just cust_id + age rule families,
+        # and rename them to the columns the dashboard expects.
+        nbp_ui = nbp_df[
+            ["cust_id", "age_rule_nbp1_family", "age_rule_nbp2_family", "age_rule_nbp3_family"]
+        ].rename(
+            columns={
+                "age_rule_nbp1_family": "nbp1_name",
+                "age_rule_nbp2_family": "nbp2_name",
+                "age_rule_nbp3_family": "nbp3_name",
+            }
+        )
+
+        df_360_raw = df_360_raw.merge(nbp_ui, on="cust_id", how="left")
+    else:
+        # If the NBP file is missing, keep empty columns so the UI still works
+        for col in ["nbp1_name", "nbp2_name", "nbp3_name"]:
+            df_360_raw[col] = pd.NA
+
+    return df_360_raw, df_summary, df_hero
+
 
 
 def enrich_customer_frame(df: pd.DataFrame) -> pd.DataFrame:
@@ -518,6 +547,9 @@ table_cols = [
     ("hybrid_score_0_100_final", "Hybrid score"),
     ("ml_unified_customer_proba", "ML proba"),
     ("cltv_profit_final", "CLTV (₹)"),
+    ("nbp1_name", "NBP1"),
+    ("nbp2_name", "NBP2"),
+    ("nbp3_name", "NBP3"),
 ]
 
 existing_cols = [c for c, _ in table_cols if c in df_view.columns]

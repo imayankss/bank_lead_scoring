@@ -45,3 +45,19 @@ Confusion Matrix (rows=true, cols=pred)
 True 0   :     261       76
 True 1   :     109       54
 ############################################################
+
+============================================================
+Run timestamp      : 2025-12-03 15:36:35
+Model              : unified_lgbm_cls
+Threshold          : 0.50
+Accuracy           :  64.80%
+AUC-ROC            :  0.599
+Average Precision  :  0.404 (PR-AUC)
+Precision (pos=1)  :  44.14%
+Recall   (pos=1)   :  30.06%
+
+Confusion Matrix (rows=true, cols=pred)
+             Pred 0    Pred 1
+True 0   :     275       62
+True 1   :     114       49
+============================================================

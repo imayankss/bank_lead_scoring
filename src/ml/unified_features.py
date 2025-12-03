@@ -9,7 +9,7 @@ from src.common.config import settings, PROJECT_ROOT  # PROJECT_ROOT is defined 
 
 
 # Path to the unified leads modeling dataset
-UNIFIED_LEADS_PATH = PROJECT_ROOT / "data" / "processed" / "modeling_dataset_leads_unified.csv"
+UNIFIED_LEADS_PATH = PROJECT_ROOT / "data" / "processed" / "modeling_dataset_leads_unified_age_rules.csv"
 
 # Main classification target for the unified lead-scoring model
 TARGET_COL = "label_conv"
@@ -28,6 +28,18 @@ def load_unified_leads_dataset(
     """
     csv_path = Path(path) if path is not None else UNIFIED_LEADS_PATH
     df = pd.read_csv(csv_path)
+
+    # Encode age-rule NBP families as categorical codes for ML
+    age_rule_cols = [
+    "age_rule_nbp1_family",
+    "age_rule_nbp2_family",
+    "age_rule_nbp3_family",
+    ]
+
+    for col in age_rule_cols:
+        if col in df.columns:
+            df[col] = df[col].astype("category").cat.codes
+
 
     if TARGET_COL not in df.columns:
         raise ValueError(f"Target column {TARGET_COL!r} not found in {csv_path}")

@@ -1,114 +1,90 @@
-# src/ml/nbp_age_rules.py
+# src/rules/nbp_age_rules.py
 from __future__ import annotations
 
 from pathlib import Path
-from typing import Tuple, Optional
+from typing import Optional
 
 import pandas as pd
 
 from src.common.config import PROJECT_ROOT
 
-
-# Path to your age rules CSV
-AGE_RULES_PATH = PROJECT_ROOT / "data" / "raw" / "dim_nbp_age_rules.csv"
+# Default path to the age-based NBP rules table
+DEFAULT_AGE_RULES_PATH = PROJECT_ROOT / "data" / "raw" / "dim_nbp_age_rules.csv"
 
 
 def load_age_rules(path: Optional[Path] = None) -> pd.DataFrame:
     """
-    Load age → NBP family rules from dim_nbp_age_rules.csv.
-
-    Expected columns:
-        age_min, age_max, nbp1_family, nbp2_family, nbp3_family
+    Load the age-based NBP rules from CSV and validate the schema.
     """
-    rules_path = Path(path) if path is not None else AGE_RULES_PATH
-    rules = pd.read_csv(rules_path)
+    if path is None:
+        path = DEFAULT_AGE_RULES_PATH
 
-    # Basic sanity checks
-    required_cols = {
-        "age_min",
-        "age_max",
-        "nbp1_family",
-        "nbp2_family",
-        "nbp3_family",
-    }
-    missing = required_cols.difference(rules.columns)
+    df = pd.read_csv(path)
+
+    expected_cols = {"age_min", "age_max", "nbp1_family", "nbp2_family", "nbp3_family"}
+    missing = expected_cols - set(df.columns)
     if missing:
-        raise ValueError(f"dim_nbp_age_rules.csv is missing columns: {missing}")
+        raise ValueError(f"dim_nbp_age_rules.csv is missing required columns: {missing}")
 
-    return rules
+    df = df.copy()
+    df["age_min"] = df["age_min"].astype(int)
+    df["age_max"] = df["age_max"].astype(int)
 
-
-def _lookup_age_row(age: float, rules: pd.DataFrame) -> Optional[pd.Series]:
-    """
-    Return the rule row where age_min <= age <= age_max.
-    If no match, return None.
-    """
-    if pd.isna(age):
-        return None
-
-    mask = (rules["age_min"] <= age) & (age <= rules["age_max"])
-    matched = rules[mask]
-
-    if matched.empty:
-        return None
-
-    # In case of overlaps, take the first
-    return matched.iloc[0]
+    return df
 
 
-def map_age_to_nbp_families(
-    age: float,
-    rules: pd.DataFrame,
-) -> Tuple[Optional[str], Optional[str], Optional[str]]:
-    """
-    Given an age and the rules DataFrame, return
-    (nbp1_family, nbp2_family, nbp3_family).
-    """
-    row = _lookup_age_row(age, rules)
-    if row is None:
-        return None, None, None
-
-    return (
-        row["nbp1_family"],
-        row["nbp2_family"],
-        row["nbp3_family"],
-    )
-
-
-def attach_age_nbp_families(
+def assign_age_based_families(
     df: pd.DataFrame,
-    rules: Optional[pd.DataFrame] = None,
     age_col: str = "age",
-    prefix: str = "age_",
+    prefix: str = "age_rule_",
+    rules: Optional[pd.DataFrame] = None,
 ) -> pd.DataFrame:
     """
-    Given a DataFrame with an `age` column, add:
-        prefix + "nbp1_family"
-        prefix + "nbp2_family"
-        prefix + "nbp3_family"
+    Given a DataFrame with an 'age' column, attach age-based NBP families
+    from dim_nbp_age_rules as new columns:
 
-    Returns a copy of df with new columns.
+        age_rule_nbp1_family
+        age_rule_nbp2_family
+        age_rule_nbp3_family
 
-    Typical usage:
-        df_enriched = attach_age_nbp_families(df_leads)
+    This is purely rule-based, no ML yet.
     """
+    if age_col not in df.columns:
+        raise KeyError(f"Input DataFrame is missing required age column '{age_col}'")
+
     if rules is None:
         rules = load_age_rules()
+    rules = rules.copy()
 
-    if age_col not in df.columns:
-        raise KeyError(
-            f"Expected column '{age_col}' in DataFrame, "
-            f"available columns: {list(df.columns)}"
+    out = df.copy()
+
+    # Initialise columns with NA
+    nbp1_col = f"{prefix}nbp1_family"
+    nbp2_col = f"{prefix}nbp2_family"
+    nbp3_col = f"{prefix}nbp3_family"
+
+    out[nbp1_col] = pd.NA
+    out[nbp2_col] = pd.NA
+    out[nbp3_col] = pd.NA
+
+    # For each rule row, fill the matching age band
+    for _, r in rules.iterrows():
+        age_min = r["age_min"]
+        age_max = r["age_max"]
+
+        mask = (out[age_col] >= age_min) & (out[age_col] <= age_max)
+
+        out.loc[mask, nbp1_col] = r["nbp1_family"]
+        out.loc[mask, nbp2_col] = r["nbp2_family"]
+        out.loc[mask, nbp3_col] = r["nbp3_family"]
+
+    # Optional: basic sanity check – warn if some rows did not match any rule
+    unmatched = out[nbp1_col].isna().sum()
+    if unmatched > 0:
+        print(
+            f"[WARN] assign_age_based_families: {unmatched} rows did not match any age band "
+            f"in dim_nbp_age_rules.csv"
         )
 
-    df_out = df.copy()
+    return out
 
-    def _row_mapper(a: float):
-        return map_age_to_nbp_families(a, rules)
-
-    mapped = df_out[age_col].apply(_row_mapper)
-    df_out[f"{prefix}nbp1_family"] = mapped.apply(lambda t: t[0])
-    df_out[f"{prefix}nbp2_family"] = mapped.apply(lambda t: t[1])
-    df_out[f"{prefix}nbp3_family"] = mapped.apply(lambda t: t[2])
-
-    return df_out
