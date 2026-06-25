@@ -1,0 +1,279 @@
+{
+  "registry": [
+    {
+      "model_id": "cltv_hist_gradient_boosting",
+      "display_name": "CLTV Gradient Boosting",
+      "model_family": "HistGradientBoostingRegressor",
+      "target": "future_revenue_12m",
+      "role": "Revenue forecast",
+      "description": "Predicts 12 month customer transaction value from profile, account, and activity features."
+    },
+    {
+      "model_id": "propensity_hist_gradient_boosting",
+      "display_name": "Propensity Gradient Boosting",
+      "model_family": "HistGradientBoostingClassifier",
+      "target": "converted_12m",
+      "role": "Conversion propensity",
+      "description": "Ranks customers by probability of positive future activity over the target horizon."
+    },
+    {
+      "model_id": "expected_value_ranker",
+      "display_name": "Expected Value Ranker",
+      "model_family": "Composite scorer",
+      "target": "predicted_cltv * predicted_propensity",
+      "role": "Lead prioritization",
+      "description": "Combines value and propensity predictions into a single expected-value lead score."
+    }
+  ],
+  "leaderboard": [
+    {
+      "model_id": "expected_value_ranker",
+      "model_name": "Expected Value Ranker",
+      "mae": 82075.93723474271,
+      "rmse": 145270.415282306,
+      "mape": 232.2602668174083,
+      "smape": 135.67062713972916,
+      "r2": -0.3671189634068792,
+      "forecast_bias": 40410.41425145137,
+      "auc": 0.9086452762923352,
+      "directional_accuracy": 0.78,
+      "precision_at_10pct": 1.0,
+      "precision_at_20pct": 1.0,
+      "production_model": true,
+      "business_score": 0.955161319073084,
+      "rank": 1,
+      "is_best": true
+    },
+    {
+      "model_id": "cltv_rank_baseline",
+      "model_name": "CLTV Rank Baseline",
+      "mae": 82075.93723474271,
+      "rmse": 145270.415282306,
+      "mape": 232.2602668174083,
+      "smape": 135.67062713972916,
+      "r2": -0.3671189634068792,
+      "forecast_bias": 40410.41425145137,
+      "auc": 0.9077540106951872,
+      "directional_accuracy": 0.78,
+      "precision_at_10pct": 1.0,
+      "precision_at_20pct": 1.0,
+      "production_model": false,
+      "business_score": 0.9049385026737968,
+      "rank": 2,
+      "is_best": false
+    },
+    {
+      "model_id": "propensity_rank_baseline",
+      "model_name": "Propensity Rank Baseline",
+      "mae": 102464.289266,
+      "rmse": 124243.59930613266,
+      "mape": 389.7165473294486,
+      "smape": 120.3017764596498,
+      "r2": 0.0,
+      "forecast_bias": -6.402842700481415e-12,
+      "auc": 0.9126559714795008,
+      "directional_accuracy": 0.74,
+      "precision_at_10pct": 1.0,
+      "precision_at_20pct": 1.0,
+      "production_model": false,
+      "business_score": 0.9021639928698753,
+      "rank": 3,
+      "is_best": false
+    },
+    {
+      "model_id": "mean_value_baseline",
+      "model_name": "Mean Value Baseline",
+      "mae": 102464.289266,
+      "rmse": 124243.59930613266,
+      "mape": 389.7165473294486,
+      "smape": 120.3017764596498,
+      "r2": 0.0,
+      "forecast_bias": -6.402842700481415e-12,
+      "auc": 0.5,
+      "directional_accuracy": NaN,
+      "precision_at_10pct": 0.8,
+      "precision_at_20pct": 0.75,
+      "production_model": false,
+      "business_score": 0.5925,
+      "rank": 4,
+      "is_best": false
+    }
+  ],
+  "metrics": {
+    "rows": 100.0,
+    "positive_rate": 0.66,
+    "propensity_auc": 0.9126559714795008,
+    "propensity_brier": 0.1255558418981466,
+    "cltv_rmse": 145270.415282306,
+    "cltv_mae": 82075.93723474271,
+    "precision_at_10pct": 1.0,
+    "precision_at_20pct": 1.0
+  },
+  "model_metadata": {
+    "cltv_model": "HistGradientBoostingRegressor",
+    "cltv_rmse": 145270.415282306,
+    "evaluation": {
+      "cltv_mae": 82075.93723474271,
+      "cltv_rmse": 145270.415282306,
+      "positive_rate": 0.66,
+      "precision_at_10pct": 1.0,
+      "precision_at_20pct": 1.0,
+      "propensity_auc": 0.9126559714795008,
+      "propensity_brier": 0.1255558418981466,
+      "rows": 100.0
+    },
+    "feature_count": 29,
+    "propensity_auc": 0.9126559714795008,
+    "propensity_model": "HistGradientBoostingClassifier",
+    "test_rows": 100,
+    "train_rows": 400,
+    "trained_at_utc": "2026-06-25T07:25:50.466650+00:00"
+  },
+  "feature_importance": [
+    {
+      "feature": "account_count",
+      "importance_mean": 17662.01878778853,
+      "importance_std": 4905.14352104355
+    },
+    {
+      "feature": "avg_balance",
+      "importance_mean": 7775.423787357902,
+      "importance_std": 3598.4641872115603
+    },
+    {
+      "feature": "occupation_freq",
+      "importance_mean": 4080.9177592377546,
+      "importance_std": 4032.4830486493543
+    },
+    {
+      "feature": "chosen_product_freq",
+      "importance_mean": 3959.6024844717376,
+      "importance_std": 2511.1776817235964
+    },
+    {
+      "feature": "age",
+      "importance_mean": 3899.874986459159,
+      "importance_std": 2208.6403177415227
+    },
+    {
+      "feature": "recency_days",
+      "importance_mean": 3592.207484863234,
+      "importance_std": 3879.469243006296
+    },
+    {
+      "feature": "customer_segment_freq",
+      "importance_mean": 3459.7395130207024,
+      "importance_std": 1890.1284960518192
+    },
+    {
+      "feature": "total_balance",
+      "importance_mean": 3457.337351150718,
+      "importance_std": 5111.116632673593
+    },
+    {
+      "feature": "state_freq",
+      "importance_mean": 3034.9539570804864,
+      "importance_std": 1751.451883578011
+    },
+    {
+      "feature": "active_account_count",
+      "importance_mean": 2815.406256805787,
+      "importance_std": 1164.5309748163004
+    },
+    {
+      "feature": "best_second_option_freq",
+      "importance_mean": 2391.673601300705,
+      "importance_std": 3543.0798309402285
+    },
+    {
+      "feature": "annual_income",
+      "importance_mean": 1631.094273795894,
+      "importance_std": 1657.292644855411
+    },
+    {
+      "feature": "lead_source_freq",
+      "importance_mean": 795.9668488166571,
+      "importance_std": 542.5556708546978
+    },
+    {
+      "feature": "lead_age_days",
+      "importance_mean": 627.2618699179056,
+      "importance_std": 3052.2185448744053
+    },
+    {
+      "feature": "marital_status_freq",
+      "importance_mean": 510.5343242737308,
+      "importance_std": 554.0861549330527
+    },
+    {
+      "feature": "gender_freq",
+      "importance_mean": 352.9362212564811,
+      "importance_std": 608.6879867276981
+    },
+    {
+      "feature": "credit_txn_count_365",
+      "importance_mean": 341.23623827336814,
+      "importance_std": 1925.644492965532
+    },
+    {
+      "feature": "closed_account_count",
+      "importance_mean": 57.9250458831375,
+      "importance_std": 356.415014968467
+    },
+    {
+      "feature": "active_days_365",
+      "importance_mean": 0.0,
+      "importance_std": 0.0
+    },
+    {
+      "feature": "txn_count_365",
+      "importance_mean": -4.273579485881783,
+      "importance_std": 913.6874812426272
+    },
+    {
+      "feature": "max_txn_amt_365",
+      "importance_mean": -297.28330123498745,
+      "importance_std": 2284.3176022321827
+    },
+    {
+      "feature": "risk_score",
+      "importance_mean": -350.4517574262536,
+      "importance_std": 7164.613149167519
+    },
+    {
+      "feature": "best_first_option_freq",
+      "importance_mean": -532.343341801421,
+      "importance_std": 571.1157023938306
+    },
+    {
+      "feature": "debit_txn_count_365",
+      "importance_mean": -846.373783038167,
+      "importance_std": 1204.8557749699023
+    },
+    {
+      "feature": "dormant_account_count",
+      "importance_mean": -1347.2496694054937,
+      "importance_std": 4120.865282576804
+    },
+    {
+      "feature": "city_freq",
+      "importance_mean": -1540.4370686521688,
+      "importance_std": 2771.4890622626504
+    },
+    {
+      "feature": "avg_txn_amt_365",
+      "importance_mean": -2657.022440412993,
+      "importance_std": 3410.9697268325876
+    },
+    {
+      "feature": "tenure_days",
+      "importance_mean": -3097.24630003755,
+      "importance_std": 2612.4258255104646
+    },
+    {
+      "feature": "total_txn_amt_365",
+      "importance_mean": -3260.97939402529,
+      "importance_std": 3454.264678128011
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "pipeline": [
+    "Raw banking CSVs",
+    "Schema normalization",
+    "Historical feature window",
+    "Leakage-safe preprocessing",
+    "CLTV and propensity training",
+    "Model evaluation and diagnostics",
+    "Risk scoring and scenario analysis",
+    "Static JSON export",
+    "Next.js dashboard"
+  ],
+  "leakage_prevention": [
+    "converted_12m",
+    "converted_30d",
+    "customer_id",
+    "date_of_lead",
+    "dob",
+    "email",
+    "first_name",
+    "first_txn",
+    "future_revenue_12m",
+    "last_name",
+    "last_txn",
+    "phone",
+    "postal_code",
+    "snapshot_date"
+  ],
+  "limitations": [
+    "Synthetic and small dataset.",
+    "Metrics are prototype validation, not production proof.",
+    "Scenario outputs are static portfolio simulations."
+  ],
+  "dataset": {
+    "training_rows": 500,
+    "positive_customers": 328,
+    "feature_columns": [
+      "total_txn_amt_365",
+      "txn_count_365",
+      "avg_txn_amt_365",
+      "max_txn_amt_365",
+      "credit_txn_count_365",
+      "debit_txn_count_365",
+      "active_days_365",
+      "recency_days",
+      "tenure_days",
+      "account_count",
+      "active_account_count",
+      "dormant_account_count",
+      "closed_account_count",
+      "total_balance",
+      "avg_balance",
+      "annual_income",
+      "risk_score",
+      "age",
+      "lead_age_days",
+      "gender_freq",
+      "city_freq",
+      "state_freq",
+      "lead_source_freq",
+      "occupation_freq",
+      "marital_status_freq",
+      "customer_segment_freq",
+      "best_first_option_freq",
+      "best_second_option_freq",
+      "chosen_product_freq"
+    ]
+  }
+}

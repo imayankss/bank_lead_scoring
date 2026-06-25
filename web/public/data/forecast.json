@@ -1,0 +1,1027 @@
+{
+  "actual_vs_predicted": [
+    {
+      "customer_id": "CUST000479",
+      "actual_future_revenue_12m": 445851.65,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 309273.6803211162,
+      "predicted_propensity": 0.9990597714261198,
+      "expected_value": 308982.8923697292
+    },
+    {
+      "customer_id": "CUST000465",
+      "actual_future_revenue_12m": 156383.40000000002,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 54018.51389132253,
+      "predicted_propensity": 0.9985592427910416,
+      "expected_value": 53940.68632801638
+    },
+    {
+      "customer_id": "CUST000440",
+      "actual_future_revenue_12m": 367085.47,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 47252.21619818265,
+      "predicted_propensity": 0.9987760406420332,
+      "expected_value": 47194.38140598221
+    },
+    {
+      "customer_id": "CUST000493",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 0.0,
+      "predicted_propensity": 0.0004523570619397,
+      "expected_value": 0.0
+    },
+    {
+      "customer_id": "CUST000468",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 0.0,
+      "predicted_propensity": 0.000157046173387,
+      "expected_value": 0.0
+    },
+    {
+      "customer_id": "CUST000080",
+      "actual_future_revenue_12m": 2378.47,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 25939.109815044692,
+      "predicted_propensity": 0.9188992710346996,
+      "expected_value": 23835.429100333593
+    },
+    {
+      "customer_id": "CUST000238",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 0.1856572204618791,
+      "predicted_propensity": 0.0007648845221024,
+      "expected_value": 0.0001420063343478
+    },
+    {
+      "customer_id": "CUST000393",
+      "actual_future_revenue_12m": 452561.14,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 383614.3248732173,
+      "predicted_propensity": 0.999573956385325,
+      "expected_value": 383450.8884396072
+    },
+    {
+      "customer_id": "CUST000345",
+      "actual_future_revenue_12m": 101820.73,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 30252.56807352982,
+      "predicted_propensity": 0.9939553257446804,
+      "expected_value": 30069.70115413845
+    },
+    {
+      "customer_id": "CUST000176",
+      "actual_future_revenue_12m": 56209.42,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 111.35688919527728,
+      "predicted_propensity": 0.7455882966290591,
+      "expected_value": 83.02639333301767
+    },
+    {
+      "customer_id": "CUST000181",
+      "actual_future_revenue_12m": 63142.28,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 39268.73375649445,
+      "predicted_propensity": 0.9978647550280296,
+      "expected_value": 39184.885390185256
+    },
+    {
+      "customer_id": "CUST000196",
+      "actual_future_revenue_12m": 217056.07,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 201228.60279463767,
+      "predicted_propensity": 0.9999351582518072,
+      "expected_value": 201215.5547802461
+    },
+    {
+      "customer_id": "CUST000500",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 0.0,
+      "predicted_propensity": 0.000534361800877,
+      "expected_value": 0.0
+    },
+    {
+      "customer_id": "CUST000330",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 0.0,
+      "predicted_propensity": 0.0001043129082451,
+      "expected_value": 0.0
+    },
+    {
+      "customer_id": "CUST000400",
+      "actual_future_revenue_12m": 77806.43,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 25745.527482627815,
+      "predicted_propensity": 0.9990690650223892,
+      "expected_value": 25721.5600705772
+    },
+    {
+      "customer_id": "CUST000279",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 0.0836942894149486,
+      "predicted_propensity": 0.0004016577514962,
+      "expected_value": 3.3616460099487214e-05
+    },
+    {
+      "customer_id": "CUST000197",
+      "actual_future_revenue_12m": 147923.59,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 8190.868591795357,
+      "predicted_propensity": 0.9864657703648192,
+      "expected_value": 8080.011495362408
+    },
+    {
+      "customer_id": "CUST000159",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 0.8504438065511839,
+      "predicted_propensity": 0.0003463887115254,
+      "expected_value": 0.000294584134376
+    },
+    {
+      "customer_id": "CUST000365",
+      "actual_future_revenue_12m": 133040.06,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 22412.439458500656,
+      "predicted_propensity": 0.9973308746884304,
+      "expected_value": 22352.61784904795
+    },
+    {
+      "customer_id": "CUST000048",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 0.0,
+      "predicted_propensity": 0.0002198914083115,
+      "expected_value": 0.0
+    },
+    {
+      "customer_id": "CUST000061",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 10566.63389154031,
+      "predicted_propensity": 0.9929095011907696,
+      "expected_value": 10491.71118651477
+    },
+    {
+      "customer_id": "CUST000295",
+      "actual_future_revenue_12m": 327740.04,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 530313.2175058473,
+      "predicted_propensity": 0.999281471593987,
+      "expected_value": 529932.1723949852
+    },
+    {
+      "customer_id": "CUST000420",
+      "actual_future_revenue_12m": 2199.81,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 532.579198809776,
+      "predicted_propensity": 0.7174571074157654,
+      "expected_value": 382.10273144786777
+    },
+    {
+      "customer_id": "CUST000232",
+      "actual_future_revenue_12m": 63658.7,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 402203.00477797136,
+      "predicted_propensity": 0.9996068380747436,
+      "expected_value": 402044.873870269
+    },
+    {
+      "customer_id": "CUST000286",
+      "actual_future_revenue_12m": 15187.98,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 28950.7403732005,
+      "predicted_propensity": 0.997807785852719,
+      "expected_value": 28887.27415058011
+    },
+    {
+      "customer_id": "CUST000121",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 5246.49355736631,
+      "predicted_propensity": 0.8498119604460926,
+      "expected_value": 4458.532975453259
+    },
+    {
+      "customer_id": "CUST000226",
+      "actual_future_revenue_12m": 56374.35,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 6071.550002475282,
+      "predicted_propensity": 0.8357801920638562,
+      "expected_value": 5074.481227194098
+    },
+    {
+      "customer_id": "CUST000207",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 4665.524202337873,
+      "predicted_propensity": 0.5615625130355703,
+      "expected_value": 2619.9834956931304
+    },
+    {
+      "customer_id": "CUST000007",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 29379.83697941786,
+      "predicted_propensity": 0.9964511759406104,
+      "expected_value": 29275.57310708436
+    },
+    {
+      "customer_id": "CUST000273",
+      "actual_future_revenue_12m": 261253.48,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 21640.525146830376,
+      "predicted_propensity": 0.9986685646921638,
+      "expected_value": 21611.71218756977
+    },
+    {
+      "customer_id": "CUST000141",
+      "actual_future_revenue_12m": 463948.53,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 91820.83204441093,
+      "predicted_propensity": 0.9997648532197496,
+      "expected_value": 91799.24067139578
+    },
+    {
+      "customer_id": "CUST000252",
+      "actual_future_revenue_12m": 118769.58,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 25893.040724361897,
+      "predicted_propensity": 0.995796523251796,
+      "expected_value": 25784.19992973674
+    },
+    {
+      "customer_id": "CUST000437",
+      "actual_future_revenue_12m": 5793.16,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 313.0690178203771,
+      "predicted_propensity": 0.3326893787895758,
+      "expected_value": 104.15473705692388
+    },
+    {
+      "customer_id": "CUST000118",
+      "actual_future_revenue_12m": 78380.74,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 25008.972235537294,
+      "predicted_propensity": 0.9989333272210056,
+      "expected_value": 24982.295845623023
+    },
+    {
+      "customer_id": "CUST000195",
+      "actual_future_revenue_12m": 187626.75,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 55956.216093323295,
+      "predicted_propensity": 0.9999108399865418,
+      "expected_value": 55951.22703634335
+    },
+    {
+      "customer_id": "CUST000319",
+      "actual_future_revenue_12m": 5154.34,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 7936.517537287374,
+      "predicted_propensity": 0.991370836379144,
+      "expected_value": 7868.032028878329
+    },
+    {
+      "customer_id": "CUST000452",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 0.0,
+      "predicted_propensity": 0.0003619174814323,
+      "expected_value": 0.0
+    },
+    {
+      "customer_id": "CUST000389",
+      "actual_future_revenue_12m": 56465.08,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 2395.93984752254,
+      "predicted_propensity": 0.8616284711576894,
+      "expected_value": 2064.4099878066336
+    },
+    {
+      "customer_id": "CUST000267",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 0.1141429423666856,
+      "predicted_propensity": 0.0003575026404044,
+      "expected_value": 4.080640327962461e-05
+    },
+    {
+      "customer_id": "CUST000350",
+      "actual_future_revenue_12m": 115625.05,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 121958.43799295169,
+      "predicted_propensity": 0.9952306724160088,
+      "expected_value": 121376.77825053144
+    },
+    {
+      "customer_id": "CUST000240",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 1164.0788564551071,
+      "predicted_propensity": 0.8101780492123305,
+      "expected_value": 943.1111370521191
+    },
+    {
+      "customer_id": "CUST000483",
+      "actual_future_revenue_12m": 238214.78,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 348958.27467349655,
+      "predicted_propensity": 0.999501479876132,
+      "expected_value": 348784.31195118156
+    },
+    {
+      "customer_id": "CUST000475",
+      "actual_future_revenue_12m": 89520.17,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 2941.5437435768836,
+      "predicted_propensity": 0.973031161640048,
+      "expected_value": 2862.2137258276307
+    },
+    {
+      "customer_id": "CUST000241",
+      "actual_future_revenue_12m": 138933.21,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 97.25677793282148,
+      "predicted_propensity": 0.1855769472430329,
+      "expected_value": 18.048615947466576
+    },
+    {
+      "customer_id": "CUST000489",
+      "actual_future_revenue_12m": 14204.29,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 35740.70392426516,
+      "predicted_propensity": 0.9918249476130748,
+      "expected_value": 35448.52179733871
+    },
+    {
+      "customer_id": "CUST000480",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 647.4140365870204,
+      "predicted_propensity": 0.7918091226079497,
+      "expected_value": 512.6283402740396
+    },
+    {
+      "customer_id": "CUST000490",
+      "actual_future_revenue_12m": 73382.29000000001,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 76242.40909089887,
+      "predicted_propensity": 0.9984597737787204,
+      "expected_value": 76124.97853324354
+    },
+    {
+      "customer_id": "CUST000065",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 0.0,
+      "predicted_propensity": 0.0004431194067105,
+      "expected_value": 0.0
+    },
+    {
+      "customer_id": "CUST000499",
+      "actual_future_revenue_12m": 177522.16,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 11736.699757060143,
+      "predicted_propensity": 0.9979247744272342,
+      "expected_value": 11712.343457584417
+    },
+    {
+      "customer_id": "CUST000316",
+      "actual_future_revenue_12m": 42602.6,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 10947.680921925356,
+      "predicted_propensity": 0.996400917126844,
+      "expected_value": 10908.27931101848
+    },
+    {
+      "customer_id": "CUST000361",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 0.0,
+      "predicted_propensity": 0.0003850594573874,
+      "expected_value": 0.0
+    },
+    {
+      "customer_id": "CUST000191",
+      "actual_future_revenue_12m": 264172.08,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 72437.70863786004,
+      "predicted_propensity": 0.999797536400751,
+      "expected_value": 72423.04263864786
+    },
+    {
+      "customer_id": "CUST000407",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 0.0682264611476304,
+      "predicted_propensity": 0.000517733486515,
+      "expected_value": 3.5323123602547814e-05
+    },
+    {
+      "customer_id": "CUST000145",
+      "actual_future_revenue_12m": 94572.26,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 25992.250715737613,
+      "predicted_propensity": 0.994612251972372,
+      "expected_value": 25852.211018210284
+    },
+    {
+      "customer_id": "CUST000169",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 0.5250116614508133,
+      "predicted_propensity": 0.0005379955202026,
+      "expected_value": 0.0002824539219146
+    },
+    {
+      "customer_id": "CUST000372",
+      "actual_future_revenue_12m": 2887.93,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 409.3405382280781,
+      "predicted_propensity": 0.5996847511708627,
+      "expected_value": 245.47527881145209
+    },
+    {
+      "customer_id": "CUST000360",
+      "actual_future_revenue_12m": 61960.97,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 181930.02881476903,
+      "predicted_propensity": 0.999502410523202,
+      "expected_value": 181839.5023469173
+    },
+    {
+      "customer_id": "CUST000351",
+      "actual_future_revenue_12m": 213877.97,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 22414.85230982736,
+      "predicted_propensity": 0.994517789083809,
+      "expected_value": 22291.969361809613
+    },
+    {
+      "customer_id": "CUST000362",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 200.2986625097296,
+      "predicted_propensity": 0.9656139387212498,
+      "expected_value": 193.41118042661833
+    },
+    {
+      "customer_id": "CUST000419",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 6.598466888067541,
+      "predicted_propensity": 0.4932100016331742,
+      "expected_value": 3.2544298646402376
+    },
+    {
+      "customer_id": "CUST000453",
+      "actual_future_revenue_12m": 270144.74,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 53852.53429138535,
+      "predicted_propensity": 0.9923843409198504,
+      "expected_value": 53442.41174962009
+    },
+    {
+      "customer_id": "CUST000291",
+      "actual_future_revenue_12m": 332696.52999999997,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 179085.3216554845,
+      "predicted_propensity": 0.9993391986210618,
+      "expected_value": 178966.98182798695
+    },
+    {
+      "customer_id": "CUST000002",
+      "actual_future_revenue_12m": 11395.37,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 3497.3338571400245,
+      "predicted_propensity": 0.997599508426352,
+      "expected_value": 3488.9385366857264
+    },
+    {
+      "customer_id": "CUST000414",
+      "actual_future_revenue_12m": 5640.299999999999,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 8636.974668304372,
+      "predicted_propensity": 0.96912776549195,
+      "expected_value": 8370.331960904392
+    },
+    {
+      "customer_id": "CUST000294",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 28072.341025946655,
+      "predicted_propensity": 0.9667076769574218,
+      "expected_value": 27137.747579949417
+    },
+    {
+      "customer_id": "CUST000458",
+      "actual_future_revenue_12m": 293676.96,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 185028.9795335045,
+      "predicted_propensity": 0.9995200657801016,
+      "expected_value": 184940.17779455349
+    },
+    {
+      "customer_id": "CUST000186",
+      "actual_future_revenue_12m": 233020.17,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 11474.278527596069,
+      "predicted_propensity": 0.9909706609384552,
+      "expected_value": 11370.6733762838
+    },
+    {
+      "customer_id": "CUST000151",
+      "actual_future_revenue_12m": 227339.71999999997,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 290304.1155756756,
+      "predicted_propensity": 0.9989968888835834,
+      "expected_value": 290012.90829020017
+    },
+    {
+      "customer_id": "CUST000214",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 29572.92467914494,
+      "predicted_propensity": 0.9747876877032914,
+      "expected_value": 28827.322866607297
+    },
+    {
+      "customer_id": "CUST000172",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 3913.976773820604,
+      "predicted_propensity": 0.9983739840404312,
+      "expected_value": 3907.6125851209904
+    },
+    {
+      "customer_id": "CUST000079",
+      "actual_future_revenue_12m": 119841.23,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 6732.227597151176,
+      "predicted_propensity": 0.9931798443647954,
+      "expected_value": 6686.312757166986
+    },
+    {
+      "customer_id": "CUST000488",
+      "actual_future_revenue_12m": 219302.19,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 426.80391216756806,
+      "predicted_propensity": 0.6994556025037615,
+      "expected_value": 298.53038753612884
+    },
+    {
+      "customer_id": "CUST000495",
+      "actual_future_revenue_12m": 143755.66,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 61734.426416139206,
+      "predicted_propensity": 0.9997178468967178,
+      "expected_value": 61717.00785614655
+    },
+    {
+      "customer_id": "CUST000146",
+      "actual_future_revenue_12m": 327341.23,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 305037.3927349274,
+      "predicted_propensity": 0.998580453552128,
+      "expected_value": 304604.37798760243
+    },
+    {
+      "customer_id": "CUST000171",
+      "actual_future_revenue_12m": 4444.09,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 1360.066394026201,
+      "predicted_propensity": 0.966859552778468,
+      "expected_value": 1314.993185477196
+    },
+    {
+      "customer_id": "CUST000313",
+      "actual_future_revenue_12m": 273659.13,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 9677.624161652931,
+      "predicted_propensity": 0.963929549986404,
+      "expected_value": 9328.54790307966
+    },
+    {
+      "customer_id": "CUST000211",
+      "actual_future_revenue_12m": 411347.04,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 164539.55414831717,
+      "predicted_propensity": 0.9999013043461118,
+      "expected_value": 164523.31480943004
+    },
+    {
+      "customer_id": "CUST000081",
+      "actual_future_revenue_12m": 121807.73,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 114530.02591337071,
+      "predicted_propensity": 0.9997275220049906,
+      "expected_value": 114498.81900154147
+    },
+    {
+      "customer_id": "CUST000153",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 6375.037929630781,
+      "predicted_propensity": 0.992468682900336,
+      "expected_value": 6327.025497460346
+    },
+    {
+      "customer_id": "CUST000470",
+      "actual_future_revenue_12m": 142324.66999999998,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 289683.9061510826,
+      "predicted_propensity": 0.999397874396844,
+      "expected_value": 289509.48005436675
+    },
+    {
+      "customer_id": "CUST000058",
+      "actual_future_revenue_12m": 9299.18,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 867674.0862059422,
+      "predicted_propensity": 0.9997115359605536,
+      "expected_value": 867423.7934341122
+    },
+    {
+      "customer_id": "CUST000231",
+      "actual_future_revenue_12m": 242954.73,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 48228.51446008046,
+      "predicted_propensity": 0.9881686391815346,
+      "expected_value": 47657.90550376467
+    },
+    {
+      "customer_id": "CUST000287",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 0.0,
+      "predicted_propensity": 0.0002442292066093,
+      "expected_value": 0.0
+    },
+    {
+      "customer_id": "CUST000188",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 472.3677461963556,
+      "predicted_propensity": 0.8151012679033336,
+      "expected_value": 385.0275488412896
+    },
+    {
+      "customer_id": "CUST000149",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 0.0,
+      "predicted_propensity": 0.0004329715890596,
+      "expected_value": 0.0
+    },
+    {
+      "customer_id": "CUST000321",
+      "actual_future_revenue_12m": 134801.21,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 43809.522738300715,
+      "predicted_propensity": 0.999293202617936,
+      "expected_value": 43778.55828231981
+    },
+    {
+      "customer_id": "CUST000315",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 10475.919788592562,
+      "predicted_propensity": 0.9936559684908468,
+      "expected_value": 10409.46022336637
+    },
+    {
+      "customer_id": "CUST000262",
+      "actual_future_revenue_12m": 172792.83000000002,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 6756.936026163364,
+      "predicted_propensity": 0.9981104886706096,
+      "expected_value": 6744.168718989962
+    },
+    {
+      "customer_id": "CUST000454",
+      "actual_future_revenue_12m": 73197.73,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 66538.39951773896,
+      "predicted_propensity": 0.999145356703231,
+      "expected_value": 66481.53292061339
+    },
+    {
+      "customer_id": "CUST000482",
+      "actual_future_revenue_12m": 155903.61,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 12851.536714860302,
+      "predicted_propensity": 0.9911710322334786,
+      "expected_value": 12738.070911454532
+    },
+    {
+      "customer_id": "CUST000162",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 0.4056094090506489,
+      "predicted_propensity": 0.0007108726226534,
+      "expected_value": 0.0002883366243847
+    },
+    {
+      "customer_id": "CUST000364",
+      "actual_future_revenue_12m": 76887.98,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 3332.832589819839,
+      "predicted_propensity": 0.993832982670738,
+      "expected_value": 3312.278953482891
+    },
+    {
+      "customer_id": "CUST000302",
+      "actual_future_revenue_12m": 110428.29,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 21451.694424307276,
+      "predicted_propensity": 0.9852373581297108,
+      "expected_value": 21135.01074201035
+    },
+    {
+      "customer_id": "CUST000424",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 0.2915426291598537,
+      "predicted_propensity": 0.0002626098959379,
+      "expected_value": 7.656197950513567e-05
+    },
+    {
+      "customer_id": "CUST000281",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 0.0,
+      "predicted_propensity": 0.0007214459796601,
+      "expected_value": 0.0
+    },
+    {
+      "customer_id": "CUST000184",
+      "actual_future_revenue_12m": 245849.4,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 1455.461400275831,
+      "predicted_propensity": 0.9814950566762536,
+      "expected_value": 1428.5281695538265
+    },
+    {
+      "customer_id": "CUST000254",
+      "actual_future_revenue_12m": 0.0,
+      "actual_converted_12m": 0,
+      "predicted_cltv": 0.5807500691343457,
+      "predicted_propensity": 0.0003443728984725,
+      "expected_value": 0.0001999945845959
+    },
+    {
+      "customer_id": "CUST000462",
+      "actual_future_revenue_12m": 322513.36,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 27078.428624218508,
+      "predicted_propensity": 0.9987607973375574,
+      "expected_value": 27044.872963372614
+    },
+    {
+      "customer_id": "CUST000342",
+      "actual_future_revenue_12m": 228568.47000000003,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 49333.42000780797,
+      "predicted_propensity": 0.9980469163615632,
+      "expected_value": 49237.06771236259
+    },
+    {
+      "customer_id": "CUST000381",
+      "actual_future_revenue_12m": 42495.97,
+      "actual_converted_12m": 1,
+      "predicted_cltv": 80648.82038290612,
+      "predicted_propensity": 0.999248643658718,
+      "expected_value": 80588.2243802945
+    }
+  ],
+  "forecast": [
+    {
+      "month": 1,
+      "scenario": "Pessimistic",
+      "monthly_expected_value": 1808270.6410538724,
+      "cumulative_expected_value": 1808270.6410538724
+    },
+    {
+      "month": 2,
+      "scenario": "Pessimistic",
+      "monthly_expected_value": 1808270.6410538724,
+      "cumulative_expected_value": 3616541.282107745
+    },
+    {
+      "month": 3,
+      "scenario": "Pessimistic",
+      "monthly_expected_value": 1808270.6410538724,
+      "cumulative_expected_value": 5424811.9231616175
+    },
+    {
+      "month": 4,
+      "scenario": "Pessimistic",
+      "monthly_expected_value": 1808270.6410538724,
+      "cumulative_expected_value": 7233082.56421549
+    },
+    {
+      "month": 5,
+      "scenario": "Pessimistic",
+      "monthly_expected_value": 1808270.6410538724,
+      "cumulative_expected_value": 9041353.205269363
+    },
+    {
+      "month": 6,
+      "scenario": "Pessimistic",
+      "monthly_expected_value": 1808270.6410538724,
+      "cumulative_expected_value": 10849623.846323235
+    },
+    {
+      "month": 7,
+      "scenario": "Pessimistic",
+      "monthly_expected_value": 1808270.6410538724,
+      "cumulative_expected_value": 12657894.487377107
+    },
+    {
+      "month": 8,
+      "scenario": "Pessimistic",
+      "monthly_expected_value": 1808270.6410538724,
+      "cumulative_expected_value": 14466165.12843098
+    },
+    {
+      "month": 9,
+      "scenario": "Pessimistic",
+      "monthly_expected_value": 1808270.6410538724,
+      "cumulative_expected_value": 16274435.769484852
+    },
+    {
+      "month": 10,
+      "scenario": "Pessimistic",
+      "monthly_expected_value": 1808270.6410538724,
+      "cumulative_expected_value": 18082706.410538726
+    },
+    {
+      "month": 11,
+      "scenario": "Pessimistic",
+      "monthly_expected_value": 1808270.6410538724,
+      "cumulative_expected_value": 19890977.0515926
+    },
+    {
+      "month": 12,
+      "scenario": "Pessimistic",
+      "monthly_expected_value": 1808270.6410538724,
+      "cumulative_expected_value": 21699247.692646474
+    },
+    {
+      "month": 1,
+      "scenario": "Base",
+      "monthly_expected_value": 2318295.6936588106,
+      "cumulative_expected_value": 2318295.6936588106
+    },
+    {
+      "month": 2,
+      "scenario": "Base",
+      "monthly_expected_value": 2318295.6936588106,
+      "cumulative_expected_value": 4636591.387317621
+    },
+    {
+      "month": 3,
+      "scenario": "Base",
+      "monthly_expected_value": 2318295.6936588106,
+      "cumulative_expected_value": 6954887.080976432
+    },
+    {
+      "month": 4,
+      "scenario": "Base",
+      "monthly_expected_value": 2318295.6936588106,
+      "cumulative_expected_value": 9273182.774635242
+    },
+    {
+      "month": 5,
+      "scenario": "Base",
+      "monthly_expected_value": 2318295.6936588106,
+      "cumulative_expected_value": 11591478.468294052
+    },
+    {
+      "month": 6,
+      "scenario": "Base",
+      "monthly_expected_value": 2318295.6936588106,
+      "cumulative_expected_value": 13909774.161952863
+    },
+    {
+      "month": 7,
+      "scenario": "Base",
+      "monthly_expected_value": 2318295.6936588106,
+      "cumulative_expected_value": 16228069.855611673
+    },
+    {
+      "month": 8,
+      "scenario": "Base",
+      "monthly_expected_value": 2318295.6936588106,
+      "cumulative_expected_value": 18546365.549270485
+    },
+    {
+      "month": 9,
+      "scenario": "Base",
+      "monthly_expected_value": 2318295.6936588106,
+      "cumulative_expected_value": 20864661.242929295
+    },
+    {
+      "month": 10,
+      "scenario": "Base",
+      "monthly_expected_value": 2318295.6936588106,
+      "cumulative_expected_value": 23182956.936588105
+    },
+    {
+      "month": 11,
+      "scenario": "Base",
+      "monthly_expected_value": 2318295.6936588106,
+      "cumulative_expected_value": 25501252.630246915
+    },
+    {
+      "month": 12,
+      "scenario": "Base",
+      "monthly_expected_value": 2318295.6936588106,
+      "cumulative_expected_value": 27819548.323905725
+    },
+    {
+      "month": 1,
+      "scenario": "Optimistic",
+      "monthly_expected_value": 2735588.9185173963,
+      "cumulative_expected_value": 2735588.9185173963
+    },
+    {
+      "month": 2,
+      "scenario": "Optimistic",
+      "monthly_expected_value": 2735588.9185173963,
+      "cumulative_expected_value": 5471177.837034793
+    },
+    {
+      "month": 3,
+      "scenario": "Optimistic",
+      "monthly_expected_value": 2735588.9185173963,
+      "cumulative_expected_value": 8206766.755552189
+    },
+    {
+      "month": 4,
+      "scenario": "Optimistic",
+      "monthly_expected_value": 2735588.9185173963,
+      "cumulative_expected_value": 10942355.674069585
+    },
+    {
+      "month": 5,
+      "scenario": "Optimistic",
+      "monthly_expected_value": 2735588.9185173963,
+      "cumulative_expected_value": 13677944.592586981
+    },
+    {
+      "month": 6,
+      "scenario": "Optimistic",
+      "monthly_expected_value": 2735588.9185173963,
+      "cumulative_expected_value": 16413533.511104377
+    },
+    {
+      "month": 7,
+      "scenario": "Optimistic",
+      "monthly_expected_value": 2735588.9185173963,
+      "cumulative_expected_value": 19149122.429621775
+    },
+    {
+      "month": 8,
+      "scenario": "Optimistic",
+      "monthly_expected_value": 2735588.9185173963,
+      "cumulative_expected_value": 21884711.34813917
+    },
+    {
+      "month": 9,
+      "scenario": "Optimistic",
+      "monthly_expected_value": 2735588.9185173963,
+      "cumulative_expected_value": 24620300.266656566
+    },
+    {
+      "month": 10,
+      "scenario": "Optimistic",
+      "monthly_expected_value": 2735588.9185173963,
+      "cumulative_expected_value": 27355889.185173962
+    },
+    {
+      "month": 11,
+      "scenario": "Optimistic",
+      "monthly_expected_value": 2735588.9185173963,
+      "cumulative_expected_value": 30091478.103691358
+    },
+    {
+      "month": 12,
+      "scenario": "Optimistic",
+      "monthly_expected_value": 2735588.9185173963,
+      "cumulative_expected_value": 32827067.022208754
+    }
+  ],
+  "latest": {
+    "total_expected_value": 27819548.32390573,
+    "average_propensity": 0.6931876699231555,
+    "average_cltv": 55806.43991220169
+  }
+}

@@ -1,0 +1,959 @@
+{
+  "summary": {
+    "mean_residual": 40410.41425145137,
+    "median_residual": 2072.9101314810728,
+    "mean_absolute_error": 82075.93723474271,
+    "residual_std": 140239.66490420667,
+    "positive_bias_rate": 0.51,
+    "extreme_error_count": 20.0
+  },
+  "residuals": [
+    {
+      "customer_id": "CUST000479",
+      "actual_future_revenue_12m": 445851.65,
+      "predicted_cltv": 309273.6803211162,
+      "residual": 136577.96967888385,
+      "absolute_error": 136577.96967888385,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "CUST000465",
+      "actual_future_revenue_12m": 156383.40000000002,
+      "predicted_cltv": 54018.51389132253,
+      "residual": 102364.88610867749,
+      "absolute_error": 102364.88610867749,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "CUST000440",
+      "actual_future_revenue_12m": 367085.47,
+      "predicted_cltv": 47252.21619818265,
+      "residual": 319833.2538018173,
+      "absolute_error": 319833.2538018173,
+      "error_bucket": "extreme"
+    },
+    {
+      "customer_id": "CUST000493",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 0.0,
+      "residual": 0.0,
+      "absolute_error": 0.0,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000468",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 0.0,
+      "residual": 0.0,
+      "absolute_error": 0.0,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000080",
+      "actual_future_revenue_12m": 2378.47,
+      "predicted_cltv": 25939.109815044692,
+      "residual": -23560.63981504469,
+      "absolute_error": 23560.63981504469,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000238",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 0.1856572204618791,
+      "residual": -0.1856572204618791,
+      "absolute_error": 0.1856572204618791,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000393",
+      "actual_future_revenue_12m": 452561.14,
+      "predicted_cltv": 383614.3248732173,
+      "residual": 68946.81512678269,
+      "absolute_error": 68946.81512678269,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "CUST000345",
+      "actual_future_revenue_12m": 101820.73,
+      "predicted_cltv": 30252.56807352982,
+      "residual": 71568.16192647017,
+      "absolute_error": 71568.16192647017,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "CUST000176",
+      "actual_future_revenue_12m": 56209.42,
+      "predicted_cltv": 111.35688919527728,
+      "residual": 56098.06311080472,
+      "absolute_error": 56098.06311080472,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "CUST000181",
+      "actual_future_revenue_12m": 63142.28,
+      "predicted_cltv": 39268.73375649445,
+      "residual": 23873.546243505552,
+      "absolute_error": 23873.546243505552,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000196",
+      "actual_future_revenue_12m": 217056.07,
+      "predicted_cltv": 201228.60279463767,
+      "residual": 15827.467205362336,
+      "absolute_error": 15827.467205362336,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000500",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 0.0,
+      "residual": 0.0,
+      "absolute_error": 0.0,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000330",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 0.0,
+      "residual": 0.0,
+      "absolute_error": 0.0,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000400",
+      "actual_future_revenue_12m": 77806.43,
+      "predicted_cltv": 25745.527482627815,
+      "residual": 52060.902517372175,
+      "absolute_error": 52060.902517372175,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "CUST000279",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 0.0836942894149486,
+      "residual": -0.0836942894149486,
+      "absolute_error": 0.0836942894149486,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000197",
+      "actual_future_revenue_12m": 147923.59,
+      "predicted_cltv": 8190.868591795357,
+      "residual": 139732.72140820464,
+      "absolute_error": 139732.72140820464,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "CUST000159",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 0.8504438065511839,
+      "residual": -0.8504438065511839,
+      "absolute_error": 0.8504438065511839,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000365",
+      "actual_future_revenue_12m": 133040.06,
+      "predicted_cltv": 22412.439458500656,
+      "residual": 110627.62054149936,
+      "absolute_error": 110627.62054149936,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "CUST000048",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 0.0,
+      "residual": 0.0,
+      "absolute_error": 0.0,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000061",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 10566.63389154031,
+      "residual": -10566.63389154031,
+      "absolute_error": 10566.63389154031,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000295",
+      "actual_future_revenue_12m": 327740.04,
+      "predicted_cltv": 530313.2175058473,
+      "residual": -202573.17750584736,
+      "absolute_error": 202573.17750584736,
+      "error_bucket": "extreme"
+    },
+    {
+      "customer_id": "CUST000420",
+      "actual_future_revenue_12m": 2199.81,
+      "predicted_cltv": 532.579198809776,
+      "residual": 1667.230801190224,
+      "absolute_error": 1667.230801190224,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000232",
+      "actual_future_revenue_12m": 63658.7,
+      "predicted_cltv": 402203.00477797136,
+      "residual": -338544.30477797135,
+      "absolute_error": 338544.30477797135,
+      "error_bucket": "extreme"
+    },
+    {
+      "customer_id": "CUST000286",
+      "actual_future_revenue_12m": 15187.98,
+      "predicted_cltv": 28950.7403732005,
+      "residual": -13762.7603732005,
+      "absolute_error": 13762.7603732005,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000121",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 5246.49355736631,
+      "residual": -5246.49355736631,
+      "absolute_error": 5246.49355736631,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000226",
+      "actual_future_revenue_12m": 56374.35,
+      "predicted_cltv": 6071.550002475282,
+      "residual": 50302.799997524715,
+      "absolute_error": 50302.799997524715,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "CUST000207",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 4665.524202337873,
+      "residual": -4665.524202337873,
+      "absolute_error": 4665.524202337873,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000007",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 29379.83697941786,
+      "residual": -29379.83697941786,
+      "absolute_error": 29379.83697941786,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "CUST000273",
+      "actual_future_revenue_12m": 261253.48,
+      "predicted_cltv": 21640.525146830376,
+      "residual": 239612.9548531696,
+      "absolute_error": 239612.9548531696,
+      "error_bucket": "extreme"
+    },
+    {
+      "customer_id": "CUST000141",
+      "actual_future_revenue_12m": 463948.53,
+      "predicted_cltv": 91820.83204441093,
+      "residual": 372127.6979555891,
+      "absolute_error": 372127.6979555891,
+      "error_bucket": "extreme"
+    },
+    {
+      "customer_id": "CUST000252",
+      "actual_future_revenue_12m": 118769.58,
+      "predicted_cltv": 25893.040724361897,
+      "residual": 92876.5392756381,
+      "absolute_error": 92876.5392756381,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "CUST000437",
+      "actual_future_revenue_12m": 5793.16,
+      "predicted_cltv": 313.0690178203771,
+      "residual": 5480.090982179623,
+      "absolute_error": 5480.090982179623,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000118",
+      "actual_future_revenue_12m": 78380.74,
+      "predicted_cltv": 25008.972235537294,
+      "residual": 53371.76776446271,
+      "absolute_error": 53371.76776446271,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "CUST000195",
+      "actual_future_revenue_12m": 187626.75,
+      "predicted_cltv": 55956.216093323295,
+      "residual": 131670.5339066767,
+      "absolute_error": 131670.5339066767,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "CUST000319",
+      "actual_future_revenue_12m": 5154.34,
+      "predicted_cltv": 7936.517537287374,
+      "residual": -2782.1775372873735,
+      "absolute_error": 2782.1775372873735,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000452",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 0.0,
+      "residual": 0.0,
+      "absolute_error": 0.0,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000389",
+      "actual_future_revenue_12m": 56465.08,
+      "predicted_cltv": 2395.93984752254,
+      "residual": 54069.14015247746,
+      "absolute_error": 54069.14015247746,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "CUST000267",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 0.1141429423666856,
+      "residual": -0.1141429423666856,
+      "absolute_error": 0.1141429423666856,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000350",
+      "actual_future_revenue_12m": 115625.05,
+      "predicted_cltv": 121958.43799295169,
+      "residual": -6333.387992951684,
+      "absolute_error": 6333.387992951684,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000240",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 1164.0788564551071,
+      "residual": -1164.0788564551071,
+      "absolute_error": 1164.0788564551071,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000483",
+      "actual_future_revenue_12m": 238214.78,
+      "predicted_cltv": 348958.27467349655,
+      "residual": -110743.49467349656,
+      "absolute_error": 110743.49467349656,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "CUST000475",
+      "actual_future_revenue_12m": 89520.17,
+      "predicted_cltv": 2941.5437435768836,
+      "residual": 86578.62625642311,
+      "absolute_error": 86578.62625642311,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "CUST000241",
+      "actual_future_revenue_12m": 138933.21,
+      "predicted_cltv": 97.25677793282148,
+      "residual": 138835.95322206718,
+      "absolute_error": 138835.95322206718,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "CUST000489",
+      "actual_future_revenue_12m": 14204.29,
+      "predicted_cltv": 35740.70392426516,
+      "residual": -21536.41392426516,
+      "absolute_error": 21536.41392426516,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000480",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 647.4140365870204,
+      "residual": -647.4140365870204,
+      "absolute_error": 647.4140365870204,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000490",
+      "actual_future_revenue_12m": 73382.29000000001,
+      "predicted_cltv": 76242.40909089887,
+      "residual": -2860.1190908988647,
+      "absolute_error": 2860.1190908988647,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000065",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 0.0,
+      "residual": 0.0,
+      "absolute_error": 0.0,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000499",
+      "actual_future_revenue_12m": 177522.16,
+      "predicted_cltv": 11736.699757060143,
+      "residual": 165785.46024293985,
+      "absolute_error": 165785.46024293985,
+      "error_bucket": "extreme"
+    },
+    {
+      "customer_id": "CUST000316",
+      "actual_future_revenue_12m": 42602.6,
+      "predicted_cltv": 10947.680921925356,
+      "residual": 31654.919078074643,
+      "absolute_error": 31654.919078074643,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "CUST000361",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 0.0,
+      "residual": 0.0,
+      "absolute_error": 0.0,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000191",
+      "actual_future_revenue_12m": 264172.08,
+      "predicted_cltv": 72437.70863786004,
+      "residual": 191734.37136214,
+      "absolute_error": 191734.37136214,
+      "error_bucket": "extreme"
+    },
+    {
+      "customer_id": "CUST000407",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 0.0682264611476304,
+      "residual": -0.0682264611476304,
+      "absolute_error": 0.0682264611476304,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000145",
+      "actual_future_revenue_12m": 94572.26,
+      "predicted_cltv": 25992.250715737613,
+      "residual": 68580.00928426239,
+      "absolute_error": 68580.00928426239,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "CUST000169",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 0.5250116614508133,
+      "residual": -0.5250116614508133,
+      "absolute_error": 0.5250116614508133,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000372",
+      "actual_future_revenue_12m": 2887.93,
+      "predicted_cltv": 409.3405382280781,
+      "residual": 2478.589461771922,
+      "absolute_error": 2478.589461771922,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000360",
+      "actual_future_revenue_12m": 61960.97,
+      "predicted_cltv": 181930.02881476903,
+      "residual": -119969.05881476904,
+      "absolute_error": 119969.05881476904,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "CUST000351",
+      "actual_future_revenue_12m": 213877.97,
+      "predicted_cltv": 22414.85230982736,
+      "residual": 191463.11769017263,
+      "absolute_error": 191463.11769017263,
+      "error_bucket": "extreme"
+    },
+    {
+      "customer_id": "CUST000362",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 200.2986625097296,
+      "residual": -200.2986625097296,
+      "absolute_error": 200.2986625097296,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000419",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 6.598466888067541,
+      "residual": -6.598466888067541,
+      "absolute_error": 6.598466888067541,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000453",
+      "actual_future_revenue_12m": 270144.74,
+      "predicted_cltv": 53852.53429138535,
+      "residual": 216292.20570861464,
+      "absolute_error": 216292.20570861464,
+      "error_bucket": "extreme"
+    },
+    {
+      "customer_id": "CUST000291",
+      "actual_future_revenue_12m": 332696.52999999997,
+      "predicted_cltv": 179085.3216554845,
+      "residual": 153611.20834451547,
+      "absolute_error": 153611.20834451547,
+      "error_bucket": "extreme"
+    },
+    {
+      "customer_id": "CUST000002",
+      "actual_future_revenue_12m": 11395.37,
+      "predicted_cltv": 3497.3338571400245,
+      "residual": 7898.036142859976,
+      "absolute_error": 7898.036142859976,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000414",
+      "actual_future_revenue_12m": 5640.299999999999,
+      "predicted_cltv": 8636.974668304372,
+      "residual": -2996.674668304373,
+      "absolute_error": 2996.674668304373,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000294",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 28072.341025946655,
+      "residual": -28072.341025946655,
+      "absolute_error": 28072.341025946655,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "CUST000458",
+      "actual_future_revenue_12m": 293676.96,
+      "predicted_cltv": 185028.9795335045,
+      "residual": 108647.98046649552,
+      "absolute_error": 108647.98046649552,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "CUST000186",
+      "actual_future_revenue_12m": 233020.17,
+      "predicted_cltv": 11474.278527596069,
+      "residual": 221545.89147240395,
+      "absolute_error": 221545.89147240395,
+      "error_bucket": "extreme"
+    },
+    {
+      "customer_id": "CUST000151",
+      "actual_future_revenue_12m": 227339.71999999997,
+      "predicted_cltv": 290304.1155756756,
+      "residual": -62964.39557567565,
+      "absolute_error": 62964.39557567565,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "CUST000214",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 29572.92467914494,
+      "residual": -29572.92467914494,
+      "absolute_error": 29572.92467914494,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "CUST000172",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 3913.976773820604,
+      "residual": -3913.976773820604,
+      "absolute_error": 3913.976773820604,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000079",
+      "actual_future_revenue_12m": 119841.23,
+      "predicted_cltv": 6732.227597151176,
+      "residual": 113109.00240284884,
+      "absolute_error": 113109.00240284884,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "CUST000488",
+      "actual_future_revenue_12m": 219302.19,
+      "predicted_cltv": 426.80391216756806,
+      "residual": 218875.38608783245,
+      "absolute_error": 218875.38608783245,
+      "error_bucket": "extreme"
+    },
+    {
+      "customer_id": "CUST000495",
+      "actual_future_revenue_12m": 143755.66,
+      "predicted_cltv": 61734.426416139206,
+      "residual": 82021.2335838608,
+      "absolute_error": 82021.2335838608,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "CUST000146",
+      "actual_future_revenue_12m": 327341.23,
+      "predicted_cltv": 305037.3927349274,
+      "residual": 22303.837265072565,
+      "absolute_error": 22303.837265072565,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000171",
+      "actual_future_revenue_12m": 4444.09,
+      "predicted_cltv": 1360.066394026201,
+      "residual": 3084.023605973799,
+      "absolute_error": 3084.023605973799,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000313",
+      "actual_future_revenue_12m": 273659.13,
+      "predicted_cltv": 9677.624161652931,
+      "residual": 263981.5058383471,
+      "absolute_error": 263981.5058383471,
+      "error_bucket": "extreme"
+    },
+    {
+      "customer_id": "CUST000211",
+      "actual_future_revenue_12m": 411347.04,
+      "predicted_cltv": 164539.55414831717,
+      "residual": 246807.4858516828,
+      "absolute_error": 246807.4858516828,
+      "error_bucket": "extreme"
+    },
+    {
+      "customer_id": "CUST000081",
+      "actual_future_revenue_12m": 121807.73,
+      "predicted_cltv": 114530.02591337071,
+      "residual": 7277.704086629281,
+      "absolute_error": 7277.704086629281,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000153",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 6375.037929630781,
+      "residual": -6375.037929630781,
+      "absolute_error": 6375.037929630781,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000470",
+      "actual_future_revenue_12m": 142324.66999999998,
+      "predicted_cltv": 289683.9061510826,
+      "residual": -147359.23615108262,
+      "absolute_error": 147359.23615108262,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "CUST000058",
+      "actual_future_revenue_12m": 9299.18,
+      "predicted_cltv": 867674.0862059422,
+      "residual": -858374.9062059422,
+      "absolute_error": 858374.9062059422,
+      "error_bucket": "extreme"
+    },
+    {
+      "customer_id": "CUST000231",
+      "actual_future_revenue_12m": 242954.73,
+      "predicted_cltv": 48228.51446008046,
+      "residual": 194726.21553991956,
+      "absolute_error": 194726.21553991956,
+      "error_bucket": "extreme"
+    },
+    {
+      "customer_id": "CUST000287",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 0.0,
+      "residual": 0.0,
+      "absolute_error": 0.0,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000188",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 472.3677461963556,
+      "residual": -472.3677461963556,
+      "absolute_error": 472.3677461963556,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000149",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 0.0,
+      "residual": 0.0,
+      "absolute_error": 0.0,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000321",
+      "actual_future_revenue_12m": 134801.21,
+      "predicted_cltv": 43809.522738300715,
+      "residual": 90991.68726169928,
+      "absolute_error": 90991.68726169928,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "CUST000315",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 10475.919788592562,
+      "residual": -10475.919788592562,
+      "absolute_error": 10475.919788592562,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000262",
+      "actual_future_revenue_12m": 172792.83000000002,
+      "predicted_cltv": 6756.936026163364,
+      "residual": 166035.89397383665,
+      "absolute_error": 166035.89397383665,
+      "error_bucket": "extreme"
+    },
+    {
+      "customer_id": "CUST000454",
+      "actual_future_revenue_12m": 73197.73,
+      "predicted_cltv": 66538.39951773896,
+      "residual": 6659.330482261037,
+      "absolute_error": 6659.330482261037,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000482",
+      "actual_future_revenue_12m": 155903.61,
+      "predicted_cltv": 12851.536714860302,
+      "residual": 143052.0732851397,
+      "absolute_error": 143052.0732851397,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "CUST000162",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 0.4056094090506489,
+      "residual": -0.4056094090506489,
+      "absolute_error": 0.4056094090506489,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000364",
+      "actual_future_revenue_12m": 76887.98,
+      "predicted_cltv": 3332.832589819839,
+      "residual": 73555.14741018016,
+      "absolute_error": 73555.14741018016,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "CUST000302",
+      "actual_future_revenue_12m": 110428.29,
+      "predicted_cltv": 21451.694424307276,
+      "residual": 88976.59557569271,
+      "absolute_error": 88976.59557569271,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "CUST000424",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 0.2915426291598537,
+      "residual": -0.2915426291598537,
+      "absolute_error": 0.2915426291598537,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000281",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 0.0,
+      "residual": 0.0,
+      "absolute_error": 0.0,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000184",
+      "actual_future_revenue_12m": 245849.4,
+      "predicted_cltv": 1455.461400275831,
+      "residual": 244393.93859972415,
+      "absolute_error": 244393.93859972415,
+      "error_bucket": "extreme"
+    },
+    {
+      "customer_id": "CUST000254",
+      "actual_future_revenue_12m": 0.0,
+      "predicted_cltv": 0.5807500691343457,
+      "residual": -0.5807500691343457,
+      "absolute_error": 0.5807500691343457,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "CUST000462",
+      "actual_future_revenue_12m": 322513.36,
+      "predicted_cltv": 27078.428624218508,
+      "residual": 295434.9313757815,
+      "absolute_error": 295434.9313757815,
+      "error_bucket": "extreme"
+    },
+    {
+      "customer_id": "CUST000342",
+      "actual_future_revenue_12m": 228568.47000000003,
+      "predicted_cltv": 49333.42000780797,
+      "residual": 179235.04999219207,
+      "absolute_error": 179235.04999219207,
+      "error_bucket": "extreme"
+    },
+    {
+      "customer_id": "CUST000381",
+      "actual_future_revenue_12m": 42495.97,
+      "predicted_cltv": 80648.82038290612,
+      "residual": -38152.85038290612,
+      "absolute_error": 38152.85038290612,
+      "error_bucket": "moderate"
+    }
+  ],
+  "feature_importance": [
+    {
+      "feature": "account_count",
+      "importance_mean": 17662.01878778853,
+      "importance_std": 4905.14352104355
+    },
+    {
+      "feature": "avg_balance",
+      "importance_mean": 7775.423787357902,
+      "importance_std": 3598.4641872115603
+    },
+    {
+      "feature": "occupation_freq",
+      "importance_mean": 4080.9177592377546,
+      "importance_std": 4032.4830486493543
+    },
+    {
+      "feature": "chosen_product_freq",
+      "importance_mean": 3959.6024844717376,
+      "importance_std": 2511.1776817235964
+    },
+    {
+      "feature": "age",
+      "importance_mean": 3899.874986459159,
+      "importance_std": 2208.6403177415227
+    },
+    {
+      "feature": "recency_days",
+      "importance_mean": 3592.207484863234,
+      "importance_std": 3879.469243006296
+    },
+    {
+      "feature": "customer_segment_freq",
+      "importance_mean": 3459.7395130207024,
+      "importance_std": 1890.1284960518192
+    },
+    {
+      "feature": "total_balance",
+      "importance_mean": 3457.337351150718,
+      "importance_std": 5111.116632673593
+    },
+    {
+      "feature": "state_freq",
+      "importance_mean": 3034.9539570804864,
+      "importance_std": 1751.451883578011
+    },
+    {
+      "feature": "active_account_count",
+      "importance_mean": 2815.406256805787,
+      "importance_std": 1164.5309748163004
+    },
+    {
+      "feature": "best_second_option_freq",
+      "importance_mean": 2391.673601300705,
+      "importance_std": 3543.0798309402285
+    },
+    {
+      "feature": "annual_income",
+      "importance_mean": 1631.094273795894,
+      "importance_std": 1657.292644855411
+    },
+    {
+      "feature": "lead_source_freq",
+      "importance_mean": 795.9668488166571,
+      "importance_std": 542.5556708546978
+    },
+    {
+      "feature": "lead_age_days",
+      "importance_mean": 627.2618699179056,
+      "importance_std": 3052.2185448744053
+    },
+    {
+      "feature": "marital_status_freq",
+      "importance_mean": 510.5343242737308,
+      "importance_std": 554.0861549330527
+    },
+    {
+      "feature": "gender_freq",
+      "importance_mean": 352.9362212564811,
+      "importance_std": 608.6879867276981
+    },
+    {
+      "feature": "credit_txn_count_365",
+      "importance_mean": 341.23623827336814,
+      "importance_std": 1925.644492965532
+    },
+    {
+      "feature": "closed_account_count",
+      "importance_mean": 57.9250458831375,
+      "importance_std": 356.415014968467
+    },
+    {
+      "feature": "active_days_365",
+      "importance_mean": 0.0,
+      "importance_std": 0.0
+    },
+    {
+      "feature": "txn_count_365",
+      "importance_mean": -4.273579485881783,
+      "importance_std": 913.6874812426272
+    },
+    {
+      "feature": "max_txn_amt_365",
+      "importance_mean": -297.28330123498745,
+      "importance_std": 2284.3176022321827
+    },
+    {
+      "feature": "risk_score",
+      "importance_mean": -350.4517574262536,
+      "importance_std": 7164.613149167519
+    },
+    {
+      "feature": "best_first_option_freq",
+      "importance_mean": -532.343341801421,
+      "importance_std": 571.1157023938306
+    },
+    {
+      "feature": "debit_txn_count_365",
+      "importance_mean": -846.373783038167,
+      "importance_std": 1204.8557749699023
+    },
+    {
+      "feature": "dormant_account_count",
+      "importance_mean": -1347.2496694054937,
+      "importance_std": 4120.865282576804
+    },
+    {
+      "feature": "city_freq",
+      "importance_mean": -1540.4370686521688,
+      "importance_std": 2771.4890622626504
+    },
+    {
+      "feature": "avg_txn_amt_365",
+      "importance_mean": -2657.022440412993,
+      "importance_std": 3410.9697268325876
+    },
+    {
+      "feature": "tenure_days",
+      "importance_mean": -3097.24630003755,
+      "importance_std": 2612.4258255104646
+    },
+    {
+      "feature": "total_txn_amt_365",
+      "importance_mean": -3260.97939402529,
+      "importance_std": 3454.264678128011
+    }
+  ]
+}

@@ -1,0 +1,1366 @@
+{
+  "monthly": [
+    {
+      "period": "2015-01",
+      "year": 2015,
+      "month": 1,
+      "transaction_count": 21,
+      "total_amount": 189294.03941770323,
+      "average_amount": 9014.001877033486,
+      "active_customers": 21,
+      "rolling_3m_amount": 189294.03941770323
+    },
+    {
+      "period": "2015-02",
+      "year": 2015,
+      "month": 2,
+      "transaction_count": 18,
+      "total_amount": 183816.60243008524,
+      "average_amount": 10212.03346833807,
+      "active_customers": 18,
+      "rolling_3m_amount": 186555.32092389424
+    },
+    {
+      "period": "2015-03",
+      "year": 2015,
+      "month": 3,
+      "transaction_count": 20,
+      "total_amount": 153430.08225346194,
+      "average_amount": 7671.504112673097,
+      "active_customers": 19,
+      "rolling_3m_amount": 175513.5747004168
+    },
+    {
+      "period": "2015-04",
+      "year": 2015,
+      "month": 4,
+      "transaction_count": 19,
+      "total_amount": 156738.9651155079,
+      "average_amount": 8249.419216605678,
+      "active_customers": 19,
+      "rolling_3m_amount": 164661.88326635168
+    },
+    {
+      "period": "2015-05",
+      "year": 2015,
+      "month": 5,
+      "transaction_count": 24,
+      "total_amount": 281937.3792091447,
+      "average_amount": 11747.390800381028,
+      "active_customers": 22,
+      "rolling_3m_amount": 197368.8088593715
+    },
+    {
+      "period": "2015-06",
+      "year": 2015,
+      "month": 6,
+      "transaction_count": 26,
+      "total_amount": 322593.5358596872,
+      "average_amount": 12407.443686911049,
+      "active_customers": 25,
+      "rolling_3m_amount": 253756.62672811328
+    },
+    {
+      "period": "2015-07",
+      "year": 2015,
+      "month": 7,
+      "transaction_count": 22,
+      "total_amount": 205910.0389168378,
+      "average_amount": 9359.547223492627,
+      "active_customers": 21,
+      "rolling_3m_amount": 270146.9846618899
+    },
+    {
+      "period": "2015-08",
+      "year": 2015,
+      "month": 8,
+      "transaction_count": 29,
+      "total_amount": 271568.8567516827,
+      "average_amount": 9364.443336264922,
+      "active_customers": 28,
+      "rolling_3m_amount": 266690.8105094026
+    },
+    {
+      "period": "2015-09",
+      "year": 2015,
+      "month": 9,
+      "transaction_count": 18,
+      "total_amount": 229507.63313482015,
+      "average_amount": 12750.424063045564,
+      "active_customers": 17,
+      "rolling_3m_amount": 235662.17626778025
+    },
+    {
+      "period": "2015-10",
+      "year": 2015,
+      "month": 10,
+      "transaction_count": 18,
+      "total_amount": 205105.72012071547,
+      "average_amount": 11394.762228928636,
+      "active_customers": 17,
+      "rolling_3m_amount": 235394.07000240617
+    },
+    {
+      "period": "2015-11",
+      "year": 2015,
+      "month": 11,
+      "transaction_count": 18,
+      "total_amount": 122148.8576352248,
+      "average_amount": 6786.047646401378,
+      "active_customers": 18,
+      "rolling_3m_amount": 185587.4036302535
+    },
+    {
+      "period": "2015-12",
+      "year": 2015,
+      "month": 12,
+      "transaction_count": 30,
+      "total_amount": 304606.5007873078,
+      "average_amount": 10153.550026243593,
+      "active_customers": 28,
+      "rolling_3m_amount": 210620.35951441605
+    },
+    {
+      "period": "2016-01",
+      "year": 2016,
+      "month": 1,
+      "transaction_count": 21,
+      "total_amount": 190984.66149157408,
+      "average_amount": 9094.507690074955,
+      "active_customers": 20,
+      "rolling_3m_amount": 205913.3399713689
+    },
+    {
+      "period": "2016-02",
+      "year": 2016,
+      "month": 2,
+      "transaction_count": 19,
+      "total_amount": 192272.61808339137,
+      "average_amount": 10119.61147807323,
+      "active_customers": 18,
+      "rolling_3m_amount": 229287.92678742445
+    },
+    {
+      "period": "2016-03",
+      "year": 2016,
+      "month": 3,
+      "transaction_count": 16,
+      "total_amount": 147390.10607716662,
+      "average_amount": 9211.881629822914,
+      "active_customers": 16,
+      "rolling_3m_amount": 176882.46188404402
+    },
+    {
+      "period": "2016-04",
+      "year": 2016,
+      "month": 4,
+      "transaction_count": 26,
+      "total_amount": 292332.5928127883,
+      "average_amount": 11243.56126203032,
+      "active_customers": 26,
+      "rolling_3m_amount": 210665.1056577821
+    },
+    {
+      "period": "2016-05",
+      "year": 2016,
+      "month": 5,
+      "transaction_count": 22,
+      "total_amount": 237659.47595293348,
+      "average_amount": 10802.703452406067,
+      "active_customers": 21,
+      "rolling_3m_amount": 225794.05828096284
+    },
+    {
+      "period": "2016-06",
+      "year": 2016,
+      "month": 6,
+      "transaction_count": 26,
+      "total_amount": 224807.2316453499,
+      "average_amount": 8646.431986359612,
+      "active_customers": 25,
+      "rolling_3m_amount": 251599.76680369055
+    },
+    {
+      "period": "2016-07",
+      "year": 2016,
+      "month": 7,
+      "transaction_count": 23,
+      "total_amount": 243135.0379803954,
+      "average_amount": 10571.088607843278,
+      "active_customers": 23,
+      "rolling_3m_amount": 235200.5818595596
+    },
+    {
+      "period": "2016-08",
+      "year": 2016,
+      "month": 8,
+      "transaction_count": 21,
+      "total_amount": 216803.82219602875,
+      "average_amount": 10323.991533144226,
+      "active_customers": 20,
+      "rolling_3m_amount": 228248.6972739247
+    },
+    {
+      "period": "2016-09",
+      "year": 2016,
+      "month": 9,
+      "transaction_count": 19,
+      "total_amount": 208592.53219237973,
+      "average_amount": 10978.554325914723,
+      "active_customers": 18,
+      "rolling_3m_amount": 222843.797456268
+    },
+    {
+      "period": "2016-10",
+      "year": 2016,
+      "month": 10,
+      "transaction_count": 23,
+      "total_amount": 281350.3751843937,
+      "average_amount": 12232.625008017118,
+      "active_customers": 20,
+      "rolling_3m_amount": 235582.2431909341
+    },
+    {
+      "period": "2016-11",
+      "year": 2016,
+      "month": 11,
+      "transaction_count": 32,
+      "total_amount": 328426.4544853009,
+      "average_amount": 10263.326702665654,
+      "active_customers": 30,
+      "rolling_3m_amount": 272789.78728735814
+    },
+    {
+      "period": "2016-12",
+      "year": 2016,
+      "month": 12,
+      "transaction_count": 24,
+      "total_amount": 206515.11440743267,
+      "average_amount": 8604.796433643029,
+      "active_customers": 21,
+      "rolling_3m_amount": 272097.3146923758
+    },
+    {
+      "period": "2017-01",
+      "year": 2017,
+      "month": 1,
+      "transaction_count": 23,
+      "total_amount": 254634.65668834117,
+      "average_amount": 11071.072029927876,
+      "active_customers": 21,
+      "rolling_3m_amount": 263192.0751936916
+    },
+    {
+      "period": "2017-02",
+      "year": 2017,
+      "month": 2,
+      "transaction_count": 28,
+      "total_amount": 284391.3986057296,
+      "average_amount": 10156.835664490343,
+      "active_customers": 28,
+      "rolling_3m_amount": 248513.72323383452
+    },
+    {
+      "period": "2017-03",
+      "year": 2017,
+      "month": 3,
+      "transaction_count": 26,
+      "total_amount": 298907.6738828336,
+      "average_amount": 11496.448995493602,
+      "active_customers": 25,
+      "rolling_3m_amount": 279311.24305896816
+    },
+    {
+      "period": "2017-04",
+      "year": 2017,
+      "month": 4,
+      "transaction_count": 29,
+      "total_amount": 255572.05282958003,
+      "average_amount": 8812.829407916553,
+      "active_customers": 29,
+      "rolling_3m_amount": 279623.70843938115
+    },
+    {
+      "period": "2017-05",
+      "year": 2017,
+      "month": 5,
+      "transaction_count": 27,
+      "total_amount": 204654.81676616136,
+      "average_amount": 7579.8080283763475,
+      "active_customers": 26,
+      "rolling_3m_amount": 253044.8478261917
+    },
+    {
+      "period": "2017-06",
+      "year": 2017,
+      "month": 6,
+      "transaction_count": 22,
+      "total_amount": 218328.63637537503,
+      "average_amount": 9924.02892615341,
+      "active_customers": 21,
+      "rolling_3m_amount": 226185.16865703883
+    },
+    {
+      "period": "2017-07",
+      "year": 2017,
+      "month": 7,
+      "transaction_count": 20,
+      "total_amount": 221652.56514274696,
+      "average_amount": 11082.628257137349,
+      "active_customers": 20,
+      "rolling_3m_amount": 214878.67276142785
+    },
+    {
+      "period": "2017-08",
+      "year": 2017,
+      "month": 8,
+      "transaction_count": 28,
+      "total_amount": 255590.71414821112,
+      "average_amount": 9128.23979100754,
+      "active_customers": 26,
+      "rolling_3m_amount": 231857.30522211103
+    },
+    {
+      "period": "2017-09",
+      "year": 2017,
+      "month": 9,
+      "transaction_count": 30,
+      "total_amount": 355674.24562216277,
+      "average_amount": 11855.808187405426,
+      "active_customers": 29,
+      "rolling_3m_amount": 277639.1749710403
+    },
+    {
+      "period": "2017-10",
+      "year": 2017,
+      "month": 10,
+      "transaction_count": 22,
+      "total_amount": 237981.86933657064,
+      "average_amount": 10817.357697116848,
+      "active_customers": 21,
+      "rolling_3m_amount": 283082.2763689815
+    },
+    {
+      "period": "2017-11",
+      "year": 2017,
+      "month": 11,
+      "transaction_count": 23,
+      "total_amount": 206306.1098669223,
+      "average_amount": 8969.830863779232,
+      "active_customers": 22,
+      "rolling_3m_amount": 266654.07494188525
+    },
+    {
+      "period": "2017-12",
+      "year": 2017,
+      "month": 12,
+      "transaction_count": 31,
+      "total_amount": 355408.5462284258,
+      "average_amount": 11464.791813820188,
+      "active_customers": 30,
+      "rolling_3m_amount": 266565.5084773063
+    },
+    {
+      "period": "2018-01",
+      "year": 2018,
+      "month": 1,
+      "transaction_count": 24,
+      "total_amount": 261685.6308414695,
+      "average_amount": 10903.567951727897,
+      "active_customers": 23,
+      "rolling_3m_amount": 274466.7623122726
+    },
+    {
+      "period": "2018-02",
+      "year": 2018,
+      "month": 2,
+      "transaction_count": 24,
+      "total_amount": 257547.87979413263,
+      "average_amount": 10731.16165808886,
+      "active_customers": 23,
+      "rolling_3m_amount": 291547.35228800937
+    },
+    {
+      "period": "2018-03",
+      "year": 2018,
+      "month": 3,
+      "transaction_count": 24,
+      "total_amount": 210157.15640171204,
+      "average_amount": 8756.548183404668,
+      "active_customers": 23,
+      "rolling_3m_amount": 243130.22234577147
+    },
+    {
+      "period": "2018-04",
+      "year": 2018,
+      "month": 4,
+      "transaction_count": 31,
+      "total_amount": 293339.9736520719,
+      "average_amount": 9462.579795228126,
+      "active_customers": 29,
+      "rolling_3m_amount": 253681.6699493056
+    },
+    {
+      "period": "2018-05",
+      "year": 2018,
+      "month": 5,
+      "transaction_count": 29,
+      "total_amount": 346484.99566887796,
+      "average_amount": 11947.75847134062,
+      "active_customers": 26,
+      "rolling_3m_amount": 283327.37524088734
+    },
+    {
+      "period": "2018-06",
+      "year": 2018,
+      "month": 6,
+      "transaction_count": 25,
+      "total_amount": 193480.71299709615,
+      "average_amount": 7739.228519883846,
+      "active_customers": 23,
+      "rolling_3m_amount": 277768.560772682
+    },
+    {
+      "period": "2018-07",
+      "year": 2018,
+      "month": 7,
+      "transaction_count": 28,
+      "total_amount": 346001.3999841967,
+      "average_amount": 12357.192856578453,
+      "active_customers": 23,
+      "rolling_3m_amount": 295322.369550057
+    },
+    {
+      "period": "2018-08",
+      "year": 2018,
+      "month": 8,
+      "transaction_count": 25,
+      "total_amount": 227289.8079940253,
+      "average_amount": 9091.592319761012,
+      "active_customers": 24,
+      "rolling_3m_amount": 255590.6403251061
+    },
+    {
+      "period": "2018-09",
+      "year": 2018,
+      "month": 9,
+      "transaction_count": 28,
+      "total_amount": 282795.33493957587,
+      "average_amount": 10099.833390699136,
+      "active_customers": 27,
+      "rolling_3m_amount": 285362.18097259937
+    },
+    {
+      "period": "2018-10",
+      "year": 2018,
+      "month": 10,
+      "transaction_count": 19,
+      "total_amount": 233056.2326713374,
+      "average_amount": 12266.117509017758,
+      "active_customers": 18,
+      "rolling_3m_amount": 247713.7918683129
+    },
+    {
+      "period": "2018-11",
+      "year": 2018,
+      "month": 11,
+      "transaction_count": 14,
+      "total_amount": 136607.07056006073,
+      "average_amount": 9757.647897147195,
+      "active_customers": 14,
+      "rolling_3m_amount": 217486.21272365804
+    },
+    {
+      "period": "2018-12",
+      "year": 2018,
+      "month": 12,
+      "transaction_count": 17,
+      "total_amount": 214552.33822436735,
+      "average_amount": 12620.725777903965,
+      "active_customers": 17,
+      "rolling_3m_amount": 194738.54715192187
+    },
+    {
+      "period": "2019-01",
+      "year": 2019,
+      "month": 1,
+      "transaction_count": 27,
+      "total_amount": 232313.0797288923,
+      "average_amount": 8604.188138107122,
+      "active_customers": 25,
+      "rolling_3m_amount": 194490.82950444016
+    },
+    {
+      "period": "2019-02",
+      "year": 2019,
+      "month": 2,
+      "transaction_count": 30,
+      "total_amount": 218494.2514163933,
+      "average_amount": 7283.141713879776,
+      "active_customers": 29,
+      "rolling_3m_amount": 221786.55645655104
+    },
+    {
+      "period": "2019-03",
+      "year": 2019,
+      "month": 3,
+      "transaction_count": 21,
+      "total_amount": 273605.8270890395,
+      "average_amount": 13028.84890900188,
+      "active_customers": 20,
+      "rolling_3m_amount": 241471.05274477508
+    },
+    {
+      "period": "2019-04",
+      "year": 2019,
+      "month": 4,
+      "transaction_count": 29,
+      "total_amount": 221234.6465908693,
+      "average_amount": 7628.780916926527,
+      "active_customers": 28,
+      "rolling_3m_amount": 237778.24169876735
+    },
+    {
+      "period": "2019-05",
+      "year": 2019,
+      "month": 5,
+      "transaction_count": 22,
+      "total_amount": 229295.46930254297,
+      "average_amount": 10422.52133193377,
+      "active_customers": 21,
+      "rolling_3m_amount": 241378.64766081725
+    },
+    {
+      "period": "2019-06",
+      "year": 2019,
+      "month": 6,
+      "transaction_count": 19,
+      "total_amount": 128384.9758498698,
+      "average_amount": 6757.10399209841,
+      "active_customers": 18,
+      "rolling_3m_amount": 192971.69724776072
+    },
+    {
+      "period": "2019-07",
+      "year": 2019,
+      "month": 7,
+      "transaction_count": 24,
+      "total_amount": 233458.9173980519,
+      "average_amount": 9727.454891585496,
+      "active_customers": 23,
+      "rolling_3m_amount": 197046.45418348824
+    },
+    {
+      "period": "2019-08",
+      "year": 2019,
+      "month": 8,
+      "transaction_count": 26,
+      "total_amount": 265074.496093782,
+      "average_amount": 10195.172926683925,
+      "active_customers": 25,
+      "rolling_3m_amount": 208972.7964472346
+    },
+    {
+      "period": "2019-09",
+      "year": 2019,
+      "month": 9,
+      "transaction_count": 23,
+      "total_amount": 285555.9350450725,
+      "average_amount": 12415.475436742285,
+      "active_customers": 22,
+      "rolling_3m_amount": 261363.11617896883
+    },
+    {
+      "period": "2019-10",
+      "year": 2019,
+      "month": 10,
+      "transaction_count": 28,
+      "total_amount": 368843.2059933045,
+      "average_amount": 13172.971642618018,
+      "active_customers": 27,
+      "rolling_3m_amount": 306491.21237738634
+    },
+    {
+      "period": "2019-11",
+      "year": 2019,
+      "month": 11,
+      "transaction_count": 23,
+      "total_amount": 272609.7357685315,
+      "average_amount": 11852.597207327455,
+      "active_customers": 23,
+      "rolling_3m_amount": 309002.95893563615
+    },
+    {
+      "period": "2019-12",
+      "year": 2019,
+      "month": 12,
+      "transaction_count": 20,
+      "total_amount": 208905.29361868443,
+      "average_amount": 10445.264680934222,
+      "active_customers": 19,
+      "rolling_3m_amount": 283452.74512684013
+    },
+    {
+      "period": "2020-01",
+      "year": 2020,
+      "month": 1,
+      "transaction_count": 29,
+      "total_amount": 248824.5320490139,
+      "average_amount": 8580.156277552205,
+      "active_customers": 29,
+      "rolling_3m_amount": 243446.52047874333
+    },
+    {
+      "period": "2020-02",
+      "year": 2020,
+      "month": 2,
+      "transaction_count": 19,
+      "total_amount": 218448.54315739387,
+      "average_amount": 11497.291745125993,
+      "active_customers": 19,
+      "rolling_3m_amount": 225392.7896083641
+    },
+    {
+      "period": "2020-03",
+      "year": 2020,
+      "month": 3,
+      "transaction_count": 21,
+      "total_amount": 204952.66188946264,
+      "average_amount": 9759.650566164886,
+      "active_customers": 21,
+      "rolling_3m_amount": 224075.2456986235
+    },
+    {
+      "period": "2020-04",
+      "year": 2020,
+      "month": 4,
+      "transaction_count": 27,
+      "total_amount": 293700.963102639,
+      "average_amount": 10877.81344824589,
+      "active_customers": 27,
+      "rolling_3m_amount": 239034.05604983185
+    },
+    {
+      "period": "2020-05",
+      "year": 2020,
+      "month": 5,
+      "transaction_count": 25,
+      "total_amount": 215745.98430697512,
+      "average_amount": 8629.839372279004,
+      "active_customers": 25,
+      "rolling_3m_amount": 238133.20309969227
+    },
+    {
+      "period": "2020-06",
+      "year": 2020,
+      "month": 6,
+      "transaction_count": 19,
+      "total_amount": 195959.3861236181,
+      "average_amount": 10313.651901243058,
+      "active_customers": 19,
+      "rolling_3m_amount": 235135.44451107745
+    },
+    {
+      "period": "2020-07",
+      "year": 2020,
+      "month": 7,
+      "transaction_count": 30,
+      "total_amount": 334063.6607168618,
+      "average_amount": 11135.455357228726,
+      "active_customers": 30,
+      "rolling_3m_amount": 248589.67704915165
+    },
+    {
+      "period": "2020-08",
+      "year": 2020,
+      "month": 8,
+      "transaction_count": 34,
+      "total_amount": 357225.3200655291,
+      "average_amount": 10506.627060750856,
+      "active_customers": 33,
+      "rolling_3m_amount": 295749.4556353363
+    },
+    {
+      "period": "2020-09",
+      "year": 2020,
+      "month": 9,
+      "transaction_count": 24,
+      "total_amount": 264596.73427999415,
+      "average_amount": 11024.86392833309,
+      "active_customers": 23,
+      "rolling_3m_amount": 318628.57168746163
+    },
+    {
+      "period": "2020-10",
+      "year": 2020,
+      "month": 10,
+      "transaction_count": 24,
+      "total_amount": 237260.00972764767,
+      "average_amount": 9885.833738651989,
+      "active_customers": 23,
+      "rolling_3m_amount": 286360.6880243903
+    },
+    {
+      "period": "2020-11",
+      "year": 2020,
+      "month": 11,
+      "transaction_count": 32,
+      "total_amount": 239562.4437601276,
+      "average_amount": 7486.326367503987,
+      "active_customers": 32,
+      "rolling_3m_amount": 247139.72925592316
+    },
+    {
+      "period": "2020-12",
+      "year": 2020,
+      "month": 12,
+      "transaction_count": 20,
+      "total_amount": 223487.8584706351,
+      "average_amount": 11174.392923531756,
+      "active_customers": 18,
+      "rolling_3m_amount": 233436.77065280348
+    },
+    {
+      "period": "2021-01",
+      "year": 2021,
+      "month": 1,
+      "transaction_count": 30,
+      "total_amount": 287190.2573637169,
+      "average_amount": 9573.008578790565,
+      "active_customers": 26,
+      "rolling_3m_amount": 250080.1865314932
+    },
+    {
+      "period": "2021-02",
+      "year": 2021,
+      "month": 2,
+      "transaction_count": 19,
+      "total_amount": 194136.13263649435,
+      "average_amount": 10217.69119139444,
+      "active_customers": 19,
+      "rolling_3m_amount": 234938.08282361543
+    },
+    {
+      "period": "2021-03",
+      "year": 2021,
+      "month": 3,
+      "transaction_count": 24,
+      "total_amount": 218756.83212320105,
+      "average_amount": 9114.868005133378,
+      "active_customers": 22,
+      "rolling_3m_amount": 233361.07404113736
+    },
+    {
+      "period": "2021-04",
+      "year": 2021,
+      "month": 4,
+      "transaction_count": 13,
+      "total_amount": 141742.677237951,
+      "average_amount": 10903.28286445777,
+      "active_customers": 13,
+      "rolling_3m_amount": 184878.5473325488
+    },
+    {
+      "period": "2021-05",
+      "year": 2021,
+      "month": 5,
+      "transaction_count": 23,
+      "total_amount": 255568.73709794576,
+      "average_amount": 11111.684221649815,
+      "active_customers": 21,
+      "rolling_3m_amount": 205356.08215303265
+    },
+    {
+      "period": "2021-06",
+      "year": 2021,
+      "month": 6,
+      "transaction_count": 21,
+      "total_amount": 246116.66950334623,
+      "average_amount": 11719.84140492125,
+      "active_customers": 21,
+      "rolling_3m_amount": 214476.0279464143
+    },
+    {
+      "period": "2021-07",
+      "year": 2021,
+      "month": 7,
+      "transaction_count": 22,
+      "total_amount": 230067.74419737028,
+      "average_amount": 10457.624736244104,
+      "active_customers": 22,
+      "rolling_3m_amount": 243917.71693288744
+    },
+    {
+      "period": "2021-08",
+      "year": 2021,
+      "month": 8,
+      "transaction_count": 20,
+      "total_amount": 157136.28202868986,
+      "average_amount": 7856.814101434493,
+      "active_customers": 20,
+      "rolling_3m_amount": 211106.8985764688
+    },
+    {
+      "period": "2021-09",
+      "year": 2021,
+      "month": 9,
+      "transaction_count": 36,
+      "total_amount": 338523.9634503649,
+      "average_amount": 9403.443429176805,
+      "active_customers": 32,
+      "rolling_3m_amount": 241909.3298921417
+    },
+    {
+      "period": "2021-10",
+      "year": 2021,
+      "month": 10,
+      "transaction_count": 17,
+      "total_amount": 177851.0425194799,
+      "average_amount": 10461.82603055764,
+      "active_customers": 17,
+      "rolling_3m_amount": 224503.7626661782
+    },
+    {
+      "period": "2021-11",
+      "year": 2021,
+      "month": 11,
+      "transaction_count": 31,
+      "total_amount": 380566.82800529967,
+      "average_amount": 12276.349290493536,
+      "active_customers": 29,
+      "rolling_3m_amount": 298980.61132504814
+    },
+    {
+      "period": "2021-12",
+      "year": 2021,
+      "month": 12,
+      "transaction_count": 16,
+      "total_amount": 120102.7212161036,
+      "average_amount": 7506.420076006475,
+      "active_customers": 16,
+      "rolling_3m_amount": 226173.5305802944
+    },
+    {
+      "period": "2022-01",
+      "year": 2022,
+      "month": 1,
+      "transaction_count": 94,
+      "total_amount": 3279215.58,
+      "average_amount": 34885.27212765958,
+      "active_customers": 80,
+      "rolling_3m_amount": 1259961.7097404678
+    },
+    {
+      "period": "2022-02",
+      "year": 2022,
+      "month": 2,
+      "transaction_count": 95,
+      "total_amount": 3519148.81,
+      "average_amount": 37043.67168421052,
+      "active_customers": 82,
+      "rolling_3m_amount": 2306155.703738701
+    },
+    {
+      "period": "2022-03",
+      "year": 2022,
+      "month": 3,
+      "transaction_count": 87,
+      "total_amount": 3534666.09,
+      "average_amount": 40628.34586206896,
+      "active_customers": 78,
+      "rolling_3m_amount": 3444343.4933333336
+    },
+    {
+      "period": "2022-04",
+      "year": 2022,
+      "month": 4,
+      "transaction_count": 80,
+      "total_amount": 3154495.65,
+      "average_amount": 39431.195625,
+      "active_customers": 71,
+      "rolling_3m_amount": 3402770.1833333336
+    },
+    {
+      "period": "2022-05",
+      "year": 2022,
+      "month": 5,
+      "transaction_count": 107,
+      "total_amount": 4281081.18,
+      "average_amount": 40010.104485981305,
+      "active_customers": 91,
+      "rolling_3m_amount": 3656747.639999999
+    },
+    {
+      "period": "2022-06",
+      "year": 2022,
+      "month": 6,
+      "transaction_count": 78,
+      "total_amount": 3299630.4,
+      "average_amount": 42302.95384615385,
+      "active_customers": 69,
+      "rolling_3m_amount": 3578402.4099999997
+    },
+    {
+      "period": "2022-07",
+      "year": 2022,
+      "month": 7,
+      "transaction_count": 117,
+      "total_amount": 4625769.43,
+      "average_amount": 39536.49085470085,
+      "active_customers": 96,
+      "rolling_3m_amount": 4068827.003333333
+    },
+    {
+      "period": "2022-08",
+      "year": 2022,
+      "month": 8,
+      "transaction_count": 103,
+      "total_amount": 4284133.4,
+      "average_amount": 41593.52815533981,
+      "active_customers": 87,
+      "rolling_3m_amount": 4069844.41
+    },
+    {
+      "period": "2022-09",
+      "year": 2022,
+      "month": 9,
+      "transaction_count": 88,
+      "total_amount": 3759958.37,
+      "average_amount": 42726.79965909091,
+      "active_customers": 71,
+      "rolling_3m_amount": 4223287.066666666
+    },
+    {
+      "period": "2022-10",
+      "year": 2022,
+      "month": 10,
+      "transaction_count": 99,
+      "total_amount": 3200044.07,
+      "average_amount": 32323.677474747474,
+      "active_customers": 81,
+      "rolling_3m_amount": 3748045.28
+    },
+    {
+      "period": "2022-11",
+      "year": 2022,
+      "month": 11,
+      "transaction_count": 102,
+      "total_amount": 3646998.26,
+      "average_amount": 35754.88490196078,
+      "active_customers": 87,
+      "rolling_3m_amount": 3535666.9
+    },
+    {
+      "period": "2022-12",
+      "year": 2022,
+      "month": 12,
+      "transaction_count": 101,
+      "total_amount": 4609732.4,
+      "average_amount": 45640.914851485155,
+      "active_customers": 84,
+      "rolling_3m_amount": 3818924.91
+    },
+    {
+      "period": "2023-01",
+      "year": 2023,
+      "month": 1,
+      "transaction_count": 123,
+      "total_amount": 4949903.25,
+      "average_amount": 40243.115853658535,
+      "active_customers": 104,
+      "rolling_3m_amount": 4402211.303333334
+    },
+    {
+      "period": "2023-02",
+      "year": 2023,
+      "month": 2,
+      "transaction_count": 89,
+      "total_amount": 4029593.79,
+      "average_amount": 45276.33471910113,
+      "active_customers": 74,
+      "rolling_3m_amount": 4529743.1466666665
+    },
+    {
+      "period": "2023-03",
+      "year": 2023,
+      "month": 3,
+      "transaction_count": 68,
+      "total_amount": 2601361.5300000003,
+      "average_amount": 38255.31661764706,
+      "active_customers": 63,
+      "rolling_3m_amount": 3860286.19
+    },
+    {
+      "period": "2023-04",
+      "year": 2023,
+      "month": 4,
+      "transaction_count": 96,
+      "total_amount": 3850195.38,
+      "average_amount": 40106.201875,
+      "active_customers": 81,
+      "rolling_3m_amount": 3493716.9
+    },
+    {
+      "period": "2023-05",
+      "year": 2023,
+      "month": 5,
+      "transaction_count": 121,
+      "total_amount": 5114853.95,
+      "average_amount": 42271.52024793389,
+      "active_customers": 99,
+      "rolling_3m_amount": 3855470.2866666666
+    },
+    {
+      "period": "2023-06",
+      "year": 2023,
+      "month": 6,
+      "transaction_count": 84,
+      "total_amount": 3265793.29,
+      "average_amount": 38878.49154761905,
+      "active_customers": 71,
+      "rolling_3m_amount": 4076947.539999999
+    },
+    {
+      "period": "2023-07",
+      "year": 2023,
+      "month": 7,
+      "transaction_count": 92,
+      "total_amount": 4212508.57,
+      "average_amount": 45788.13663043478,
+      "active_customers": 75,
+      "rolling_3m_amount": 4197718.603333333
+    },
+    {
+      "period": "2023-08",
+      "year": 2023,
+      "month": 8,
+      "transaction_count": 94,
+      "total_amount": 2914905.79,
+      "average_amount": 31009.63606382979,
+      "active_customers": 80,
+      "rolling_3m_amount": 3464402.5499999993
+    },
+    {
+      "period": "2023-09",
+      "year": 2023,
+      "month": 9,
+      "transaction_count": 109,
+      "total_amount": 4537919.18,
+      "average_amount": 41632.28605504587,
+      "active_customers": 92,
+      "rolling_3m_amount": 3888444.513333333
+    },
+    {
+      "period": "2023-10",
+      "year": 2023,
+      "month": 10,
+      "transaction_count": 114,
+      "total_amount": 4667163.99,
+      "average_amount": 40940.035,
+      "active_customers": 94,
+      "rolling_3m_amount": 4039996.32
+    },
+    {
+      "period": "2023-11",
+      "year": 2023,
+      "month": 11,
+      "transaction_count": 109,
+      "total_amount": 4254574.46,
+      "average_amount": 39032.79321100917,
+      "active_customers": 91,
+      "rolling_3m_amount": 4486552.543333333
+    },
+    {
+      "period": "2023-12",
+      "year": 2023,
+      "month": 12,
+      "transaction_count": 100,
+      "total_amount": 3561166.32,
+      "average_amount": 35611.663199999995,
+      "active_customers": 88,
+      "rolling_3m_amount": 4160968.256666666
+    },
+    {
+      "period": "2024-01",
+      "year": 2024,
+      "month": 1,
+      "transaction_count": 86,
+      "total_amount": 3831335.66,
+      "average_amount": 44550.41465116279,
+      "active_customers": 70,
+      "rolling_3m_amount": 3882358.813333333
+    },
+    {
+      "period": "2024-02",
+      "year": 2024,
+      "month": 2,
+      "transaction_count": 85,
+      "total_amount": 3974467.57,
+      "average_amount": 46758.441999999995,
+      "active_customers": 73,
+      "rolling_3m_amount": 3788989.85
+    },
+    {
+      "period": "2024-03",
+      "year": 2024,
+      "month": 3,
+      "transaction_count": 83,
+      "total_amount": 3899536.63,
+      "average_amount": 46982.36903614458,
+      "active_customers": 71,
+      "rolling_3m_amount": 3901779.953333333
+    },
+    {
+      "period": "2024-04",
+      "year": 2024,
+      "month": 4,
+      "transaction_count": 121,
+      "total_amount": 4507689.47,
+      "average_amount": 37253.631983471074,
+      "active_customers": 97,
+      "rolling_3m_amount": 4127231.2233333327
+    },
+    {
+      "period": "2024-05",
+      "year": 2024,
+      "month": 5,
+      "transaction_count": 107,
+      "total_amount": 5276101.85,
+      "average_amount": 49309.36308411215,
+      "active_customers": 87,
+      "rolling_3m_amount": 4561109.3166666655
+    },
+    {
+      "period": "2024-06",
+      "year": 2024,
+      "month": 6,
+      "transaction_count": 119,
+      "total_amount": 4177143.65,
+      "average_amount": 35102.0474789916,
+      "active_customers": 95,
+      "rolling_3m_amount": 4653644.989999999
+    },
+    {
+      "period": "2024-07",
+      "year": 2024,
+      "month": 7,
+      "transaction_count": 123,
+      "total_amount": 5380761.08,
+      "average_amount": 43746.025040650406,
+      "active_customers": 100,
+      "rolling_3m_amount": 4944668.86
+    },
+    {
+      "period": "2024-08",
+      "year": 2024,
+      "month": 8,
+      "transaction_count": 97,
+      "total_amount": 3951301.24,
+      "average_amount": 40735.06432989691,
+      "active_customers": 84,
+      "rolling_3m_amount": 4503068.656666667
+    },
+    {
+      "period": "2024-09",
+      "year": 2024,
+      "month": 9,
+      "transaction_count": 78,
+      "total_amount": 2973454.93,
+      "average_amount": 38121.21705128205,
+      "active_customers": 66,
+      "rolling_3m_amount": 4101839.0833333335
+    },
+    {
+      "period": "2024-10",
+      "year": 2024,
+      "month": 10,
+      "transaction_count": 110,
+      "total_amount": 4324011.03,
+      "average_amount": 39309.19118181818,
+      "active_customers": 95,
+      "rolling_3m_amount": 3749589.0666666664
+    },
+    {
+      "period": "2024-11",
+      "year": 2024,
+      "month": 11,
+      "transaction_count": 100,
+      "total_amount": 4639618.42,
+      "average_amount": 46396.1842,
+      "active_customers": 90,
+      "rolling_3m_amount": 3979028.1266666665
+    },
+    {
+      "period": "2024-12",
+      "year": 2024,
+      "month": 12,
+      "transaction_count": 99,
+      "total_amount": 4109666.64,
+      "average_amount": 41511.78424242424,
+      "active_customers": 85,
+      "rolling_3m_amount": 4357765.363333333
+    },
+    {
+      "period": "2025-01",
+      "year": 2025,
+      "month": 1,
+      "transaction_count": 108,
+      "total_amount": 4338252.47,
+      "average_amount": 40169.00435185185,
+      "active_customers": 85,
+      "rolling_3m_amount": 4362512.51
+    },
+    {
+      "period": "2025-02",
+      "year": 2025,
+      "month": 2,
+      "transaction_count": 78,
+      "total_amount": 2558827.83,
+      "average_amount": 32805.485,
+      "active_customers": 68,
+      "rolling_3m_amount": 3668915.6466666665
+    },
+    {
+      "period": "2025-03",
+      "year": 2025,
+      "month": 3,
+      "transaction_count": 97,
+      "total_amount": 3876856.22,
+      "average_amount": 39967.589896907215,
+      "active_customers": 85,
+      "rolling_3m_amount": 3591312.173333334
+    },
+    {
+      "period": "2025-04",
+      "year": 2025,
+      "month": 4,
+      "transaction_count": 95,
+      "total_amount": 3668678.5,
+      "average_amount": 38617.66842105263,
+      "active_customers": 78,
+      "rolling_3m_amount": 3368120.85
+    },
+    {
+      "period": "2025-05",
+      "year": 2025,
+      "month": 5,
+      "transaction_count": 109,
+      "total_amount": 4685010.18,
+      "average_amount": 42981.7447706422,
+      "active_customers": 91,
+      "rolling_3m_amount": 4076848.3
+    },
+    {
+      "period": "2025-06",
+      "year": 2025,
+      "month": 6,
+      "transaction_count": 104,
+      "total_amount": 3753258.22,
+      "average_amount": 36089.02134615385,
+      "active_customers": 84,
+      "rolling_3m_amount": 4035648.966666667
+    },
+    {
+      "period": "2025-07",
+      "year": 2025,
+      "month": 7,
+      "transaction_count": 92,
+      "total_amount": 3152560.81,
+      "average_amount": 34266.96532608696,
+      "active_customers": 73,
+      "rolling_3m_amount": 3863609.736666667
+    },
+    {
+      "period": "2025-08",
+      "year": 2025,
+      "month": 8,
+      "transaction_count": 109,
+      "total_amount": 4621864.46,
+      "average_amount": 42402.42623853211,
+      "active_customers": 90,
+      "rolling_3m_amount": 3842561.1633333336
+    },
+    {
+      "period": "2025-09",
+      "year": 2025,
+      "month": 9,
+      "transaction_count": 88,
+      "total_amount": 3769338.9,
+      "average_amount": 42833.39659090909,
+      "active_customers": 78,
+      "rolling_3m_amount": 3847921.39
+    },
+    {
+      "period": "2025-10",
+      "year": 2025,
+      "month": 10,
+      "transaction_count": 86,
+      "total_amount": 3510146.0,
+      "average_amount": 40815.651162790695,
+      "active_customers": 75,
+      "rolling_3m_amount": 3967116.453333333
+    }
+  ],
+  "pattern": [
+    {
+      "month": 1,
+      "avg_total_amount": 1642148.5288709735,
+      "avg_transaction_count": 53.27272727272727
+    },
+    {
+      "month": 2,
+      "avg_total_amount": 1421013.220556693,
+      "avg_transaction_count": 45.81818181818182
+    },
+    {
+      "month": 3,
+      "avg_total_amount": 1401783.7099742617,
+      "avg_transaction_count": 44.27272727272727
+    },
+    {
+      "month": 4,
+      "avg_total_amount": 1530520.0792128553,
+      "avg_transaction_count": 51.45454545454545
+    },
+    {
+      "month": 5,
+      "avg_total_amount": 1920763.0925731435,
+      "avg_transaction_count": 56.0
+    },
+    {
+      "month": 6,
+      "avg_total_amount": 1456863.337123122,
+      "avg_transaction_count": 49.36363636363637
+    },
+    {
+      "month": 7,
+      "avg_total_amount": 1744171.7503942235,
+      "avg_transaction_count": 53.90909090909091
+    },
+    {
+      "month": 8,
+      "avg_total_amount": 1592990.3808434496,
+      "avg_transaction_count": 53.27272727272727
+    },
+    {
+      "month": 9,
+      "avg_total_amount": 1545992.5235149427,
+      "avg_transaction_count": 49.18181818181818
+    },
+    {
+      "month": 10,
+      "avg_total_amount": 1585710.3223230408,
+      "avg_transaction_count": 50.90909090909091
+    },
+    {
+      "month": 11,
+      "avg_total_amount": 1422741.8640081468,
+      "avg_transaction_count": 48.4
+    },
+    {
+      "month": 12,
+      "avg_total_amount": 1391414.3732952955,
+      "avg_transaction_count": 45.8
+    }
+  ]
+}

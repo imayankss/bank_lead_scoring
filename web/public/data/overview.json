@@ -1,0 +1,191 @@
+{
+  "project": {
+    "name": "Lead Scoring Intelligence Platform",
+    "description": "AI-powered customer prioritization platform with CLTV, propensity, risk signals, scenario analysis, and model diagnostics.",
+    "domain": "Banking analytics"
+  },
+  "kpis": {
+    "customers": 500,
+    "features": 29,
+    "models_trained": 2,
+    "best_model": "Expected Value Ranker",
+    "best_rmse": 145270.415282306,
+    "forecast_confidence": 62.51704347613334,
+    "total_expected_value": 27819548.32390573
+  },
+  "lead_categories": {
+    "Medium": 200,
+    "Hot": 153,
+    "Cold": 147
+  },
+  "top_leads": [
+    {
+      "customer_id": "CUST000066",
+      "predicted_cltv": 931842.9034741488,
+      "predicted_propensity": 0.9999511508793656,
+      "expected_value": 931797.3837677444,
+      "lead_score": 100,
+      "lead_category": "Hot"
+    },
+    {
+      "customer_id": "CUST000158",
+      "predicted_cltv": 709066.7835863307,
+      "predicted_propensity": 0.9995174232209538,
+      "expected_value": 708724.604421779,
+      "lead_score": 100,
+      "lead_category": "Hot"
+    },
+    {
+      "customer_id": "CUST000393",
+      "predicted_cltv": 891928.4939481103,
+      "predicted_propensity": 0.9997783122833398,
+      "expected_value": 891730.7643568628,
+      "lead_score": 100,
+      "lead_category": "Hot"
+    },
+    {
+      "customer_id": "CUST000219",
+      "predicted_cltv": 570392.0018922553,
+      "predicted_propensity": 0.9997652815464224,
+      "expected_value": 570258.120363638,
+      "lead_score": 99,
+      "lead_category": "Hot"
+    },
+    {
+      "customer_id": "CUST000353",
+      "predicted_cltv": 554289.5901576999,
+      "predicted_propensity": 0.9993806028697084,
+      "expected_value": 553946.2647762056,
+      "lead_score": 99,
+      "lead_category": "Hot"
+    },
+    {
+      "customer_id": "CUST000435",
+      "predicted_cltv": 702289.0756206997,
+      "predicted_propensity": 0.9999392499416728,
+      "expected_value": 702246.4115183932,
+      "lead_score": 99,
+      "lead_category": "Hot"
+    },
+    {
+      "customer_id": "CUST000327",
+      "predicted_cltv": 621795.3635461254,
+      "predicted_propensity": 0.9997410397842053,
+      "expected_value": 621634.3432846012,
+      "lead_score": 99,
+      "lead_category": "Hot"
+    },
+    {
+      "customer_id": "CUST000479",
+      "predicted_cltv": 555699.1311692947,
+      "predicted_propensity": 0.9988501994246444,
+      "expected_value": 555060.1879885517,
+      "lead_score": 99,
+      "lead_category": "Hot"
+    },
+    {
+      "customer_id": "CUST000215",
+      "predicted_cltv": 471918.9719596504,
+      "predicted_propensity": 0.9998310707261864,
+      "expected_value": 471839.2510304183,
+      "lead_score": 98,
+      "lead_category": "Hot"
+    },
+    {
+      "customer_id": "CUST000212",
+      "predicted_cltv": 458732.0384893743,
+      "predicted_propensity": 0.9942908887331414,
+      "expected_value": 456113.0862399656,
+      "lead_score": 98,
+      "lead_category": "Hot"
+    },
+    {
+      "customer_id": "CUST000290",
+      "predicted_cltv": 511508.6100105751,
+      "predicted_propensity": 0.998058009603882,
+      "expected_value": 510515.2652024029,
+      "lead_score": 98,
+      "lead_category": "Hot"
+    },
+    {
+      "customer_id": "CUST000401",
+      "predicted_cltv": 475543.9648195029,
+      "predicted_propensity": 0.9990250107425468,
+      "expected_value": 475080.3145623572,
+      "lead_score": 98,
+      "lead_category": "Hot"
+    }
+  ],
+  "decile_lift": [
+    {
+      "decile": 9,
+      "n": 10,
+      "mean_expected_value": 392596.1253572299,
+      "conversion_rate": 1.0,
+      "actual_revenue": 2451387.18
+    },
+    {
+      "decile": 8,
+      "n": 10,
+      "mean_expected_value": 126708.10602545424,
+      "conversion_rate": 1.0,
+      "actual_revenue": 2181113.15
+    },
+    {
+      "decile": 7,
+      "n": 10,
+      "mean_expected_value": 51858.56641853543,
+      "conversion_rate": 1.0,
+      "actual_revenue": 1867660.44
+    },
+    {
+      "decile": 6,
+      "n": 10,
+      "mean_expected_value": 28404.89846375952,
+      "conversion_rate": 0.7,
+      "actual_revenue": 744874.63
+    },
+    {
+      "decile": 5,
+      "n": 10,
+      "mean_expected_value": 18293.84021427355,
+      "conversion_rate": 1.0,
+      "actual_revenue": 1408407.55
+    },
+    {
+      "decile": 4,
+      "n": 10,
+      "mean_expected_value": 7938.008299891732,
+      "conversion_rate": 0.7,
+      "actual_revenue": 781385.77
+    },
+    {
+      "decile": 3,
+      "n": 10,
+      "mean_expected_value": 2640.06027521534,
+      "conversion_rate": 0.6,
+      "actual_revenue": 484562.09
+    },
+    {
+      "decile": 2,
+      "n": 10,
+      "mean_expected_value": 222.56596435394445,
+      "conversion_rate": 0.6,
+      "actual_revenue": 425325.72
+    },
+    {
+      "decile": 1,
+      "n": 10,
+      "mean_expected_value": 0.0001393683566106,
+      "conversion_rate": 0.0,
+      "actual_revenue": 0.0
+    },
+    {
+      "decile": 0,
+      "n": 10,
+      "mean_expected_value": 0.0,
+      "conversion_rate": 0.0,
+      "actual_revenue": 0.0
+    }
+  ]
+}
