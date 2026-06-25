@@ -1,0 +1,14 @@
+models:
+  cltv:
+    id: "hist_gradient_boosting_cltv"
+    estimator: "HistGradientBoostingRegressor"
+    target: "future_revenue_12m"
+  propensity:
+    id: "hist_gradient_boosting_propensity"
+    estimator: "HistGradientBoostingClassifier"
+    target: "converted_12m"
+
+baselines:
+  - "mean_value_baseline"
+  - "propensity_rank_baseline"
+  - "cltv_rank_baseline"

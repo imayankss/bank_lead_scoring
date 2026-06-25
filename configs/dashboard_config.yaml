@@ -1,0 +1,14 @@
+dashboard:
+  title: "Lead Scoring Intelligence"
+  subtitle: "AI-powered customer prioritization, CLTV, risk, and product opportunity analytics."
+  theme: "premium-dark-command-center"
+
+pages:
+  - overview
+  - forecast
+  - models
+  - risk
+  - diagnostics
+  - seasonality
+  - scenario
+  - methodology

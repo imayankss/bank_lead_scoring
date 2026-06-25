@@ -1,0 +1,10 @@
+scenarios:
+  optimistic:
+    expected_value_multiplier: 1.18
+    confidence_delta: 6
+  base:
+    expected_value_multiplier: 1.0
+    confidence_delta: 0
+  pessimistic:
+    expected_value_multiplier: 0.78
+    confidence_delta: -10

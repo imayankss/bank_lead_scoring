@@ -1,0 +1,10 @@
+project:
+  name: "Lead Scoring Intelligence Platform"
+  domain: "Banking customer analytics"
+  target: "12 month customer value and conversion propensity"
+
+pipeline:
+  lookback_days: 365
+  target_horizon_days: 365
+  test_size: 0.2
+  random_state: 42
