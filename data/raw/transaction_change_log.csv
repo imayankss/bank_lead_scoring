@@ -1,0 +1,401 @@
+Change_ID,Transaction_ID,Changed_By,Change_Type,Old_Value,New_Value,Change_Timestamp,Reason
+CHG00000001,TXN000004240,System,Amount Correction,8468.06,8507.934599577527,2022-09-05 18:11:05,Manual review
+CHG00000002,TXN000002361,System,Merchant Update,Education,Travel,2022-12-04 09:55:59,Customer dispute
+CHG00000003,TXN000000814,System,Amount Correction,4448.07,4612.7227443435395,2022-04-23 02:33:29,Manual review
+CHG00000004,TXN000000856,System,Merchant Update,Travel,Groceries,2024-12-28 11:05:05,Bank correction
+CHG00000005,TXN000002066,System,Merchant Update,Travel,Healthcare,2025-09-17 23:34:53,Customer dispute
+CHG00000006,TXN000000682,Ops_User_2,Channel Update,ATM,Branch,2022-12-06 15:40:48,Customer dispute
+CHG00000007,TXN000001965,Ops_User_25,Status Update,Completed,Completed,2022-07-22 09:29:51,Manual review
+CHG00000008,TXN000004313,System,Merchant Update,Groceries,Salary,2022-01-16 01:02:45,Chargeback
+CHG00000009,TXN000000074,System,Status Update,Completed,Completed,2025-10-28 08:16:36,Customer dispute
+CHG00000010,TXN000004919,System,Amount Correction,69388.98,73856.21872722529,2022-12-17 07:20:32,Manual review
+CHG00000011,TXN000000730,System,Amount Correction,77773.77,78962.29340788201,2024-04-23 20:39:29,Customer dispute
+CHG00000012,TXN000002753,System,Merchant Update,Dining,Groceries,2025-08-14 07:36:41,Chargeback
+CHG00000013,TXN000003524,Ops_User_39,Channel Update,POS,ATM,2022-01-08 14:07:59,Customer dispute
+CHG00000014,TXN000002267,Ops_User_25,Reversal,Completed,Reversed,2022-05-08 22:47:56,Bank correction
+CHG00000015,TXN000000456,Ops_User_30,Status Update,Completed,Completed,2022-08-10 20:55:34,Manual review
+CHG00000016,TXN000003483,System,Reversal,Completed,Reversed,2024-12-17 08:47:33,Chargeback
+CHG00000017,TXN000003711,System,Status Update,Completed,Completed,2024-12-07 17:06:56,Duplicate txn
+CHG00000018,TXN000004835,System,Amount Correction,4592.57,4526.780020865956,2022-06-24 00:58:01,Manual review
+CHG00000019,TXN000001495,System,Merchant Update,Travel,Salary,2022-02-25 09:46:28,Duplicate txn
+CHG00000020,TXN000003320,System,Channel Update,ATM,POS,2024-01-24 23:08:34,Bank correction
+CHG00000021,TXN000000489,Ops_User_5,Reversal,Completed,Reversed,2022-06-06 02:43:03,Bank correction
+CHG00000022,TXN000000990,Ops_User_2,Amount Correction,51615.29,50162.43793492684,2023-11-20 09:05:14,Bank correction
+CHG00000023,TXN000001346,System,Channel Update,Online,Branch,2024-01-13 04:08:27,Duplicate txn
+CHG00000024,TXN000003182,Ops_User_22,Amount Correction,9424.53,9859.774509995475,2023-10-07 11:35:36,Duplicate txn
+CHG00000025,TXN000002341,Ops_User_15,Channel Update,Online,ATM,2022-12-16 23:20:14,Chargeback
+CHG00000026,TXN000000903,Ops_User_31,Reversal,Completed,Reversed,2022-11-08 15:22:54,Bank correction
+CHG00000027,TXN000002455,System,Channel Update,Online,POS,2024-12-27 09:44:18,Customer dispute
+CHG00000028,TXN000003103,Ops_User_7,Channel Update,POS,Branch,2022-08-08 23:42:45,Manual review
+CHG00000029,TXN000001652,Ops_User_6,Status Update,Completed,Completed,2023-10-31 19:07:16,Chargeback
+CHG00000030,TXN000002179,Ops_User_18,Status Update,Completed,Failed,2023-07-18 11:17:32,Customer dispute
+CHG00000031,TXN000003561,Ops_User_15,Status Update,Completed,Completed,2025-04-08 21:10:37,Duplicate txn
+CHG00000032,TXN000000868,Ops_User_33,Reversal,Completed,Reversed,2023-08-27 12:42:22,Duplicate txn
+CHG00000033,TXN000001402,System,Status Update,Completed,Completed,2025-03-30 22:23:20,Chargeback
+CHG00000034,TXN000000934,System,Amount Correction,67141.34,70635.0737996131,2022-05-28 10:57:37,Manual review
+CHG00000035,TXN000003005,System,Status Update,Completed,Completed,2023-09-23 15:34:26,Customer dispute
+CHG00000036,TXN000002758,Ops_User_32,Status Update,Completed,Completed,2022-02-20 05:51:44,Manual review
+CHG00000037,TXN000001122,System,Status Update,Completed,Completed,2023-08-29 15:53:18,Manual review
+CHG00000038,TXN000001431,Ops_User_2,Reversal,Completed,Reversed,2023-09-16 07:22:26,Customer dispute
+CHG00000039,TXN000004759,Ops_User_10,Amount Correction,125093.85,119169.80794142322,2022-11-01 21:48:54,Chargeback
+CHG00000040,TXN000003552,Ops_User_28,Reversal,Completed,Reversed,2025-05-03 19:24:32,Bank correction
+CHG00000041,TXN000002111,Ops_User_17,Status Update,Completed,Failed,2022-05-05 19:01:21,Customer dispute
+CHG00000042,TXN000003089,Ops_User_15,Merchant Update,Fuel,E-commerce,2024-01-28 21:43:25,Manual review
+CHG00000043,TXN000004706,Ops_User_17,Status Update,Completed,Completed,2025-05-04 18:11:22,Bank correction
+CHG00000044,TXN000004602,Ops_User_38,Merchant Update,Salary,Utilities,2023-04-04 22:35:10,Duplicate txn
+CHG00000045,TXN000000663,Ops_User_24,Reversal,Completed,Reversed,2023-07-06 16:13:09,Customer dispute
+CHG00000046,TXN000002415,System,Status Update,Completed,Completed,2024-09-02 18:21:45,Chargeback
+CHG00000047,TXN000000267,Ops_User_20,Merchant Update,Groceries,Healthcare,2022-11-01 03:55:46,Duplicate txn
+CHG00000048,TXN000003271,Ops_User_9,Reversal,Completed,Reversed,2024-12-04 15:47:44,Bank correction
+CHG00000049,TXN000004440,System,Amount Correction,3398.88,3656.895554832971,2022-03-01 01:31:46,Chargeback
+CHG00000050,TXN000003519,Ops_User_17,Channel Update,POS,Online,2022-03-30 01:25:35,Chargeback
+CHG00000051,TXN000000024,System,Merchant Update,Education,Travel,2022-08-23 08:47:16,Bank correction
+CHG00000052,TXN000003131,Ops_User_8,Merchant Update,Education,Travel,2022-04-03 00:56:48,Manual review
+CHG00000053,TXN000000926,System,Amount Correction,56933.62,57906.927362651775,2023-06-06 09:02:55,Duplicate txn
+CHG00000054,TXN000000624,System,Amount Correction,5522.58,5479.578576122738,2023-01-31 12:23:30,Customer dispute
+CHG00000055,TXN000004819,System,Amount Correction,137316.22,138868.83145019383,2024-06-13 18:44:54,Duplicate txn
+CHG00000056,TXN000004399,Ops_User_32,Status Update,Completed,Failed,2023-02-18 01:35:57,Customer dispute
+CHG00000057,TXN000003899,System,Amount Correction,381.55,369.0389359440039,2023-06-30 06:03:15,Chargeback
+CHG00000058,TXN000003896,System,Amount Correction,106563.01,98512.14070967337,2023-11-24 05:35:43,Bank correction
+CHG00000059,TXN000001553,Ops_User_40,Amount Correction,5163.5,4962.20644609458,2024-08-18 17:00:12,Customer dispute
+CHG00000060,TXN000001833,Ops_User_38,Channel Update,Online,Branch,2024-10-09 10:00:57,Duplicate txn
+CHG00000061,TXN000001713,System,Status Update,Completed,Completed,2025-04-28 22:14:15,Manual review
+CHG00000062,TXN000000920,Ops_User_27,Reversal,Completed,Reversed,2023-08-08 03:10:46,Duplicate txn
+CHG00000063,TXN000003137,System,Reversal,Completed,Reversed,2023-05-30 00:37:02,Customer dispute
+CHG00000064,TXN000000782,System,Reversal,Completed,Reversed,2024-10-04 19:56:36,Duplicate txn
+CHG00000065,TXN000002806,Ops_User_23,Channel Update,POS,Online,2025-10-03 08:40:52,Customer dispute
+CHG00000066,TXN000002976,Ops_User_33,Channel Update,Online,Branch,2022-07-06 02:41:32,Customer dispute
+CHG00000067,TXN000003721,System,Reversal,Pending,Reversed,2023-01-25 17:38:39,Bank correction
+CHG00000068,TXN000000074,Ops_User_21,Amount Correction,69119.92,69857.70837996212,2022-08-07 23:11:34,Customer dispute
+CHG00000069,TXN000000516,System,Channel Update,ATM,Mobile App,2024-04-13 18:28:05,Customer dispute
+CHG00000070,TXN000001971,System,Channel Update,Branch,ATM,2024-04-03 10:56:27,Bank correction
+CHG00000071,TXN000003030,System,Status Update,Completed,Completed,2022-01-24 11:26:57,Manual review
+CHG00000072,TXN000001042,System,Status Update,Completed,Completed,2025-06-15 04:09:54,Customer dispute
+CHG00000073,TXN000003415,System,Channel Update,Mobile App,Branch,2025-02-19 20:32:30,Manual review
+CHG00000074,TXN000004915,System,Merchant Update,Salary,Education,2024-12-17 06:43:34,Customer dispute
+CHG00000075,TXN000002621,Ops_User_2,Status Update,Completed,Completed,2022-01-20 17:33:42,Manual review
+CHG00000076,TXN000004257,Ops_User_3,Channel Update,Online,Mobile App,2024-01-24 11:27:08,Duplicate txn
+CHG00000077,TXN000004406,Ops_User_23,Reversal,Completed,Reversed,2022-02-08 01:23:09,Manual review
+CHG00000078,TXN000002050,System,Status Update,Completed,Completed,2024-03-03 00:00:57,Manual review
+CHG00000079,TXN000000585,Ops_User_36,Merchant Update,Fuel,Entertainment,2023-01-17 15:43:58,Customer dispute
+CHG00000080,TXN000001069,Ops_User_24,Reversal,Completed,Reversed,2024-02-09 11:34:35,Manual review
+CHG00000081,TXN000001396,System,Channel Update,Online,Mobile App,2024-05-24 21:28:31,Manual review
+CHG00000082,TXN000002178,Ops_User_11,Merchant Update,Fuel,Entertainment,2022-12-06 08:02:11,Bank correction
+CHG00000083,TXN000001128,System,Amount Correction,10777.04,9902.821713801437,2022-10-24 04:08:22,Chargeback
+CHG00000084,TXN000004666,Ops_User_21,Status Update,Pending,Reversed,2023-09-22 22:07:27,Duplicate txn
+CHG00000085,TXN000000113,System,Status Update,Completed,Completed,2024-11-30 11:08:57,Bank correction
+CHG00000086,TXN000000323,Ops_User_29,Status Update,Completed,Completed,2024-03-16 05:59:13,Bank correction
+CHG00000087,TXN000001344,System,Channel Update,POS,Mobile App,2024-09-22 15:59:38,Manual review
+CHG00000088,TXN000000656,System,Reversal,Completed,Reversed,2024-01-02 08:22:12,Customer dispute
+CHG00000089,TXN000004211,System,Reversal,Completed,Reversed,2023-10-27 12:02:53,Bank correction
+CHG00000090,TXN000003565,System,Amount Correction,50328.99,49494.538271373385,2024-04-09 17:10:04,Customer dispute
+CHG00000091,TXN000002754,Ops_User_34,Status Update,Completed,Reversed,2022-10-27 11:17:42,Duplicate txn
+CHG00000092,TXN000002709,System,Reversal,Completed,Reversed,2025-06-04 04:51:06,Manual review
+CHG00000093,TXN000000984,System,Amount Correction,4919.38,4560.446683817669,2022-04-12 13:31:33,Customer dispute
+CHG00000094,TXN000001745,Ops_User_30,Reversal,Completed,Reversed,2025-10-25 03:36:21,Bank correction
+CHG00000095,TXN000002507,Ops_User_17,Amount Correction,2182.13,2197.4938737119,2024-04-16 19:21:35,Manual review
+CHG00000096,TXN000004402,Ops_User_23,Amount Correction,1357.64,1400.054560110526,2022-07-08 00:46:25,Duplicate txn
+CHG00000097,TXN000003915,Ops_User_23,Reversal,Completed,Reversed,2025-09-14 18:34:36,Duplicate txn
+CHG00000098,TXN000003749,System,Amount Correction,2125.42,2150.670945290147,2025-04-24 06:20:30,Manual review
+CHG00000099,TXN000003836,System,Reversal,Completed,Reversed,2023-09-21 09:47:01,Manual review
+CHG00000100,TXN000002487,Ops_User_1,Status Update,Completed,Failed,2022-12-14 08:09:11,Chargeback
+CHG00000101,TXN000004626,Ops_User_20,Status Update,Completed,Reversed,2024-01-07 05:06:40,Chargeback
+CHG00000102,TXN000004077,Ops_User_26,Status Update,Completed,Completed,2023-11-05 12:37:53,Customer dispute
+CHG00000103,TXN000004828,System,Status Update,Pending,Pending,2024-02-29 13:08:06,Chargeback
+CHG00000104,TXN000000385,Ops_User_19,Amount Correction,57827.91,59069.62275926186,2023-09-17 17:07:00,Bank correction
+CHG00000105,TXN000003071,System,Amount Correction,2390.72,2381.1186563537785,2023-12-27 21:46:29,Bank correction
+CHG00000106,TXN000002263,Ops_User_35,Merchant Update,Groceries,Utilities,2022-12-04 22:06:26,Manual review
+CHG00000107,TXN000004247,System,Status Update,Failed,Failed,2024-12-07 04:11:29,Customer dispute
+CHG00000108,TXN000002347,System,Amount Correction,4852.45,5186.100090418199,2025-03-31 10:57:19,Bank correction
+CHG00000109,TXN000003198,System,Amount Correction,58152.05,54422.458568718816,2023-04-20 14:56:24,Duplicate txn
+CHG00000110,TXN000001707,System,Amount Correction,5132.68,5314.276797426793,2023-03-07 14:10:29,Chargeback
+CHG00000111,TXN000000159,Ops_User_26,Status Update,Completed,Failed,2024-02-01 07:37:35,Manual review
+CHG00000112,TXN000002299,System,Amount Correction,60242.42,56850.32426859803,2024-05-21 06:32:56,Manual review
+CHG00000113,TXN000003199,System,Status Update,Completed,Completed,2025-02-05 00:02:03,Manual review
+CHG00000114,TXN000000124,System,Amount Correction,67521.15,69183.70200870272,2024-05-17 05:39:22,Customer dispute
+CHG00000115,TXN000002608,System,Amount Correction,131481.08,120316.37631348144,2023-07-22 01:48:50,Chargeback
+CHG00000116,TXN000004354,System,Status Update,Completed,Completed,2022-11-07 20:10:42,Manual review
+CHG00000117,TXN000001991,System,Merchant Update,Entertainment,Groceries,2024-02-22 09:43:31,Duplicate txn
+CHG00000118,TXN000000954,Ops_User_30,Merchant Update,Travel,Dining,2022-01-21 17:19:35,Bank correction
+CHG00000119,TXN000002828,System,Reversal,Completed,Reversed,2024-01-04 08:18:11,Bank correction
+CHG00000120,TXN000002856,System,Reversal,Completed,Reversed,2022-01-06 21:41:57,Duplicate txn
+CHG00000121,TXN000000871,System,Amount Correction,3359.2,3617.9362224700835,2023-10-11 11:37:13,Manual review
+CHG00000122,TXN000002324,System,Amount Correction,64722.19,66621.91136631189,2023-11-22 02:04:40,Chargeback
+CHG00000123,TXN000004927,System,Channel Update,ATM,POS,2025-03-21 16:46:31,Customer dispute
+CHG00000124,TXN000003953,Ops_User_12,Amount Correction,85550.22,79858.02381825968,2024-09-30 21:52:15,Chargeback
+CHG00000125,TXN000002086,Ops_User_16,Merchant Update,Salary,Healthcare,2023-01-16 17:28:56,Manual review
+CHG00000126,TXN000002206,System,Amount Correction,25619.52,24834.439131747742,2022-03-08 09:22:14,Manual review
+CHG00000127,TXN000002078,Ops_User_33,Reversal,Completed,Reversed,2022-06-03 23:56:37,Customer dispute
+CHG00000128,TXN000002544,System,Amount Correction,3824.04,3767.577979242331,2025-06-24 02:16:23,Manual review
+CHG00000129,TXN000001031,Ops_User_5,Status Update,Completed,Completed,2023-08-23 04:32:03,Manual review
+CHG00000130,TXN000001891,System,Status Update,Completed,Failed,2025-08-11 12:07:26,Bank correction
+CHG00000131,TXN000003668,Ops_User_17,Status Update,Completed,Completed,2023-11-11 16:02:57,Customer dispute
+CHG00000132,TXN000004493,System,Amount Correction,97837.83,96433.68870753767,2025-03-22 09:29:42,Manual review
+CHG00000133,TXN000002168,Ops_User_20,Channel Update,POS,Mobile App,2023-09-18 13:32:09,Bank correction
+CHG00000134,TXN000000133,Ops_User_36,Merchant Update,E-commerce,Dining,2024-12-27 12:09:11,Customer dispute
+CHG00000135,TXN000000141,Ops_User_9,Amount Correction,20324.85,20073.78421110112,2023-12-15 07:54:59,Manual review
+CHG00000136,TXN000003273,Ops_User_40,Merchant Update,Dining,Entertainment,2024-09-22 04:07:17,Customer dispute
+CHG00000137,TXN000004780,System,Merchant Update,Entertainment,Dining,2023-10-25 18:25:28,Duplicate txn
+CHG00000138,TXN000002498,Ops_User_5,Reversal,Completed,Reversed,2024-07-11 05:22:49,Chargeback
+CHG00000139,TXN000003866,Ops_User_27,Amount Correction,74028.54,83716.74205878597,2025-01-05 09:45:38,Bank correction
+CHG00000140,TXN000000398,System,Merchant Update,Utilities,Healthcare,2025-08-29 22:43:47,Chargeback
+CHG00000141,TXN000003070,Ops_User_22,Amount Correction,9230.5,9319.556724843298,2023-12-05 12:50:21,Manual review
+CHG00000142,TXN000002767,System,Channel Update,Branch,POS,2024-12-04 18:12:47,Chargeback
+CHG00000143,TXN000002154,System,Reversal,Completed,Reversed,2023-10-06 02:58:59,Customer dispute
+CHG00000144,TXN000000275,Ops_User_29,Channel Update,ATM,Branch,2023-04-30 18:14:28,Chargeback
+CHG00000145,TXN000001199,Ops_User_13,Amount Correction,5516.24,5884.314226769633,2022-02-28 07:16:44,Duplicate txn
+CHG00000146,TXN000003942,System,Reversal,Completed,Reversed,2022-10-11 08:55:43,Duplicate txn
+CHG00000147,TXN000004141,System,Merchant Update,E-commerce,Fuel,2022-07-07 06:08:33,Manual review
+CHG00000148,TXN000003256,Ops_User_40,Amount Correction,4749.14,5023.923497082357,2025-05-11 10:03:02,Chargeback
+CHG00000149,TXN000003328,System,Status Update,Completed,Completed,2025-01-28 13:59:50,Customer dispute
+CHG00000150,TXN000001369,System,Merchant Update,Travel,Education,2024-07-04 03:14:23,Duplicate txn
+CHG00000151,TXN000003232,System,Channel Update,POS,ATM,2024-02-02 12:05:35,Duplicate txn
+CHG00000152,TXN000003385,System,Amount Correction,55886.41,53823.3810947031,2024-03-07 03:39:51,Manual review
+CHG00000153,TXN000004802,Ops_User_1,Status Update,Completed,Completed,2025-04-21 13:25:56,Customer dispute
+CHG00000154,TXN000002807,Ops_User_1,Channel Update,POS,Mobile App,2025-08-10 06:20:31,Chargeback
+CHG00000155,TXN000000736,System,Amount Correction,3241.32,3212.3951334386693,2022-07-18 16:38:49,Chargeback
+CHG00000156,TXN000002872,Ops_User_31,Amount Correction,80035.46,73507.25087109546,2024-07-02 12:12:02,Duplicate txn
+CHG00000157,TXN000000696,Ops_User_5,Status Update,Completed,Failed,2023-08-04 04:21:04,Manual review
+CHG00000158,TXN000002880,Ops_User_31,Reversal,Completed,Reversed,2024-03-21 00:12:54,Manual review
+CHG00000159,TXN000001817,System,Amount Correction,7681.1,8647.486225300912,2022-01-17 16:59:31,Manual review
+CHG00000160,TXN000001723,Ops_User_22,Status Update,Completed,Completed,2022-04-03 03:33:43,Duplicate txn
+CHG00000161,TXN000000918,Ops_User_34,Merchant Update,Salary,Travel,2022-06-29 21:15:15,Customer dispute
+CHG00000162,TXN000002706,Ops_User_2,Status Update,Completed,Completed,2023-08-13 13:50:07,Customer dispute
+CHG00000163,TXN000002976,System,Status Update,Completed,Completed,2022-05-04 04:00:45,Manual review
+CHG00000164,TXN000003089,Ops_User_11,Status Update,Completed,Completed,2023-03-30 09:44:42,Duplicate txn
+CHG00000165,TXN000000514,System,Merchant Update,Education,Utilities,2023-04-01 16:56:43,Bank correction
+CHG00000166,TXN000004513,Ops_User_22,Merchant Update,Fuel,Education,2023-06-01 08:45:44,Duplicate txn
+CHG00000167,TXN000002999,System,Status Update,Completed,Pending,2023-02-21 19:45:44,Bank correction
+CHG00000168,TXN000002917,System,Reversal,Completed,Reversed,2025-09-15 03:57:38,Chargeback
+CHG00000169,TXN000001781,Ops_User_39,Reversal,Completed,Reversed,2024-07-03 00:36:15,Manual review
+CHG00000170,TXN000003732,System,Status Update,Completed,Completed,2024-03-09 07:20:17,Manual review
+CHG00000171,TXN000001570,System,Channel Update,Online,ATM,2023-03-26 03:24:09,Customer dispute
+CHG00000172,TXN000004322,Ops_User_20,Amount Correction,77629.51,83167.95308126368,2023-02-09 01:16:11,Duplicate txn
+CHG00000173,TXN000002979,System,Merchant Update,Fuel,Utilities,2025-09-08 04:24:03,Manual review
+CHG00000174,TXN000004980,System,Amount Correction,100775.54,93758.38827656241,2025-09-27 17:58:38,Customer dispute
+CHG00000175,TXN000004783,System,Reversal,Completed,Reversed,2022-04-19 23:34:42,Bank correction
+CHG00000176,TXN000003627,Ops_User_18,Amount Correction,60663.86,59003.16950705992,2023-05-29 04:40:18,Manual review
+CHG00000177,TXN000004873,Ops_User_3,Channel Update,Branch,ATM,2022-10-16 05:23:21,Duplicate txn
+CHG00000178,TXN000001752,System,Channel Update,Online,Mobile App,2022-03-31 04:04:14,Manual review
+CHG00000179,TXN000004116,System,Merchant Update,E-commerce,Healthcare,2023-11-18 17:12:28,Customer dispute
+CHG00000180,TXN000004144,System,Reversal,Completed,Reversed,2023-03-19 10:47:43,Customer dispute
+CHG00000181,TXN000000370,Ops_User_31,Merchant Update,Dining,Education,2024-01-26 22:10:17,Chargeback
+CHG00000182,TXN000004492,System,Channel Update,POS,Online,2023-02-26 11:09:43,Chargeback
+CHG00000183,TXN000003723,System,Amount Correction,6047.05,6139.200140719735,2024-07-04 12:41:04,Manual review
+CHG00000184,TXN000004271,System,Reversal,Completed,Reversed,2025-06-10 19:51:11,Bank correction
+CHG00000185,TXN000003026,Ops_User_22,Channel Update,Online,POS,2024-11-06 20:00:23,Customer dispute
+CHG00000186,TXN000003367,System,Channel Update,ATM,POS,2024-05-19 15:31:04,Chargeback
+CHG00000187,TXN000003415,Ops_User_26,Channel Update,Mobile App,POS,2022-07-08 02:16:29,Bank correction
+CHG00000188,TXN000000518,Ops_User_18,Merchant Update,Dining,Education,2025-07-30 17:25:31,Chargeback
+CHG00000189,TXN000003253,System,Channel Update,Online,Mobile App,2024-03-17 19:13:33,Manual review
+CHG00000190,TXN000001670,System,Amount Correction,2899.01,3285.310641260339,2023-04-07 09:38:06,Customer dispute
+CHG00000191,TXN000004239,System,Amount Correction,2162.77,2297.092049870488,2025-03-04 16:37:11,Chargeback
+CHG00000192,TXN000002920,Ops_User_19,Status Update,Completed,Failed,2023-02-09 12:51:52,Manual review
+CHG00000193,TXN000004509,System,Merchant Update,Entertainment,Groceries,2023-07-17 19:33:56,Duplicate txn
+CHG00000194,TXN000002212,Ops_User_31,Amount Correction,14471.81,14689.716692171893,2022-04-10 00:32:24,Customer dispute
+CHG00000195,TXN000002959,System,Reversal,Completed,Reversed,2024-05-03 18:50:37,Manual review
+CHG00000196,TXN000002952,Ops_User_30,Status Update,Completed,Pending,2022-05-21 09:08:04,Chargeback
+CHG00000197,TXN000000427,Ops_User_17,Status Update,Completed,Failed,2025-05-24 09:53:20,Customer dispute
+CHG00000198,TXN000000547,System,Channel Update,POS,Online,2022-12-21 18:54:41,Duplicate txn
+CHG00000199,TXN000000738,Ops_User_2,Channel Update,Online,ATM,2024-04-11 00:01:58,Manual review
+CHG00000200,TXN000000980,Ops_User_31,Status Update,Completed,Completed,2022-02-15 16:13:20,Customer dispute
+CHG00000201,TXN000003349,System,Channel Update,POS,Online,2023-05-16 16:33:06,Manual review
+CHG00000202,TXN000001480,Ops_User_20,Merchant Update,Entertainment,Fuel,2025-06-19 05:44:04,Bank correction
+CHG00000203,TXN000004789,Ops_User_5,Merchant Update,E-commerce,Fuel,2022-10-09 15:12:33,Manual review
+CHG00000204,TXN000001075,System,Merchant Update,Utilities,Dining,2023-09-20 05:03:09,Bank correction
+CHG00000205,TXN000003017,System,Channel Update,POS,Mobile App,2023-01-11 14:35:21,Customer dispute
+CHG00000206,TXN000003806,System,Amount Correction,53033.64,52732.04246956664,2023-04-16 18:22:57,Chargeback
+CHG00000207,TXN000000562,Ops_User_2,Reversal,Completed,Reversed,2023-09-18 02:33:39,Manual review
+CHG00000208,TXN000003380,Ops_User_37,Reversal,Completed,Reversed,2023-12-04 22:44:03,Customer dispute
+CHG00000209,TXN000002598,Ops_User_26,Amount Correction,64529.67,59984.10485264093,2023-02-22 21:56:56,Bank correction
+CHG00000210,TXN000000015,System,Channel Update,ATM,POS,2022-07-24 23:40:39,Customer dispute
+CHG00000211,TXN000001281,System,Merchant Update,E-commerce,Salary,2025-08-10 01:54:25,Customer dispute
+CHG00000212,TXN000001416,System,Channel Update,Branch,Online,2024-04-07 10:05:07,Customer dispute
+CHG00000213,TXN000004192,Ops_User_2,Channel Update,Mobile App,Online,2023-01-18 07:05:47,Manual review
+CHG00000214,TXN000001193,Ops_User_23,Reversal,Completed,Reversed,2024-03-25 23:51:52,Manual review
+CHG00000215,TXN000001063,System,Channel Update,Online,ATM,2024-07-22 18:59:12,Bank correction
+CHG00000216,TXN000004063,Ops_User_6,Amount Correction,162737.98,157768.30144672957,2022-07-26 15:49:28,Duplicate txn
+CHG00000217,TXN000002144,Ops_User_8,Reversal,Completed,Reversed,2024-09-16 22:56:05,Manual review
+CHG00000218,TXN000001066,Ops_User_10,Reversal,Completed,Reversed,2023-10-20 08:21:25,Chargeback
+CHG00000219,TXN000004970,Ops_User_12,Status Update,Completed,Completed,2023-11-29 14:21:37,Chargeback
+CHG00000220,TXN000004108,System,Amount Correction,82798.2,77381.97391682756,2023-01-07 07:25:22,Duplicate txn
+CHG00000221,TXN000000290,System,Channel Update,POS,Branch,2022-05-26 12:36:39,Chargeback
+CHG00000222,TXN000000046,Ops_User_29,Reversal,Pending,Reversed,2023-08-11 12:32:00,Customer dispute
+CHG00000223,TXN000001747,Ops_User_37,Amount Correction,149265.9,144473.03192969033,2022-03-24 09:49:31,Manual review
+CHG00000224,TXN000002258,System,Status Update,Completed,Pending,2024-04-10 12:37:51,Duplicate txn
+CHG00000225,TXN000004164,Ops_User_12,Merchant Update,Travel,Entertainment,2023-07-27 14:28:27,Bank correction
+CHG00000226,TXN000002795,Ops_User_24,Merchant Update,E-commerce,Healthcare,2023-10-30 04:29:02,Customer dispute
+CHG00000227,TXN000001149,Ops_User_15,Status Update,Completed,Pending,2025-02-19 13:17:06,Manual review
+CHG00000228,TXN000002130,Ops_User_28,Amount Correction,10547.6,9860.157515869652,2023-04-16 06:01:41,Customer dispute
+CHG00000229,TXN000003257,System,Channel Update,Online,Branch,2025-10-18 14:59:40,Duplicate txn
+CHG00000230,TXN000003536,Ops_User_14,Reversal,Completed,Reversed,2025-09-23 13:48:14,Duplicate txn
+CHG00000231,TXN000004378,System,Reversal,Completed,Reversed,2025-07-12 10:16:41,Chargeback
+CHG00000232,TXN000001935,System,Merchant Update,Groceries,Utilities,2025-07-22 04:43:28,Bank correction
+CHG00000233,TXN000003721,Ops_User_30,Channel Update,ATM,POS,2025-08-08 11:29:11,Customer dispute
+CHG00000234,TXN000004484,Ops_User_3,Reversal,Completed,Reversed,2024-11-10 22:35:30,Duplicate txn
+CHG00000235,TXN000000179,Ops_User_2,Channel Update,Branch,POS,2024-12-21 13:15:15,Chargeback
+CHG00000236,TXN000002437,System,Amount Correction,1356.0,1343.5803865030928,2025-03-23 20:11:57,Duplicate txn
+CHG00000237,TXN000000354,Ops_User_18,Reversal,Completed,Reversed,2025-01-11 16:49:10,Duplicate txn
+CHG00000238,TXN000001415,System,Status Update,Completed,Reversed,2024-10-25 04:23:10,Manual review
+CHG00000239,TXN000001311,Ops_User_38,Channel Update,Mobile App,Branch,2022-12-06 11:11:46,Manual review
+CHG00000240,TXN000004350,System,Amount Correction,4330.57,4128.351946764182,2022-07-04 14:25:43,Duplicate txn
+CHG00000241,TXN000002407,Ops_User_15,Merchant Update,Travel,E-commerce,2023-02-26 16:57:34,Bank correction
+CHG00000242,TXN000004762,System,Reversal,Completed,Reversed,2022-04-06 01:00:28,Chargeback
+CHG00000243,TXN000003338,Ops_User_7,Amount Correction,37705.15,38267.69645743606,2022-03-16 07:16:33,Manual review
+CHG00000244,TXN000003944,Ops_User_1,Amount Correction,98400.85,110272.27613624254,2024-11-29 09:30:48,Bank correction
+CHG00000245,TXN000002309,Ops_User_16,Status Update,Completed,Completed,2024-09-11 21:55:55,Bank correction
+CHG00000246,TXN000001038,System,Channel Update,Branch,Online,2022-02-09 00:06:03,Duplicate txn
+CHG00000247,TXN000004042,Ops_User_23,Reversal,Completed,Reversed,2025-06-26 04:55:24,Bank correction
+CHG00000248,TXN000003765,Ops_User_39,Reversal,Completed,Reversed,2023-08-01 01:18:52,Manual review
+CHG00000249,TXN000002714,System,Merchant Update,Utilities,Dining,2024-07-12 05:03:00,Bank correction
+CHG00000250,TXN000002006,System,Reversal,Completed,Reversed,2022-02-15 19:15:23,Chargeback
+CHG00000251,TXN000004943,Ops_User_35,Status Update,Completed,Completed,2025-03-29 12:10:23,Manual review
+CHG00000252,TXN000000124,System,Channel Update,Online,Branch,2024-11-20 13:28:25,Chargeback
+CHG00000253,TXN000000518,System,Amount Correction,22647.18,22981.75820953394,2024-07-27 06:42:53,Manual review
+CHG00000254,TXN000001329,Ops_User_5,Status Update,Completed,Completed,2025-06-17 22:04:13,Duplicate txn
+CHG00000255,TXN000000085,System,Channel Update,ATM,POS,2025-07-17 08:45:40,Manual review
+CHG00000256,TXN000003141,System,Reversal,Completed,Reversed,2024-11-05 17:50:48,Duplicate txn
+CHG00000257,TXN000002381,System,Merchant Update,Healthcare,Fuel,2022-09-01 04:20:26,Manual review
+CHG00000258,TXN000001424,Ops_User_23,Channel Update,Online,Mobile App,2025-07-01 18:19:47,Duplicate txn
+CHG00000259,TXN000004032,System,Channel Update,Online,ATM,2024-01-25 09:51:52,Duplicate txn
+CHG00000260,TXN000004221,Ops_User_3,Amount Correction,5046.48,4633.035128302526,2023-09-14 23:34:56,Chargeback
+CHG00000261,TXN000003552,System,Merchant Update,Groceries,E-commerce,2024-09-10 00:01:35,Manual review
+CHG00000262,TXN000003039,Ops_User_31,Channel Update,ATM,POS,2022-10-23 09:03:27,Chargeback
+CHG00000263,TXN000001230,Ops_User_20,Amount Correction,2189.63,2119.1794129924906,2025-07-05 02:49:01,Duplicate txn
+CHG00000264,TXN000004797,Ops_User_7,Merchant Update,Travel,Entertainment,2022-05-06 08:57:30,Chargeback
+CHG00000265,TXN000003856,System,Status Update,Completed,Completed,2022-10-08 23:29:01,Customer dispute
+CHG00000266,TXN000003072,System,Merchant Update,Travel,Fuel,2025-02-15 17:49:54,Manual review
+CHG00000267,TXN000003506,Ops_User_9,Reversal,Completed,Reversed,2022-05-09 05:50:44,Manual review
+CHG00000268,TXN000004853,System,Merchant Update,Fuel,Travel,2022-02-15 08:18:50,Manual review
+CHG00000269,TXN000003730,System,Amount Correction,1124.31,1071.055155880419,2023-11-20 03:01:46,Duplicate txn
+CHG00000270,TXN000002754,System,Amount Correction,654.65,672.1576370202868,2022-06-15 06:45:43,Bank correction
+CHG00000271,TXN000001321,Ops_User_5,Status Update,Completed,Pending,2022-05-05 08:37:31,Chargeback
+CHG00000272,TXN000001033,System,Status Update,Completed,Reversed,2024-06-02 12:10:28,Customer dispute
+CHG00000273,TXN000000745,Ops_User_5,Merchant Update,Groceries,E-commerce,2025-09-23 06:04:37,Manual review
+CHG00000274,TXN000004104,System,Reversal,Completed,Reversed,2024-05-04 03:31:00,Manual review
+CHG00000275,TXN000000945,System,Reversal,Completed,Reversed,2022-05-30 18:53:49,Manual review
+CHG00000276,TXN000003615,Ops_User_9,Amount Correction,2559.31,2462.1424579379973,2023-08-17 09:25:35,Duplicate txn
+CHG00000277,TXN000001172,Ops_User_3,Merchant Update,Dining,Utilities,2022-03-16 22:40:29,Manual review
+CHG00000278,TXN000002257,Ops_User_32,Merchant Update,Groceries,Travel,2024-03-31 18:49:04,Chargeback
+CHG00000279,TXN000001799,Ops_User_5,Amount Correction,453.46,441.8368341589459,2022-07-09 21:45:53,Chargeback
+CHG00000280,TXN000004972,System,Status Update,Completed,Failed,2025-06-06 13:45:10,Chargeback
+CHG00000281,TXN000003596,System,Reversal,Completed,Reversed,2025-02-02 10:42:52,Customer dispute
+CHG00000282,TXN000003941,Ops_User_23,Merchant Update,Groceries,Utilities,2023-02-26 15:24:43,Manual review
+CHG00000283,TXN000003093,Ops_User_35,Merchant Update,Healthcare,E-commerce,2023-12-08 02:35:04,Duplicate txn
+CHG00000284,TXN000002111,System,Status Update,Completed,Completed,2023-09-11 23:51:26,Manual review
+CHG00000285,TXN000001756,Ops_User_38,Reversal,Completed,Reversed,2025-04-08 09:00:07,Manual review
+CHG00000286,TXN000002201,System,Status Update,Pending,Pending,2025-02-27 02:22:21,Manual review
+CHG00000287,TXN000000785,System,Channel Update,ATM,Mobile App,2022-12-04 10:15:41,Customer dispute
+CHG00000288,TXN000002899,System,Reversal,Completed,Reversed,2022-10-28 17:48:06,Duplicate txn
+CHG00000289,TXN000004480,System,Status Update,Completed,Completed,2022-02-10 10:51:39,Manual review
+CHG00000290,TXN000001353,System,Status Update,Completed,Completed,2023-09-02 23:01:45,Manual review
+CHG00000291,TXN000001506,Ops_User_29,Reversal,Completed,Reversed,2022-11-11 07:03:27,Chargeback
+CHG00000292,TXN000000601,Ops_User_6,Reversal,Completed,Reversed,2022-11-24 11:54:10,Chargeback
+CHG00000293,TXN000002800,Ops_User_7,Status Update,Completed,Failed,2025-08-19 06:59:03,Bank correction
+CHG00000294,TXN000004827,System,Amount Correction,3015.39,2775.7688058572376,2025-08-02 01:39:33,Duplicate txn
+CHG00000295,TXN000000513,System,Status Update,Completed,Completed,2023-08-27 04:29:28,Bank correction
+CHG00000296,TXN000001791,System,Status Update,Completed,Completed,2025-04-30 23:45:55,Duplicate txn
+CHG00000297,TXN000001201,Ops_User_35,Status Update,Completed,Completed,2025-09-29 21:00:56,Customer dispute
+CHG00000298,TXN000002241,System,Reversal,Completed,Reversed,2023-04-16 01:11:17,Duplicate txn
+CHG00000299,TXN000004261,Ops_User_4,Amount Correction,9574.2,10408.078265847453,2023-05-10 20:45:27,Manual review
+CHG00000300,TXN000003045,System,Amount Correction,142693.86,153821.50897873892,2022-07-27 10:40:23,Manual review
+CHG00000301,TXN000003010,System,Merchant Update,Dining,Fuel,2024-05-27 04:18:11,Chargeback
+CHG00000302,TXN000000804,System,Merchant Update,E-commerce,Education,2023-07-25 19:36:59,Bank correction
+CHG00000303,TXN000000040,Ops_User_27,Amount Correction,875.84,869.3778312656251,2022-11-10 18:13:47,Manual review
+CHG00000304,TXN000003985,System,Status Update,Completed,Reversed,2023-09-06 12:17:28,Chargeback
+CHG00000305,TXN000001050,Ops_User_27,Merchant Update,Travel,E-commerce,2022-06-06 15:57:19,Duplicate txn
+CHG00000306,TXN000003884,Ops_User_23,Amount Correction,36972.37,34840.99810639349,2023-10-27 10:58:50,Chargeback
+CHG00000307,TXN000001238,Ops_User_30,Amount Correction,2411.52,2404.7367792831706,2022-10-16 12:35:24,Duplicate txn
+CHG00000308,TXN000003485,Ops_User_25,Merchant Update,E-commerce,Fuel,2025-01-19 12:26:53,Manual review
+CHG00000309,TXN000004805,Ops_User_37,Amount Correction,3919.56,3979.1879644904816,2022-05-18 09:10:51,Manual review
+CHG00000310,TXN000004873,System,Merchant Update,Travel,Groceries,2024-11-03 19:31:39,Bank correction
+CHG00000311,TXN000004830,Ops_User_7,Status Update,Completed,Completed,2024-11-16 16:16:47,Customer dispute
+CHG00000312,TXN000001490,Ops_User_4,Reversal,Completed,Reversed,2025-05-21 13:50:35,Customer dispute
+CHG00000313,TXN000002652,Ops_User_40,Status Update,Completed,Completed,2025-02-05 12:32:08,Bank correction
+CHG00000314,TXN000000209,Ops_User_20,Status Update,Completed,Failed,2024-02-03 05:18:51,Bank correction
+CHG00000315,TXN000000168,System,Channel Update,Online,Mobile App,2023-07-16 09:53:38,Chargeback
+CHG00000316,TXN000001011,System,Reversal,Completed,Reversed,2025-06-03 12:24:07,Chargeback
+CHG00000317,TXN000000237,System,Status Update,Completed,Completed,2025-03-21 14:08:49,Chargeback
+CHG00000318,TXN000001306,System,Status Update,Completed,Completed,2024-04-30 13:50:13,Chargeback
+CHG00000319,TXN000004159,System,Merchant Update,Healthcare,Education,2022-02-11 11:54:00,Chargeback
+CHG00000320,TXN000000151,System,Reversal,Completed,Reversed,2023-02-13 15:32:08,Bank correction
+CHG00000321,TXN000004254,System,Channel Update,Mobile App,Online,2023-05-15 19:01:26,Manual review
+CHG00000322,TXN000002755,System,Channel Update,ATM,Mobile App,2023-03-18 18:15:00,Manual review
+CHG00000323,TXN000004681,Ops_User_7,Reversal,Completed,Reversed,2023-12-22 10:24:15,Manual review
+CHG00000324,TXN000004419,System,Channel Update,POS,Mobile App,2022-02-01 23:40:25,Chargeback
+CHG00000325,TXN000003695,System,Merchant Update,Salary,E-commerce,2022-08-06 13:46:43,Manual review
+CHG00000326,TXN000004871,Ops_User_34,Reversal,Completed,Reversed,2022-02-07 13:31:53,Chargeback
+CHG00000327,TXN000002200,Ops_User_38,Amount Correction,54529.46,52384.43641804888,2022-06-11 22:38:45,Manual review
+CHG00000328,TXN000000408,Ops_User_36,Channel Update,Branch,ATM,2023-06-26 07:08:03,Duplicate txn
+CHG00000329,TXN000002809,System,Amount Correction,439.28,478.2563452165137,2023-11-12 12:44:05,Manual review
+CHG00000330,TXN000000226,System,Amount Correction,177327.97,175316.87396889512,2023-06-09 11:20:50,Chargeback
+CHG00000331,TXN000004951,Ops_User_26,Channel Update,ATM,Mobile App,2022-12-13 07:50:35,Duplicate txn
+CHG00000332,TXN000001086,Ops_User_40,Status Update,Pending,Failed,2025-09-09 01:10:16,Duplicate txn
+CHG00000333,TXN000001325,System,Merchant Update,Entertainment,Education,2025-08-13 02:07:41,Bank correction
+CHG00000334,TXN000003135,Ops_User_34,Channel Update,ATM,Mobile App,2025-03-30 13:35:44,Customer dispute
+CHG00000335,TXN000003953,Ops_User_5,Amount Correction,85550.22,81746.65182891452,2023-07-30 20:56:46,Customer dispute
+CHG00000336,TXN000002960,System,Amount Correction,9007.36,8822.055850926094,2024-09-04 02:11:10,Chargeback
+CHG00000337,TXN000004443,System,Reversal,Completed,Reversed,2025-01-10 13:49:16,Duplicate txn
+CHG00000338,TXN000000970,Ops_User_23,Status Update,Completed,Pending,2023-02-08 14:39:20,Duplicate txn
+CHG00000339,TXN000004045,Ops_User_32,Status Update,Completed,Completed,2023-10-14 16:21:04,Duplicate txn
+CHG00000340,TXN000002700,System,Channel Update,Mobile App,Branch,2024-04-27 14:20:23,Bank correction
+CHG00000341,TXN000003364,Ops_User_3,Merchant Update,Groceries,Education,2024-04-12 07:08:07,Bank correction
+CHG00000342,TXN000002248,System,Channel Update,Branch,POS,2024-09-16 20:44:44,Bank correction
+CHG00000343,TXN000001406,Ops_User_9,Reversal,Failed,Reversed,2025-07-07 07:34:58,Chargeback
+CHG00000344,TXN000002840,Ops_User_13,Merchant Update,Education,Groceries,2025-06-07 12:22:15,Bank correction
+CHG00000345,TXN000003030,Ops_User_23,Merchant Update,Entertainment,Education,2023-09-25 20:22:27,Customer dispute
+CHG00000346,TXN000000857,System,Status Update,Pending,Pending,2022-02-20 15:31:42,Customer dispute
+CHG00000347,TXN000000352,System,Merchant Update,E-commerce,Entertainment,2024-09-04 16:04:21,Bank correction
+CHG00000348,TXN000002829,Ops_User_21,Channel Update,POS,Online,2023-03-14 15:41:15,Chargeback
+CHG00000349,TXN000002292,System,Status Update,Completed,Completed,2023-12-14 13:02:17,Manual review
+CHG00000350,TXN000000370,Ops_User_7,Merchant Update,Dining,Education,2023-08-22 08:24:18,Chargeback
+CHG00000351,TXN000002740,System,Amount Correction,99923.49,100668.8494966216,2025-07-18 02:54:08,Chargeback
+CHG00000352,TXN000003528,Ops_User_18,Merchant Update,E-commerce,Travel,2024-06-04 08:13:40,Duplicate txn
+CHG00000353,TXN000001852,System,Channel Update,Online,ATM,2025-05-17 09:33:42,Chargeback
+CHG00000354,TXN000001280,System,Amount Correction,2121.67,2162.352653842125,2025-09-01 09:39:27,Manual review
+CHG00000355,TXN000003253,Ops_User_39,Status Update,Completed,Pending,2023-05-22 02:26:16,Chargeback
+CHG00000356,TXN000000375,System,Status Update,Completed,Completed,2023-12-23 16:55:44,Manual review
+CHG00000357,TXN000003103,Ops_User_27,Amount Correction,20137.27,21246.545395716726,2024-05-12 07:31:45,Manual review
+CHG00000358,TXN000002909,System,Channel Update,POS,ATM,2024-05-04 14:34:14,Manual review
+CHG00000359,TXN000001067,System,Amount Correction,4930.18,5307.126207444508,2022-01-21 18:47:10,Chargeback
+CHG00000360,TXN000003783,System,Channel Update,ATM,Online,2022-01-11 18:15:06,Bank correction
+CHG00000361,TXN000001316,Ops_User_13,Reversal,Completed,Reversed,2024-04-15 21:03:23,Bank correction
+CHG00000362,TXN000003221,System,Merchant Update,Utilities,Dining,2025-05-05 23:19:56,Bank correction
+CHG00000363,TXN000001592,Ops_User_1,Amount Correction,41628.73,43618.636598606565,2022-04-20 13:11:58,Customer dispute
+CHG00000364,TXN000002524,System,Channel Update,ATM,Online,2022-09-16 08:12:59,Bank correction
+CHG00000365,TXN000000243,Ops_User_25,Channel Update,ATM,Mobile App,2022-09-17 22:41:54,Customer dispute
+CHG00000366,TXN000002456,System,Status Update,Completed,Completed,2024-06-17 13:39:57,Chargeback
+CHG00000367,TXN000004800,Ops_User_9,Status Update,Completed,Failed,2025-02-14 00:04:11,Bank correction
+CHG00000368,TXN000000212,Ops_User_39,Amount Correction,90786.86,85103.0261313083,2025-08-11 16:41:27,Bank correction
+CHG00000369,TXN000002384,System,Merchant Update,E-commerce,Entertainment,2023-04-21 21:36:29,Chargeback
+CHG00000370,TXN000004950,Ops_User_36,Merchant Update,Dining,Entertainment,2024-09-28 18:19:17,Duplicate txn
+CHG00000371,TXN000004666,System,Reversal,Pending,Reversed,2022-03-24 08:35:45,Chargeback
+CHG00000372,TXN000002794,Ops_User_16,Amount Correction,44167.25,44123.62144361314,2023-07-19 06:40:01,Chargeback
+CHG00000373,TXN000004299,System,Merchant Update,Healthcare,Salary,2023-02-12 20:22:17,Manual review
+CHG00000374,TXN000001441,System,Channel Update,ATM,Online,2024-10-26 07:57:58,Chargeback
+CHG00000375,TXN000002086,Ops_User_36,Reversal,Completed,Reversed,2023-07-23 01:28:59,Bank correction
+CHG00000376,TXN000001715,Ops_User_38,Amount Correction,79.13,78.51180416019182,2022-05-15 01:13:31,Duplicate txn
+CHG00000377,TXN000002614,Ops_User_40,Channel Update,POS,ATM,2022-04-11 04:08:52,Manual review
+CHG00000378,TXN000002183,System,Reversal,Completed,Reversed,2022-10-18 15:40:42,Manual review
+CHG00000379,TXN000000053,Ops_User_18,Channel Update,Branch,ATM,2025-08-14 16:28:48,Duplicate txn
+CHG00000380,TXN000000922,System,Status Update,Pending,Pending,2024-01-06 02:23:47,Bank correction
+CHG00000381,TXN000001644,Ops_User_34,Reversal,Completed,Reversed,2024-04-12 16:48:01,Manual review
+CHG00000382,TXN000004947,System,Reversal,Completed,Reversed,2024-06-14 06:39:19,Bank correction
+CHG00000383,TXN000003664,System,Channel Update,Online,Mobile App,2025-10-07 05:18:54,Manual review
+CHG00000384,TXN000000864,System,Status Update,Completed,Completed,2023-07-07 05:43:56,Manual review
+CHG00000385,TXN000003692,Ops_User_37,Status Update,Completed,Completed,2023-03-20 01:56:37,Bank correction
+CHG00000386,TXN000000674,Ops_User_29,Reversal,Completed,Reversed,2024-12-01 01:29:38,Bank correction
+CHG00000387,TXN000000887,Ops_User_22,Channel Update,POS,Online,2025-06-26 17:00:33,Duplicate txn
+CHG00000388,TXN000000546,Ops_User_2,Merchant Update,Dining,Fuel,2023-10-22 04:49:06,Chargeback
+CHG00000389,TXN000002485,Ops_User_7,Status Update,Completed,Completed,2024-12-14 23:08:21,Chargeback
+CHG00000390,TXN000002877,System,Amount Correction,122971.98,125844.02625460205,2023-03-01 09:34:44,Bank correction
+CHG00000391,TXN000001411,System,Reversal,Completed,Reversed,2022-01-08 06:03:54,Bank correction
+CHG00000392,TXN000000280,System,Reversal,Pending,Reversed,2023-09-03 17:33:46,Manual review
+CHG00000393,TXN000003504,Ops_User_18,Reversal,Completed,Reversed,2022-03-20 15:09:05,Chargeback
+CHG00000394,TXN000004750,Ops_User_11,Merchant Update,Fuel,Education,2024-04-07 10:56:06,Manual review
+CHG00000395,TXN000003437,System,Merchant Update,Dining,Healthcare,2024-12-01 23:16:48,Chargeback
+CHG00000396,TXN000002320,System,Merchant Update,Salary,Entertainment,2024-08-17 23:41:10,Customer dispute
+CHG00000397,TXN000000566,Ops_User_3,Status Update,Completed,Completed,2023-01-24 02:55:45,Duplicate txn
+CHG00000398,TXN000002183,System,Reversal,Completed,Reversed,2025-06-27 18:46:20,Duplicate txn
+CHG00000399,TXN000002935,System,Amount Correction,124336.24,130273.90584863324,2022-09-01 17:14:21,Bank correction
+CHG00000400,TXN000003928,Ops_User_23,Channel Update,POS,Mobile App,2023-01-23 02:33:55,Bank correction
