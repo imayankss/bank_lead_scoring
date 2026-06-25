@@ -1,0 +1,2 @@
+training_rows,scoring_rows,positive_training_customers,lookback_days,target_horizon_days,test_size,random_state
+500,500,328,365,365,0.2,42

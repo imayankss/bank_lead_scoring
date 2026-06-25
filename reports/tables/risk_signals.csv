@@ -1,0 +1,501 @@
+customer_id,lead_score,lead_category,predicted_propensity,expected_value,risk_score_composite,risk_category,confidence_score,alert,fallback_reasons
+CUST000070,29,Cold,0.5719139261442883,149.81275639609893,96.40430369278559,High,3.5956963072144106,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000187,30,Medium,0.511738007033994,227.2797671811039,89.4130996483003,High,10.586900351699697,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000419,32,Medium,0.6142762963980023,441.230062688221,84.28618518009989,High,15.713814819900108,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000256,40,Medium,0.6868507796500648,2120.0154341333823,80.65746101749676,High,19.342538982503243,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000095,35,Medium,0.7216574202735918,928.784365563993,78.9171289863204,High,21.082871013679593,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000420,32,Medium,0.7328162340558262,412.1340400707519,77.87973624241417,High,22.120263757585832,Review before outreach,stale_transaction_activity; no_active_account; low_risk_score
+CUST000091,26,Cold,0.0425145374663,1.023344803607417,77.125726873315,High,22.874273126684997,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000068,28,Cold,0.4197954254146335,93.97509435144111,75.98977127073168,High,24.01022872926832,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; low_risk_score
+CUST000167,25,Cold,0.0014204992118935,0.000605694762959,75.07102496059467,High,24.92897503940533,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000031,22,Cold,0.0011195778109066,0.000214817821575,75.05597889054533,High,24.944021109454667,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000051,6,Cold,0.0009205911112283,0.0,75.04602955556142,High,24.953970444438582,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000238,18,Cold,0.0007648845221024,6.971811805203752e-05,75.03824422610512,High,24.96175577389488,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000428,23,Cold,0.0006321518891906,0.0002877106144391,75.03160759445953,High,24.96839240554047,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000129,6,Cold,0.0006150001834606,0.0,75.03075000917303,High,24.969249990826967,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000224,16,Cold,0.000608377825716,3.878135949363508e-05,75.0304188912858,High,24.969581108714195,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000415,15,Cold,0.0006021594288878,1.943126126093452e-05,75.0301079714444,High,24.969892028555606,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000500,18,Cold,0.0005746841524449,8.031289416369285e-05,75.02873420762225,High,24.97126579237775,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000105,19,Cold,0.0005532000014177,0.0001257083498472,75.02766000007088,High,24.97233999992912,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000093,21,Cold,0.0005330915907288,0.0001928695084244,75.02665457953644,High,24.97334542046356,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000493,13,Cold,0.000517910452041,7.252044940960119e-06,75.02589552260206,High,24.974104477397944,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000476,6,Cold,0.0005072795382365,0.0,75.02536397691182,High,24.97463602308818,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000329,17,Cold,0.0004962065363534,4.773989844017436e-05,75.02481032681767,High,24.975189673182328,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000332,6,Cold,0.0004925022662443,0.0,75.02462511331221,High,24.97537488668779,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000065,6,Cold,0.000444266510243,0.0,75.02221332551215,High,24.977786674487845,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000169,25,Cold,0.0004174541140338,0.0006419666754985,75.02087270570169,High,24.97912729429831,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000149,6,Cold,0.0004106762900505,0.0,75.02053381450253,High,24.979466185497472,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000227,17,Cold,0.000392270050886,5.56454606853899e-05,75.0196135025443,High,24.980386497455697,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000267,15,Cold,0.0003778626697929,2.131699001854171e-05,75.01889313348964,High,24.98110686651036,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000059,20,Cold,0.000369264599131,0.000138275997876,75.01846322995655,High,24.981536770043448,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000150,17,Cold,0.0003531986572166,4.324745472406662e-05,75.01765993286084,High,24.982340067139162,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000424,15,Cold,0.0003517352955338,2.5412393971016475e-05,75.0175867647767,High,24.982413235223305,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000193,6,Cold,0.0003373343167723,0.0,75.01686671583862,High,24.983133284161383,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000452,6,Cold,0.0003287115687302,0.0,75.01643557843651,High,24.983564421563486,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000386,6,Cold,0.0002815335981352,0.0,75.01407667990676,High,24.985923320093235,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000259,6,Cold,0.0002773628881354,0.0,75.01386814440677,High,24.98613185559323,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000434,6,Cold,0.0002393985052528,0.0,75.01196992526263,High,24.988030074737367,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000048,6,Cold,0.0002062191749395,0.0,75.01031095874697,High,24.98968904125303,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000468,6,Cold,0.0001876391033819,0.0,75.00938195516909,High,24.99061804483091,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000137,6,Cold,0.0001799876117357,0.0,75.00899938058679,High,24.991000619413214,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000441,6,Cold,0.0001650660334179,0.0,75.00825330167089,High,24.99174669832911,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000229,6,Cold,0.0001483638297885,0.0,75.00741819148942,High,24.99258180851058,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000233,6,Cold,0.0001430365539359,0.0,75.00715182769679,High,24.992848172303212,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000185,6,Cold,0.0001425129302029,0.0,75.00712564651015,High,24.992874353489853,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000072,6,Cold,0.0001339330611361,0.0,75.0066966530568,High,24.993303346943193,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000083,6,Cold,0.0001320738444187,0.0,75.00660369222093,High,24.993396307779065,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000455,16,Cold,0.0001234891720526,3.318500097888425e-05,75.00617445860263,High,24.99382554139737,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000283,6,Cold,0.0001180958525486,0.0,75.00590479262743,High,24.994095207372567,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000057,6,Cold,0.0001092103597016,0.0,75.00546051798509,High,24.994539482014915,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000017,6,Cold,0.0001040674199667,0.0,75.00520337099833,High,24.99479662900167,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000220,6,Cold,0.0001031893364608,0.0,75.00515946682305,High,24.994840533176955,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000217,6,Cold,9.048693926760202e-05,0.0,75.00452434696338,High,24.99547565303662,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000171,28,Cold,0.9203584726273536,73.27066167462947,74.11906267000218,High,25.88093732999782,Review before outreach,stale_transaction_activity; no_active_account; low_risk_score
+CUST000249,35,Medium,0.8268096686881525,890.6349429169843,73.65951656559237,High,26.34048343440763,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000144,38,Medium,0.8328886289831255,1517.3730434972042,73.35556855084373,High,26.644431449156272,Review before outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000300,39,Medium,0.5231190064311132,1830.0346078199864,72.26870721269091,High,27.731292787309087,Review before outreach,no_active_account; low_risk_score
+CUST000188,30,Medium,0.4753005840240703,262.4594328402499,68.76502920120352,Medium,31.234970798796482,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000478,40,Medium,0.9546571642434432,2372.1105603958495,67.26714178782784,Medium,32.73285821217216,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000160,29,Cold,0.239666641952256,172.65326509210342,66.9833320976128,Medium,33.0166679023872,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000362,34,Medium,0.9641280079970124,607.400811265045,66.79359960014938,Medium,33.20640039985062,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000018,33,Medium,0.271648500521416,507.2567570005973,66.73310995757764,Medium,33.26689004242236,Monitor,stale_transaction_activity; no_active_account; low_risk_score
+CUST000271,29,Cold,0.7589470645274473,188.06722741760768,66.43620841746326,Medium,33.56379158253674,Monitor,no_active_account; low_risk_score
+CUST000389,37,Medium,0.8396942051389208,1373.9308752803388,65.82350892113615,Medium,34.17649107886385,Monitor,stale_transaction_activity; no_active_account; low_risk_score
+CUST000074,35,Medium,0.5865729487039155,838.6550363057992,65.67135256480422,Medium,34.328647435195776,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000061,61,Medium,0.9957133932280772,18167.66915360369,65.21433033859614,Medium,34.78566966140386,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score
+CUST000432,63,Medium,0.8799419505011549,20877.207213683716,64.77002576261349,Medium,35.229974237386514,Monitor,stale_transaction_activity; no_active_account; low_risk_score
+CUST000189,32,Medium,0.6071703766153642,413.6273138275278,64.64148116923178,Medium,35.35851883076822,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000069,54,Medium,0.8375548588467349,10220.947938392124,64.0811611672523,Medium,35.918838832747696,Monitor,stale_transaction_activity; no_active_account; low_risk_score
+CUST000207,42,Medium,0.6212499225954777,3278.7748604609014,63.93750387022611,Medium,36.06249612977389,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000011,46,Medium,0.9981317119418064,5734.853861558957,63.312592485101455,Medium,36.687407514898545,Monitor,stale_transaction_activity; no_active_account; low_risk_score
+CUST000268,51,Medium,0.990549932953053,8408.608035769026,61.84236636604598,Medium,38.15763363395402,Monitor,stale_transaction_activity; no_active_account; low_risk_score
+CUST000312,48,Medium,0.9612391143853228,6815.178375919316,61.390099075254405,Medium,38.609900924745595,Monitor,stale_transaction_activity; no_active_account; low_risk_score
+CUST000370,33,Medium,0.3088828071041763,443.5512275763991,59.7592088483595,Medium,40.2407911516405,Monitor,no_active_account; low_risk_score
+CUST000094,57,Medium,0.9460902410669836,13433.337604846603,58.99685780966452,Medium,41.00314219033548,Monitor,stale_transaction_activity; no_active_account; low_risk_score
+CUST000124,46,Medium,0.9869094435553584,5961.211404388093,58.942199055108794,Medium,41.057800944891206,Monitor,stale_transaction_activity; no_active_account; low_risk_score
+CUST000155,45,Medium,0.9918918078488472,5015.052644224647,58.898560292489144,Medium,41.101439707510856,Monitor,stale_transaction_activity; no_active_account; low_risk_score
+CUST000265,26,Cold,0.0643681304218073,2.3415049290549095,58.218406521090365,Medium,41.781593478909635,Monitor,no_transactions_in_last_365d; stale_transaction_activity; low_risk_score
+CUST000473,27,Cold,0.0583561210807601,2.455057218258288,57.917806054038,Medium,42.082193945962,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000487,26,Cold,0.0561223909616265,1.0432189294058836,57.80611954808133,Medium,42.19388045191867,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000373,37,Medium,0.9900123585452684,1360.5464289857389,57.417190291914665,Medium,42.582809708085335,Monitor,stale_transaction_activity; no_active_account; low_risk_score
+CUST000372,45,Medium,0.8611934471468149,4988.553938709147,56.73484819060446,Medium,43.26515180939554,Monitor,no_active_account; low_risk_score
+CUST000237,26,Cold,0.0325513822986624,0.4865272365766775,56.62756911493312,Medium,43.37243088506688,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000054,66,Medium,0.9782504843845962,28670.489197043873,56.36144838350992,Medium,43.63855161649008,Monitor,stale_transaction_activity; no_active_account; low_risk_score
+CUST000177,28,Cold,0.4776259120776687,88.86826572996469,55.182665466897134,Medium,44.817334533102866,Monitor,no_active_account
+CUST000396,26,Cold,0.0025170484646278,0.001421072605553,55.12585242323139,Medium,44.87414757676861,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000359,25,Cold,0.0017984882204943,0.0006598045231885,55.08992441102471,Medium,44.91007558897529,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000308,36,Medium,0.7985922320900825,1304.4971600050424,55.070388395495875,Medium,44.929611604504125,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000183,25,Cold,0.0013853814430378,0.0012266389796448,55.06926907215189,Medium,44.93073092784811,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000409,6,Cold,0.0012828141503218,0.0,55.06414070751609,Medium,44.93585929248391,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000368,24,Cold,0.00127066382194,0.0003912409677099,55.063533191097,Medium,44.936466808903,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000399,25,Cold,0.0010626448593614,0.0007757053187474,55.05313224296807,Medium,44.94686775703193,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000258,6,Cold,0.0009831080995344,0.0,55.049155404976716,Medium,44.950844595023284,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000175,24,Cold,0.0008763016359237,0.0003449407389108,55.04381508179619,Medium,44.95618491820381,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000092,23,Cold,0.0008390144536863,0.0003205228503114,55.04195072268431,Medium,44.95804927731569,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000248,22,Cold,0.0008242547845718,0.0002633067661044,55.04121273922859,Medium,44.95878726077141,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000463,21,Cold,0.0007698087004261,0.0002045280279732,55.0384904350213,Medium,44.9615095649787,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000261,23,Cold,0.0007412932222298,0.0003178571540689,55.03706466111149,Medium,44.96293533888851,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000208,6,Cold,0.0007184345426275,0.0,55.035921727131374,Medium,44.964078272868626,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000297,22,Cold,0.0007039593248443,0.0002665403435196,55.035197966242215,Medium,44.964802033757785,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000218,6,Cold,0.0007009425197986,0.0,55.03504712598993,Medium,44.96495287401007,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000162,20,Cold,0.0006978123926131,0.0001453730390738,55.03489061963065,Medium,44.96510938036935,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000385,19,Cold,0.0006724349769646,9.588539204070056e-05,55.03362174884823,Medium,44.96637825115177,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000324,22,Cold,0.0006532998079125,0.0002690280420564,55.032664990395624,Medium,44.967335009604376,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000037,23,Cold,0.0006381093922807,0.0003354474946933,55.03190546961404,Medium,44.96809453038596,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000046,17,Cold,0.0006273540812899,5.398967050157833e-05,55.03136770406449,Medium,44.96863229593551,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000459,24,Cold,0.0006225102182466,0.00053246237549,55.03112551091233,Medium,44.96887448908767,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000281,6,Cold,0.0005589173773727,0.0,55.027945868868635,Medium,44.972054131131365,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000029,6,Cold,0.0005565795005077,0.0,55.027828975025386,Medium,44.972171024974614,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000055,21,Cold,0.0005401431501871,0.0002052934871491,55.02700715750935,Medium,44.97299284249065,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000028,23,Cold,0.0005308489752164,0.0003263912326692,55.02654244876082,Medium,44.97345755123918,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000376,24,Cold,0.0005168481360414,0.0003459573347406,55.02584240680207,Medium,44.97415759319793,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000056,6,Cold,0.0005123508572088,0.0,55.02561754286044,Medium,44.97438245713956,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000407,6,Cold,0.0004878042928888,0.0,55.02439021464444,Medium,44.97560978535556,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000243,6,Cold,0.0004491435647747,0.0,55.02245717823874,Medium,44.97754282176126,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000282,21,Cold,0.0004227008649377,0.0001789203274726,55.021135043246886,Medium,44.978864956753114,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000143,16,Cold,0.0004128932828927,3.1684400785929194e-05,55.02064466414463,Medium,44.97935533585537,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000222,22,Cold,0.0004066577997606,0.0002533945353814,55.02033288998803,Medium,44.97966711001197,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000024,6,Cold,0.000401830812004,0.0,55.0200915406002,Medium,44.9799084593998,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000279,18,Cold,0.0004016577514962,6.313946689178692e-05,55.02008288757481,Medium,44.97991711242519,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000254,24,Cold,0.0003962621610094,0.0004398047756783,55.01981310805047,Medium,44.98018689194953,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000361,6,Cold,0.0003928381972467,0.0,55.01964190986234,Medium,44.98035809013766,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000299,14,Cold,0.0003890937043807,1.6818581649000063e-05,55.01945468521904,Medium,44.98054531478096,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000096,6,Cold,0.0003828116322247,0.0,55.01914058161123,Medium,44.98085941838877,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000348,6,Cold,0.0003529283790655,0.0,55.01764641895328,Medium,44.98235358104672,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000221,6,Cold,0.0003397685044873,0.0,55.01698842522436,Medium,44.98301157477564,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000486,20,Cold,0.0003313206939911,0.0001405333684637,55.01656603469956,Medium,44.98343396530044,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000138,14,Cold,0.0003216969946257,1.5910541673053327e-05,55.016084849731286,Medium,44.983915150268714,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000264,6,Cold,0.0003215802890651,0.0,55.016079014453254,Medium,44.983920985546746,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000406,6,Cold,0.0003148747138361,0.0,55.01574373569181,Medium,44.98425626430819,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000157,6,Cold,0.0002960768967091,0.0,55.014803844835455,Medium,44.985196155164545,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000337,6,Cold,0.0002937065536872,0.0,55.01468532768436,Medium,44.98531467231564,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000041,6,Cold,0.0002913010810436,0.0,55.01456505405218,Medium,44.98543494594782,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000358,20,Cold,0.0002796077852142,0.0001274797201464,55.01398038926071,Medium,44.98601961073929,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000164,6,Cold,0.0002779925927883,0.0,55.01389962963942,Medium,44.98610037036058,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000027,6,Cold,0.0002760111863081,0.0,55.013800559315406,Medium,44.986199440684594,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000444,6,Cold,0.0002723570877005,0.0,55.013617854385025,Medium,44.986382145614975,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000159,21,Cold,0.0002649637828521,0.0001734968161503,55.01324818914261,Medium,44.98675181085739,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000287,6,Cold,0.0002442292066093,0.0,55.01221146033047,Medium,44.98778853966953,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000201,18,Cold,0.0002419227822969,7.512412457484108e-05,55.012096139114846,Medium,44.987903860885154,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000323,6,Cold,0.0002326261855948,0.0,55.011631309279736,Medium,44.988368690720264,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000309,13,Cold,0.0002265980554861,4.466456013995902e-06,55.01132990277431,Medium,44.98867009722569,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000128,13,Cold,0.0002070171172425,7.026149099569898e-06,55.01035085586213,Medium,44.98964914413787,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000392,15,Cold,0.0002031625611642,2.5581667995016768e-05,55.01015812805821,Medium,44.98984187194179,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000076,6,Cold,0.000202981637981,0.0,55.01014908189905,Medium,44.98985091810095,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000417,16,Cold,0.0002024503525705,3.525745944905393e-05,55.010122517628524,Medium,44.989877482371476,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000234,6,Cold,0.0002021872904301,0.0,55.010109364521504,Medium,44.989890635478496,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000202,19,Cold,0.0001997573595792,0.0001260725022504,55.009987867978964,Medium,44.990012132021036,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000132,15,Cold,0.0001910806246667,1.9143988143675676e-05,55.009554031233336,Medium,44.990445968766664,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000314,6,Cold,0.0001861010716214,0.0,55.00930505358107,Medium,44.99069494641893,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000270,6,Cold,0.0001798249112265,0.0,55.008991245561326,Medium,44.991008754438674,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000216,12,Cold,0.000179198913891,2.1456454172149106e-07,55.00895994569455,Medium,44.99104005430545,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000005,19,Cold,0.0001734288447268,9.314679121434576e-05,55.00867144223634,Medium,44.99132855776366,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000016,13,Cold,0.0001706729784028,5.1513223580711644e-06,55.00853364892014,Medium,44.99146635107986,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000395,16,Cold,0.0001646581799198,3.7906893807096e-05,55.00823290899599,Medium,44.99176709100401,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000104,14,Cold,0.0001621812883854,1.1501642093531851e-05,55.00810906441927,Medium,44.99189093558073,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000110,6,Cold,0.0001536067164455,0.0,55.00768033582227,Medium,44.99231966417773,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000122,18,Cold,0.0001506134564318,6.234269037069095e-05,55.00753067282159,Medium,44.99246932717841,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000378,20,Cold,0.0001451376663808,0.0001425365928287,55.00725688331904,Medium,44.99274311668096,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000384,6,Cold,0.0001353273213332,0.0,55.00676636606666,Medium,44.99323363393334,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000036,6,Cold,0.0001351004714946,0.0,55.00675502357473,Medium,44.99324497642527,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000318,12,Cold,0.0001246446009736,2.7222739667750944e-06,55.00623223004868,Medium,44.99376776995132,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000498,19,Cold,0.0001233569415565,8.115600885430503e-05,55.006167847077826,Medium,44.993832152922174,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000438,14,Cold,0.0001197683965425,1.1190794842955236e-05,55.005988419827126,Medium,44.994011580172874,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000330,6,Cold,0.0001124973597666,0.0,55.00562486798833,Medium,44.99437513201167,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000142,17,Cold,0.0001117161329129,4.251896042833519e-05,55.00558580664564,Medium,44.99441419335436,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000125,6,Cold,0.0001114808800833,0.0,55.00557404400416,Medium,44.99442595599584,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000352,6,Cold,7.284881571333351e-05,0.0,55.00364244078567,Medium,44.99635755921433,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000460,6,Cold,6.204129942264125e-05,0.0,55.00310206497113,Medium,44.99689793502887,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000410,13,Cold,6.176171562901847e-05,3.415259051459877e-06,55.00308808578145,Medium,44.99691191421855,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000203,14,Cold,6.140954345054107e-05,1.4594105823220696e-05,55.00307047717253,Medium,44.99692952282747,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000427,50,Medium,0.9891812852806972,7830.777688119907,54.99299053048569,Medium,45.00700946951431,Monitor,stale_transaction_activity; no_active_account; low_risk_score
+CUST000421,36,Medium,0.8127781768429043,1055.2760991528858,54.36109115785479,Medium,45.63890884214521,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000240,38,Medium,0.8315355126329921,1620.5880515249085,53.4232243683504,Medium,46.5767756316496,Monitor,no_transactions_in_last_365d; stale_transaction_activity; low_risk_score
+CUST000403,63,Medium,0.9993339811463616,20746.535189033573,53.115492723503834,Medium,46.884507276496166,Monitor,stale_transaction_activity; no_active_account; low_risk_score
+CUST000087,28,Cold,0.3512253217470027,126.1005014326442,52.561266087350134,Medium,47.438733912649866,Monitor,no_transactions_in_last_365d; stale_transaction_activity
+CUST000161,44,Medium,0.8183596243857885,4232.907464298989,52.438183164272225,Medium,47.561816835727775,Monitor,stale_transaction_activity; low_risk_score
+CUST000488,36,Medium,0.7991544433938134,1123.6222251799245,52.37104495359701,Medium,47.62895504640299,Monitor,no_active_account; low_risk_score
+CUST000199,38,Medium,0.8471249075349312,1567.672550014638,51.61635736297947,Medium,48.38364263702053,Monitor,stale_transaction_activity; no_active_account
+CUST000006,37,Medium,0.9193312976329656,1432.407912239175,51.430695392324324,Medium,48.569304607675676,Monitor,no_active_account; low_risk_score
+CUST000280,60,Medium,0.997661204209867,17580.539795321667,50.93885759772582,Medium,49.06114240227418,Monitor,no_active_account; low_risk_score
+CUST000166,72,Hot,0.9856638795096838,49159.28541534559,50.85379232588567,Medium,49.14620767411433,Prioritize outreach,no_active_account; low_risk_score
+CUST000225,27,Cold,0.2779721191068973,19.96380857293419,50.19997581835856,Medium,49.80002418164144,Monitor,no_active_account
+CUST000382,43,Medium,0.9991506709056982,4060.686117132625,50.04246645471509,Medium,49.95753354528491,Monitor,no_active_account; low_risk_score
+CUST000475,47,Medium,0.9676327670565864,6546.370956414405,49.83753972936246,Medium,50.16246027063754,Monitor,no_active_account; low_risk_score
+CUST000277,36,Medium,0.9079563918636944,1220.2849397250604,49.60218040681528,Medium,50.39781959318472,Monitor,no_transactions_in_last_365d; stale_transaction_activity; low_risk_score
+CUST000030,41,Medium,0.9188743541653104,2929.0592924293837,49.05628229173448,Medium,50.94371770826552,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000414,61,Medium,0.9759980768669504,18700.335556265018,48.93982218404974,Medium,51.06017781595026,Monitor,no_active_account; low_risk_score
+CUST000085,61,Medium,0.9995554463463646,18230.097411478026,48.85784412103793,Medium,51.14215587896207,Monitor,no_active_account; low_risk_score
+CUST000294,57,Medium,0.923534942102355,14348.61984951925,48.82325289488225,Medium,51.17674710511775,Monitor,no_transactions_in_last_365d; stale_transaction_activity; low_risk_score
+CUST000296,46,Medium,0.9267916297806816,5992.773922212315,48.66041851096592,Medium,51.33958148903408,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000020,50,Medium,0.9857010343851824,7998.467759564446,48.591660609508004,Medium,51.408339390491996,Monitor,no_active_account; low_risk_score
+CUST000274,62,Medium,0.9989942602863362,20359.7260196066,48.474944519929764,Medium,51.525055480070236,Monitor,no_active_account; low_risk_score
+CUST000209,41,Medium,0.9509670259700908,2798.809910042012,47.451648701495465,Medium,52.548351298504535,Monitor,no_transactions_in_last_365d; stale_transaction_activity; low_risk_score
+CUST000367,42,Medium,0.8551289955988619,3276.1298170923947,47.4490296721117,Medium,52.5509703278883,Monitor,no_active_account; low_risk_score
+CUST000192,49,Medium,0.9517622368402142,7337.4647388009935,47.41188815798929,Medium,52.58811184201071,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000448,47,Medium,0.9547887038298118,6386.53953975062,47.26056480850941,Medium,52.73943519149059,Monitor,no_active_account; low_risk_score
+CUST000456,69,Medium,0.997454214562472,38282.311592398415,46.497152285575034,Medium,53.502847714424966,Monitor,no_active_account; low_risk_score
+CUST000412,40,Medium,0.9417807536397024,2381.366342817002,46.40411300294639,Medium,53.59588699705361,Monitor,no_active_account; low_risk_score
+CUST000255,61,Medium,0.9923812648218204,17667.30427401123,46.27134771781309,Medium,53.72865228218691,Monitor,no_active_account; low_risk_score
+CUST000472,34,Medium,0.9506076714323068,712.1760924747475,46.168246565370964,Medium,53.831753434629036,Monitor,stale_transaction_activity; no_active_account
+CUST000315,40,Medium,0.9780032041049136,2481.383685085637,46.09983979475432,Medium,53.90016020524568,Monitor,no_transactions_in_last_365d; stale_transaction_activity; low_risk_score
+CUST000108,60,Medium,0.9960706535667968,16845.94254344579,46.018385129879334,Medium,53.981614870120666,Monitor,no_active_account; low_risk_score
+CUST000206,52,Medium,0.9802772879492396,9044.124305511552,45.98613560253802,Medium,54.01386439746198,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000257,67,Medium,0.999440316897118,29218.725939428117,45.78140881267835,Medium,54.21859118732165,Monitor,no_active_account; low_risk_score
+CUST000079,37,Medium,0.9558710654378788,1411.3999103247406,45.699597413037566,Medium,54.300402586962434,Monitor,stale_transaction_activity; no_active_account
+CUST000341,83,Hot,0.9788704703696224,108371.75330761606,45.64551757740929,Medium,54.35448242259071,Prioritize outreach,no_active_account; low_risk_score
+CUST000214,71,Hot,0.9902968514210329,44717.45590576722,45.485157428948355,Medium,54.514842571051645,Prioritize outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000049,70,Hot,0.9977783978027748,38710.06947725432,45.453545863285925,Medium,54.546454136714075,Prioritize outreach,no_active_account; low_risk_score
+CUST000480,73,Hot,0.997445520955226,52225.05188796999,45.1277239522387,Medium,54.8722760477613,Prioritize outreach,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000172,54,Medium,0.9985512317037116,9944.928767230283,45.07243841481442,Medium,54.92756158518558,Monitor,no_transactions_in_last_365d; stale_transaction_activity; no_active_account
+CUST000153,70,Hot,0.9989788980138168,38736.06964435472,45.05105509930916,Medium,54.94894490069084,Prioritize outreach,no_transactions_in_last_365d; stale_transaction_activity; low_risk_score
+CUST000317,34,Medium,0.9162151713860612,726.0742863129699,44.60020033480653,Medium,55.39979966519347,Monitor,stale_transaction_activity; no_active_account
+CUST000467,54,Medium,0.9994738488294151,10439.092479982684,44.47836235304979,Medium,55.52163764695021,Monitor,no_active_account; low_risk_score
+CUST000127,40,Medium,0.99526923958514,2205.020923682862,43.866675007044364,Medium,56.133324992955636,Monitor,stale_transaction_activity; no_active_account
+CUST000321,57,Medium,0.9982156340201124,13376.745358981809,43.856341586665614,Medium,56.143658413334386,Monitor,stale_transaction_activity; no_active_account
+CUST000043,30,Medium,0.8101485940532362,278.50355554549424,43.67065248911901,Medium,56.32934751088099,Monitor,stale_transaction_activity; no_active_account
+CUST000078,68,Medium,0.996542608759661,34587.058060685486,43.39204764420873,Medium,56.60795235579127,Monitor,no_active_account; low_risk_score
+CUST000491,30,Medium,0.7951747646382392,235.39876105342796,43.39194669959488,Medium,56.60805330040512,Monitor,stale_transaction_activity; no_active_account
+CUST000230,83,Hot,0.999806056065099,106414.06654634015,43.29736842962176,Medium,56.70263157037824,Prioritize outreach,no_active_account; low_risk_score
+CUST000253,58,Medium,0.9991501055855986,15145.908326078586,43.19317965222692,Medium,56.80682034777308,Monitor,no_active_account; low_risk_score
+CUST000313,48,Medium,0.964915895554352,6873.063209412875,43.192561386665965,Medium,56.807438613334035,Monitor,no_active_account; low_risk_score
+CUST000170,34,Medium,0.7482996673603161,829.5498956795037,42.51652348129927,Medium,57.48347651870073,Monitor,no_active_account
+CUST000402,50,Medium,0.991947781866522,8015.749053572016,42.320419125851984,Medium,57.679580874148016,Monitor,stale_transaction_activity; low_risk_score
+CUST000295,86,Hot,0.998150803799124,125966.54633024023,42.28424063196161,Medium,57.71575936803839,Prioritize outreach,no_active_account; low_risk_score
+CUST000401,98,Hot,0.9990250107425468,475080.3145623572,42.240530284790474,Medium,57.759469715209526,Prioritize outreach,no_active_account; low_risk_score
+CUST000347,45,Medium,0.997972029578225,4749.120580680022,42.22468619232163,Medium,57.77531380767837,Monitor,stale_transaction_activity; no_active_account
+CUST000405,55,Medium,0.9978919037924754,10715.017278197667,42.09170618023924,Medium,57.90829381976076,Monitor,no_active_account; low_risk_score
+CUST000418,43,Medium,0.967482477575175,3664.9376837368545,42.03683502535084,Medium,57.96316497464916,Monitor,no_active_account; low_risk_score
+CUST000023,77,Hot,0.9992411827897486,75744.82528093077,41.955749079690655,Medium,58.044250920309345,Prioritize outreach,stale_transaction_activity; no_active_account
+CUST000345,29,Cold,0.8805870837635251,199.55870704984832,41.861056770727856,Medium,58.138943229272144,Monitor,no_active_account
+CUST000075,71,Hot,0.9991652686829504,47244.1512527716,41.8225584836607,Medium,58.1774415163393,Prioritize outreach,no_active_account; low_risk_score
+CUST000333,88,Hot,0.9986264884304004,138015.01307087435,41.644018044233405,Medium,58.355981955766595,Prioritize outreach,no_active_account; low_risk_score
+CUST000025,67,Medium,0.9999203839489892,30214.461542201727,41.579323268303966,Medium,58.420676731696034,Monitor,no_active_account; low_risk_score
+CUST000010,51,Medium,0.9991082645253552,8679.999695180897,41.482942938115805,Medium,58.517057061884195,Monitor,no_active_account; low_risk_score
+CUST000002,29,Cold,0.9058062910475708,151.86695435855302,41.35352106405981,Medium,58.64647893594019,Monitor,no_active_account
+CUST000462,75,Hot,0.9999281513748696,63418.65165838952,41.16797599290035,Medium,58.83202400709965,Prioritize outreach,no_active_account; low_risk_score
+CUST000204,43,Medium,0.9926436179037548,3668.764291047475,41.12124376234651,Medium,58.87875623765349,Monitor,no_active_account; low_risk_score
+CUST000247,71,Hot,0.9968766690894938,45278.83843492043,41.11507065511435,Medium,58.88492934488565,Prioritize outreach,no_active_account; low_risk_score
+CUST000449,65,Medium,0.9871176588986706,25561.3507099783,40.712610205751396,Medium,59.287389794248604,Monitor,no_active_account; low_risk_score
+CUST000471,86,Hot,0.9998457397324912,121951.52370617456,40.692644520224746,Medium,59.307355479775254,Prioritize outreach,no_active_account; low_risk_score
+CUST000278,67,Medium,0.9997410974533424,29940.732004213743,40.629383483497264,Medium,59.370616516502736,Monitor,no_active_account; low_risk_score
+CUST000099,75,Hot,0.9992566068198936,61536.47401184914,40.51662171379984,Medium,59.48337828620016,Prioritize outreach,no_active_account; low_risk_score
+CUST000446,61,Medium,0.9954597526180758,18420.989653578657,40.50098497183593,Medium,59.49901502816407,Monitor,stale_transaction_activity; no_active_account
+CUST000349,39,Medium,0.9987958346686866,1721.7546594480286,40.47116717067526,Medium,59.52883282932474,Monitor,no_active_account; low_risk_score
+CUST000021,62,Medium,0.995244875479766,19741.43126978724,40.2377562260117,Medium,59.7622437739883,Monitor,no_active_account; low_risk_score
+CUST000053,91,Hot,0.9995507550428157,161238.9395055984,40.090955398544146,Medium,59.909044601455854,Prioritize outreach,stale_transaction_activity; no_active_account
+CUST000404,27,Cold,0.1008068043732459,10.573864369050238,40.040340218662294,Medium,59.959659781337706,Monitor,no_transactions_in_last_365d; stale_transaction_activity
+CUST000416,32,Medium,0.2838679931584587,423.9010406980544,39.19339965792293,Low,60.80660034207707,Monitor,no_transactions_in_last_365d; stale_transaction_activity
+CUST000304,35,Medium,0.9963707841948836,867.7411264814182,39.15406352998185,Low,60.84593647001815,Monitor,stale_transaction_activity; no_active_account
+CUST000306,62,Medium,0.998688881568565,18925.46256334663,37.94226825033888,Low,62.05773174966112,Monitor,stale_transaction_activity; no_active_account
+CUST000064,58,Medium,0.9989364881586776,14663.287885884629,35.94358655097023,Low,64.05641344902978,Monitor,stale_transaction_activity; no_active_account
+CUST000383,64,Medium,0.9635228110531096,22930.806533039453,35.79646218707055,Low,64.20353781292945,Monitor,stale_transaction_activity; no_active_account
+CUST000241,27,Cold,0.4406479047976971,57.29062558335247,34.840614417967046,Low,65.15938558203295,Monitor,no_issue_detected
+CUST000422,94,Hot,0.9982919800603416,221308.42810809243,34.811428394243194,Low,65.1885716057568,Prioritize outreach,stale_transaction_activity; no_active_account
+CUST000139,67,Medium,0.9928891497015346,29869.20158750359,34.73910415875889,Low,65.26089584124111,Monitor,stale_transaction_activity; low_risk_score
+CUST000269,95,Hot,0.9998741814329334,227273.7214214604,34.663825174928675,Low,65.33617482507132,Prioritize outreach,stale_transaction_activity; no_active_account
+CUST000433,48,Medium,0.9710563620083476,7280.138402937408,34.46088052971961,Low,65.53911947028038,Monitor,stale_transaction_activity; no_active_account
+CUST000213,31,Medium,0.7554508848526804,370.2447811160828,34.213757127228995,Low,65.786242872771,Monitor,no_active_account
+CUST000239,27,Cold,0.4169655409661878,52.4124998808891,34.20444143187103,Low,65.79555856812897,Monitor,no_issue_detected
+CUST000136,31,Medium,0.9590255915064512,406.0288667532219,34.035021794540455,Low,65.96497820545954,Monitor,no_active_account
+CUST000226,33,Medium,0.910085192385942,525.3749049622437,33.33135681905906,Low,66.66864318094093,Monitor,no_active_account
+CUST000086,57,Medium,0.984422810086492,13892.533048796957,33.31310607101786,Low,66.68689392898213,Monitor,stale_transaction_activity; no_active_account
+CUST000375,75,Hot,0.9970913568013068,62593.70148571236,33.22762394075658,Low,66.77237605924341,Prioritize outreach,stale_transaction_activity; low_risk_score
+CUST000113,28,Cold,0.8102508445528186,99.91375065094776,32.36417010112619,Low,67.63582989887381,Monitor,stale_transaction_activity
+CUST000197,87,Hot,0.993673355715834,126137.97481415824,32.30263358407131,Low,67.69736641592868,Prioritize outreach,low_risk_score
+CUST000123,42,Medium,0.9911534376205052,3284.0152677480355,32.29164318746789,Low,67.70835681253212,Monitor,no_active_account
+CUST000439,41,Medium,0.8428650267322835,2913.5020412886133,31.966337704481717,Low,68.03366229551828,Monitor,no_active_account
+CUST000181,64,Medium,0.9927388467093892,21888.038841862777,31.938400130283963,Low,68.06159986971603,Monitor,no_active_account
+CUST000200,47,Medium,0.989370677538366,6458.807630984876,31.901329136780326,Low,68.09867086321967,Monitor,no_active_account
+CUST000044,38,Medium,0.7759005731128028,1660.4620125208696,31.889902851209172,Low,68.11009714879083,Monitor,no_active_account
+CUST000039,33,Medium,0.9857476077289036,472.482513433988,31.87700317519866,Low,68.12299682480133,Monitor,no_active_account
+CUST000026,52,Medium,0.9972851414424608,8765.423091761022,31.848071695000247,Low,68.15192830499976,Monitor,no_active_account
+CUST000291,92,Hot,0.9994761706939238,163868.5059140267,31.7385202324271,Low,68.2614797675729,Prioritize outreach,low_risk_score
+CUST000015,64,Medium,0.9992933403135628,25371.380920070875,31.610675450075284,Low,68.38932454992471,Monitor,no_active_account
+CUST000490,77,Hot,0.9921254925512634,71124.86494198255,31.55810893408067,Low,68.44189106591932,Prioritize outreach,no_active_account
+CUST000303,41,Medium,0.8777702341737289,2696.8981596220974,31.111488291313556,Low,68.88851170868645,Monitor,no_transactions_in_last_365d; stale_transaction_activity
+CUST000232,76,Hot,0.9992206125217762,69455.29032994364,30.38143512733585,Low,69.61856487266415,Prioritize outreach,no_active_account
+CUST000350,96,Hot,0.9978908085375524,269960.84390340763,30.24244587449224,Low,69.75755412550777,Prioritize outreach,low_risk_score
+CUST000298,45,Medium,0.8977991249967306,4930.003387018975,30.110043750163467,Low,69.88995624983653,Monitor,no_transactions_in_last_365d; stale_transaction_activity
+CUST000133,93,Hot,0.9978268147972402,188943.24863554284,30.04016610945306,Low,69.95983389054695,Prioritize outreach,low_risk_score
+CUST000186,59,Medium,0.996673322528272,15421.803984420118,30.029347572216537,Low,69.97065242778346,Monitor,no_active_account
+CUST000366,68,Medium,0.9849770865851172,35310.51763795063,29.72374841047017,Low,70.27625158952983,Monitor,no_active_account
+CUST000343,47,Medium,0.9080196034188166,6403.480677475181,29.59901982905917,Low,70.40098017094083,Monitor,no_transactions_in_last_365d; stale_transaction_activity
+CUST000423,88,Hot,0.9951171649654152,142293.0823210453,29.55921024487992,Low,70.44078975512008,Prioritize outreach,no_active_account
+CUST000115,81,Hot,0.9999541899428256,98902.04232725417,29.45434529737927,Low,70.54565470262074,Prioritize outreach,no_active_account
+CUST000379,86,Hot,0.999561493241358,125175.46661688355,29.405486981767716,Low,70.59451301823228,Prioritize outreach,no_active_account
+CUST000012,67,Medium,0.9978542527209864,30360.216568258,29.14838325436164,Low,70.85161674563835,Monitor,no_active_account
+CUST000492,96,Hot,0.999650126060141,288531.34109116934,28.990096436718975,Low,71.00990356328103,Prioritize outreach,low_risk_score
+CUST000354,31,Medium,0.8951501390175024,320.33387090257236,28.804136884741318,Low,71.19586311525867,Monitor,no_active_account
+CUST000310,97,Hot,0.9994879762740791,434593.47214244574,28.724231323282346,Low,71.27576867671766,Prioritize outreach,no_active_account
+CUST000184,34,Medium,0.9141712185986046,670.3022298972849,28.675000713905384,Low,71.32499928609462,Monitor,no_active_account
+CUST000431,95,Hot,0.9976397169339654,243010.51982143507,28.54267168754831,Low,71.4573283124517,Prioritize outreach,no_active_account
+CUST000356,94,Hot,0.9994866372463964,209683.99021944936,28.518818822611685,Low,71.48118117738832,Prioritize outreach,low_risk_score
+CUST000180,35,Medium,0.9467739617939228,1014.8201324727396,28.483219718523035,Low,71.51678028147697,Monitor,no_active_account
+CUST000331,81,Hot,0.999883620364625,93107.23122500288,28.1565039132756,Low,71.8434960867244,Prioritize outreach,no_active_account
+CUST000252,39,Medium,0.8449653349471967,1746.7776334539828,28.02570585537989,Low,71.9742941446201,Monitor,stale_transaction_activity
+CUST000067,77,Hot,0.9997956345448176,75662.02208972542,27.95542375221118,Low,72.04457624778883,Prioritize outreach,no_active_account
+CUST000045,83,Hot,0.9998755106095858,103978.56216031485,27.951429948972766,Low,72.04857005102724,Prioritize outreach,low_risk_score
+CUST000062,71,Hot,0.999508933326932,46816.583098875264,27.421813607626,Low,72.578186392374,Prioritize outreach,no_active_account
+CUST000246,31,Medium,0.9288830841171029,390.8522466759545,27.391462232501024,Low,72.60853776749897,Monitor,low_risk_score
+CUST000397,72,Hot,0.9959804009865076,49711.38026636412,27.324267621907495,Low,72.6757323780925,Prioritize outreach,low_risk_score
+CUST000377,66,Medium,0.9982097716506454,27881.217759597617,27.28129223938554,Low,72.71870776061446,Monitor,low_risk_score
+CUST000120,94,Hot,0.9998848946828182,217918.93995803624,27.197536087776903,Low,72.80246391222309,Prioritize outreach,low_risk_score
+CUST000114,83,Hot,0.9997136529054098,105769.0490252199,27.069111875277454,Low,72.93088812472254,Prioritize outreach,no_active_account
+CUST000301,73,Hot,0.9939610959914744,52659.304895245325,27.014273967549567,Low,72.98572603245043,Prioritize outreach,low_risk_score
+CUST000178,44,Medium,0.9837008931357828,4562.756474435809,26.842352603484834,Low,73.15764739651516,Monitor,low_risk_score
+CUST000168,80,Hot,0.9992831443367391,91598.5784680564,26.74817155028633,Low,73.25182844971367,Prioritize outreach,no_active_account
+CUST000077,49,Medium,0.9918013618846088,7461.9266264671,26.64280861809833,Low,73.35719138190167,Monitor,no_active_account
+CUST000007,48,Medium,0.967474246128462,6663.398737996313,26.6262876935769,Low,73.3737123064231,Monitor,no_transactions_in_last_365d; stale_transaction_activity
+CUST000121,59,Medium,0.9711049536539322,16589.911062803014,26.44475231730339,Low,73.5552476826966,Monitor,no_transactions_in_last_365d; stale_transaction_activity
+CUST000263,37,Medium,0.9974038637128824,1305.0311655718008,26.36268352668465,Low,73.63731647331535,Monitor,no_active_account
+CUST000477,90,Hot,0.9997457513862388,157605.16382724,26.24558914301683,Low,73.75441085698317,Prioritize outreach,low_risk_score
+CUST000398,46,Medium,0.9646669574761104,5504.745047474197,26.013227468660233,Low,73.98677253133977,Monitor,no_active_account
+CUST000425,97,Hot,0.9998034553551136,353356.6337779951,25.96873134183336,Low,74.03126865816664,Prioritize outreach,low_risk_score
+CUST000394,53,Medium,0.9608242064157876,9714.610935243976,25.93139241893665,Low,74.06860758106335,Monitor,no_active_account
+CUST000119,85,Hot,0.99972283147884,119140.9089744878,25.767283083592247,Low,74.23271691640775,Prioritize outreach,no_active_account
+CUST000499,44,Medium,0.9958564235557296,4635.542514635016,25.755124027692972,Low,74.24487597230703,Monitor,no_active_account
+CUST000288,90,Hot,0.9997980278119254,158313.03550401938,25.695030116253047,Low,74.30496988374695,Prioritize outreach,no_active_account
+CUST000316,52,Medium,0.9966579879200054,9174.604779615403,25.57805950810932,Low,74.42194049189068,Monitor,no_active_account
+CUST000008,74,Hot,0.987531001027788,52956.75865880132,25.55495679792567,Low,74.44504320207433,Prioritize outreach,low_risk_score
+CUST000131,43,Medium,0.9967666355557844,4095.7257975809966,25.50413397563544,Low,74.49586602436456,Monitor,no_active_account
+CUST000293,86,Hot,0.9951919847810684,119384.68511274846,25.445880213001374,Low,74.55411978699863,Prioritize outreach,no_active_account
+CUST000140,53,Medium,0.9851730315165884,9467.339613180984,25.39888267074592,Low,74.60111732925408,Monitor,no_active_account
+CUST000443,91,Hot,0.9992705121861488,161391.2738777851,25.310446993432283,Low,74.68955300656772,Prioritize outreach,low_risk_score
+CUST000495,36,Medium,0.9979969348412788,1064.9055066015578,25.23713955930592,Low,74.76286044069408,Monitor,no_active_account
+CUST000173,91,Hot,0.9982126277426407,160988.0020591432,25.226354914237824,Low,74.77364508576218,Prioritize outreach,no_active_account
+CUST000182,42,Medium,0.9485739173119396,3100.3783920270685,25.174043860430416,Low,74.82595613956958,Monitor,no_active_account
+CUST000081,85,Hot,0.999885643932136,117504.84728787336,25.142704104763062,Low,74.85729589523694,Prioritize outreach,low_risk_score
+CUST000484,81,Hot,0.9996895981938227,93343.36453551312,25.01552009030886,Low,74.98447990969115,Prioritize outreach,no_active_account
+CUST000497,76,Hot,0.9981431988393016,63763.94048074276,24.818867455295194,Low,75.18113254470481,Prioritize outreach,low_risk_score
+CUST000390,66,Medium,0.991904380492081,28730.150538420632,24.788342619231567,Low,75.21165738076843,Monitor,stale_transaction_activity
+CUST000355,58,Medium,0.975125607256208,14725.394148993406,24.599884020751244,Low,75.40011597924875,Monitor,low_risk_score
+CUST000191,49,Medium,0.9989140292535332,7394.41359345473,24.574846482528816,Low,75.42515351747119,Monitor,low_risk_score
+CUST000408,75,Hot,0.9986848985211312,57939.35836081514,24.517809868463992,Low,75.48219013153602,Prioritize outreach,no_active_account
+CUST000485,72,Hot,0.9947046802814752,49902.62614137821,24.511341328391993,Low,75.48865867160801,Prioritize outreach,no_active_account
+CUST000118,55,Medium,0.9965307242946004,12249.296104985748,24.488532278420664,Low,75.51146772157934,Monitor,stale_transaction_activity
+CUST000101,59,Medium,0.9994702889075132,15828.021406960084,24.47854034914489,Low,75.5214596508551,Monitor,no_active_account
+CUST000266,45,Medium,0.9564827945411032,4972.66076076453,24.367641094862652,Low,75.63235890513735,Monitor,no_active_account
+CUST000102,73,Hot,0.9993985669423812,51186.88429865372,24.345140146031625,Low,75.65485985396838,Prioritize outreach,low_risk_score
+CUST000103,65,Medium,0.9967988753883144,25478.657998799477,24.338138422365105,Low,75.6618615776349,Monitor,no_active_account
+CUST000009,51,Medium,0.996270871367144,8662.565590911,24.227552322053757,Low,75.77244767794625,Monitor,no_active_account
+CUST000013,68,Medium,0.9983923919803596,32393.527459472687,23.779010537968325,Low,76.22098946203167,Monitor,low_risk_score
+CUST000320,31,Medium,0.9778700442117328,352.5439896317139,23.777730666125684,Low,76.22226933387432,Monitor,no_active_account
+CUST000176,42,Medium,0.9986029162035962,3504.529173015731,23.768484326806494,Low,76.23151567319351,Monitor,no_active_account
+CUST000411,62,Medium,0.9961268906966796,19169.852356134816,23.755299300782458,Low,76.24470069921755,Monitor,no_active_account
+CUST000273,50,Medium,0.9945144214305628,7798.603537758837,23.698936462718436,Low,76.30106353728156,Monitor,low_risk_score
+CUST000346,97,Hot,0.9996365026844952,373261.6130373751,23.579818701391677,Low,76.42018129860833,Prioritize outreach,low_risk_score
+CUST000001,53,Medium,0.9914013013055172,9397.968525114748,23.51212671554606,Low,76.48787328445394,Monitor,stale_transaction_activity
+CUST000038,38,Medium,0.984093231578364,1703.4951863161116,23.466571297794125,Low,76.53342870220587,Monitor,no_active_account
+CUST000060,46,Medium,0.9506390757575268,5318.241067317431,23.426950321712702,Low,76.5730496782873,Monitor,stale_transaction_activity
+CUST000380,80,Hot,0.9996668609379392,89449.65433106228,23.30432818597975,Low,76.69567181402024,Prioritize outreach,low_risk_score
+CUST000212,98,Hot,0.9942908887331414,456113.0862399656,23.162167892110052,Low,76.83783210788995,Prioritize outreach,low_risk_score
+CUST000482,60,Medium,0.9911997602686368,17352.961564034194,23.111244863280493,Low,76.88875513671951,Monitor,stale_transaction_activity
+CUST000489,77,Hot,0.997431300375732,74438.0876502223,23.005147309980522,Low,76.99485269001948,Prioritize outreach,no_active_account
+CUST000325,89,Hot,0.9998085809971836,146152.65932390443,22.886283278907943,Low,77.11371672109206,Prioritize outreach,no_active_account
+CUST000154,58,Medium,0.9974196737119992,14871.187038172186,22.800249191112364,Low,77.19975080888764,Monitor,no_active_account
+CUST000231,79,Hot,0.9972193398374308,87658.75326013802,22.741772734155855,Low,77.25822726584414,Prioritize outreach,no_active_account
+CUST000111,82,Hot,0.9989361159733944,101599.40622410509,22.72442707804261,Low,77.27557292195739,Prioritize outreach,no_active_account
+CUST000400,65,Medium,0.9977043096426322,26184.605059390295,22.717524243895785,Low,77.28247575610422,Monitor,no_active_account
+CUST000474,76,Hot,0.9990734187736884,67551.1148520051,22.443589335288184,Low,77.55641066471182,Prioritize outreach,low_risk_score
+CUST000022,88,Hot,0.9992402750029656,138818.03144618106,22.43524652382432,Low,77.56475347617568,Prioritize outreach,low_risk_score
+CUST000494,64,Medium,0.9995994997992118,23436.30545151001,22.41728528401201,Low,77.58271471598799,Monitor,no_active_account
+CUST000469,79,Hot,0.999769836888157,86848.69811481817,22.408768429564752,Low,77.59123157043524,Prioritize outreach,no_active_account
+CUST000429,69,Medium,0.9993758838835948,35715.40667718228,22.359972929107933,Low,77.64002707089207,Monitor,no_active_account
+CUST000393,100,Hot,0.9997783122833398,891730.7643568628,22.33985150912068,Low,77.66014849087932,Prioritize outreach,low_risk_score
+CUST000286,86,Hot,0.9987385442983094,121386.58078985858,22.32334675768727,Low,77.67665324231274,Prioritize outreach,no_active_account
+CUST000134,43,Medium,0.9974664071297806,4063.7527643575054,22.318460465428778,Low,77.68153953457121,Monitor,no_active_account
+CUST000047,70,Hot,0.994684721224376,39344.14500084245,22.18357215795928,Low,77.81642784204072,Prioritize outreach,no_active_account
+CUST000437,72,Hot,0.989102954510066,48616.08400742401,21.914715288195328,Low,78.08528471180468,Prioritize outreach,no_active_account
+CUST000339,87,Hot,0.9996557546096552,130146.11710718904,21.866527338010393,Low,78.1334726619896,Prioritize outreach,no_active_account
+CUST000152,63,Medium,0.9997661185474492,21886.222680559607,21.86100914112069,Low,78.13899085887931,Monitor,low_risk_score
+CUST000357,80,Hot,0.9951530220187108,88455.59801998439,21.817691364817886,Low,78.18230863518211,Prioritize outreach,low_risk_score
+CUST000033,53,Medium,0.9992027554171058,9438.669142416657,21.752190996268,Low,78.247809003732,Monitor,low_risk_score
+CUST000328,32,Medium,0.9612462432459096,417.7181596198618,21.732208385649727,Low,78.26779161435027,Monitor,stale_transaction_activity
+CUST000454,72,Hot,0.9986278130987538,48762.50948928341,21.506965509445873,Low,78.49303449055412,Prioritize outreach,no_active_account
+CUST000145,39,Medium,0.978319595313234,2082.825887050864,21.49497913844789,Low,78.50502086155211,Monitor,no_active_account
+CUST000135,74,Hot,0.999354930288362,54154.6318054559,21.470609649965464,Low,78.52939035003453,Prioritize outreach,no_active_account
+CUST000141,78,Hot,0.9998943527064732,76684.8682703558,21.443638529059903,Low,78.55636147094009,Prioritize outreach,low_risk_score
+CUST000146,89,Hot,0.998580453552128,143729.53763166256,21.372347185407296,Low,78.62765281459271,Prioritize outreach,low_risk_score
+CUST000453,87,Hot,0.9960936885580652,136693.03780612533,21.359699133740573,Low,78.64030086625942,Prioritize outreach,no_active_account
+CUST000353,99,Hot,0.9993806028697084,553946.2647762056,21.332339719528274,Low,78.66766028047172,Prioritize outreach,low_risk_score
+CUST000058,96,Hot,0.9998246528454228,281681.07019256573,21.310137220742558,Low,78.68986277925744,Prioritize outreach,no_active_account
+CUST000032,54,Medium,0.9984976624184214,10202.348429534592,21.307993591407698,Low,78.6920064085923,Monitor,low_risk_score
+CUST000126,98,Hot,0.9966998312315872,451291.15423696785,21.260898849379544,Low,78.73910115062046,Prioritize outreach,low_risk_score
+CUST000436,83,Hot,0.9999425786201274,104545.50235610384,21.2357477813224,Low,78.7642522186776,Prioritize outreach,no_active_account
+CUST000198,79,Hot,0.9990940863759028,82118.5829580996,21.141186092163764,Low,78.85881390783624,Prioritize outreach,no_active_account
+CUST000458,89,Hot,0.9997042253219612,153073.00263596582,21.110679144860843,Low,78.88932085513916,Prioritize outreach,no_active_account
+CUST000360,50,Medium,0.9842085769629132,7960.919418694091,20.78957115185434,Low,79.21042884814565,Monitor,no_active_account
+CUST000342,85,Hot,0.9965825331472592,118000.77733143854,20.71881854811649,Low,79.28118145188351,Prioritize outreach,low_risk_score
+CUST000035,48,Medium,0.9856870822189036,6547.726148752376,20.715645889054823,Low,79.28435411094517,Monitor,stale_transaction_activity
+CUST000483,84,Hot,0.9966756353655992,113105.10959526894,20.64567028651456,Low,79.35432971348544,Prioritize outreach,low_risk_score
+CUST000040,81,Hot,0.9998274627658168,98037.1011088491,20.625065217873544,Low,79.37493478212646,Prioritize outreach,low_risk_score
+CUST000205,92,Hot,0.999511992182106,166280.61889958376,20.298372993634427,Low,79.70162700636557,Prioritize outreach,low_risk_score
+CUST000109,82,Hot,0.999831293207443,99141.63372093276,20.008435339627848,Low,79.99156466037215,Prioritize outreach,low_risk_score
+CUST000034,52,Medium,0.9957678328931858,8688.211221212647,19.80064945123112,Low,80.19935054876888,Monitor,stale_transaction_activity
+CUST000319,41,Medium,0.9582718340153394,2695.675670098974,19.48366857320563,Low,80.51633142679437,Monitor,stale_transaction_activity
+CUST000107,30,Medium,0.3544782121049437,238.43464723371164,19.162266769630747,Low,80.83773323036925,Monitor,no_issue_detected
+CUST000363,92,Hot,0.9997809337414894,178938.28239762867,18.709583449911836,Low,81.29041655008817,Prioritize outreach,stale_transaction_activity
+CUST000326,63,Medium,0.982595059032848,20860.614089551713,17.651068966165816,Low,82.34893103383419,Monitor,stale_transaction_activity
+CUST000063,39,Medium,0.9421471445219136,1797.7681899118502,16.86524551363035,Low,83.13475448636964,Monitor,stale_transaction_activity
+CUST000089,69,Medium,0.998377591011018,36329.24662564309,16.65646291520253,Low,83.34353708479748,Monitor,stale_transaction_activity
+CUST000019,56,Medium,0.9731342879730644,12524.430431731998,16.137806149291983,Low,83.86219385070802,Monitor,stale_transaction_activity
+CUST000292,84,Hot,0.999682391568908,108465.59938776966,15.563825627034051,Low,84.43617437296595,Prioritize outreach,stale_transaction_activity
+CUST000338,56,Medium,0.9984792598465646,12578.994318845547,14.048639747397798,Low,85.9513602526022,Monitor,stale_transaction_activity
+CUST000275,65,Medium,0.9991343147097984,25392.056029212737,13.67342125081145,Low,86.32657874918856,Monitor,stale_transaction_activity
+CUST000014,44,Medium,0.9839601534891876,4116.035235495823,13.13075944882829,Low,86.86924055117171,Monitor,no_issue_detected
+CUST000042,71,Hot,0.999586389109058,43466.11387660093,12.828899722629295,Low,87.1711002773707,Prioritize outreach,stale_transaction_activity
+CUST000250,55,Medium,0.9781239892213488,10717.669878173274,12.737636155370916,Low,87.26236384462908,Monitor,no_issue_detected
+CUST000260,73,Hot,0.9985177087094536,51198.80707350624,12.608361139869789,Low,87.39163886013021,Prioritize outreach,stale_transaction_activity
+CUST000235,56,Medium,0.9987927439786938,12792.895010649596,12.594609376407778,Low,87.40539062359223,Monitor,stale_transaction_activity
+CUST000365,80,Hot,0.9995037664976648,89644.79722467436,12.559058250459225,Low,87.44094174954077,Prioritize outreach,stale_transaction_activity
+CUST000442,59,Medium,0.9976531001315035,15399.016105728588,11.761180609863178,Low,88.23881939013683,Monitor,no_issue_detected
+CUST000381,84,Hot,0.9994168957350308,113372.45148914386,11.39901822694709,Low,88.60098177305291,Prioritize outreach,no_issue_detected
+CUST000190,84,Hot,0.9982992682289392,113465.8222623456,11.386406451566737,Low,88.61359354843326,Prioritize outreach,no_issue_detected
+CUST000090,55,Medium,0.9928119586379864,11267.379853423705,11.249813027004787,Low,88.75018697299521,Monitor,no_issue_detected
+CUST000147,49,Medium,0.934094797228506,7405.816890902127,11.171972467341824,Low,88.82802753265818,Monitor,no_issue_detected
+CUST000335,33,Medium,0.8552891529078943,457.7691329106164,10.934172491591585,Low,89.06582750840842,Monitor,no_issue_detected
+CUST000174,70,Hot,0.9987491768783228,38625.88884361674,10.747472662933177,Low,89.25252733706682,Prioritize outreach,no_issue_detected
+CUST000244,75,Hot,0.9988884875239642,56998.14733994131,10.740507130651105,Low,89.25949286934889,Prioritize outreach,no_issue_detected
+CUST000289,89,Hot,0.999960038658798,153003.0617544576,10.686929573909415,Low,89.31307042609059,Prioritize outreach,no_issue_detected
+CUST000251,60,Medium,0.9616742295355288,16623.66942554977,10.066973454730407,Low,89.9330265452696,Monitor,no_issue_detected
+CUST000285,97,Hot,0.9999324447568207,339228.06066293916,9.93488461147403,Low,90.06511538852597,Prioritize outreach,no_issue_detected
+CUST000194,51,Medium,0.8915073615066491,8336.12535917252,9.876686719188092,Low,90.12331328081191,Monitor,no_issue_detected
+CUST000073,59,Medium,0.9599053554436936,15677.320821306022,9.401992501787923,Low,90.59800749821207,Monitor,no_issue_detected
+CUST000165,69,Medium,0.9990135982341796,36095.54309711178,9.227402280071844,Low,90.77259771992816,Monitor,no_issue_detected
+CUST000117,69,Medium,0.9978843815359733,35328.19974014117,9.215369964297228,Low,90.78463003570278,Monitor,no_issue_detected
+CUST000302,65,Medium,0.982393284730617,25879.6090503752,9.031020694975997,Low,90.968979305024,Monitor,no_issue_detected
+CUST000163,78,Hot,0.9988819503889372,78801.59129803056,8.82302576822437,Low,91.17697423177563,Prioritize outreach,no_issue_detected
+CUST000082,96,Hot,0.9991249009583124,282864.50350390986,8.468412486330955,Low,91.53158751366905,Prioritize outreach,no_issue_detected
+CUST000290,98,Hot,0.998058009603882,510515.2652024029,8.384770752682613,Low,91.61522924731739,Prioritize outreach,no_issue_detected
+CUST000426,51,Medium,0.907185256946758,8232.548094018408,8.27087413896347,Low,91.72912586103654,Monitor,no_issue_detected
+CUST000106,54,Medium,0.954356091752175,10011.941036699574,8.172606371295362,Low,91.82739362870464,Monitor,no_issue_detected
+CUST000242,90,Hot,0.9998386573462388,157839.78277866935,8.15875206419491,Low,91.84124793580509,Prioritize outreach,no_issue_detected
+CUST000211,76,Hot,0.9987593876166844,68521.90652178417,8.144222399987699,Low,91.8557776000123,Prioritize outreach,no_issue_detected
+CUST000228,78,Hot,0.9973013051516644,80038.8222201483,6.847263509540069,Low,93.15273649045993,Prioritize outreach,no_issue_detected
+CUST000097,47,Medium,0.9982945027675676,6278.3474454267225,6.523631026005182,Low,93.47636897399482,Monitor,no_issue_detected
+CUST000098,66,Medium,0.999762130485368,27616.2590094682,6.176277037375436,Low,93.82372296262456,Monitor,no_issue_detected
+CUST000116,95,Hot,0.9998178396634172,242894.8009514581,5.968012126418181,Low,94.03198787358181,Prioritize outreach,no_issue_detected
+CUST000374,82,Hot,0.9949027872979448,100843.88017118323,5.802805840582213,Low,94.19719415941779,Prioritize outreach,no_issue_detected
+CUST000388,93,Hot,0.9997634003937858,196721.83165157543,5.628268336475096,Low,94.3717316635249,Prioritize outreach,no_issue_detected
+CUST000284,58,Medium,0.994283020522603,15203.080681915604,5.491328425924646,Low,94.50867157407535,Monitor,no_issue_detected
+CUST000466,93,Hot,0.9998529183278126,193484.9522852183,5.486806138403888,Low,94.51319386159611,Prioritize outreach,no_issue_detected
+CUST000100,64,Medium,0.9982119967060517,22416.828911484077,5.363372767437143,Low,94.63662723256286,Monitor,no_issue_detected
+CUST000351,49,Medium,0.9890354800472344,7530.836053816585,5.342746545583485,Low,94.65725345441652,Monitor,no_issue_detected
+CUST000307,85,Hot,0.9988604305560812,116427.07373883104,5.262457924250735,Low,94.73754207574926,Prioritize outreach,no_issue_detected
+CUST000344,74,Hot,0.9998418315491252,55838.46061459925,5.213387874598535,Low,94.78661212540146,Prioritize outreach,no_issue_detected
+CUST000003,44,Medium,0.9318826815149792,4486.866811593305,5.186687842059259,Low,94.81331215794074,Monitor,no_issue_detected
+CUST000465,60,Medium,0.9940192817544746,17004.234626652807,5.162049610906406,Low,94.83795038909359,Monitor,no_issue_detected
+CUST000440,63,Medium,0.9989575306177872,21236.30622245359,5.052123469110637,Low,94.94787653088936,Monitor,no_issue_detected
+CUST000210,55,Medium,0.9914883020278372,11072.88737596351,4.877639693128686,Low,95.12236030687131,Monitor,no_issue_detected
+CUST000080,95,Hot,0.9972846252536768,260097.9750434542,4.793302983891503,Low,95.20669701610849,Prioritize outreach,no_issue_detected
+CUST000481,53,Medium,0.9860989744672368,9623.960876278616,4.7361471670491175,Low,95.26385283295089,Monitor,no_issue_detected
+CUST000470,87,Hot,0.9997219293591392,130963.17639118568,4.671437778618384,Low,95.32856222138162,Prioritize outreach,no_issue_detected
+CUST000262,56,Medium,0.989595599978966,12747.257464609143,4.218850138038004,Low,95.78114986196199,Monitor,no_issue_detected
+CUST000151,74,Hot,0.995465171183026,53243.989739595985,4.130851029889795,Low,95.8691489701102,Prioritize outreach,no_issue_detected
+CUST000084,82,Hot,0.99895140778683,100186.11519219467,4.0935255010694584,Low,95.90647449893054,Prioritize outreach,no_issue_detected
+CUST000461,88,Hot,0.9996374266334164,137221.24967525512,4.05922455874014,Low,95.94077544125986,Prioritize outreach,no_issue_detected
+CUST000088,68,Medium,0.9969873658643884,35013.229773346284,3.986248145136744,Low,96.01375185486326,Monitor,no_issue_detected
+CUST000413,76,Hot,0.9985478441072044,68424.11105944071,3.9767173836808745,Low,96.02328261631912,Prioritize outreach,no_issue_detected
+CUST000387,91,Hot,0.9996817996483292,162713.41123859226,3.9200196066246384,Low,96.07998039337537,Prioritize outreach,no_issue_detected
+CUST000451,81,Hot,0.9853520584138628,97343.45390124376,3.8830820108137116,Low,96.11691798918629,Prioritize outreach,no_issue_detected
+CUST000305,96,Hot,0.9990094506307676,296106.5016427579,3.8166507561328515,Low,96.18334924386716,Prioritize outreach,no_issue_detected
+CUST000447,93,Hot,0.996576679524774,190546.19213933937,3.664316708692806,Low,96.33568329130719,Prioritize outreach,no_issue_detected
+CUST000336,70,Hot,0.9854138783726494,40357.78274351826,3.6060184101346544,Low,96.39398158986535,Prioritize outreach,no_issue_detected
+CUST000334,88,Hot,0.9998741722054958,142180.49759300513,3.4994420746567174,Low,96.50055792534329,Prioritize outreach,no_issue_detected
+CUST000445,84,Hot,0.9997317338469898,114670.77239685495,3.438070841897087,Low,96.56192915810291,Prioritize outreach,no_issue_detected
+CUST000052,87,Hot,0.9806016780090602,130672.05817475588,3.3671763735195936,Low,96.6328236264804,Prioritize outreach,no_issue_detected
+CUST000364,52,Medium,0.995659928448848,9112.26906262757,3.093715906324724,Low,96.90628409367528,Monitor,no_issue_detected
+CUST000276,79,Hot,0.9997877104920964,88425.04140029932,2.955819954847237,Low,97.04418004515276,Prioritize outreach,no_issue_detected
+CUST000479,99,Hot,0.9988501994246444,555060.1879885517,2.7287229054801103,Low,97.27127709451989,Prioritize outreach,no_issue_detected
+CUST000496,89,Hot,0.9966034224964392,146316.10090312586,2.567089149150643,Low,97.43291085084935,Prioritize outreach,no_issue_detected
+CUST000195,92,Hot,0.9999199924205988,171243.8636498196,2.264274351572799,Low,97.7357256484272,Prioritize outreach,no_issue_detected
+CUST000245,57,Medium,0.9928195221219696,13780.94726530316,2.1398458117097414,Low,97.86015418829025,Monitor,no_issue_detected
+CUST000156,79,Hot,0.9989254158339104,81571.21521395865,2.0400305781674954,Low,97.95996942183251,Prioritize outreach,no_issue_detected
+CUST000223,62,Medium,0.9768343533882596,18798.475821377917,1.9802001388061963,Low,98.0197998611938,Monitor,no_issue_detected
+CUST000112,91,Hot,0.9999430405634212,160345.5309948406,1.8521630403220906,Low,98.1478369596779,Prioritize outreach,no_issue_detected
+CUST000464,77,Hot,0.99799096096136,75684.54934085731,1.812780719055289,Low,98.18721928094472,Prioritize outreach,no_issue_detected
+CUST000450,66,Medium,0.994002084010809,27212.38393035438,1.8067451145280418,Low,98.19325488547196,Monitor,no_issue_detected
+CUST000311,74,Hot,0.9927321141118536,55001.08747364978,1.733257308105951,Low,98.26674269189405,Prioritize outreach,no_issue_detected
+CUST000340,78,Hot,0.9990434430973848,77957.15660027211,1.6916634615691162,Low,98.30833653843088,Prioritize outreach,no_issue_detected
+CUST000457,82,Hot,0.9999254493054888,102101.3165327592,1.6475631511639177,Low,98.35243684883608,Prioritize outreach,no_issue_detected
+CUST000322,56,Medium,0.9986448621872164,12357.814265926205,1.5746062057076744,Low,98.42539379429232,Monitor,no_issue_detected
+CUST000148,95,Hot,0.9996697611473624,242435.39075629055,1.4548681070154421,Low,98.54513189298456,Prioritize outreach,no_issue_detected
+CUST000215,98,Hot,0.9998310707261864,471839.2510304183,1.3783094773893112,Low,98.62169052261069,Prioritize outreach,no_issue_detected
+CUST000430,68,Medium,0.9988488270279504,32041.769173445715,1.2219422102463149,Low,98.77805778975369,Monitor,no_issue_detected
+CUST000327,99,Hot,0.9997410397842053,621634.3432846012,1.1088384217486413,Low,98.89116157825136,Prioritize outreach,no_issue_detected
+CUST000371,94,Hot,0.999956692922535,205513.35952029837,1.0295626141472238,Low,98.97043738585278,Prioritize outreach,no_issue_detected
+CUST000391,78,Hot,0.9998290471338996,78808.41556791727,0.9674517528940592,Low,99.03254824710594,Prioritize outreach,no_issue_detected
+CUST000435,99,Hot,0.9999392499416728,702246.4115183932,0.9619416125053999,Low,99.0380583874946,Prioritize outreach,no_issue_detected
+CUST000219,99,Hot,0.9997652815464224,570258.120363638,0.6281742788432629,Low,99.37182572115674,Prioritize outreach,no_issue_detected
+CUST000071,92,Hot,0.999515817124166,183651.0478395816,0.5036611985862186,Low,99.49633880141378,Prioritize outreach,no_issue_detected
+CUST000236,93,Hot,0.9999028552346536,197851.32053034243,0.41581614237690856,Low,99.58418385762309,Prioritize outreach,no_issue_detected
+CUST000272,85,Hot,0.9995138684634776,115786.94870308664,0.36677233025077943,Low,99.63322766974922,Prioritize outreach,no_issue_detected
+CUST000066,100,Hot,0.9999511508793656,931797.3837677444,0.34490820945637796,Low,99.65509179054362,Prioritize outreach,no_issue_detected
+CUST000050,80,Hot,0.999542523282212,91326.784805313,0.29684643862912363,Low,99.70315356137088,Prioritize outreach,no_issue_detected
+CUST000130,90,Hot,0.9995536518592224,158089.3949109657,0.29629000977860587,Low,99.7037099902214,Prioritize outreach,no_issue_detected
+CUST000004,97,Hot,0.9994216224681524,299864.2489167945,0.23439832864717652,Low,99.76560167135283,Prioritize outreach,no_issue_detected
+CUST000369,90,Hot,0.9995985551945036,158835.52236058694,0.22555169232961553,Low,99.77444830767038,Prioritize outreach,no_issue_detected
+CUST000158,100,Hot,0.9995174232209538,708724.604421779,0.09262198963724017,Low,99.90737801036276,Prioritize outreach,no_issue_detected
+CUST000196,73,Hot,0.999295892027258,52845.3322930328,0.03520539863710037,Low,99.9647946013629,Prioritize outreach,no_issue_detected
+CUST000179,94,Hot,0.9996943959230778,226577.34303089787,0.01528020384610751,Low,99.9847197961539,Prioritize outreach,no_issue_detected

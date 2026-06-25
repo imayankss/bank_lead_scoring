@@ -1,0 +1,2 @@
+rows,positive_rate,propensity_auc,propensity_brier,cltv_rmse,cltv_mae,precision_at_10pct,precision_at_20pct
+100.0,0.66,0.9126559714795008,0.1255558418981466,145270.415282306,82075.93723474271,1.0,1.0

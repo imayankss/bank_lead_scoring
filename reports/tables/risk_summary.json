@@ -1,0 +1,105 @@
+{
+  "overall_risk_score": 37.48295652386666,
+  "average_confidence": 62.51704347613334,
+  "high_risk_customers": 55,
+  "medium_risk_customers": 191,
+  "low_risk_customers": 254,
+  "top_alerts": [
+    {
+      "customer_id": "CUST000070",
+      "lead_score": 29,
+      "lead_category": "Cold",
+      "predicted_propensity": 0.5719139261442883,
+      "expected_value": 149.81275639609893,
+      "risk_score_composite": 96.40430369278559,
+      "risk_category": "High",
+      "confidence_score": 3.5956963072144106,
+      "alert": "Review before outreach",
+      "fallback_reasons": "no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score"
+    },
+    {
+      "customer_id": "CUST000187",
+      "lead_score": 30,
+      "lead_category": "Medium",
+      "predicted_propensity": 0.511738007033994,
+      "expected_value": 227.2797671811039,
+      "risk_score_composite": 89.4130996483003,
+      "risk_category": "High",
+      "confidence_score": 10.586900351699697,
+      "alert": "Review before outreach",
+      "fallback_reasons": "no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score"
+    },
+    {
+      "customer_id": "CUST000419",
+      "lead_score": 32,
+      "lead_category": "Medium",
+      "predicted_propensity": 0.6142762963980023,
+      "expected_value": 441.230062688221,
+      "risk_score_composite": 84.28618518009989,
+      "risk_category": "High",
+      "confidence_score": 15.713814819900108,
+      "alert": "Review before outreach",
+      "fallback_reasons": "no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score"
+    },
+    {
+      "customer_id": "CUST000256",
+      "lead_score": 40,
+      "lead_category": "Medium",
+      "predicted_propensity": 0.6868507796500648,
+      "expected_value": 2120.0154341333823,
+      "risk_score_composite": 80.65746101749676,
+      "risk_category": "High",
+      "confidence_score": 19.342538982503243,
+      "alert": "Review before outreach",
+      "fallback_reasons": "no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score"
+    },
+    {
+      "customer_id": "CUST000095",
+      "lead_score": 35,
+      "lead_category": "Medium",
+      "predicted_propensity": 0.7216574202735918,
+      "expected_value": 928.784365563993,
+      "risk_score_composite": 78.9171289863204,
+      "risk_category": "High",
+      "confidence_score": 21.082871013679593,
+      "alert": "Review before outreach",
+      "fallback_reasons": "no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score"
+    },
+    {
+      "customer_id": "CUST000420",
+      "lead_score": 32,
+      "lead_category": "Medium",
+      "predicted_propensity": 0.7328162340558262,
+      "expected_value": 412.1340400707519,
+      "risk_score_composite": 77.87973624241417,
+      "risk_category": "High",
+      "confidence_score": 22.120263757585832,
+      "alert": "Review before outreach",
+      "fallback_reasons": "stale_transaction_activity; no_active_account; low_risk_score"
+    },
+    {
+      "customer_id": "CUST000091",
+      "lead_score": 26,
+      "lead_category": "Cold",
+      "predicted_propensity": 0.0425145374663,
+      "expected_value": 1.023344803607417,
+      "risk_score_composite": 77.125726873315,
+      "risk_category": "High",
+      "confidence_score": 22.874273126684997,
+      "alert": "Review before outreach",
+      "fallback_reasons": "no_transactions_in_last_365d; stale_transaction_activity; no_active_account; low_risk_score"
+    },
+    {
+      "customer_id": "CUST000068",
+      "lead_score": 28,
+      "lead_category": "Cold",
+      "predicted_propensity": 0.4197954254146335,
+      "expected_value": 93.97509435144111,
+      "risk_score_composite": 75.98977127073168,
+      "risk_category": "High",
+      "confidence_score": 24.01022872926832,
+      "alert": "Review before outreach",
+      "fallback_reasons": "no_transactions_in_last_365d; stale_transaction_activity; low_risk_score"
+    }
+  ]
+}

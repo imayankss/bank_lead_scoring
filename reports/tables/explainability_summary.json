@@ -1,0 +1,14 @@
+{
+  "scored_customers": 500,
+  "hot_leads": 153,
+  "medium_leads": 200,
+  "cold_leads": 147,
+  "top_features": [
+    "account_count",
+    "avg_balance",
+    "occupation_freq",
+    "chosen_product_freq",
+    "age"
+  ],
+  "avg_recency_days": 194.478
+}

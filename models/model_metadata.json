@@ -1,0 +1,20 @@
+{
+  "cltv_model": "HistGradientBoostingRegressor",
+  "cltv_rmse": 145270.415282306,
+  "evaluation": {
+    "cltv_mae": 82075.93723474271,
+    "cltv_rmse": 145270.415282306,
+    "positive_rate": 0.66,
+    "precision_at_10pct": 1.0,
+    "precision_at_20pct": 1.0,
+    "propensity_auc": 0.9126559714795008,
+    "propensity_brier": 0.1255558418981466,
+    "rows": 100.0
+  },
+  "feature_count": 29,
+  "propensity_auc": 0.9126559714795008,
+  "propensity_model": "HistGradientBoostingClassifier",
+  "test_rows": 100,
+  "train_rows": 400,
+  "trained_at_utc": "2026-06-25T07:25:50.466650+00:00"
+}

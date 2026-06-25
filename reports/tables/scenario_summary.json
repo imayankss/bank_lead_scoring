@@ -1,0 +1,243 @@
+{
+  "base_expected_value": 27819548.32390573,
+  "scenarios": [
+    {
+      "month": 1,
+      "scenario": "Pessimistic",
+      "monthly_expected_value": 1808270.6410538724,
+      "cumulative_expected_value": 1808270.6410538724
+    },
+    {
+      "month": 2,
+      "scenario": "Pessimistic",
+      "monthly_expected_value": 1808270.6410538724,
+      "cumulative_expected_value": 3616541.282107745
+    },
+    {
+      "month": 3,
+      "scenario": "Pessimistic",
+      "monthly_expected_value": 1808270.6410538724,
+      "cumulative_expected_value": 5424811.9231616175
+    },
+    {
+      "month": 4,
+      "scenario": "Pessimistic",
+      "monthly_expected_value": 1808270.6410538724,
+      "cumulative_expected_value": 7233082.56421549
+    },
+    {
+      "month": 5,
+      "scenario": "Pessimistic",
+      "monthly_expected_value": 1808270.6410538724,
+      "cumulative_expected_value": 9041353.205269363
+    },
+    {
+      "month": 6,
+      "scenario": "Pessimistic",
+      "monthly_expected_value": 1808270.6410538724,
+      "cumulative_expected_value": 10849623.846323235
+    },
+    {
+      "month": 7,
+      "scenario": "Pessimistic",
+      "monthly_expected_value": 1808270.6410538724,
+      "cumulative_expected_value": 12657894.487377107
+    },
+    {
+      "month": 8,
+      "scenario": "Pessimistic",
+      "monthly_expected_value": 1808270.6410538724,
+      "cumulative_expected_value": 14466165.12843098
+    },
+    {
+      "month": 9,
+      "scenario": "Pessimistic",
+      "monthly_expected_value": 1808270.6410538724,
+      "cumulative_expected_value": 16274435.769484852
+    },
+    {
+      "month": 10,
+      "scenario": "Pessimistic",
+      "monthly_expected_value": 1808270.6410538724,
+      "cumulative_expected_value": 18082706.410538726
+    },
+    {
+      "month": 11,
+      "scenario": "Pessimistic",
+      "monthly_expected_value": 1808270.6410538724,
+      "cumulative_expected_value": 19890977.0515926
+    },
+    {
+      "month": 12,
+      "scenario": "Pessimistic",
+      "monthly_expected_value": 1808270.6410538724,
+      "cumulative_expected_value": 21699247.692646474
+    },
+    {
+      "month": 1,
+      "scenario": "Base",
+      "monthly_expected_value": 2318295.6936588106,
+      "cumulative_expected_value": 2318295.6936588106
+    },
+    {
+      "month": 2,
+      "scenario": "Base",
+      "monthly_expected_value": 2318295.6936588106,
+      "cumulative_expected_value": 4636591.387317621
+    },
+    {
+      "month": 3,
+      "scenario": "Base",
+      "monthly_expected_value": 2318295.6936588106,
+      "cumulative_expected_value": 6954887.080976432
+    },
+    {
+      "month": 4,
+      "scenario": "Base",
+      "monthly_expected_value": 2318295.6936588106,
+      "cumulative_expected_value": 9273182.774635242
+    },
+    {
+      "month": 5,
+      "scenario": "Base",
+      "monthly_expected_value": 2318295.6936588106,
+      "cumulative_expected_value": 11591478.468294052
+    },
+    {
+      "month": 6,
+      "scenario": "Base",
+      "monthly_expected_value": 2318295.6936588106,
+      "cumulative_expected_value": 13909774.161952863
+    },
+    {
+      "month": 7,
+      "scenario": "Base",
+      "monthly_expected_value": 2318295.6936588106,
+      "cumulative_expected_value": 16228069.855611673
+    },
+    {
+      "month": 8,
+      "scenario": "Base",
+      "monthly_expected_value": 2318295.6936588106,
+      "cumulative_expected_value": 18546365.549270485
+    },
+    {
+      "month": 9,
+      "scenario": "Base",
+      "monthly_expected_value": 2318295.6936588106,
+      "cumulative_expected_value": 20864661.242929295
+    },
+    {
+      "month": 10,
+      "scenario": "Base",
+      "monthly_expected_value": 2318295.6936588106,
+      "cumulative_expected_value": 23182956.936588105
+    },
+    {
+      "month": 11,
+      "scenario": "Base",
+      "monthly_expected_value": 2318295.6936588106,
+      "cumulative_expected_value": 25501252.630246915
+    },
+    {
+      "month": 12,
+      "scenario": "Base",
+      "monthly_expected_value": 2318295.6936588106,
+      "cumulative_expected_value": 27819548.323905725
+    },
+    {
+      "month": 1,
+      "scenario": "Optimistic",
+      "monthly_expected_value": 2735588.9185173963,
+      "cumulative_expected_value": 2735588.9185173963
+    },
+    {
+      "month": 2,
+      "scenario": "Optimistic",
+      "monthly_expected_value": 2735588.9185173963,
+      "cumulative_expected_value": 5471177.837034793
+    },
+    {
+      "month": 3,
+      "scenario": "Optimistic",
+      "monthly_expected_value": 2735588.9185173963,
+      "cumulative_expected_value": 8206766.755552189
+    },
+    {
+      "month": 4,
+      "scenario": "Optimistic",
+      "monthly_expected_value": 2735588.9185173963,
+      "cumulative_expected_value": 10942355.674069585
+    },
+    {
+      "month": 5,
+      "scenario": "Optimistic",
+      "monthly_expected_value": 2735588.9185173963,
+      "cumulative_expected_value": 13677944.592586981
+    },
+    {
+      "month": 6,
+      "scenario": "Optimistic",
+      "monthly_expected_value": 2735588.9185173963,
+      "cumulative_expected_value": 16413533.511104377
+    },
+    {
+      "month": 7,
+      "scenario": "Optimistic",
+      "monthly_expected_value": 2735588.9185173963,
+      "cumulative_expected_value": 19149122.429621775
+    },
+    {
+      "month": 8,
+      "scenario": "Optimistic",
+      "monthly_expected_value": 2735588.9185173963,
+      "cumulative_expected_value": 21884711.34813917
+    },
+    {
+      "month": 9,
+      "scenario": "Optimistic",
+      "monthly_expected_value": 2735588.9185173963,
+      "cumulative_expected_value": 24620300.266656566
+    },
+    {
+      "month": 10,
+      "scenario": "Optimistic",
+      "monthly_expected_value": 2735588.9185173963,
+      "cumulative_expected_value": 27355889.185173962
+    },
+    {
+      "month": 11,
+      "scenario": "Optimistic",
+      "monthly_expected_value": 2735588.9185173963,
+      "cumulative_expected_value": 30091478.103691358
+    },
+    {
+      "month": 12,
+      "scenario": "Optimistic",
+      "monthly_expected_value": 2735588.9185173963,
+      "cumulative_expected_value": 32827067.022208754
+    }
+  ],
+  "sensitivity": [
+    {
+      "conversion_change": -0.2,
+      "portfolio_expected_value": 22255638.659124583
+    },
+    {
+      "conversion_change": -0.1,
+      "portfolio_expected_value": 25037593.491515156
+    },
+    {
+      "conversion_change": 0.0,
+      "portfolio_expected_value": 27819548.32390573
+    },
+    {
+      "conversion_change": 0.1,
+      "portfolio_expected_value": 30601503.156296305
+    },
+    {
+      "conversion_change": 0.2,
+      "portfolio_expected_value": 33383457.988686875
+    }
+  ]
+}
