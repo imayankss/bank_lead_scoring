@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environments and local installers
+.venv/
+venv/
+.env
+.local/
+Miniforge3-*.sh
+
+# OS/editor files
+.DS_Store
+.idea/
+.vscode/
+
+# Frontend
+web/node_modules/
+web/.next/
+web/out/
+web/.turbo/
+
+# Project data and report artifacts are intentionally trackable for the portfolio version.
+!data/raw/
+!data/raw/*.csv
