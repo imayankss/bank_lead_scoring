@@ -65,32 +65,41 @@ PY
 # Phony targets
 # --------------------------------------------------------------------
 
-.PHONY: help stage cltv score train_rf train_hgb export_crm export_hybrid qc all pipeline
+.PHONY: help \
+        stage cltv score \
+        train_rf train_hgb \
+        export_crm export_hybrid \
+        qc all pipeline \
+        nbp dashboard
 
 # --------------------------------------------------------------------
 # Help
 # --------------------------------------------------------------------
 
 help:
-	@echo "Local DuckDB CLTV + lead scoring pipeline"
+	@echo "Local DuckDB CLTV + unified ML lead scoring pipeline"
 	@echo
-	@echo "make stage          - Run local ETL into DuckDB (uses src/etl/*)"
-	@echo "make cltv           - Compute CLTV features into DuckDB (cltv_pushdown)"
-	@echo "make score          - Build CLTV/lead scores (0–100, deciles)"
-	@echo "make train_rf       - Train RF model (legacy/experimental)"
-	@echo "make train_hgb      - Train main HGB model"
-	@echo "make export_crm     - Export rules-based lead scores to CSV"
-	@echo "make export_hybrid  - Export hybrid (rules + ML) scores to CSV"
-	@echo "make qc             - Basic QC summary JSON under reports/"
-	@echo "make all / pipeline - Full local pipeline: stage → cltv → score → train_hgb → export_hybrid → qc"
+	@echo "Core (DuckDB / CLTV):"
+	@echo "  make stage                  - Run local ETL into DuckDB (src/etl/ETL.py)"
+	@echo "  make cltv                   - Compute CLTV features into DuckDB (cltv_pushdown.py)"
+	@echo "  make score                  - Build CLTV-based lead scores & deciles in DuckDB"
+	@echo "  make train_rf               - Train legacy Random Forest model (src/ml/train.py)"
+	@echo "  make train_hgb              - Train main HGB model (src/ml/train_hgb.py)"
+	@echo "  make export_crm             - Export rules-based lead scores CSV (ans.customer_lead_scores)"
+	@echo "  make export_hybrid          - Export hybrid (rules + ML) lead scores CSV (ans.crm_export)"
+	@echo "  make qc                     - Basic QC summary JSON under reports/"
+	@echo "  make all / make pipeline    - stage → cltv → score → train_hgb → export_hybrid → qc"
+	@echo
+	@echo "Next-Best-Product + Dashboard (CSV-based, used by Streamlit):"
+	@echo "  make nbp                    - Compute NBP1/2/3 per customer (data/processed/unified_nbp_customers.csv)"
+	@echo "  make dashboard              - Run Streamlit dashboard locally (src/dashboard/app.py)"
 
 # --------------------------------------------------------------------
 # Local ETL / CLTV (DuckDB-based pipeline)
 # --------------------------------------------------------------------
 
 # NOTE: This is the legacy/local ETL path into DuckDB, independent of the
-# Docker/Postgres/dbt stack described in the README. Keep src/etl/ETL.py
-# or update this command if your ETL entrypoint has been renamed.
+# Docker/Postgres/dbt stack. It operates on data/raw → DuckDB file at $(DB_PATH).
 
 stage:
 	$(PYTHON) src/etl/ETL.py \
@@ -196,7 +205,7 @@ print("Built ans.acc_cltv_final_scored and ans.customer_lead_scores in", db_path
 PY
 
 # --------------------------------------------------------------------
-# ML training (local)
+# ML training (legacy/local)
 # --------------------------------------------------------------------
 
 train_rf:
@@ -207,7 +216,7 @@ train_hgb:
 	$(PYTHON) src/ml/train_hgb.py
 
 # --------------------------------------------------------------------
-# Exports (CRM CSVs)
+# Exports (CRM CSVs from DuckDB)
 # --------------------------------------------------------------------
 
 export_crm:
@@ -343,7 +352,20 @@ print("QC summary ->", out)
 PY
 
 # --------------------------------------------------------------------
-# Full local pipeline
+# NBP computation + dashboard
+# --------------------------------------------------------------------
+
+# Compute NBP1/2/3 per customer based on unified lead scores + age rules.
+# Writes: data/processed/unified_nbp_customers.csv
+nbp:
+	$(PYTHON) -m src.ml.score_unified_leads_nbp
+
+# Run Streamlit dashboard locally.
+dashboard:
+	$(PYTHON) -m streamlit run src/dashboard/app.py
+
+# --------------------------------------------------------------------
+# Full local pipeline (DuckDB CLTV path)
 # --------------------------------------------------------------------
 
 pipeline: all
