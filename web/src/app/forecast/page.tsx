@@ -46,7 +46,7 @@ export default async function ForecastPage() {
               {forecast.actual_vs_predicted.slice(0, 20).map((row, index) => (
                 <tr key={`${row.customer_id}-${index}`} className="text-slate-300">
                   <td className="py-3 text-white">{row.customer_id}</td>
-                  <td>{currency(row.actual_future_revenue_12m)}</td>
+                  <td>{currency(row.actual_future_value)}</td>
                   <td>{currency(row.predicted_cltv)}</td>
                   <td>{currency(row.expected_value)}</td>
                 </tr>

@@ -13,8 +13,8 @@ def build_model_comparison() -> pd.DataFrame:
     """Compare the trained model outputs against simple baselines."""
     ensure_directories()
     predictions = pd.read_csv(TABLES_DIR / "test_predictions.csv")
-    actual_revenue = predictions["actual_future_revenue_12m"]
-    actual_conversion = predictions["actual_converted_12m"]
+    actual_revenue = predictions["actual_future_value"]
+    actual_conversion = predictions["actual_converted"]
 
     mean_revenue = float(actual_revenue.mean())
     baseline_propensity = float(actual_conversion.mean())

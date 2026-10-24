@@ -169,7 +169,7 @@ def export_web_data() -> list[Path]:
                 ],
                 "dataset": {
                     "training_rows": int(len(customer_features)),
-                    "positive_customers": int(customer_features["converted_12m"].sum()),
+                    "positive_customers": int(customer_features["converted"].sum()),
                     "feature_columns": feature_metadata.get("feature_cols", []),
                 },
             },

@@ -46,8 +46,8 @@ def evaluate_models() -> dict[str, float]:
     """Evaluate persisted models and save metrics, lift, and calibration artifacts."""
     ensure_directories()
     X_test = pd.read_parquet(PREPROCESSED_DATA_DIR / "X_test.parquet")
-    y_reg_test = _read_target("y_reg_test.parquet", "future_revenue_12m")
-    y_clf_test = _read_target("y_clf_test.parquet", "converted_12m").astype(int)
+    y_reg_test = _read_target("y_reg_test.parquet", "future_value")
+    y_clf_test = _read_target("y_clf_test.parquet", "converted").astype(int)
 
     cltv_model = joblib.load(CLTV_MODEL_FILE)
     propensity_model = joblib.load(PROPENSITY_MODEL_FILE)
@@ -72,8 +72,8 @@ def evaluate_models() -> dict[str, float]:
     predictions = pd.DataFrame(
         {
             "customer_id": test_ids["customer_id"],
-            "actual_future_revenue_12m": y_reg_test.reset_index(drop=True),
-            "actual_converted_12m": y_clf_test.reset_index(drop=True),
+            "actual_future_value": y_reg_test.reset_index(drop=True),
+            "actual_converted": y_clf_test.reset_index(drop=True),
             "predicted_cltv": pred_cltv,
             "predicted_propensity": pred_propensity,
             "expected_value": expected_value,
@@ -93,8 +93,8 @@ def evaluate_models() -> dict[str, float]:
         .agg(
             n=("expected_value", "size"),
             mean_expected_value=("expected_value", "mean"),
-            conversion_rate=("actual_converted_12m", "mean"),
-            actual_revenue=("actual_future_revenue_12m", "sum"),
+            conversion_rate=("actual_converted", "mean"),
+            actual_revenue=("actual_future_value", "sum"),
         )
         .reset_index()
         .sort_values("decile", ascending=False)

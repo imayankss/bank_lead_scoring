@@ -8,8 +8,6 @@ from typing import Any
 
 import numpy as np
 import pandas as pd
-from sklearn.model_selection import train_test_split
-
 from lead_scoring.config import PipelineConfig
 from lead_scoring.paths import (
     CUSTOMER_FEATURES_FILE,
@@ -18,47 +16,36 @@ from lead_scoring.paths import (
     SCORING_FEATURES_FILE,
     ensure_directories,
 )
+from lead_scoring.temporal import assert_no_forbidden_columns, assert_target_windows_before
 
 
-TARGET_COLUMNS = {"future_revenue_12m", "converted_12m", "converted_30d"}
-IDENTIFIER_COLUMNS = {"customer_id"}
+TARGET_COLUMNS = {"future_value", "converted"}
+IDENTIFIER_COLUMNS = {"customer_id", "fold"}
 PII_COLUMNS = {"first_name", "last_name", "email", "phone", "dob", "postal_code"}
-DATE_COLUMNS = {"first_txn", "last_txn", "date_of_lead", "snapshot_date"}
+DATE_COLUMNS = {"first_txn", "last_txn", "snapshot_date"}
+# MBD columns no transaction window reproduces (best match 11% of rows), so their timing is unknown.
+UNEXPLAINED_COLUMNS = {"trans_count", "diff_trans_date"}
+FORBIDDEN_COLUMNS = TARGET_COLUMNS | IDENTIFIER_COLUMNS | PII_COLUMNS | DATE_COLUMNS | UNEXPLAINED_COLUMNS
 
 NUMERIC_FEATURE_CANDIDATES = [
     "total_txn_amt_365",
     "txn_count_365",
     "avg_txn_amt_365",
     "max_txn_amt_365",
-    "credit_txn_count_365",
-    "debit_txn_count_365",
     "active_days_365",
+    "txn_count_90",
+    "total_txn_amt_90",
     "recency_days",
     "tenure_days",
-    "account_count",
-    "active_account_count",
-    "dormant_account_count",
-    "closed_account_count",
-    "total_balance",
-    "avg_balance",
-    "annual_income",
-    "risk_score",
-    "age",
-    "lead_age_days",
+    "products_taken_before",
+    "target_1_before",
+    "target_2_before",
+    "target_3_before",
+    "target_4_before",
 ]
 
-CATEGORICAL_FEATURE_CANDIDATES = [
-    "gender",
-    "city",
-    "state",
-    "lead_source",
-    "occupation",
-    "marital_status",
-    "customer_segment",
-    "best_first_option",
-    "best_second_option",
-    "chosen_product",
-]
+# MBD publishes no client attributes; frequency encoding stays for data sources that do.
+CATEGORICAL_FEATURE_CANDIDATES: list[str] = []
 
 
 def _available(columns: pd.Index, candidates: list[str]) -> list[str]:
@@ -68,15 +55,13 @@ def _available(columns: pd.Index, candidates: list[str]) -> list[str]:
 def split_training_data(
     df: pd.DataFrame, config: PipelineConfig = PipelineConfig()
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Split training rows while preserving target balance when possible."""
-    y = df["converted_12m"].astype(int)
-    stratify = y if y.nunique() > 1 and y.value_counts().min() >= 2 else None
-    train_df, test_df = train_test_split(
-        df,
-        test_size=config.test_size,
-        random_state=config.random_state,
-        stratify=stratify,
-    )
+    """Train on the earlier snapshots, test on the later one. Raises if target windows overlap the test."""
+    assert_target_windows_before(config.train_snapshots, config.horizon_months, config.test_snapshot)
+    train_df = df[df["snapshot_date"].isin(config.train_snapshots)]
+    test_df = df[df["snapshot_date"] == config.test_snapshot]
+    for name, part in (("train", train_df), ("test", test_df)):
+        if part.empty:
+            raise ValueError(f"no {name} rows for snapshots in config")
     return train_df.reset_index(drop=True), test_df.reset_index(drop=True)
 
 
@@ -108,7 +93,7 @@ def fit_preprocessor(train_df: pd.DataFrame) -> dict[str, Any]:
         "missing_indicator_cols": missing_indicator_cols,
         "frequency_maps": frequency_maps,
         "feature_cols": feature_cols,
-        "excluded_columns": sorted(TARGET_COLUMNS | IDENTIFIER_COLUMNS | PII_COLUMNS | DATE_COLUMNS),
+        "excluded_columns": sorted(FORBIDDEN_COLUMNS),
     }
 
 
@@ -142,26 +127,23 @@ def prepare_feature_sets(config: PipelineConfig = PipelineConfig()) -> dict[str,
     training_df = pd.read_parquet(CUSTOMER_FEATURES_FILE)
     scoring_df = pd.read_parquet(SCORING_FEATURES_FILE)
 
-    missing_targets = sorted({"future_revenue_12m", "converted_12m"} - set(training_df.columns))
+    missing_targets = sorted(TARGET_COLUMNS - set(training_df.columns))
     if missing_targets:
         raise ValueError(f"Missing target columns in training features: {missing_targets}")
 
     train_df, test_df = split_training_data(training_df, config)
     spec = fit_preprocessor(train_df)
 
-    forbidden = TARGET_COLUMNS | IDENTIFIER_COLUMNS | PII_COLUMNS | DATE_COLUMNS
-    leakage = sorted(forbidden.intersection(spec["feature_cols"]))
-    if leakage:
-        raise ValueError(f"Leaky or non-model columns found in feature columns: {leakage}")
+    assert_no_forbidden_columns(spec["feature_cols"], FORBIDDEN_COLUMNS)
 
     X_train = transform_features(train_df, spec)
     X_test = transform_features(test_df, spec)
     X_scoring = transform_features(scoring_df, spec)
 
-    y_reg_train = pd.to_numeric(train_df["future_revenue_12m"], errors="coerce").fillna(0.0)
-    y_reg_test = pd.to_numeric(test_df["future_revenue_12m"], errors="coerce").fillna(0.0)
-    y_clf_train = train_df["converted_12m"].astype(int)
-    y_clf_test = test_df["converted_12m"].astype(int)
+    y_reg_train = pd.to_numeric(train_df["future_value"], errors="coerce").fillna(0.0)
+    y_reg_test = pd.to_numeric(test_df["future_value"], errors="coerce").fillna(0.0)
+    y_clf_train = train_df["converted"].astype(int)
+    y_clf_test = test_df["converted"].astype(int)
 
     paths = {
         "X_train": PREPROCESSED_DATA_DIR / "X_train.parquet",
@@ -180,12 +162,12 @@ def prepare_feature_sets(config: PipelineConfig = PipelineConfig()) -> dict[str,
     X_train.to_parquet(paths["X_train"], index=False)
     X_test.to_parquet(paths["X_test"], index=False)
     X_scoring.to_parquet(paths["X_scoring"], index=False)
-    y_reg_train.to_frame("future_revenue_12m").to_parquet(paths["y_reg_train"], index=False)
-    y_reg_test.to_frame("future_revenue_12m").to_parquet(paths["y_reg_test"], index=False)
-    y_clf_train.to_frame("converted_12m").to_parquet(paths["y_clf_train"], index=False)
-    y_clf_test.to_frame("converted_12m").to_parquet(paths["y_clf_test"], index=False)
-    train_df[["customer_id"]].to_csv(paths["train_ids"], index=False)
-    test_df[["customer_id"]].to_csv(paths["test_ids"], index=False)
+    y_reg_train.to_frame("future_value").to_parquet(paths["y_reg_train"], index=False)
+    y_reg_test.to_frame("future_value").to_parquet(paths["y_reg_test"], index=False)
+    y_clf_train.to_frame("converted").to_parquet(paths["y_clf_train"], index=False)
+    y_clf_test.to_frame("converted").to_parquet(paths["y_clf_test"], index=False)
+    train_df[["customer_id", "snapshot_date"]].to_csv(paths["train_ids"], index=False)
+    test_df[["customer_id", "snapshot_date"]].to_csv(paths["test_ids"], index=False)
     scoring_df[["customer_id"]].to_csv(paths["scoring_ids"], index=False)
 
     spec["train_rows"] = len(train_df)
@@ -193,6 +175,8 @@ def prepare_feature_sets(config: PipelineConfig = PipelineConfig()) -> dict[str,
     spec["scoring_rows"] = len(scoring_df)
     spec["train_positive_rate"] = float(y_clf_train.mean())
     spec["test_positive_rate"] = float(y_clf_test.mean())
+    spec["train_snapshots"] = list(config.train_snapshots)
+    spec["test_snapshot"] = config.test_snapshot
     _write_json(paths["metadata"], spec)
     return paths
 

@@ -26,7 +26,7 @@ def build_explainability_artifacts() -> dict[str, str]:
     """Save global feature importance and per-lead top driver summaries."""
     ensure_directories()
     X_test = pd.read_parquet(PREPROCESSED_DATA_DIR / "X_test.parquet")
-    y_test = pd.read_parquet(PREPROCESSED_DATA_DIR / "y_reg_test.parquet")["future_revenue_12m"]
+    y_test = pd.read_parquet(PREPROCESSED_DATA_DIR / "y_reg_test.parquet")["future_value"]
     X_scoring = pd.read_parquet(PREPROCESSED_DATA_DIR / "X_scoring.parquet")
     scoring_ids = pd.read_csv(PREPROCESSED_DATA_DIR / "scoring_ids.csv")
     scoring_features = pd.read_parquet(SCORING_FEATURES_FILE)

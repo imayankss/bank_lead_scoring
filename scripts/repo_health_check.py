@@ -77,7 +77,7 @@ def main() -> int:
         if leakage:
             failures.append(f"model matrix contains forbidden columns: {leakage}")
 
-        positive_rate = float(training["converted_12m"].mean())
+        positive_rate = float(training["converted"].mean())
         if positive_rate < 0.05:
             warnings.append(f"low training conversion rate: {positive_rate:.2%}")
         if scores["lead_score"].nunique() < 5:

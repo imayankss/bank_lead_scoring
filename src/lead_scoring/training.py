@@ -33,10 +33,10 @@ def train_models(config: PipelineConfig = PipelineConfig()) -> dict[str, float]:
     ensure_directories()
     X_train = pd.read_parquet(PREPROCESSED_DATA_DIR / "X_train.parquet")
     X_test = pd.read_parquet(PREPROCESSED_DATA_DIR / "X_test.parquet")
-    y_reg_train = _read_target("y_reg_train.parquet", "future_revenue_12m")
-    y_reg_test = _read_target("y_reg_test.parquet", "future_revenue_12m")
-    y_clf_train = _read_target("y_clf_train.parquet", "converted_12m").astype(int)
-    y_clf_test = _read_target("y_clf_test.parquet", "converted_12m").astype(int)
+    y_reg_train = _read_target("y_reg_train.parquet", "future_value")
+    y_reg_test = _read_target("y_reg_test.parquet", "future_value")
+    y_clf_train = _read_target("y_clf_train.parquet", "converted").astype(int)
+    y_clf_test = _read_target("y_clf_test.parquet", "converted").astype(int)
 
     regressor = TransformedTargetRegressor(
         regressor=HistGradientBoostingRegressor(

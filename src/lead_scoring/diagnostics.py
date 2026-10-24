@@ -12,10 +12,10 @@ def build_residual_diagnostics() -> dict[str, object]:
     """Save residual records and summary diagnostics."""
     ensure_directories()
     predictions = pd.read_csv(TABLES_DIR / "test_predictions.csv")
-    residuals = predictions["actual_future_revenue_12m"] - predictions["predicted_cltv"]
+    residuals = predictions["actual_future_value"] - predictions["predicted_cltv"]
     absolute_error = residuals.abs()
 
-    records = predictions[["customer_id", "actual_future_revenue_12m", "predicted_cltv"]].copy()
+    records = predictions[["customer_id", "actual_future_value", "predicted_cltv"]].copy()
     records["residual"] = residuals
     records["absolute_error"] = absolute_error
     records["error_bucket"] = pd.cut(

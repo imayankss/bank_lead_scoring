@@ -29,8 +29,8 @@ export interface OverviewData {
 
 export interface ForecastPoint {
   customer_id?: string;
-  actual_future_revenue_12m?: number;
-  actual_converted_12m?: number;
+  actual_future_value?: number;
+  actual_converted?: number;
   predicted_cltv?: number;
   predicted_propensity?: number;
   expected_value?: number;
