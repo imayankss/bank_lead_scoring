@@ -1,4 +1,4 @@
-import { Activity, IndianRupee, LineChart, Percent } from "lucide-react";
+import { Activity, Wallet, LineChart, Percent } from "lucide-react";
 import { ActualVsPredictedChart, MultiScenarioChart } from "@/components/charts/ForecastChart";
 import { AnimatedPage } from "@/components/dashboard/AnimatedPage";
 import { ChartCard } from "@/components/dashboard/ChartCard";
@@ -15,7 +15,7 @@ export default async function ForecastPage() {
         Forecast visuals are exported from backend artifacts and scenario analysis.
       </SectionHeader>
       <div className="mb-6 grid gap-4 md:grid-cols-3">
-        <MetricCard label="Expected value" value={currency(forecast.latest.total_expected_value)} icon={IndianRupee} tone="mint" />
+        <MetricCard label="Expected value" value={currency(forecast.latest.total_expected_value)} icon={Wallet} tone="mint" />
         <MetricCard label="Average CLTV" value={currency(forecast.latest.average_cltv)} icon={LineChart} tone="cyan" />
         <MetricCard label="Average propensity" value={percent((forecast.latest.average_propensity ?? 0) * 100)} icon={Percent} tone="amber" />
       </div>

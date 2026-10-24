@@ -1,959 +1,3284 @@
 {
   "summary": {
-    "mean_residual": 40410.41425145137,
-    "median_residual": 2072.9101314810728,
-    "mean_absolute_error": 82075.93723474271,
-    "residual_std": 140239.66490420667,
-    "positive_bias_rate": 0.51,
-    "extreme_error_count": 20.0
+    "mean_residual": 3365987.857835034,
+    "median_residual": -281.26534232267335,
+    "mean_absolute_error": 8215466.156753406,
+    "residual_std": 180517060.61509025,
+    "positive_bias_rate": 0.3888589559386973,
+    "extreme_error_count": 461.0
   },
   "residuals": [
     {
-      "customer_id": "CUST000479",
-      "actual_future_revenue_12m": 445851.65,
-      "predicted_cltv": 309273.6803211162,
-      "residual": 136577.96967888385,
-      "absolute_error": 136577.96967888385,
-      "error_bucket": "high"
-    },
-    {
-      "customer_id": "CUST000465",
-      "actual_future_revenue_12m": 156383.40000000002,
-      "predicted_cltv": 54018.51389132253,
-      "residual": 102364.88610867749,
-      "absolute_error": 102364.88610867749,
-      "error_bucket": "high"
-    },
-    {
-      "customer_id": "CUST000440",
-      "actual_future_revenue_12m": 367085.47,
-      "predicted_cltv": 47252.21619818265,
-      "residual": 319833.2538018173,
-      "absolute_error": 319833.2538018173,
-      "error_bucket": "extreme"
-    },
-    {
-      "customer_id": "CUST000493",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 0.0,
-      "residual": 0.0,
-      "absolute_error": 0.0,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000468",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 0.0,
-      "residual": 0.0,
-      "absolute_error": 0.0,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000080",
-      "actual_future_revenue_12m": 2378.47,
-      "predicted_cltv": 25939.109815044692,
-      "residual": -23560.63981504469,
-      "absolute_error": 23560.63981504469,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000238",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 0.1856572204618791,
-      "residual": -0.1856572204618791,
-      "absolute_error": 0.1856572204618791,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000393",
-      "actual_future_revenue_12m": 452561.14,
-      "predicted_cltv": 383614.3248732173,
-      "residual": 68946.81512678269,
-      "absolute_error": 68946.81512678269,
+      "customer_id": "005a6674261b53598723388ed38a150ccda866ff38597b471273b1956fa5632f",
+      "actual_future_value": 1717662.9807128906,
+      "predicted_cltv": 7679588.037672454,
+      "residual": -5961925.056959563,
+      "absolute_error": 5961925.056959563,
       "error_bucket": "moderate"
     },
     {
-      "customer_id": "CUST000345",
-      "actual_future_revenue_12m": 101820.73,
-      "predicted_cltv": 30252.56807352982,
-      "residual": 71568.16192647017,
-      "absolute_error": 71568.16192647017,
+      "customer_id": "00a4e21ef57e882cf27d81ac2759925b97334ef52872725ff41247a2ced6b3c3",
+      "actual_future_value": 5486.657470703125,
+      "predicted_cltv": 1847088.5771652071,
+      "residual": -1841601.919694504,
+      "absolute_error": 1841601.919694504,
       "error_bucket": "moderate"
     },
     {
-      "customer_id": "CUST000176",
-      "actual_future_revenue_12m": 56209.42,
-      "predicted_cltv": 111.35688919527728,
-      "residual": 56098.06311080472,
-      "absolute_error": 56098.06311080472,
+      "customer_id": "0186ae45a4859d2021639c0d6f79028e6d9f063e17410bf19c0484a810a25e2f",
+      "actual_future_value": 435904.6572780609,
+      "predicted_cltv": 39144787.37616068,
+      "residual": -38708882.71888262,
+      "absolute_error": 38708882.71888262,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "023a956ef05670525e9981263848ef80fb44f4e7112c15f2584a48e9532d061d",
+      "actual_future_value": 168881.32611083984,
+      "predicted_cltv": 4354.631215223045,
+      "residual": 164526.6948956168,
+      "absolute_error": 164526.6948956168,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "023d6aab05be4ce6c3ce8b2e3a9d0ffa750ef38f4a6f860c5e79cfa91eecf81b",
+      "actual_future_value": 11182.021711826324,
+      "predicted_cltv": 13694.867888913062,
+      "residual": -2512.846177086738,
+      "absolute_error": 2512.846177086738,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "02b03091d961fb72a4b6fd8b7412de22171dd89b988668383da0cf183155f09c",
+      "actual_future_value": 3056539.3262939453,
+      "predicted_cltv": 2496086.588115831,
+      "residual": 560452.7381781144,
+      "absolute_error": 560452.7381781144,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "02b6c6b73a72346c8ed1180e353805ce4e7c55b39e58edb1361304b628c05007",
+      "actual_future_value": 1992318.0522460938,
+      "predicted_cltv": 12211546.41778832,
+      "residual": -10219228.365542226,
+      "absolute_error": 10219228.365542226,
       "error_bucket": "moderate"
     },
     {
-      "customer_id": "CUST000181",
-      "actual_future_revenue_12m": 63142.28,
-      "predicted_cltv": 39268.73375649445,
-      "residual": 23873.546243505552,
-      "absolute_error": 23873.546243505552,
+      "customer_id": "037082691f2837f9684c5735044eaf2f605c504cc82339b79dae17df638bbeed",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 201.28609256362577,
+      "residual": -201.28609256362577,
+      "absolute_error": 201.28609256362577,
       "error_bucket": "low"
     },
     {
-      "customer_id": "CUST000196",
-      "actual_future_revenue_12m": 217056.07,
-      "predicted_cltv": 201228.60279463767,
-      "residual": 15827.467205362336,
-      "absolute_error": 15827.467205362336,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000500",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 0.0,
-      "residual": 0.0,
-      "absolute_error": 0.0,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000330",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 0.0,
-      "residual": 0.0,
-      "absolute_error": 0.0,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000400",
-      "actual_future_revenue_12m": 77806.43,
-      "predicted_cltv": 25745.527482627815,
-      "residual": 52060.902517372175,
-      "absolute_error": 52060.902517372175,
+      "customer_id": "03a5bebe807ef6bbea143b87e975c79660ae83ad16dc3ed9572ab840d0d36889",
+      "actual_future_value": 5375286.28125,
+      "predicted_cltv": 28116.465462275173,
+      "residual": 5347169.815787725,
+      "absolute_error": 5347169.815787725,
       "error_bucket": "moderate"
     },
     {
-      "customer_id": "CUST000279",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 0.0836942894149486,
-      "residual": -0.0836942894149486,
-      "absolute_error": 0.0836942894149486,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000197",
-      "actual_future_revenue_12m": 147923.59,
-      "predicted_cltv": 8190.868591795357,
-      "residual": 139732.72140820464,
-      "absolute_error": 139732.72140820464,
-      "error_bucket": "high"
-    },
-    {
-      "customer_id": "CUST000159",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 0.8504438065511839,
-      "residual": -0.8504438065511839,
-      "absolute_error": 0.8504438065511839,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000365",
-      "actual_future_revenue_12m": 133040.06,
-      "predicted_cltv": 22412.439458500656,
-      "residual": 110627.62054149936,
-      "absolute_error": 110627.62054149936,
-      "error_bucket": "high"
-    },
-    {
-      "customer_id": "CUST000048",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 0.0,
-      "residual": 0.0,
-      "absolute_error": 0.0,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000061",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 10566.63389154031,
-      "residual": -10566.63389154031,
-      "absolute_error": 10566.63389154031,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000295",
-      "actual_future_revenue_12m": 327740.04,
-      "predicted_cltv": 530313.2175058473,
-      "residual": -202573.17750584736,
-      "absolute_error": 202573.17750584736,
-      "error_bucket": "extreme"
-    },
-    {
-      "customer_id": "CUST000420",
-      "actual_future_revenue_12m": 2199.81,
-      "predicted_cltv": 532.579198809776,
-      "residual": 1667.230801190224,
-      "absolute_error": 1667.230801190224,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000232",
-      "actual_future_revenue_12m": 63658.7,
-      "predicted_cltv": 402203.00477797136,
-      "residual": -338544.30477797135,
-      "absolute_error": 338544.30477797135,
-      "error_bucket": "extreme"
-    },
-    {
-      "customer_id": "CUST000286",
-      "actual_future_revenue_12m": 15187.98,
-      "predicted_cltv": 28950.7403732005,
-      "residual": -13762.7603732005,
-      "absolute_error": 13762.7603732005,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000121",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 5246.49355736631,
-      "residual": -5246.49355736631,
-      "absolute_error": 5246.49355736631,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000226",
-      "actual_future_revenue_12m": 56374.35,
-      "predicted_cltv": 6071.550002475282,
-      "residual": 50302.799997524715,
-      "absolute_error": 50302.799997524715,
+      "customer_id": "03f37be54f8cc82a0f63c1d6f39782f50f17c91a71ecde1302e31651c8add4b4",
+      "actual_future_value": 5489558.461885452,
+      "predicted_cltv": 3336845.06589139,
+      "residual": 2152713.395994062,
+      "absolute_error": 2152713.395994062,
       "error_bucket": "moderate"
     },
     {
-      "customer_id": "CUST000207",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 4665.524202337873,
-      "residual": -4665.524202337873,
-      "absolute_error": 4665.524202337873,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000007",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 29379.83697941786,
-      "residual": -29379.83697941786,
-      "absolute_error": 29379.83697941786,
+      "customer_id": "03f57447e6b7874fc349f113b68d1aea232377983a3f4ea0e45401d22294e07e",
+      "actual_future_value": 370892.0078125,
+      "predicted_cltv": 1957588.133740935,
+      "residual": -1586696.125928435,
+      "absolute_error": 1586696.125928435,
       "error_bucket": "moderate"
     },
     {
-      "customer_id": "CUST000273",
-      "actual_future_revenue_12m": 261253.48,
-      "predicted_cltv": 21640.525146830376,
-      "residual": 239612.9548531696,
-      "absolute_error": 239612.9548531696,
-      "error_bucket": "extreme"
-    },
-    {
-      "customer_id": "CUST000141",
-      "actual_future_revenue_12m": 463948.53,
-      "predicted_cltv": 91820.83204441093,
-      "residual": 372127.6979555891,
-      "absolute_error": 372127.6979555891,
-      "error_bucket": "extreme"
-    },
-    {
-      "customer_id": "CUST000252",
-      "actual_future_revenue_12m": 118769.58,
-      "predicted_cltv": 25893.040724361897,
-      "residual": 92876.5392756381,
-      "absolute_error": 92876.5392756381,
-      "error_bucket": "high"
-    },
-    {
-      "customer_id": "CUST000437",
-      "actual_future_revenue_12m": 5793.16,
-      "predicted_cltv": 313.0690178203771,
-      "residual": 5480.090982179623,
-      "absolute_error": 5480.090982179623,
+      "customer_id": "04f0085f0daf5e368b7e7fc27fdf0c2bc23bbe83eaae5ef512c440a0487d0411",
+      "actual_future_value": 2359585.504547119,
+      "predicted_cltv": 2474253.5105342935,
+      "residual": -114668.00598717434,
+      "absolute_error": 114668.00598717434,
       "error_bucket": "low"
     },
     {
-      "customer_id": "CUST000118",
-      "actual_future_revenue_12m": 78380.74,
-      "predicted_cltv": 25008.972235537294,
-      "residual": 53371.76776446271,
-      "absolute_error": 53371.76776446271,
+      "customer_id": "04f9b9562438c35533471b2bcd5b7f6fcc885a94248feca1d5b7df290623384d",
+      "actual_future_value": 747898.7383728027,
+      "predicted_cltv": 2121178.653095917,
+      "residual": -1373279.914723114,
+      "absolute_error": 1373279.914723114,
       "error_bucket": "moderate"
     },
     {
-      "customer_id": "CUST000195",
-      "actual_future_revenue_12m": 187626.75,
-      "predicted_cltv": 55956.216093323295,
-      "residual": 131670.5339066767,
-      "absolute_error": 131670.5339066767,
-      "error_bucket": "high"
-    },
-    {
-      "customer_id": "CUST000319",
-      "actual_future_revenue_12m": 5154.34,
-      "predicted_cltv": 7936.517537287374,
-      "residual": -2782.1775372873735,
-      "absolute_error": 2782.1775372873735,
+      "customer_id": "06714a96ee50dc9dfe30f4b55ba75ed5094833c0cc9581acc8b2c009d83f214f",
+      "actual_future_value": 8466.9296875,
+      "predicted_cltv": 3917.4187519989937,
+      "residual": 4549.510935501006,
+      "absolute_error": 4549.510935501006,
       "error_bucket": "low"
     },
     {
-      "customer_id": "CUST000452",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 0.0,
-      "residual": 0.0,
-      "absolute_error": 0.0,
+      "customer_id": "0686ef23b252e8887385b6cdd5f6352f2f84225d924dc51d89ee3b46c8c4d010",
+      "actual_future_value": 10767.419067382812,
+      "predicted_cltv": 103511.70708876984,
+      "residual": -92744.28802138702,
+      "absolute_error": 92744.28802138702,
       "error_bucket": "low"
     },
     {
-      "customer_id": "CUST000389",
-      "actual_future_revenue_12m": 56465.08,
-      "predicted_cltv": 2395.93984752254,
-      "residual": 54069.14015247746,
-      "absolute_error": 54069.14015247746,
+      "customer_id": "06d3626007b6fd4680b3e6dac52763cdfb3efad612772cbd2844fb45e2569ea6",
+      "actual_future_value": 37166.5121383667,
+      "predicted_cltv": 79031.62896279366,
+      "residual": -41865.116824426965,
+      "absolute_error": 41865.116824426965,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "072ea19d4d1e7ecfc47664d663c1dcd6b697f2cb153e9097711b4485ca184bd3",
+      "actual_future_value": 4724643.4443359375,
+      "predicted_cltv": 2486547.7275837227,
+      "residual": 2238095.716752215,
+      "absolute_error": 2238095.716752215,
       "error_bucket": "moderate"
     },
     {
-      "customer_id": "CUST000267",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 0.1141429423666856,
-      "residual": -0.1141429423666856,
-      "absolute_error": 0.1141429423666856,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000350",
-      "actual_future_revenue_12m": 115625.05,
-      "predicted_cltv": 121958.43799295169,
-      "residual": -6333.387992951684,
-      "absolute_error": 6333.387992951684,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000240",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 1164.0788564551071,
-      "residual": -1164.0788564551071,
-      "absolute_error": 1164.0788564551071,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000483",
-      "actual_future_revenue_12m": 238214.78,
-      "predicted_cltv": 348958.27467349655,
-      "residual": -110743.49467349656,
-      "absolute_error": 110743.49467349656,
-      "error_bucket": "high"
-    },
-    {
-      "customer_id": "CUST000475",
-      "actual_future_revenue_12m": 89520.17,
-      "predicted_cltv": 2941.5437435768836,
-      "residual": 86578.62625642311,
-      "absolute_error": 86578.62625642311,
-      "error_bucket": "high"
-    },
-    {
-      "customer_id": "CUST000241",
-      "actual_future_revenue_12m": 138933.21,
-      "predicted_cltv": 97.25677793282148,
-      "residual": 138835.95322206718,
-      "absolute_error": 138835.95322206718,
-      "error_bucket": "high"
-    },
-    {
-      "customer_id": "CUST000489",
-      "actual_future_revenue_12m": 14204.29,
-      "predicted_cltv": 35740.70392426516,
-      "residual": -21536.41392426516,
-      "absolute_error": 21536.41392426516,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000480",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 647.4140365870204,
-      "residual": -647.4140365870204,
-      "absolute_error": 647.4140365870204,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000490",
-      "actual_future_revenue_12m": 73382.29000000001,
-      "predicted_cltv": 76242.40909089887,
-      "residual": -2860.1190908988647,
-      "absolute_error": 2860.1190908988647,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000065",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 0.0,
-      "residual": 0.0,
-      "absolute_error": 0.0,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000499",
-      "actual_future_revenue_12m": 177522.16,
-      "predicted_cltv": 11736.699757060143,
-      "residual": 165785.46024293985,
-      "absolute_error": 165785.46024293985,
-      "error_bucket": "extreme"
-    },
-    {
-      "customer_id": "CUST000316",
-      "actual_future_revenue_12m": 42602.6,
-      "predicted_cltv": 10947.680921925356,
-      "residual": 31654.919078074643,
-      "absolute_error": 31654.919078074643,
+      "customer_id": "07bad024987c48f3ce01c54d1acd4d442f2714a4dbf9167be9003ed1e34b3f1e",
+      "actual_future_value": 3029796.5622558594,
+      "predicted_cltv": 6806061.188192713,
+      "residual": -3776264.6259368537,
+      "absolute_error": 3776264.6259368537,
       "error_bucket": "moderate"
     },
     {
-      "customer_id": "CUST000361",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 0.0,
-      "residual": 0.0,
-      "absolute_error": 0.0,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000191",
-      "actual_future_revenue_12m": 264172.08,
-      "predicted_cltv": 72437.70863786004,
-      "residual": 191734.37136214,
-      "absolute_error": 191734.37136214,
+      "customer_id": "086f7deb3b4f19655ebab4e66b47f6ae7725702ee503d5b8c9ada4c00c4bb754",
+      "actual_future_value": 325289553.6485176,
+      "predicted_cltv": 37634464.894159116,
+      "residual": 287655088.7543585,
+      "absolute_error": 287655088.7543585,
       "error_bucket": "extreme"
     },
     {
-      "customer_id": "CUST000407",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 0.0682264611476304,
-      "residual": -0.0682264611476304,
-      "absolute_error": 0.0682264611476304,
+      "customer_id": "0a05f3b711691761619bf658afed32f0edaccf627156c10ff3c1a47c0bc8a81f",
+      "actual_future_value": 2314588.2296622247,
+      "predicted_cltv": 1556986.2959052445,
+      "residual": 757601.9337569801,
+      "absolute_error": 757601.9337569801,
       "error_bucket": "low"
     },
     {
-      "customer_id": "CUST000145",
-      "actual_future_revenue_12m": 94572.26,
-      "predicted_cltv": 25992.250715737613,
-      "residual": 68580.00928426239,
-      "absolute_error": 68580.00928426239,
+      "customer_id": "0a873df8cd56ef9b021757de64d5ea50688ddd0e976e3d16f9161fa5998694d7",
+      "actual_future_value": 1164673.3921203613,
+      "predicted_cltv": 123761.11802077157,
+      "residual": 1040912.2740995898,
+      "absolute_error": 1040912.2740995898,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "0a8c5d432d83357e8b82ebd7e2321fd2f3bed1e41672bd58ed5266d61a3c0907",
+      "actual_future_value": 2552243.7426452637,
+      "predicted_cltv": 843071.3980094454,
+      "residual": 1709172.3446358182,
+      "absolute_error": 1709172.3446358182,
       "error_bucket": "moderate"
     },
     {
-      "customer_id": "CUST000169",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 0.5250116614508133,
-      "residual": -0.5250116614508133,
-      "absolute_error": 0.5250116614508133,
+      "customer_id": "0bfc7813dc63ec9b95962f69f12bcd5f33a8f31e663749be37b6ecc9a5afa1cc",
+      "actual_future_value": 14132.319885253906,
+      "predicted_cltv": 254422.15253155594,
+      "residual": -240289.83264630203,
+      "absolute_error": 240289.83264630203,
       "error_bucket": "low"
     },
     {
-      "customer_id": "CUST000372",
-      "actual_future_revenue_12m": 2887.93,
-      "predicted_cltv": 409.3405382280781,
-      "residual": 2478.589461771922,
-      "absolute_error": 2478.589461771922,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000360",
-      "actual_future_revenue_12m": 61960.97,
-      "predicted_cltv": 181930.02881476903,
-      "residual": -119969.05881476904,
-      "absolute_error": 119969.05881476904,
-      "error_bucket": "high"
-    },
-    {
-      "customer_id": "CUST000351",
-      "actual_future_revenue_12m": 213877.97,
-      "predicted_cltv": 22414.85230982736,
-      "residual": 191463.11769017263,
-      "absolute_error": 191463.11769017263,
-      "error_bucket": "extreme"
-    },
-    {
-      "customer_id": "CUST000362",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 200.2986625097296,
-      "residual": -200.2986625097296,
-      "absolute_error": 200.2986625097296,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000419",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 6.598466888067541,
-      "residual": -6.598466888067541,
-      "absolute_error": 6.598466888067541,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000453",
-      "actual_future_revenue_12m": 270144.74,
-      "predicted_cltv": 53852.53429138535,
-      "residual": 216292.20570861464,
-      "absolute_error": 216292.20570861464,
-      "error_bucket": "extreme"
-    },
-    {
-      "customer_id": "CUST000291",
-      "actual_future_revenue_12m": 332696.52999999997,
-      "predicted_cltv": 179085.3216554845,
-      "residual": 153611.20834451547,
-      "absolute_error": 153611.20834451547,
-      "error_bucket": "extreme"
-    },
-    {
-      "customer_id": "CUST000002",
-      "actual_future_revenue_12m": 11395.37,
-      "predicted_cltv": 3497.3338571400245,
-      "residual": 7898.036142859976,
-      "absolute_error": 7898.036142859976,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000414",
-      "actual_future_revenue_12m": 5640.299999999999,
-      "predicted_cltv": 8636.974668304372,
-      "residual": -2996.674668304373,
-      "absolute_error": 2996.674668304373,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000294",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 28072.341025946655,
-      "residual": -28072.341025946655,
-      "absolute_error": 28072.341025946655,
+      "customer_id": "0c1498928641cc0b0f8a95bacd2b6ba20c1874331879514828ebc5fc2db60d59",
+      "actual_future_value": 10101673.546714783,
+      "predicted_cltv": 17114492.766026992,
+      "residual": -7012819.21931221,
+      "absolute_error": 7012819.21931221,
       "error_bucket": "moderate"
     },
     {
-      "customer_id": "CUST000458",
-      "actual_future_revenue_12m": 293676.96,
-      "predicted_cltv": 185028.9795335045,
-      "residual": 108647.98046649552,
-      "absolute_error": 108647.98046649552,
-      "error_bucket": "high"
-    },
-    {
-      "customer_id": "CUST000186",
-      "actual_future_revenue_12m": 233020.17,
-      "predicted_cltv": 11474.278527596069,
-      "residual": 221545.89147240395,
-      "absolute_error": 221545.89147240395,
-      "error_bucket": "extreme"
-    },
-    {
-      "customer_id": "CUST000151",
-      "actual_future_revenue_12m": 227339.71999999997,
-      "predicted_cltv": 290304.1155756756,
-      "residual": -62964.39557567565,
-      "absolute_error": 62964.39557567565,
+      "customer_id": "0ce749316c60e1d570c8b9b246de7a387cae7fcd4251908baa8759ca381d0fbe",
+      "actual_future_value": 14125296.067504883,
+      "predicted_cltv": 33807735.02644206,
+      "residual": -19682438.958937176,
+      "absolute_error": 19682438.958937176,
       "error_bucket": "moderate"
     },
     {
-      "customer_id": "CUST000214",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 29572.92467914494,
-      "residual": -29572.92467914494,
-      "absolute_error": 29572.92467914494,
+      "customer_id": "0cf972880a5adca2982ae7716e521bb8410f04d37303e13adc30a051ed190dfd",
+      "actual_future_value": 25738763.970235825,
+      "predicted_cltv": 48214431.23213324,
+      "residual": -22475667.261897415,
+      "absolute_error": 22475667.261897415,
       "error_bucket": "moderate"
     },
     {
-      "customer_id": "CUST000172",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 3913.976773820604,
-      "residual": -3913.976773820604,
-      "absolute_error": 3913.976773820604,
+      "customer_id": "0cf9ea875a7772ea2fb84020c80b59f50c3d092d04fd6d847f6145942c0a0558",
+      "actual_future_value": 6959031.731765747,
+      "predicted_cltv": 7323405.611237644,
+      "residual": -364373.87947189715,
+      "absolute_error": 364373.87947189715,
       "error_bucket": "low"
     },
     {
-      "customer_id": "CUST000079",
-      "actual_future_revenue_12m": 119841.23,
-      "predicted_cltv": 6732.227597151176,
-      "residual": 113109.00240284884,
-      "absolute_error": 113109.00240284884,
-      "error_bucket": "high"
-    },
-    {
-      "customer_id": "CUST000488",
-      "actual_future_revenue_12m": 219302.19,
-      "predicted_cltv": 426.80391216756806,
-      "residual": 218875.38608783245,
-      "absolute_error": 218875.38608783245,
-      "error_bucket": "extreme"
-    },
-    {
-      "customer_id": "CUST000495",
-      "actual_future_revenue_12m": 143755.66,
-      "predicted_cltv": 61734.426416139206,
-      "residual": 82021.2335838608,
-      "absolute_error": 82021.2335838608,
-      "error_bucket": "high"
-    },
-    {
-      "customer_id": "CUST000146",
-      "actual_future_revenue_12m": 327341.23,
-      "predicted_cltv": 305037.3927349274,
-      "residual": 22303.837265072565,
-      "absolute_error": 22303.837265072565,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000171",
-      "actual_future_revenue_12m": 4444.09,
-      "predicted_cltv": 1360.066394026201,
-      "residual": 3084.023605973799,
-      "absolute_error": 3084.023605973799,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000313",
-      "actual_future_revenue_12m": 273659.13,
-      "predicted_cltv": 9677.624161652931,
-      "residual": 263981.5058383471,
-      "absolute_error": 263981.5058383471,
-      "error_bucket": "extreme"
-    },
-    {
-      "customer_id": "CUST000211",
-      "actual_future_revenue_12m": 411347.04,
-      "predicted_cltv": 164539.55414831717,
-      "residual": 246807.4858516828,
-      "absolute_error": 246807.4858516828,
-      "error_bucket": "extreme"
-    },
-    {
-      "customer_id": "CUST000081",
-      "actual_future_revenue_12m": 121807.73,
-      "predicted_cltv": 114530.02591337071,
-      "residual": 7277.704086629281,
-      "absolute_error": 7277.704086629281,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000153",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 6375.037929630781,
-      "residual": -6375.037929630781,
-      "absolute_error": 6375.037929630781,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000470",
-      "actual_future_revenue_12m": 142324.66999999998,
-      "predicted_cltv": 289683.9061510826,
-      "residual": -147359.23615108262,
-      "absolute_error": 147359.23615108262,
-      "error_bucket": "high"
-    },
-    {
-      "customer_id": "CUST000058",
-      "actual_future_revenue_12m": 9299.18,
-      "predicted_cltv": 867674.0862059422,
-      "residual": -858374.9062059422,
-      "absolute_error": 858374.9062059422,
-      "error_bucket": "extreme"
-    },
-    {
-      "customer_id": "CUST000231",
-      "actual_future_revenue_12m": 242954.73,
-      "predicted_cltv": 48228.51446008046,
-      "residual": 194726.21553991956,
-      "absolute_error": 194726.21553991956,
-      "error_bucket": "extreme"
-    },
-    {
-      "customer_id": "CUST000287",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 0.0,
-      "residual": 0.0,
-      "absolute_error": 0.0,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000188",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 472.3677461963556,
-      "residual": -472.3677461963556,
-      "absolute_error": 472.3677461963556,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000149",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 0.0,
-      "residual": 0.0,
-      "absolute_error": 0.0,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000321",
-      "actual_future_revenue_12m": 134801.21,
-      "predicted_cltv": 43809.522738300715,
-      "residual": 90991.68726169928,
-      "absolute_error": 90991.68726169928,
-      "error_bucket": "high"
-    },
-    {
-      "customer_id": "CUST000315",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 10475.919788592562,
-      "residual": -10475.919788592562,
-      "absolute_error": 10475.919788592562,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000262",
-      "actual_future_revenue_12m": 172792.83000000002,
-      "predicted_cltv": 6756.936026163364,
-      "residual": 166035.89397383665,
-      "absolute_error": 166035.89397383665,
-      "error_bucket": "extreme"
-    },
-    {
-      "customer_id": "CUST000454",
-      "actual_future_revenue_12m": 73197.73,
-      "predicted_cltv": 66538.39951773896,
-      "residual": 6659.330482261037,
-      "absolute_error": 6659.330482261037,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000482",
-      "actual_future_revenue_12m": 155903.61,
-      "predicted_cltv": 12851.536714860302,
-      "residual": 143052.0732851397,
-      "absolute_error": 143052.0732851397,
-      "error_bucket": "high"
-    },
-    {
-      "customer_id": "CUST000162",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 0.4056094090506489,
-      "residual": -0.4056094090506489,
-      "absolute_error": 0.4056094090506489,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000364",
-      "actual_future_revenue_12m": 76887.98,
-      "predicted_cltv": 3332.832589819839,
-      "residual": 73555.14741018016,
-      "absolute_error": 73555.14741018016,
+      "customer_id": "0d0d3368f7fb775591728f244116801a6132142e1eabbadeec9af79bc4743076",
+      "actual_future_value": 5608.41455078125,
+      "predicted_cltv": 3104411.9983795146,
+      "residual": -3098803.5838287333,
+      "absolute_error": 3098803.5838287333,
       "error_bucket": "moderate"
     },
     {
-      "customer_id": "CUST000302",
-      "actual_future_revenue_12m": 110428.29,
-      "predicted_cltv": 21451.694424307276,
-      "residual": 88976.59557569271,
-      "absolute_error": 88976.59557569271,
+      "customer_id": "0d5f039a812476b3913bed7d8d821e33027a60b10d44c3a925efbcc0be58ec97",
+      "actual_future_value": 6242366.613861084,
+      "predicted_cltv": 10648293.658268483,
+      "residual": -4405927.044407399,
+      "absolute_error": 4405927.044407399,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "0dac6541310d428aef2463563c569afd2cba45cd5f9aa3dca6a3493801fb1833",
+      "actual_future_value": 3942.897996902466,
+      "predicted_cltv": 9898.803312981463,
+      "residual": -5955.905316078997,
+      "absolute_error": 5955.905316078997,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "0e5594730aa22337b2fbcccfbac297c0c684b04eee34cdd2cc94abf537680a34",
+      "actual_future_value": 158224417.75086594,
+      "predicted_cltv": 97314968.51426235,
+      "residual": 60909449.23660359,
+      "absolute_error": 60909449.23660359,
       "error_bucket": "high"
     },
     {
-      "customer_id": "CUST000424",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 0.2915426291598537,
-      "residual": -0.2915426291598537,
-      "absolute_error": 0.2915426291598537,
+      "customer_id": "0ef2f4af785d63efc348e420d79dccc7e96f0b8e79520c1a00fe57e17b35dfa2",
+      "actual_future_value": 117409.67591440678,
+      "predicted_cltv": 216067.19166616767,
+      "residual": -98657.51575176089,
+      "absolute_error": 98657.51575176089,
       "error_bucket": "low"
     },
     {
-      "customer_id": "CUST000281",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 0.0,
-      "residual": 0.0,
-      "absolute_error": 0.0,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000184",
-      "actual_future_revenue_12m": 245849.4,
-      "predicted_cltv": 1455.461400275831,
-      "residual": 244393.93859972415,
-      "absolute_error": 244393.93859972415,
-      "error_bucket": "extreme"
-    },
-    {
-      "customer_id": "CUST000254",
-      "actual_future_revenue_12m": 0.0,
-      "predicted_cltv": 0.5807500691343457,
-      "residual": -0.5807500691343457,
-      "absolute_error": 0.5807500691343457,
-      "error_bucket": "low"
-    },
-    {
-      "customer_id": "CUST000462",
-      "actual_future_revenue_12m": 322513.36,
-      "predicted_cltv": 27078.428624218508,
-      "residual": 295434.9313757815,
-      "absolute_error": 295434.9313757815,
-      "error_bucket": "extreme"
-    },
-    {
-      "customer_id": "CUST000342",
-      "actual_future_revenue_12m": 228568.47000000003,
-      "predicted_cltv": 49333.42000780797,
-      "residual": 179235.04999219207,
-      "absolute_error": 179235.04999219207,
-      "error_bucket": "extreme"
-    },
-    {
-      "customer_id": "CUST000381",
-      "actual_future_revenue_12m": 42495.97,
-      "predicted_cltv": 80648.82038290612,
-      "residual": -38152.85038290612,
-      "absolute_error": 38152.85038290612,
+      "customer_id": "0f423162778456f113fd77c9bb27464e61e2f6c00415a3ad9b04deb510096be0",
+      "actual_future_value": 8581814.708862305,
+      "predicted_cltv": 26805154.151248883,
+      "residual": -18223339.44238658,
+      "absolute_error": 18223339.44238658,
       "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "0fc3b87ac9fd5445b8cf3c262ec4f8736f37cbee9e1860928ff5d178abb043ea",
+      "actual_future_value": 32083.0146484375,
+      "predicted_cltv": 20970.375773977437,
+      "residual": 11112.638874460063,
+      "absolute_error": 11112.638874460063,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "0ff175e4c235ce5712619a4f28d64d31297bf35c220d11479034ddf0275f549c",
+      "actual_future_value": 9543995.272293866,
+      "predicted_cltv": 3500560.4575870596,
+      "residual": 6043434.814706806,
+      "absolute_error": 6043434.814706806,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "0fff290be34f66f2df0d03c6cdafe893ff68f2eca83ee5fd145c266cd6f281ba",
+      "actual_future_value": 15482291.414962769,
+      "predicted_cltv": 41249464.25958464,
+      "residual": -25767172.844621874,
+      "absolute_error": 25767172.844621874,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "113a4c26a0e0fb78d8b28a38f878542716b231b817f35c4bc4354212a7fd2214",
+      "actual_future_value": 843887.4745025635,
+      "predicted_cltv": 2662861.126753761,
+      "residual": -1818973.6522511975,
+      "absolute_error": 1818973.6522511975,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "11a8e715e1da53b0b71f7d82845b0b62376e67eb2dbbbff481070bee2d8e582e",
+      "actual_future_value": 3273402.340813242,
+      "predicted_cltv": 665.7074730728763,
+      "residual": 3272736.633340169,
+      "absolute_error": 3272736.633340169,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "13eef4ea2c437a5971973e733305ed30d1651092e612da6c2bcfd5a8bbb8f1aa",
+      "actual_future_value": 340484.306640625,
+      "predicted_cltv": 260278.35670846573,
+      "residual": 80205.94993215927,
+      "absolute_error": 80205.94993215927,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "1408ca14077dadcf46ab4e491a772108e0a6df363a524eb5420183733ef3ef35",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 65.0997475454389,
+      "residual": -65.0997475454389,
+      "absolute_error": 65.0997475454389,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "145ab2e69aadc1d600db62217d73db894bb7d66857ba3c5a37bb856a9d543cfb",
+      "actual_future_value": 5202619.4136657715,
+      "predicted_cltv": 6803806.829421325,
+      "residual": -1601187.4157555532,
+      "absolute_error": 1601187.4157555532,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "17342d2445d0494ce87976779b6d684cfec8f888ee7363f45a78173b92dfa1c4",
+      "actual_future_value": 904762.7446289062,
+      "predicted_cltv": 268996.77414106455,
+      "residual": 635765.9704878416,
+      "absolute_error": 635765.9704878416,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "18318f1407697dffbc5c3a975002a0027f5a1147c235b5e24015336a5fc3d34b",
+      "actual_future_value": 15913269.278900146,
+      "predicted_cltv": 472.75629945938886,
+      "residual": 15912796.522600686,
+      "absolute_error": 15912796.522600686,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "18b5fd10ea605bc4782a5a9f46c0620d968233fc572b41b9bd8d89d134636d9e",
+      "actual_future_value": 47443909.546648026,
+      "predicted_cltv": 45078328.86409173,
+      "residual": 2365580.682556294,
+      "absolute_error": 2365580.682556294,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "18f5c513a5390598192b99d9a2ca0541b54971fd1637351db08285286cd07a01",
+      "actual_future_value": 22573935.894601822,
+      "predicted_cltv": 5435124.746620286,
+      "residual": 17138811.147981536,
+      "absolute_error": 17138811.147981536,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "1a603064d396941cc97728c743dffea22f15aa70cf5e0aea97d1360f3d010b43",
+      "actual_future_value": 969558.5512695312,
+      "predicted_cltv": 466568.2741469479,
+      "residual": 502990.27712258336,
+      "absolute_error": 502990.27712258336,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "1aa99d43ecf24d090171ffae4bc811dcd2d479ce6be5e86ccc63feeeaf0e81d2",
+      "actual_future_value": 295195.463054657,
+      "predicted_cltv": 226205.4963458469,
+      "residual": 68989.96670881007,
+      "absolute_error": 68989.96670881007,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "1c523ca4f16d008560e873d53d947494ec17032263df18c5c8fbc5125cfd786d",
+      "actual_future_value": 1586521.3671875,
+      "predicted_cltv": 552705.6870780259,
+      "residual": 1033815.6801094741,
+      "absolute_error": 1033815.6801094741,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "1c54e40fe8bb74af747a3bc60aaeba601afedeb6ea7ff334c659e98cc9124092",
+      "actual_future_value": 343710.15234375,
+      "predicted_cltv": 1459923.4897611183,
+      "residual": -1116213.3374173683,
+      "absolute_error": 1116213.3374173683,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "1c8704fa51328b90561066cfad0ad53910e33ac31fb883bcf9f33ad6bdd01905",
+      "actual_future_value": 3616617.0688381195,
+      "predicted_cltv": 9138668.442231338,
+      "residual": -5522051.373393219,
+      "absolute_error": 5522051.373393219,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "1d85905f95e0f722c62f3fb5f0be8c516773bf280a63e92ee251482004602aef",
+      "actual_future_value": 100740.50522613525,
+      "predicted_cltv": 58346.790599040294,
+      "residual": 42393.71462709496,
+      "absolute_error": 42393.71462709496,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "1e038d057e63adf015f5dd397e07c1ad894bc90840af061eef2449d0af3e2986",
+      "actual_future_value": 23246402.3671875,
+      "predicted_cltv": 8635494.222011814,
+      "residual": 14610908.145175686,
+      "absolute_error": 14610908.145175686,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "219e784624c41db7685dfa788ef307b4dbfd5002ddd5549eb3de8c038d180caf",
+      "actual_future_value": 384609.091796875,
+      "predicted_cltv": 2342.0218939065926,
+      "residual": 382267.0699029684,
+      "absolute_error": 382267.0699029684,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "21a9525c046680627f31b7996c0eab101ecb12156f8d69016e6dbaab18e83f95",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 4694.862707406629,
+      "residual": -4694.862707406629,
+      "absolute_error": 4694.862707406629,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "228b69cc2e7d87f5f92c6fdc1bbaf3704611ebd43d06af583ca61daa38cc6667",
+      "actual_future_value": 12360963.25,
+      "predicted_cltv": 42.366086090242874,
+      "residual": 12360920.88391391,
+      "absolute_error": 12360920.88391391,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "243574634c1c7dff5f70c629be6b7384571e6dc8e7118ca3dedb0b3dbd729a79",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 244.38541724038154,
+      "residual": -244.38541724038154,
+      "absolute_error": 244.38541724038154,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "2543e6737b3dfdff874a742ac7c804efac3983331dea604783393ad74990c562",
+      "actual_future_value": 2112572.034117043,
+      "predicted_cltv": 359387.0266801494,
+      "residual": 1753185.0074368936,
+      "absolute_error": 1753185.0074368936,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "255ec0a3fab9883ed1c353305b3582add8cc4b452fdaeaf27cac101bb32b40e0",
+      "actual_future_value": 2543345.3798828125,
+      "predicted_cltv": 3881170.7909254697,
+      "residual": -1337825.4110426572,
+      "absolute_error": 1337825.4110426572,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "26a8b0fd079a9d4c91191575a4467f420921775f5a2cc61e7901041b0cbf3791",
+      "actual_future_value": 3218635.734375,
+      "predicted_cltv": 556122.2423971947,
+      "residual": 2662513.4919778053,
+      "absolute_error": 2662513.4919778053,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "26d3503e59ee917479fb9ce42b3012acac740ba85e9d7df4b586901e7ffb3d34",
+      "actual_future_value": 7815.1729736328125,
+      "predicted_cltv": 10891.142046488823,
+      "residual": -3075.969072856011,
+      "absolute_error": 3075.969072856011,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "26f152752e5c8c85a945216b3ad6dba05b7e32059009a8d69f64445a5e719462",
+      "actual_future_value": 39909696.79661274,
+      "predicted_cltv": 28897042.054227654,
+      "residual": 11012654.742385086,
+      "absolute_error": 11012654.742385086,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "276e643af3ada275e2da33fdb8e6c41937458dd67ed50de80ebe333a280e21f3",
+      "actual_future_value": 6297118.21484375,
+      "predicted_cltv": 5174035.220997153,
+      "residual": 1123082.9938465971,
+      "absolute_error": 1123082.9938465971,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "29a6821cd6cb1ada6ded2219fe1252405e9af9292f61e907506e0457bce5f6ae",
+      "actual_future_value": 2073207.935409546,
+      "predicted_cltv": 42.366086090242874,
+      "residual": 2073165.5693234557,
+      "absolute_error": 2073165.5693234557,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "2a903c2585cda102943288b7fb8f0f9c36a1d3dbf914f97d7741a6b1ab787d66",
+      "actual_future_value": 861195.0524749756,
+      "predicted_cltv": 1062475.575520698,
+      "residual": -201280.5230457224,
+      "absolute_error": 201280.5230457224,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "2bf8cc1aca7fecc871e6e0e80cc3e762337148f62991f9f016703a5984b97a0f",
+      "actual_future_value": 77115997.24831295,
+      "predicted_cltv": 70665933.09514788,
+      "residual": 6450064.153165072,
+      "absolute_error": 6450064.153165072,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "2c4e3bd37548bd5f882dfd302f5cb5c6fbaa5337dbe44d2e6aed3abaa12b08af",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 17.16445916565686,
+      "residual": -17.16445916565686,
+      "absolute_error": 17.16445916565686,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "2c763a66cbcf4d45acce4297416537f51b526fc03357149e01004b0d4b256840",
+      "actual_future_value": 2133904.7545166016,
+      "predicted_cltv": 9042297.107157774,
+      "residual": -6908392.352641173,
+      "absolute_error": 6908392.352641173,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "2d05adc100663292ad4a8cb77a75237dff6f9f375ce54237598e1cdabfcee0cc",
+      "actual_future_value": 632836.8659667969,
+      "predicted_cltv": 239809.1965748091,
+      "residual": 393027.6693919878,
+      "absolute_error": 393027.6693919878,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "2db0d20bc7f79d7f053037a2348b66be5d45accdabcc393f71f9451e14ca7b83",
+      "actual_future_value": 2974412.4774780273,
+      "predicted_cltv": 4391232.126048783,
+      "residual": -1416819.6485707555,
+      "absolute_error": 1416819.6485707555,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "2dfc0ff500cfe31c2e997ac4ab4c897b47674f89c5d4dd45a393de3bff0d36f7",
+      "actual_future_value": 348228.810546875,
+      "predicted_cltv": 491645.21366291156,
+      "residual": -143416.40311603656,
+      "absolute_error": 143416.40311603656,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "300962860b8962f021ed3b0561b83159c5f1863ae965ab2c36c1c47273022479",
+      "actual_future_value": 18635055.109436035,
+      "predicted_cltv": 20525812.708341897,
+      "residual": -1890757.5989058614,
+      "absolute_error": 1890757.5989058614,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "303f1506458115b79b7ab541e7f1f2c2456501950250bec04e1ac77b7b6c94ef",
+      "actual_future_value": 892908.9799194336,
+      "predicted_cltv": 1060274.477933518,
+      "residual": -167365.4980140843,
+      "absolute_error": 167365.4980140843,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "303f82be22f81b0a68244f22f6faf805769206e07de5d83c1439df51e0506f7e",
+      "actual_future_value": 126000.612159729,
+      "predicted_cltv": 224249.43832533737,
+      "residual": -98248.82616560836,
+      "absolute_error": 98248.82616560836,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "3163ade3bbdec41ca4e3a5c9dda3843f3cff90291df89abf5e5f6881d7d22a6d",
+      "actual_future_value": 7121606.632446289,
+      "predicted_cltv": 12860294.778565474,
+      "residual": -5738688.146119185,
+      "absolute_error": 5738688.146119185,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "320d17a1da7eb631e41a11a42dd1ac0944a0808e7c68c3623312b67053521b76",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 271.67652674279475,
+      "residual": -271.67652674279475,
+      "absolute_error": 271.67652674279475,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "3234d4d5ee0c7c863d9bc8949cecc625ad3b642ab05eb8e6d03b3d2b48105a2e",
+      "actual_future_value": 571.7852478027344,
+      "predicted_cltv": 23730.831933581452,
+      "residual": -23159.046685778718,
+      "absolute_error": 23159.046685778718,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "326e4111a94f006e749eb1c72715b7ef78425d25087865f0c79faca603aff7b1",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 242238.48386324645,
+      "residual": -242238.48386324645,
+      "absolute_error": 242238.48386324645,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "330a3ecfae3316cde541dfe21d80db70cfd76f968129057029ca30d0c9b34f09",
+      "actual_future_value": 89478.140625,
+      "predicted_cltv": 28014.798864796907,
+      "residual": 61463.3417602031,
+      "absolute_error": 61463.3417602031,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "331de7a28ff687de05ed3995188a4446ee598bc8d38a44e39f2b46a9e89263b0",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 1226.577437234396,
+      "residual": -1226.577437234396,
+      "absolute_error": 1226.577437234396,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "33218d5f80815aba45450418e822ad5e16583506ffe0e1db9bd19df21e3fd3e9",
+      "actual_future_value": 1757447.7891235352,
+      "predicted_cltv": 2196354.5087287556,
+      "residual": -438906.7196052205,
+      "absolute_error": 438906.7196052205,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "338383e6b803bc890405885ac1ee8d752723287b9cbac70f7b51bff88c05c12e",
+      "actual_future_value": 129036.0754005909,
+      "predicted_cltv": 74.73820531701773,
+      "residual": 128961.33719527388,
+      "absolute_error": 128961.33719527388,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "34c9391fd7f12f2413bf015beb72e2fcf97dc849803e58b32ae6729566c1ba72",
+      "actual_future_value": 302632.83975982666,
+      "predicted_cltv": 19005.736090476414,
+      "residual": 283627.10366935027,
+      "absolute_error": 283627.10366935027,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "34df02763a9ea98699a3dc6d29349bc80aff0d121875bba466afff009b46c752",
+      "actual_future_value": 2726699.3076171875,
+      "predicted_cltv": 109752.8722072475,
+      "residual": 2616946.43540994,
+      "absolute_error": 2616946.43540994,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "365adcf3c36dbe8c777439747830edeabad02d460350fa350638c77515eb858a",
+      "actual_future_value": 331106.060546875,
+      "predicted_cltv": 423553.71693708596,
+      "residual": -92447.65639021096,
+      "absolute_error": 92447.65639021096,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "36b074939db42db22ccbe203ef8433f479e9e8c1a7ab68e082120013298f5d1a",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 17.28866420575511,
+      "residual": -17.28866420575511,
+      "absolute_error": 17.28866420575511,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "378e2f24bf71f0c3d6366a8077825b2bb030cc79ac1f3eeef02d0cca76956aaa",
+      "actual_future_value": 2373942.695755005,
+      "predicted_cltv": 1427927.0958904687,
+      "residual": 946015.5998645362,
+      "absolute_error": 946015.5998645362,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "37e0949a740bfe69ad6d4b7a6e85d3407e6c0fe9b78e12525a5bda5cc62af94f",
+      "actual_future_value": 531135.4409179688,
+      "predicted_cltv": 1165962.653720838,
+      "residual": -634827.2128028693,
+      "absolute_error": 634827.2128028693,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "38c9819b4fcbe977be9c984ca063dc10dee2f8d4bb561b2ccc02fc10eeb4cd35",
+      "actual_future_value": 165297.1983642578,
+      "predicted_cltv": 828508.9520262525,
+      "residual": -663211.7536619947,
+      "absolute_error": 663211.7536619947,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "3a957a930b98d771511c6dcb825335cc953195a55ebb3986f0abb0c6641d7f5a",
+      "actual_future_value": 25447804.832951248,
+      "predicted_cltv": 14933301.011817653,
+      "residual": 10514503.821133595,
+      "absolute_error": 10514503.821133595,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "3b535cf6cd9b760f4fb08407e467c351840d5e67f63cbb81a27aeebea0ecf465",
+      "actual_future_value": 4644763.319580078,
+      "predicted_cltv": 5512954.806284433,
+      "residual": -868191.4867043551,
+      "absolute_error": 868191.4867043551,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "3c1317bf3490d6185d86771186e54e12877890ef4fc16598a540ebf4a34aab8a",
+      "actual_future_value": 12524294.37399292,
+      "predicted_cltv": 14089195.51714371,
+      "residual": -1564901.1431507897,
+      "absolute_error": 1564901.1431507897,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "3ce34dcb877dbf88c11a3017631162c0178e88947375f3a127545648a50e4ba5",
+      "actual_future_value": 645853.5405273438,
+      "predicted_cltv": 1041317.4632536796,
+      "residual": -395463.9227263358,
+      "absolute_error": 395463.9227263358,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "3f4da009c84889e4274f540ca41eac4eedb056333ecf111dee44d47f3ea8a42a",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 291.4140891713243,
+      "residual": -291.4140891713243,
+      "absolute_error": 291.4140891713243,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "3fa9aa231d0356b197a03d04a62b0ee8c2938c726897f11826f344e3f30b7540",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 121.3044962120335,
+      "residual": -121.3044962120335,
+      "absolute_error": 121.3044962120335,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "402031d0d5b1a5b36fcb52e17ad4704a841203fdb6f854d2e12c82c44c6243a0",
+      "actual_future_value": 8697270.314682007,
+      "predicted_cltv": 8493482.900903117,
+      "residual": 203787.41377888992,
+      "absolute_error": 203787.41377888992,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "406bb4ddc8f40cce0ca1a5c313fe0e88b38563e05154bbb0ccce3068fde1c431",
+      "actual_future_value": 66381.81797027588,
+      "predicted_cltv": 7702.783977207086,
+      "residual": 58679.03399306879,
+      "absolute_error": 58679.03399306879,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "409ccec1a1686f5e17956304fd5ca30ff796bab967a48c59f6a7fa8c8db4735b",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 3176.5672857106874,
+      "residual": -3176.5672857106874,
+      "absolute_error": 3176.5672857106874,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "41081a7b9bb2e143872b1bd341587a65c128a8e2f99ec298f259e987be77915d",
+      "actual_future_value": 151365045.69553894,
+      "predicted_cltv": 86965300.20648833,
+      "residual": 64399745.48905061,
+      "absolute_error": 64399745.48905061,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "42ad7670f539037bf185f8795c2eb2b0c731ca7bc4d0df86e3f30857ff0e1394",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 71.60941492308004,
+      "residual": -71.60941492308004,
+      "absolute_error": 71.60941492308004,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "42c1d81e69782855e466d43a79888057ee03904007f71c301bcc51040a38248d",
+      "actual_future_value": 6183266.756774902,
+      "predicted_cltv": 32833927.94542395,
+      "residual": -26650661.188649047,
+      "absolute_error": 26650661.188649047,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "4311bfedf55b1af53fa681a837b849452c3bdf2a41278ed36c6707f38017c997",
+      "actual_future_value": 34003.420506477356,
+      "predicted_cltv": 59252.87193477683,
+      "residual": -25249.45142829947,
+      "absolute_error": 25249.45142829947,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "43461720e0f0f97db0d78eacf526b38f4a18019e0315fde0a0480850e6b963be",
+      "actual_future_value": 6289156.429718018,
+      "predicted_cltv": 11566283.420877734,
+      "residual": -5277126.991159717,
+      "absolute_error": 5277126.991159717,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "4432c524453f12c183e398d5a685910d6f34c7357bb3ebe4f58b12357f5100b4",
+      "actual_future_value": 1056866.4568824768,
+      "predicted_cltv": 1847970.3633524512,
+      "residual": -791103.9064699744,
+      "absolute_error": 791103.9064699744,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "443dc63a43a973bbe3d2fd8034a21d88c71feae31aa661b5201ec22ca0454cc7",
+      "actual_future_value": 1848947.4487304688,
+      "predicted_cltv": 973261.9227977614,
+      "residual": 875685.5259327074,
+      "absolute_error": 875685.5259327074,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "456cb1ae7f6b3482e37f50179e5080e768871534e3138a5697b156c4ba93c5bd",
+      "actual_future_value": 61857674.815732494,
+      "predicted_cltv": 60797453.20206068,
+      "residual": 1060221.613671817,
+      "absolute_error": 1060221.613671817,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "46c0881bbe4e75a0151bbe84149159476027fd9c3d136a96f8adc51110d4a30c",
+      "actual_future_value": 49041.635986328125,
+      "predicted_cltv": 42098.67166011205,
+      "residual": 6942.964326216075,
+      "absolute_error": 6942.964326216075,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "47b48e5714719dde53f0eb3155687ecdf2722574fdca7823e0dc4fab0088cfed",
+      "actual_future_value": 60958.85214614868,
+      "predicted_cltv": 2372299.711972072,
+      "residual": -2311340.859825923,
+      "absolute_error": 2311340.859825923,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "481d2c6ffd1cd303b04913aaff6f9c35a613605da4855ccad1bd2c6dae9a6880",
+      "actual_future_value": 228277.10483551025,
+      "predicted_cltv": 136040.60630437487,
+      "residual": 92236.49853113538,
+      "absolute_error": 92236.49853113538,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "48272da710d959fd49b2492ee36bb41f7e2be2fc9966a6ac285a5f64d818761e",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 31133.01472627621,
+      "residual": -31133.01472627621,
+      "absolute_error": 31133.01472627621,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "499fa20ba63496c6bbdbd1164c208de32f2d14840fb957a7703d5518b66b2f08",
+      "actual_future_value": 8943.771057128906,
+      "predicted_cltv": 28891.15416085111,
+      "residual": -19947.383103722204,
+      "absolute_error": 19947.383103722204,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "4a640fd4684026b6fa0ffba1c6185ec8e1f04773e1b22090ebd82f60f8899785",
+      "actual_future_value": 242479.71166992188,
+      "predicted_cltv": 305222.1945506265,
+      "residual": -62742.48288070463,
+      "absolute_error": 62742.48288070463,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "4ae3c42aa20581fffddd5f38216e6600af8c707feee6c8f683607e3a5818eaf4",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 229.74966882187158,
+      "residual": -229.74966882187158,
+      "absolute_error": 229.74966882187158,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "4b046f4e394d0fe21fb8baec57dd9bbf503c90df4fff1e938d0205b257e00e22",
+      "actual_future_value": 7660873.063262701,
+      "predicted_cltv": 452677.1237271092,
+      "residual": 7208195.939535592,
+      "absolute_error": 7208195.939535592,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "4b0fc97437fe987ce0e2ac672b9fc94960e681439733ad807253a9c1cc837073",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 16067.2563767505,
+      "residual": -16067.2563767505,
+      "absolute_error": 16067.2563767505,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "4b258fd9b21b61e13ac4e19ebb7e1daad120bf70066ad82dacf81021b1643063",
+      "actual_future_value": 705252.453125,
+      "predicted_cltv": 80979.6673944745,
+      "residual": 624272.7857305255,
+      "absolute_error": 624272.7857305255,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "4bdd95726388e943b1eba568a408dfc26d41570ace1131bcf22db6adb8385a20",
+      "actual_future_value": 2087784.6627840996,
+      "predicted_cltv": 4832739.45684643,
+      "residual": -2744954.7940623304,
+      "absolute_error": 2744954.7940623304,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "4c5c15b80611c6befcb5bfc7025b296ceb5a7a5b1e7001fbaa9f7c8c7e391032",
+      "actual_future_value": 14745831.235866547,
+      "predicted_cltv": 6010751.537489921,
+      "residual": 8735079.698376626,
+      "absolute_error": 8735079.698376626,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "4ea49b14f303aef5df64ee942fc70c785188bdd7920c79c01ab888c77e19d167",
+      "actual_future_value": 91550.9921875,
+      "predicted_cltv": 88.37812493221195,
+      "residual": 91462.6140625678,
+      "absolute_error": 91462.6140625678,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "4fa518f35e4d3c26b56f097b4f401857f6c1a64c7430ca6f47c3c65293582f4f",
+      "actual_future_value": 22257863.36311245,
+      "predicted_cltv": 25944567.292045243,
+      "residual": -3686703.9289327934,
+      "absolute_error": 3686703.9289327934,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "4fac12b265327b2e6c24a30acd02b9d687370ab7d65dfa01d74a4a3b381b157a",
+      "actual_future_value": 153755.859375,
+      "predicted_cltv": 1371.2339127707255,
+      "residual": 152384.62546222928,
+      "absolute_error": 152384.62546222928,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "50336299f3e3f487707195f127df5a9b3fd6f1ad49b8598e9057163bbda531a7",
+      "actual_future_value": 763832.1012573242,
+      "predicted_cltv": 115877.18232437152,
+      "residual": 647954.9189329527,
+      "absolute_error": 647954.9189329527,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "50af4f97ce8660a33e55ecd22c70fba5023d408850ccb41cf2b943a901c184d5",
+      "actual_future_value": 459069.82134628296,
+      "predicted_cltv": 30379.015589014216,
+      "residual": 428690.80575726874,
+      "absolute_error": 428690.80575726874,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "50ba6358d37d68ee0127c7084e4361c2e6a7fe1cb5807f52f229eeb41699b49b",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 74.73820531701773,
+      "residual": -74.73820531701773,
+      "absolute_error": 74.73820531701773,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "5332d1b12a208fc63e39abaca02963fe26edbc38ab36d91a30e7bcab52d7dbee",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 42.366086090242874,
+      "residual": -42.366086090242874,
+      "absolute_error": 42.366086090242874,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "541a5e42fb406908cb9d55e12eeace0ed6b767961829da5c67a124b4f0d6c553",
+      "actual_future_value": 590069.55078125,
+      "predicted_cltv": 216514.184545693,
+      "residual": 373555.366235557,
+      "absolute_error": 373555.366235557,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "542407dbd15d6941896b331bd9c5af53186120b72f014fb9242e2c39c8b6581e",
+      "actual_future_value": 849539.5191650391,
+      "predicted_cltv": 893990.4457119125,
+      "residual": -44450.92654687341,
+      "absolute_error": 44450.92654687341,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "542eade2611545008ae7fd7faf70ced0a6a1c3164d5892d116d549b7a8d94220",
+      "actual_future_value": 5628103.643920898,
+      "predicted_cltv": 10477368.687590545,
+      "residual": -4849265.043669647,
+      "absolute_error": 4849265.043669647,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "547301077dfd7c07c8c09adeb3432b37e991effd23d4c8e099aa25b9b5719571",
+      "actual_future_value": 120665.453125,
+      "predicted_cltv": 29828.151257878788,
+      "residual": 90837.30186712122,
+      "absolute_error": 90837.30186712122,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "548c7834427b21f466f55674d78459d25c0f4533bce5b6471435fc4a34dbff61",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 84.57463140994354,
+      "residual": -84.57463140994354,
+      "absolute_error": 84.57463140994354,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "563e28732f48dc4614214caad3a07ca97049ebf945b409573947cc2268739ac9",
+      "actual_future_value": 3864790.846923828,
+      "predicted_cltv": 1839373.6169029856,
+      "residual": 2025417.2300208425,
+      "absolute_error": 2025417.2300208425,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "56bf2038d91d9f9332464f9e6415671443b5e42a1509679cad9dd7efba6dd5db",
+      "actual_future_value": 2760792.734375,
+      "predicted_cltv": 2087920.3166334236,
+      "residual": 672872.4177415764,
+      "absolute_error": 672872.4177415764,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "58036e83f08de9811937296a9e02e6e6ed432549ab274e50317bf513f3be92aa",
+      "actual_future_value": 7669.251499176025,
+      "predicted_cltv": 221788.0003676846,
+      "residual": -214118.74886850858,
+      "absolute_error": 214118.74886850858,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "5833c7f899e394006f78ecf61cb0e1f8a18f6129809340a3164a0bac55a7ce3c",
+      "actual_future_value": 2733587.6727600098,
+      "predicted_cltv": 4135221.4735505255,
+      "residual": -1401633.8007905157,
+      "absolute_error": 1401633.8007905157,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "58a1fff59f6a0d6ab0d5763a8d47bb7718f3b2c0064fe525ec5e0392bf677093",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 7353.227747827213,
+      "residual": -7353.227747827213,
+      "absolute_error": 7353.227747827213,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "590fb7d7663fa6c2183bec27df5952c4d88637fc61e660d921012b27edbdd24c",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 7732.254494463945,
+      "residual": -7732.254494463945,
+      "absolute_error": 7732.254494463945,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "592951b70b9dbabc8067e84f8e56d3d833cce3c32079e59127b93158aa57a410",
+      "actual_future_value": 7410667.451043129,
+      "predicted_cltv": 9016518.225876745,
+      "residual": -1605850.7748336159,
+      "absolute_error": 1605850.7748336159,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "596c3f23a3d02746f721bc642b8d6ea359c835e00d5aef1804860c51fb52919a",
+      "actual_future_value": 4296374.658691406,
+      "predicted_cltv": 3177543.3241123375,
+      "residual": 1118831.3345790687,
+      "absolute_error": 1118831.3345790687,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "5b91106d9cb42c1a9a48c90928d3f051319e39464a2ab4470b571ec743dbf050",
+      "actual_future_value": 6058655.148117065,
+      "predicted_cltv": 16871392.57276657,
+      "residual": -10812737.424649503,
+      "absolute_error": 10812737.424649503,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "5c3a4669514fa44fc9e05c83781003ce7f0a44e04c242f06ef5f4e35675804e1",
+      "actual_future_value": 1391965.2221823335,
+      "predicted_cltv": 729337.2589636876,
+      "residual": 662627.9632186459,
+      "absolute_error": 662627.9632186459,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "5c5c7e8f44ff173a7a900670ece312e2ea8a4363e4a78c4fe2154e25f9723424",
+      "actual_future_value": 1291075.290008545,
+      "predicted_cltv": 3732115.1268717893,
+      "residual": -2441039.8368632444,
+      "absolute_error": 2441039.8368632444,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "5c7923d1c728a21133805440d72d92ccfea80bb3936da80c23a7877e05bd5c47",
+      "actual_future_value": 619089.23046875,
+      "predicted_cltv": 709068.1004774291,
+      "residual": -89978.8700086791,
+      "absolute_error": 89978.8700086791,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "5d204fa1fa3bcabe4fd56202d446e2a6350a74588028ae7588b0ddff392dcd44",
+      "actual_future_value": 615130.7509765625,
+      "predicted_cltv": 1152945.028371684,
+      "residual": -537814.2773951215,
+      "absolute_error": 537814.2773951215,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "5d294e913e6354c1365f89bb71181e0dd66d11d43e609581bf8ff0d3b5fe2f1b",
+      "actual_future_value": 968766.8657979965,
+      "predicted_cltv": 320422.71275492036,
+      "residual": 648344.1530430762,
+      "absolute_error": 648344.1530430762,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "5d49179faf199be7446ff93a3265f5c9e3eb2e76504ec8d97b8b1d441cbb6bae",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 42611.655406859536,
+      "residual": -42611.655406859536,
+      "absolute_error": 42611.655406859536,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "5e1f5ed73100361c5ff77d8776acd392b6609fdfb8e51028829260b15de3f2be",
+      "actual_future_value": 1937.1387939453125,
+      "predicted_cltv": 137.26830236308106,
+      "residual": 1799.8704915822314,
+      "absolute_error": 1799.8704915822314,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "5e2e39a42f238afed87c3415a309a2acdcec4b7dd3e2e760d9e233e0557d1bb0",
+      "actual_future_value": 73590439.44427705,
+      "predicted_cltv": 74839746.01271713,
+      "residual": -1249306.5684400797,
+      "absolute_error": 1249306.5684400797,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "5ed5293be9121eb8c783ab1e002fcdf2508acba7b0e86ef0a54378b986c18520",
+      "actual_future_value": 13656044.62342453,
+      "predicted_cltv": 19494810.10660438,
+      "residual": -5838765.483179849,
+      "absolute_error": 5838765.483179849,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "61a2922d256302e4d6e2385f4073b6cdedbcfd2af96585103b404b7f47262f4a",
+      "actual_future_value": 2395425.591427506,
+      "predicted_cltv": 6241832.827707905,
+      "residual": -3846407.2362803994,
+      "absolute_error": 3846407.2362803994,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "62465d2fa44e179c7e4aa42b1eae8e509de2340c22e7bb28912075ef407da221",
+      "actual_future_value": 56250991.810058594,
+      "predicted_cltv": 29636753.78517493,
+      "residual": 26614238.024883665,
+      "absolute_error": 26614238.024883665,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "624afd4caa5c3b4580dc2ef97a74e593b8ec4ee54d680dc2751d71f48ad427b5",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 42.366086090242874,
+      "residual": -42.366086090242874,
+      "absolute_error": 42.366086090242874,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "625685d8a401c6e005dc0381fe9708a70d59dd39292653df2121587da3eb7e4d",
+      "actual_future_value": 723202.9702148438,
+      "predicted_cltv": 2037566.202620915,
+      "residual": -1314363.2324060712,
+      "absolute_error": 1314363.2324060712,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "627da2ecb8bb025845063dedbe56ce04930882556ac46e61fdff33b0553d9da1",
+      "actual_future_value": 2627018.0021476746,
+      "predicted_cltv": 6576720.4326893445,
+      "residual": -3949702.43054167,
+      "absolute_error": 3949702.43054167,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "630432dcb27886226b93be309c67d40a5c8f39440a606ed794e432deb948e5ae",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 42.366086090242874,
+      "residual": -42.366086090242874,
+      "absolute_error": 42.366086090242874,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "638e1c0cb7b0a9341790bd34706f25da961026eeb54c8a6af5a85916c234c650",
+      "actual_future_value": 758061.5991210938,
+      "predicted_cltv": 788855.4156825623,
+      "residual": -30793.816561468528,
+      "absolute_error": 30793.816561468528,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "64d3b9f4a525a8eb611f3c7144a9ba0ec9e72c8e2b75841970971147d51813de",
+      "actual_future_value": 2580726.308654785,
+      "predicted_cltv": 4817985.408247794,
+      "residual": -2237259.099593009,
+      "absolute_error": 2237259.099593009,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "64d4c19f22e60c549562108279d65c50f597f5191f99652424e08dceddc646af",
+      "actual_future_value": 17182536.369533777,
+      "predicted_cltv": 56502069.59634913,
+      "residual": -39319533.22681535,
+      "absolute_error": 39319533.22681535,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "6542979aa887fbf79cb3f280d82b969db0783f617668d9892804f63b909cbbcc",
+      "actual_future_value": 3371825.4823532104,
+      "predicted_cltv": 12165999.035003107,
+      "residual": -8794173.552649897,
+      "absolute_error": 8794173.552649897,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "65c9decf41b4944a789e74daae5450c88cb85546abc367ac798617497a8db9bf",
+      "actual_future_value": 1695128.53515625,
+      "predicted_cltv": 585876.4177416533,
+      "residual": 1109252.1174145967,
+      "absolute_error": 1109252.1174145967,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "6707a1e111c9f8c9fb7c61b979514963de6c63f86be69bb4da84b3b23dde0086",
+      "actual_future_value": 228084.47283935547,
+      "predicted_cltv": 1371454.798741326,
+      "residual": -1143370.3259019705,
+      "absolute_error": 1143370.3259019705,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "6802007a7ea46c9fa72bba4dbeb9ec34b2cf54229ff3031e26a476ddb65168e2",
+      "actual_future_value": 49775863.53430915,
+      "predicted_cltv": 58871913.6518319,
+      "residual": -9096050.117522754,
+      "absolute_error": 9096050.117522754,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "6933f6e3564af6c1f3aed7c0be01d214c5ad3962d94eba54a75132bd07563f1a",
+      "actual_future_value": 865280.828125,
+      "predicted_cltv": 11457.878219194252,
+      "residual": 853822.9499058058,
+      "absolute_error": 853822.9499058058,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "693f27ab0108d20810451709a5d80a06ab7a955c3b04b28639ce1a5ccf1032da",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 535.1679652694963,
+      "residual": -535.1679652694963,
+      "absolute_error": 535.1679652694963,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "6c903215b7d212eef56e5d912cdff02ed20e8b7f11631bd18580a5a4a634767e",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 54.699033952709044,
+      "residual": -54.699033952709044,
+      "absolute_error": 54.699033952709044,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "6d1063195dea692d4f975356707c7070f35b6b5305ae8b99070bc9681f3a7cda",
+      "actual_future_value": 2246.374704360962,
+      "predicted_cltv": 24259.955446565065,
+      "residual": -22013.580742204103,
+      "absolute_error": 22013.580742204103,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "6dae8f033a25402c1cdd7fd07a34f9c719378ba6107013beb6e4103d11ed9a89",
+      "actual_future_value": 1320.2323150634766,
+      "predicted_cltv": 11862.789423871729,
+      "residual": -10542.557108808252,
+      "absolute_error": 10542.557108808252,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "6dd389739e26ac4551152c583b46ba620be3f97e9154a4c6a92523d8062aabc5",
+      "actual_future_value": 139617496.26062012,
+      "predicted_cltv": 13184452.069239935,
+      "residual": 126433044.19138019,
+      "absolute_error": 126433044.19138019,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "6dee6bedcec8d2ab715d377d1cd8b01bd4318bcb3f4ac4270420388f311c1285",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 312.0080723886924,
+      "residual": -312.0080723886924,
+      "absolute_error": 312.0080723886924,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "6e2e16a5670e2aba1f80270f38a9ac768c6aa2b0fc24a540a503408bd1aef7ba",
+      "actual_future_value": 1224580.1227531433,
+      "predicted_cltv": 1749021.6689553382,
+      "residual": -524441.5462021949,
+      "absolute_error": 524441.5462021949,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "6e6d1bcd10ecffc39cca305c490485b63e058fb32aa88f31ba0a8c6545b19d8c",
+      "actual_future_value": 3584431.331604004,
+      "predicted_cltv": 4739857.489465346,
+      "residual": -1155426.1578613417,
+      "absolute_error": 1155426.1578613417,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "6f3b8c3aa722f70a168683b43d7b0a9bd50c2f6d2d6536ac732663af9893f00c",
+      "actual_future_value": 2066636.109375,
+      "predicted_cltv": 127.0360453974755,
+      "residual": 2066509.0733296026,
+      "absolute_error": 2066509.0733296026,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "716e8c92202e2fbfc5222fa09dc1cb395168b58e316a8129779c1ddd846797f6",
+      "actual_future_value": 193852013.74715918,
+      "predicted_cltv": 138514426.3734871,
+      "residual": 55337587.3736721,
+      "absolute_error": 55337587.3736721,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "72e5d28e5eddc455b01517fab57f63271e3114ef8733c21d60954fd702bf8643",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 7788.429902666954,
+      "residual": -7788.429902666954,
+      "absolute_error": 7788.429902666954,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "72f429c1e42981fc5cac09bbe7b9999efc6e6c621c05abe36f6488c8541ecb00",
+      "actual_future_value": 8577435.262957335,
+      "predicted_cltv": 47797670.705901675,
+      "residual": -39220235.44294434,
+      "absolute_error": 39220235.44294434,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "735fcb6532088cb17a24a0503cd3ffb1e4585834ac458af4ef23f0c9abfac30a",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 42.366086090242874,
+      "residual": -42.366086090242874,
+      "absolute_error": 42.366086090242874,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "74696fadd5c917a7e3f0188993db6fbc230a4a241a93fc967ac7a4f17006ec1c",
+      "actual_future_value": 6156822.854248047,
+      "predicted_cltv": 9316897.584965,
+      "residual": -3160074.730716953,
+      "absolute_error": 3160074.730716953,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "7574b906c07d1076b65d703650b37248379a7461738828d06a53bf67931a3ba9",
+      "actual_future_value": 1714731.7499418259,
+      "predicted_cltv": 2864931.0145508484,
+      "residual": -1150199.2646090225,
+      "absolute_error": 1150199.2646090225,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "758e43cac1c26bdb422f989f3326bc91f13796aef72ae2a563d945ffb18c89ed",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 11.147907035318692,
+      "residual": -11.147907035318692,
+      "absolute_error": 11.147907035318692,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "75f10a0c282599159948e3231a19bfcf1e6ecf2ec44fa3f41ea6e44600f9108d",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 244.53804527240086,
+      "residual": -244.53804527240086,
+      "absolute_error": 244.53804527240086,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "76717897910938a24a95a5db0e4d00aa384fbd5003541154f42c9a07960426bd",
+      "actual_future_value": 21541574.16217041,
+      "predicted_cltv": 20735102.241831418,
+      "residual": 806471.920338992,
+      "absolute_error": 806471.920338992,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "769435db5194241501f9163a619088c521e4c2569f90f5d0ed5d51a9a5a00695",
+      "actual_future_value": 3733.3726196289062,
+      "predicted_cltv": 55754.69016418237,
+      "residual": -52021.317544553465,
+      "absolute_error": 52021.317544553465,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "77156bfff6c6d448d74250fdcacb29d5b3d0f8ea914b94940b2c593714d7f9bf",
+      "actual_future_value": 298721.20751953125,
+      "predicted_cltv": 294153.7521642538,
+      "residual": 4567.45535527746,
+      "absolute_error": 4567.45535527746,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "774a5e4c684cc09c0c49692920dacc139d8e0f4499ce5564ccab1d1bae771058",
+      "actual_future_value": 567.850341796875,
+      "predicted_cltv": 34108.084956455925,
+      "residual": -33540.23461465905,
+      "absolute_error": 33540.23461465905,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "777b7014a0edf994e39605983fbc31350a94b0229841232baa2ae7d915b77451",
+      "actual_future_value": 332019.2344055176,
+      "predicted_cltv": 494266.18656074617,
+      "residual": -162246.9521552286,
+      "absolute_error": 162246.9521552286,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "7816464ea863a7af00556bbf2047d37631860504d0be12b82240fdda7d0b522e",
+      "actual_future_value": 39922126.71798897,
+      "predicted_cltv": 21388396.35360751,
+      "residual": 18533730.36438146,
+      "absolute_error": 18533730.36438146,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "78587c498edbfce06beb68d749ddb55a06b86f50c6200df6ad54ad2d2f7242e7",
+      "actual_future_value": 59791254.92686081,
+      "predicted_cltv": 42226800.34603888,
+      "residual": 17564454.58082193,
+      "absolute_error": 17564454.58082193,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "7888402871f31ff3f6ddd36f69fa71aabb233410d3635ce5b36999e71be5a873",
+      "actual_future_value": 91247.98129868507,
+      "predicted_cltv": 267834.5685278074,
+      "residual": -176586.58722912235,
+      "absolute_error": 176586.58722912235,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "790bf33b18608bea0fcb9fd3fec108109a9155627c7981e4ad023626504ec75c",
+      "actual_future_value": 151977.5704574585,
+      "predicted_cltv": 1126326.5752252787,
+      "residual": -974349.0047678202,
+      "absolute_error": 974349.0047678202,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "79eba446bec32e8c699d38c5f1cf02a109951e427db5259a8d7bc010abbdef1d",
+      "actual_future_value": 705473.5927734375,
+      "predicted_cltv": 1166982.166155977,
+      "residual": -461508.57338253944,
+      "absolute_error": 461508.57338253944,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "7b49f3f7fbd3c30d1e0e703cb48416d58fb07043cbfd57a6c859ba6776615fd2",
+      "actual_future_value": 89662.7724609375,
+      "predicted_cltv": 14499.216508588877,
+      "residual": 75163.55595234863,
+      "absolute_error": 75163.55595234863,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "7bc603d5a0814e970c54ebc82fc00f5b913bcf8ec7e32c95faead34db10816b3",
+      "actual_future_value": 286051.72396850586,
+      "predicted_cltv": 625925.7224633747,
+      "residual": -339873.99849486887,
+      "absolute_error": 339873.99849486887,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "7d5a902ba0cfb6e55b158d9d4281430c418d541092321c98e28c27cb55032218",
+      "actual_future_value": 9815832.02714245,
+      "predicted_cltv": 13639259.847086154,
+      "residual": -3823427.8199437037,
+      "absolute_error": 3823427.8199437037,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "7dcaefb11358380e96a8b32a39ddd1fbab7d182cb21da90d76e87f8b595d3080",
+      "actual_future_value": 15996639.358154297,
+      "predicted_cltv": 14879823.657619828,
+      "residual": 1116815.7005344685,
+      "absolute_error": 1116815.7005344685,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "7dfa3884711be1811758cdff7b75e62461dcbb16074f0fefac9c3575051697df",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 1861.5962776941722,
+      "residual": -1861.5962776941722,
+      "absolute_error": 1861.5962776941722,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "7eac1bc740a22572bcd7655a509b349ffcf863c9f2124472b95947dc8513e7cc",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 576.9235267186459,
+      "residual": -576.9235267186459,
+      "absolute_error": 576.9235267186459,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "7ef229bd05235d9eec19ec569db156cb0fe34261e0de6c6c685490d3a3c64312",
+      "actual_future_value": 104185.10231494904,
+      "predicted_cltv": 542021.2686170079,
+      "residual": -437836.16630205885,
+      "absolute_error": 437836.16630205885,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "7fc0391c11e78b1e0e2e075c4c889709b0984797bbc0e40c2842bd8251f36b77",
+      "actual_future_value": 12262623.829101562,
+      "predicted_cltv": 3806665.1464163284,
+      "residual": 8455958.682685234,
+      "absolute_error": 8455958.682685234,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "7fda20eb479324ff6e931c9f492a886d9417798e34ba7941e2a19b8c93dac8b5",
+      "actual_future_value": 1078.1033935546875,
+      "predicted_cltv": 1620241.4125469367,
+      "residual": -1619163.309153382,
+      "absolute_error": 1619163.309153382,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "8104ddfba5a3fc5a2f4c92ae18e955ae9a80d0f360190cf184b0e2b96e0f098b",
+      "actual_future_value": 5811490.227661133,
+      "predicted_cltv": 7435234.710600095,
+      "residual": -1623744.482938962,
+      "absolute_error": 1623744.482938962,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "811736f0bce38002f53e4758b973a69e368e0441f8d4176ef93df6d5109957b1",
+      "actual_future_value": 15921599.908477783,
+      "predicted_cltv": 8939128.317396076,
+      "residual": 6982471.591081707,
+      "absolute_error": 6982471.591081707,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "81ace62c27b5bf993367e2d446ba3291d8256633dd9f3e7bc11717c49bfe39a5",
+      "actual_future_value": 75780958.05454159,
+      "predicted_cltv": 14034846.799955461,
+      "residual": 61746111.25458613,
+      "absolute_error": 61746111.25458613,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "824d7d2a6ac330f0a5818cf695696121e9db41db3d15bf129da6cbabc9bac4b1",
+      "actual_future_value": 355436.99447631836,
+      "predicted_cltv": 595962.9371620935,
+      "residual": -240525.9426857751,
+      "absolute_error": 240525.9426857751,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "825dd6dbc1ccd4611c56b25e9f39db43c0a56bf5fa07b44f5f9b5f7e019dd51e",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 589.8057125181618,
+      "residual": -589.8057125181618,
+      "absolute_error": 589.8057125181618,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "8273b9d1f5ad97c29084c5f6f6e0b9b07760863a991b21ea6702cb246b773cb2",
+      "actual_future_value": 407467.4895019531,
+      "predicted_cltv": 480757.6452030778,
+      "residual": -73290.15570112469,
+      "absolute_error": 73290.15570112469,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "836b1be52044c19ccf3efe9ab4279bbfd8970b39ce4f6032ba2abaec40fcccc8",
+      "actual_future_value": 64700.4130859375,
+      "predicted_cltv": 22529.23617667707,
+      "residual": 42171.17690926043,
+      "absolute_error": 42171.17690926043,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "83f3016f928555644f09d12e3889e076b6022ecec21f2f8d8b0d162f9dc341e7",
+      "actual_future_value": 26732.794921875,
+      "predicted_cltv": 618.7629075784968,
+      "residual": 26114.032014296503,
+      "absolute_error": 26114.032014296503,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "8480a37f7b706335f80da8c0fe6f6be1503a6271f34603b6faf5561719b93051",
+      "actual_future_value": 18970550.637054443,
+      "predicted_cltv": 23955013.45737074,
+      "residual": -4984462.820316296,
+      "absolute_error": 4984462.820316296,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "84bab07f6d4abd47660e6ab6984429f87cc106b48e64f0da0251cae2247bc63a",
+      "actual_future_value": 84396461.57431078,
+      "predicted_cltv": 93489308.61695732,
+      "residual": -9092847.042646542,
+      "absolute_error": 9092847.042646542,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "85c48b10c86f1577f95e8219758e5e32ee9807ccafcc75913e19c0402d5ba5a9",
+      "actual_future_value": 19945515.300613403,
+      "predicted_cltv": 13608939.16402002,
+      "residual": 6336576.136593383,
+      "absolute_error": 6336576.136593383,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "85f489637370cc4ff4f93e902e1c8aae464683cfdfde91258c6c6bc4fd96b006",
+      "actual_future_value": 210543.18359375,
+      "predicted_cltv": 651498.135681198,
+      "residual": -440954.952087448,
+      "absolute_error": 440954.952087448,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "85f6e160b3465cdf95da28be5ae6efef9823c2d501de5920c62ab2feddf3e35b",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 125.15264895821984,
+      "residual": -125.15264895821984,
+      "absolute_error": 125.15264895821984,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "86d3e773bf9240133c4c9269da2699a25bab6850e7281d5bd4176a15d0678233",
+      "actual_future_value": 990583.6484375,
+      "predicted_cltv": 1050469.4510483341,
+      "residual": -59885.80261083413,
+      "absolute_error": 59885.80261083413,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "86d5d4edba82e6c499f3e55039a4a941382a035ae9d1b772ccf8bda3d91be628",
+      "actual_future_value": 1034317.0390625,
+      "predicted_cltv": 891244.9580953876,
+      "residual": 143072.08096711244,
+      "absolute_error": 143072.08096711244,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "8765c4e71d399feae9ea97e01036d7a3e565b8e836981ab5615eb737b5e1f565",
+      "actual_future_value": 3987931.110595703,
+      "predicted_cltv": 8548367.943450615,
+      "residual": -4560436.832854912,
+      "absolute_error": 4560436.832854912,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "8784e8b2cc42711b1d48ba4af539a1443b9b0d96a4961a4cb28bfbff2fcae6e8",
+      "actual_future_value": 280851.87109375,
+      "predicted_cltv": 496205.80452041456,
+      "residual": -215353.93342666456,
+      "absolute_error": 215353.93342666456,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "87eb4c8e1f88bb9cdd7e018301d9daf674095edbbed1e8d9ce857d08be860eb3",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 62.93334783824288,
+      "residual": -62.93334783824288,
+      "absolute_error": 62.93334783824288,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "8875d874fc1fd668e3761f2706480845d5483640dd4fdc64b5d9afbaaa837f61",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 331.6816530096479,
+      "residual": -331.6816530096479,
+      "absolute_error": 331.6816530096479,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "889527f8e5dc217b3fa2cc9e31908c6d59b5a66f181883ba3994015e3e6f6a09",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 43.86054346699897,
+      "residual": -43.86054346699897,
+      "absolute_error": 43.86054346699897,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "88b278c62aa2b0ede39046465e855677c838befe66fc47350690825a0ef2127e",
+      "actual_future_value": 45155637.64084625,
+      "predicted_cltv": 22315066.83828763,
+      "residual": 22840570.802558623,
+      "absolute_error": 22840570.802558623,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "89a4f209e6a033384f186dae2ff080c07ceb7ca89916183d72c33d4131706e09",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 83.34514400772723,
+      "residual": -83.34514400772723,
+      "absolute_error": 83.34514400772723,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "8aae6c9b4f91f498928b260550658e91fd10fc1bf70c1858deac9b547f728e4d",
+      "actual_future_value": 1542778.2346191406,
+      "predicted_cltv": 5392613.669247606,
+      "residual": -3849835.434628465,
+      "absolute_error": 3849835.434628465,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "8b25c5ff336243f9e5a110158a46c2fc815102fb677cc49e15f7eb7a9f80d6ef",
+      "actual_future_value": 219054.8074951172,
+      "predicted_cltv": 296289.2013974736,
+      "residual": -77234.39390235639,
+      "absolute_error": 77234.39390235639,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "8c50208b235035cdb7ab75cb4e581bedc5e8a7f6c516174a0e26ef5767761509",
+      "actual_future_value": 4986674.181738973,
+      "predicted_cltv": 9216474.891334672,
+      "residual": -4229800.709595699,
+      "absolute_error": 4229800.709595699,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "8d3c602a3b5f0da697e77f7f0558c2e8263df7e7e9632376e6c26ae199b9b214",
+      "actual_future_value": 103546337.46153715,
+      "predicted_cltv": 88771644.20292756,
+      "residual": 14774693.258609593,
+      "absolute_error": 14774693.258609593,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "8dc372baf06066e9d926448c44d22214d5a750c0586a5bcd1b76dde3b65d3d67",
+      "actual_future_value": 1236133.7333984375,
+      "predicted_cltv": 1123933.772067225,
+      "residual": 112199.96133121243,
+      "absolute_error": 112199.96133121243,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "8f3daedfcbd7f1e8830e351e6c1d86d39a03c418699012c05855efb68bf8af82",
+      "actual_future_value": 663266.455078125,
+      "predicted_cltv": 8084714.275909007,
+      "residual": -7421447.820830882,
+      "absolute_error": 7421447.820830882,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "8f863f600822fc650fb73476239fcc4c7b2cc923fa2e98afb67677566e4f5fff",
+      "actual_future_value": 96916063.13847351,
+      "predicted_cltv": 42.366086090242874,
+      "residual": 96916020.77238742,
+      "absolute_error": 96916020.77238742,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "8feba1f7a07cc5c56b67af95ade5e73d16b243c7bba64130cd1232b734eb478e",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 723.1346708407627,
+      "residual": -723.1346708407627,
+      "absolute_error": 723.1346708407627,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "9026559c35ee3104c462238b15a1a0f404c95fcce91104c9496e2650da22ce24",
+      "actual_future_value": 69121.6982421875,
+      "predicted_cltv": 42.366086090242874,
+      "residual": 69079.33215609725,
+      "absolute_error": 69079.33215609725,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "90b85485142ed45ac459a60962f279fb88f6627fcb145dbb990790d3a82ac4bf",
+      "actual_future_value": 521860.591422081,
+      "predicted_cltv": 1182888.078138381,
+      "residual": -661027.4867163,
+      "absolute_error": 661027.4867163,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "91a5ed673c4a1d723591dabd1e5c0462f95f0f8ecdb9c9b2ca24742a13d7a96c",
+      "actual_future_value": 4827812.470916748,
+      "predicted_cltv": 4950510.98852826,
+      "residual": -122698.51761151198,
+      "absolute_error": 122698.51761151198,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "920a2815b3d9d0eb626d6e2517674fc0daeb82c31916f243a323e8887fd01d45",
+      "actual_future_value": 7982505.434082031,
+      "predicted_cltv": 6022782.619701007,
+      "residual": 1959722.8143810239,
+      "absolute_error": 1959722.8143810239,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "93708676a4078fadd4a534c49f7d84397b2aa80f44d3a422ed700628725d1b29",
+      "actual_future_value": 159951320.15820312,
+      "predicted_cltv": 63331867.8638096,
+      "residual": 96619452.29439352,
+      "absolute_error": 96619452.29439352,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "941e1422da11f5ca8cdd6c673c28b54933c01aad9f6c09a2fa9ae54db70cf5ef",
+      "actual_future_value": 602112.6057223082,
+      "predicted_cltv": 1146810.6851055594,
+      "residual": -544698.0793832513,
+      "absolute_error": 544698.0793832513,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "944912a8619699754925d93adabb263bb5bb8b84b3da4daf1321103757cb60d1",
+      "actual_future_value": 67275192.59667817,
+      "predicted_cltv": 96747425.77859029,
+      "residual": -29472233.181912124,
+      "absolute_error": 29472233.181912124,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "948940e2bca505d07bcac7b0a97e086ff4818b7c528de3a76b63edc5017254f9",
+      "actual_future_value": 13305625.909057617,
+      "predicted_cltv": 13885892.254923508,
+      "residual": -580266.3458658904,
+      "absolute_error": 580266.3458658904,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "94962110df694a9db95e68843690db71ab72fb0cd55b739e684021a164a99dc2",
+      "actual_future_value": 4009779.782157898,
+      "predicted_cltv": 9034320.440095466,
+      "residual": -5024540.657937568,
+      "absolute_error": 5024540.657937568,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "94b58a0a41b125a885b7a09d0a9930b46e3fdf313a1a5cd62346e02d154c1f3c",
+      "actual_future_value": 7396067.596862793,
+      "predicted_cltv": 3271737.6542236623,
+      "residual": 4124329.9426391306,
+      "absolute_error": 4124329.9426391306,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "94ead597897184011f31b25192e39b1f421d106702b79bf16f47ae0f3eaa74e5",
+      "actual_future_value": 2368591.2890625,
+      "predicted_cltv": 1339979.9789007837,
+      "residual": 1028611.3101617163,
+      "absolute_error": 1028611.3101617163,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "95496d3be7bd1a335eb7953d6cb96a4a8e910ed5f62aaa3945c449e4f66805c8",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 42.366086090242874,
+      "residual": -42.366086090242874,
+      "absolute_error": 42.366086090242874,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "958ab5f46a10953ce78a2a9d96d3dad7aba9c50b6d22ba9a182d942d08e11350",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 111.23739535287413,
+      "residual": -111.23739535287413,
+      "absolute_error": 111.23739535287413,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "961806bb6752951c95717122c50f34ecf40c965a7c753102c668a5276fbec05a",
+      "actual_future_value": 7008832.102138519,
+      "predicted_cltv": 17200348.58991607,
+      "residual": -10191516.48777755,
+      "absolute_error": 10191516.48777755,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "9678b2aa8b7cc9ba45f64f8391cae79a7b820c9ca3568bf36c2e1cda6dc66c7f",
+      "actual_future_value": 89643.82461202145,
+      "predicted_cltv": 80018.87376524066,
+      "residual": 9624.95084678079,
+      "absolute_error": 9624.95084678079,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "96d9dd858278d301f8b09e23d165e26c8334ad55b4ab5a939bf13ff346df85db",
+      "actual_future_value": 16726625.143554688,
+      "predicted_cltv": 3477088.3656488974,
+      "residual": 13249536.77790579,
+      "absolute_error": 13249536.77790579,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "9700837c12a4e9d6242a4d5e2671f505b2a1903a8bcd553dbaa2b413834b24c2",
+      "actual_future_value": 2835346.46875,
+      "predicted_cltv": 11102193.281047015,
+      "residual": -8266846.8122970145,
+      "absolute_error": 8266846.8122970145,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "97a32181979598e9d707e007901f4da19b219e57aa92b9ca205a109a089abd29",
+      "actual_future_value": 20603458.921142578,
+      "predicted_cltv": 21771875.876179937,
+      "residual": -1168416.9550373591,
+      "absolute_error": 1168416.9550373591,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "983ec9a360fa06adfe1d3fd96c6a69b867d2f3809f7eae775ab7e645fb6ec20e",
+      "actual_future_value": 177589.8359375,
+      "predicted_cltv": 74.73820531701773,
+      "residual": 177515.09773218297,
+      "absolute_error": 177515.09773218297,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "984c5ea76686908a60cf2193587066813887c47c5ee6933663abd64a18ad9b06",
+      "actual_future_value": 714657.3342285156,
+      "predicted_cltv": 123383.26931646356,
+      "residual": 591274.0649120521,
+      "absolute_error": 591274.0649120521,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "99485e1ebb46416ef77e535d68a389a2f504b070b97e0f2085ab5a6f6e264a8c",
+      "actual_future_value": 884685.3125,
+      "predicted_cltv": 158457.48659803747,
+      "residual": 726227.8259019626,
+      "absolute_error": 726227.8259019626,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "9a32cc08260ea4376d88682299592da4f728603d7e8942aceb646d135ea90af8",
+      "actual_future_value": 29784989.81506884,
+      "predicted_cltv": 36800153.74526571,
+      "residual": -7015163.930196866,
+      "absolute_error": 7015163.930196866,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "9aef4429cc1ef55b4ead9bd0e0d902ec303bffcd2e896687cec0e6cd1284f84f",
+      "actual_future_value": 45269687.571425855,
+      "predicted_cltv": 60086996.78005623,
+      "residual": -14817309.208630376,
+      "absolute_error": 14817309.208630376,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "9b42df36c5a7bc9f813b27099886d18c9a45f0b975c23e60d5a635faab2bc71f",
+      "actual_future_value": 12723186.989614487,
+      "predicted_cltv": 2351671.066553877,
+      "residual": 10371515.923060609,
+      "absolute_error": 10371515.923060609,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "9c13f6f73869957a7af757ef6f3bd85923985829f458b2e9918d8b3866a37298",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 1114445.8626571444,
+      "residual": -1114445.8626571444,
+      "absolute_error": 1114445.8626571444,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "9cb1a3229c43e1ab1220131260d227f449eff1fe75dbcaa553716b481f054940",
+      "actual_future_value": 704.2358894348145,
+      "predicted_cltv": 988333.5844862734,
+      "residual": -987629.3485968385,
+      "absolute_error": 987629.3485968385,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "9d6e66bbee2e599b081a4e81f36269a089acafaa4b1669104f65c69dcd34120e",
+      "actual_future_value": 2332186.4339790344,
+      "predicted_cltv": 6496183.516946939,
+      "residual": -4163997.0829679044,
+      "absolute_error": 4163997.0829679044,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "9e4fbce91ae521105296397c7e6e0edd4065bb5f430a529aadc3d3fa71d7984c",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 189.77621919028633,
+      "residual": -189.77621919028633,
+      "absolute_error": 189.77621919028633,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "9f77f68b8864069a9b56316c0e788495f2a2d15ab41da1c1934c50dba71db769",
+      "actual_future_value": 2900.377197265625,
+      "predicted_cltv": 7424963.646836786,
+      "residual": -7422063.26963952,
+      "absolute_error": 7422063.26963952,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "a0cd452ff45d3696b707c36b8b964d9e8ee94a8628f179a2ad02b591b303eb4a",
+      "actual_future_value": 76858857.43980885,
+      "predicted_cltv": 36149509.22024563,
+      "residual": 40709348.219563216,
+      "absolute_error": 40709348.219563216,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "a0ee514d6c92af21925a1e5c52b8e65324ac2a47a946d995810e46e18a491d7f",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 820152.7692125372,
+      "residual": -820152.7692125372,
+      "absolute_error": 820152.7692125372,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "a253ac445664b238576060e756bc87694ced7391bfc75957eea6c6d5077fd44b",
+      "actual_future_value": 19303137.791412354,
+      "predicted_cltv": 29293917.481678355,
+      "residual": -9990779.690266002,
+      "absolute_error": 9990779.690266002,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "a283c29c31c6a53851e843c419afe9a78a91784c721844f161db01644610634e",
+      "actual_future_value": 3980834.099609375,
+      "predicted_cltv": 5309067.397849177,
+      "residual": -1328233.298239802,
+      "absolute_error": 1328233.298239802,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "a2dc8fb231449b8ed7aa670412fc1c290fcdf209b5cd3774d88a1b61864c6472",
+      "actual_future_value": 104152.22607421875,
+      "predicted_cltv": 73611.8178142093,
+      "residual": 30540.408260009455,
+      "absolute_error": 30540.408260009455,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "a31ca9df8e727803c99694e6320ccd864052a7f996ea8f350237353738f99832",
+      "actual_future_value": 755883.2048447132,
+      "predicted_cltv": 1230011.222295042,
+      "residual": -474128.0174503287,
+      "absolute_error": 474128.0174503287,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "a33471e0bbc6a8bd08d8d0aa667fadc3e553ab5c57fbe43f8f5e73855310fd79",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 13895.804605729189,
+      "residual": -13895.804605729189,
+      "absolute_error": 13895.804605729189,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "a34b90ce90c46e3d2670f9f252eb8610acd17ecbab8e1108f79c5ee4d75c7266",
+      "actual_future_value": 1290092.7209472656,
+      "predicted_cltv": 1431897.7273807,
+      "residual": -141805.00643343432,
+      "absolute_error": 141805.00643343432,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "a38b9b32b4c681b67c3e1caf06e44d56cdb279eec12f3bc71a38ebab62d43710",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 29.428709655522482,
+      "residual": -29.428709655522482,
+      "absolute_error": 29.428709655522482,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "a3d0bd8dbd9e9c7fa6a7e8e89fb716be6ddf2131c20f4577b33c057ad4e80279",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 9.701591844360847,
+      "residual": -9.701591844360847,
+      "absolute_error": 9.701591844360847,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "a3d98b0dbaf42df88da1d549f6778657c9b8e030e71c92ba240eb6587c96ee95",
+      "actual_future_value": 67844176.86700761,
+      "predicted_cltv": 100821157.54906262,
+      "residual": -32976980.68205501,
+      "absolute_error": 32976980.68205501,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "a3e1d14d2cff79665c037bdb6a581e206c54b3873c9c8e3e0102af63136bf758",
+      "actual_future_value": 7837714.757324219,
+      "predicted_cltv": 603588.2949619953,
+      "residual": 7234126.462362223,
+      "absolute_error": 7234126.462362223,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "a42ccfda3e3d6173ccd87776a152cd267b618a62fa07c9672dcad90f6459248f",
+      "actual_future_value": 65903.8984375,
+      "predicted_cltv": 26178.31142172002,
+      "residual": 39725.58701577998,
+      "absolute_error": 39725.58701577998,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "a4c94dee8b1af24944ee462475faa494801569e23ab1a2d76502c17d14765cd7",
+      "actual_future_value": 11127519.232910156,
+      "predicted_cltv": 21551317.248490658,
+      "residual": -10423798.015580501,
+      "absolute_error": 10423798.015580501,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "a506ba404fea418e84354d83dadca616b94072050a3ff034ccc56619597e3d83",
+      "actual_future_value": 13155522.16998291,
+      "predicted_cltv": 6988881.601272186,
+      "residual": 6166640.568710724,
+      "absolute_error": 6166640.568710724,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "a616f050605ac3c460fa988e549b834a64c8d14765c22986bdf753309de0cb55",
+      "actual_future_value": 225440.578125,
+      "predicted_cltv": 21890.166885123526,
+      "residual": 203550.41123987647,
+      "absolute_error": 203550.41123987647,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "a685a7f9b85faeb60ba66381591045990c26047ec8555be903ff8b273e726a0d",
+      "actual_future_value": 2238773.626647949,
+      "predicted_cltv": 3075663.5735043595,
+      "residual": -836889.9468564102,
+      "absolute_error": 836889.9468564102,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "a7bf64629216147298dafd337728e540138fb8e1829368adcf17069c98d51a39",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 829075.9064214956,
+      "residual": -829075.9064214956,
+      "absolute_error": 829075.9064214956,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "a7d3ffeefe6a681a24b131c189f9cd7c3b5d81c3e36875d561f4ae1257666529",
+      "actual_future_value": 205901.2109375,
+      "predicted_cltv": 55406.046721848674,
+      "residual": 150495.16421565134,
+      "absolute_error": 150495.16421565134,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "a800048baece9d726eadbead2ed9ce6b72128e7866506f97026a0f4b399a8b02",
+      "actual_future_value": 1800190.428643465,
+      "predicted_cltv": 1759589.7537939856,
+      "residual": 40600.67484947946,
+      "absolute_error": 40600.67484947946,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "a91b4f9a3e9377729ab1f41f1d1a77fb40c9f9a26fad535f50849d38e4327e05",
+      "actual_future_value": 296284.23046875,
+      "predicted_cltv": 258.64757694228365,
+      "residual": 296025.5828918077,
+      "absolute_error": 296025.5828918077,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "a985574c702a4aff66f77f31975932aaf8981a512058acdd7800a8a528ec467d",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 42.366086090242874,
+      "residual": -42.366086090242874,
+      "absolute_error": 42.366086090242874,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "aa9c67947950ac4e79510d22fd3b40dbfd77dcef173714618f35c5da876f1026",
+      "actual_future_value": 155200.72981262207,
+      "predicted_cltv": 89045.43717743916,
+      "residual": 66155.29263518291,
+      "absolute_error": 66155.29263518291,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "ac528c359e2aa68c82c530465e2388300be0fa442c733c27d1d0abeb9f88d451",
+      "actual_future_value": 1018949.1642456055,
+      "predicted_cltv": 1939347.4262150598,
+      "residual": -920398.2619694544,
+      "absolute_error": 920398.2619694544,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "ac9a06232c82b43f82f711d31f7257d7836548a26dd51cce474116dd02450c32",
+      "actual_future_value": 886055.2406380177,
+      "predicted_cltv": 1075554.0698218348,
+      "residual": -189498.82918381714,
+      "absolute_error": 189498.82918381714,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "ace6adcc41adaf9b5f2f212726cc47b7e875c234717634b3169df43e866de7c9",
+      "actual_future_value": 2301056.34376657,
+      "predicted_cltv": 2132328.981984363,
+      "residual": 168727.36178220715,
+      "absolute_error": 168727.36178220715,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "ad957f56912458da9bc6645c27fc56ebf663b6b1b55a7fe209b11ba670d5925f",
+      "actual_future_value": 146107.203125,
+      "predicted_cltv": 42.366086090242874,
+      "residual": 146064.83703890975,
+      "absolute_error": 146064.83703890975,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "aeadd79ba0902b5f2849377ce8829657bb3cd049d18414266314fb466415c23a",
+      "actual_future_value": 57832.40625,
+      "predicted_cltv": 29093.969691044116,
+      "residual": 28738.436558955884,
+      "absolute_error": 28738.436558955884,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "aed2f9d7c641ec00758241a436b09827c8d9bdf2689c687debb917bcf1014fa8",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 21.533120578008,
+      "residual": -21.533120578008,
+      "absolute_error": 21.533120578008,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "af15cb6648094df167a6f35fd3b1b722d8d119d4de2a4a317c7cb375f825af48",
+      "actual_future_value": 26493.779296875,
+      "predicted_cltv": 68441.69331509416,
+      "residual": -41947.91401821916,
+      "absolute_error": 41947.91401821916,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "afab1c6acc5c80c0ebf820d988cc922c00d723a00484392f04f65f7c7cbd86da",
+      "actual_future_value": 1311671.765625,
+      "predicted_cltv": 2273360.2069812617,
+      "residual": -961688.4413562617,
+      "absolute_error": 961688.4413562617,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "b0a39ea4e2af4d6c2ba138a010e128dc1a8d1d3fbf7c3d8cd023faebd0ba82a7",
+      "actual_future_value": 164625.505859375,
+      "predicted_cltv": 722435.5749127141,
+      "residual": -557810.0690533391,
+      "absolute_error": 557810.0690533391,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "b0bd742ea1222fdab3d5388704caff2a05a74a697be08a0063c0ffac0e8d6097",
+      "actual_future_value": 1366.5345306396484,
+      "predicted_cltv": 965.9568875654735,
+      "residual": 400.57764307417494,
+      "absolute_error": 400.57764307417494,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "b0ea1744b4e216c305a69e5f0fae673ce5249134b9b0d5621c3f56fc0f522f81",
+      "actual_future_value": 7074581.479411718,
+      "predicted_cltv": 9557766.081171112,
+      "residual": -2483184.6017593937,
+      "absolute_error": 2483184.6017593937,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "b1340e2d2f1b216ac43f3ca874353b0fa01439ff5a1961e72e171ebc321e8eaf",
+      "actual_future_value": 4450507.583312988,
+      "predicted_cltv": 9065003.868398588,
+      "residual": -4614496.2850856,
+      "absolute_error": 4614496.2850856,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "b2050e8da0ad93872adf964808ec8ffd823f4e6552e911659fe4f26f59eed0e2",
+      "actual_future_value": 463026.0546875,
+      "predicted_cltv": 42.366086090242874,
+      "residual": 462983.6886014098,
+      "absolute_error": 462983.6886014098,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "b45ccd09ccf2a24673fc605231eef02ad8675cbf10775675ce5140dfe5886c51",
+      "actual_future_value": 22273928.81936884,
+      "predicted_cltv": 22247823.167036336,
+      "residual": 26105.65233250335,
+      "absolute_error": 26105.65233250335,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "b4b67a67af6656c1ecc7de03812d2beeef8f93f5f407df3c72b0debf86115d69",
+      "actual_future_value": 1543207.7055664062,
+      "predicted_cltv": 285996.1333126038,
+      "residual": 1257211.5722538023,
+      "absolute_error": 1257211.5722538023,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "b4efc444844b1570044b771fbff9871db9b2911b2560dfaec4c74e5e929dd75c",
+      "actual_future_value": 657633.2751464844,
+      "predicted_cltv": 2793032.0419709003,
+      "residual": -2135398.766824416,
+      "absolute_error": 2135398.766824416,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "b4f44509c37fd69482e7005c8c25c45b4fb242b13da4eccc89bc946a3bfb0116",
+      "actual_future_value": 50743.048599243164,
+      "predicted_cltv": 84451.5521470145,
+      "residual": -33708.50354777134,
+      "absolute_error": 33708.50354777134,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "b56164b2830860db39f5cf00a75202aa19fa021ae9b9a218b852d399e01baf4b",
+      "actual_future_value": 303167.8994140625,
+      "predicted_cltv": 1274389.9309502854,
+      "residual": -971222.0315362229,
+      "absolute_error": 971222.0315362229,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "b6a25e1bd7661b0b5ffc6521624fa574f6716f5527ca5a06a35b4df42a561e60",
+      "actual_future_value": 849055.1870988011,
+      "predicted_cltv": 1421553.6582206024,
+      "residual": -572498.4711218013,
+      "absolute_error": 572498.4711218013,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "b6d91688155b32168e5d6b78a09d35b5f972f72810dc638871cfe5f7d50f1dc6",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 18.9992075330439,
+      "residual": -18.9992075330439,
+      "absolute_error": 18.9992075330439,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "b7048818b9376031518870868a3ff0beb8056410e7ee229572baf1651bbe996e",
+      "actual_future_value": 6033247.206071854,
+      "predicted_cltv": 16336389.809719294,
+      "residual": -10303142.60364744,
+      "absolute_error": 10303142.60364744,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "b7db681643434e8bc592de2595ed23d30271830c49c4c2e13e905ebb3a421dad",
+      "actual_future_value": 9834152.855149657,
+      "predicted_cltv": 12242604.690301431,
+      "residual": -2408451.835151775,
+      "absolute_error": 2408451.835151775,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "b83d8559859e8bd355a8b15050a3d464d7146fb301bcbce09d7d37a53f8fec57",
+      "actual_future_value": 2306349.9140625,
+      "predicted_cltv": 3571207.92117947,
+      "residual": -1264858.0071169701,
+      "absolute_error": 1264858.0071169701,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "ba2b3e55793ea7261e4f3f85e68f23913f3b3111d52922d1a03faebb40f8b89f",
+      "actual_future_value": 5789848.090385437,
+      "predicted_cltv": 293055.70429504936,
+      "residual": 5496792.386090388,
+      "absolute_error": 5496792.386090388,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "bb0cc329fd6002ebcd2e0d22b5b2cea063f40415296cddbcd9e5b256a7e7a32f",
+      "actual_future_value": 90537.39656072855,
+      "predicted_cltv": 42.366086090242874,
+      "residual": 90495.0304746383,
+      "absolute_error": 90495.0304746383,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "bbd69fe07252a4c05e60c05825b1aed346bf5bba21246dcb7e4befa29bf7fac9",
+      "actual_future_value": 6008049.055023193,
+      "predicted_cltv": 7514149.251650379,
+      "residual": -1506100.1966271857,
+      "absolute_error": 1506100.1966271857,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "bc04e37e0636a65d4518486c8bf0f81a50b9805a8803a81e43c53b3de3edd7bd",
+      "actual_future_value": 29952.064697265625,
+      "predicted_cltv": 31277.771305243692,
+      "residual": -1325.706607978067,
+      "absolute_error": 1325.706607978067,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "bc95b7a33948f3245a16490eaffa00907aed47ab86102c87104e22545262cb6f",
+      "actual_future_value": 12209680.662773132,
+      "predicted_cltv": 15436107.827090088,
+      "residual": -3226427.164316956,
+      "absolute_error": 3226427.164316956,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "bd35f319cd5ebf15f58a753131338330f01188df5cdbdc77e4f20200c549f29b",
+      "actual_future_value": 2102046.4343566895,
+      "predicted_cltv": 3370258.2394611686,
+      "residual": -1268211.8051044792,
+      "absolute_error": 1268211.8051044792,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "bd4588e74a9cb7b51d4b93a444fb847dfc171e10887b99ed452d2fc2986dfbf1",
+      "actual_future_value": 879976.6966683865,
+      "predicted_cltv": 1173497.7738077291,
+      "residual": -293521.07713934267,
+      "absolute_error": 293521.07713934267,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "be37c96a7eb4605ab678c1b5719a4d918c57b844e483ee3025d4adf4c0ce8366",
+      "actual_future_value": 561745.75,
+      "predicted_cltv": 9598.950186753518,
+      "residual": 552146.7998132465,
+      "absolute_error": 552146.7998132465,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "bed68578ef19f7fd335032e0907bbf7295449179ea2ddef91a39aad155192a69",
+      "actual_future_value": 1461766.405670166,
+      "predicted_cltv": 1023232.9588583113,
+      "residual": 438533.4468118547,
+      "absolute_error": 438533.4468118547,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "bef42c5207527ed5c83df8cf52c3abb2aa58fdf8fcd8bc240c89b53474daa0ae",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 1449733.0538125893,
+      "residual": -1449733.0538125893,
+      "absolute_error": 1449733.0538125893,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "bf38b4e3f0baa30e4f1f9d01b71c8dbddd6cee09ab15fb7ba5c9e56f5e0075f1",
+      "actual_future_value": 705065.265625,
+      "predicted_cltv": 338.8224266579772,
+      "residual": 704726.443198342,
+      "absolute_error": 704726.443198342,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "bfc0e7b2adb6f258a6b02b805fc4e1a68557e3a71d7782b5ad41baadffd58b9b",
+      "actual_future_value": 1424966.3271484375,
+      "predicted_cltv": 357.39201003887564,
+      "residual": 1424608.9351383985,
+      "absolute_error": 1424608.9351383985,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "bfc61c53ee8e6e55e6933d8570b2d5cd3cb76703ace1598663eb1483c1d3078c",
+      "actual_future_value": 1541950.9813232422,
+      "predicted_cltv": 459506.03452332795,
+      "residual": 1082444.9467999144,
+      "absolute_error": 1082444.9467999144,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "c0c9b8ac43bd7015b70dde5967b1a52679500d89f326282c10b640ba85727c19",
+      "actual_future_value": 30613.6181640625,
+      "predicted_cltv": 22270.400404289645,
+      "residual": 8343.217759772855,
+      "absolute_error": 8343.217759772855,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "c0deba32780e104961aaf98d49bd44f202b41002a3f8a3db7474c0e21afe4205",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 53.96990528060726,
+      "residual": -53.96990528060726,
+      "absolute_error": 53.96990528060726,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "c0fc1e6b1cf6f17369fe098ce84c6e904636f0a76dad26012cef7b0ba0ca825b",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 1929738.572754916,
+      "residual": -1929738.572754916,
+      "absolute_error": 1929738.572754916,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "c158513082f8e06439950f8682917c2e68b4254af470fa06a30a031f4fc1229e",
+      "actual_future_value": 6713026.669433594,
+      "predicted_cltv": 3940357.0666198423,
+      "residual": 2772669.6028137514,
+      "absolute_error": 2772669.6028137514,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "c16c8a1d2b321c7f9da047d34422f5c57963c7a4df135c05fbad42f60658e72c",
+      "actual_future_value": 37532.916015625,
+      "predicted_cltv": 244549.77316707154,
+      "residual": -207016.85715144654,
+      "absolute_error": 207016.85715144654,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "c1ac6f9314f01ac430f6e997445a2b2adfcf755682c099a4f9a0492419319b84",
+      "actual_future_value": 43608.70383453369,
+      "predicted_cltv": 88.03319071121324,
+      "residual": 43520.67064382248,
+      "absolute_error": 43520.67064382248,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "c372a41634d95ab0268c432c245641214468291b78a3ce97f96208c9b407b464",
+      "actual_future_value": 15791954.0,
+      "predicted_cltv": 91.31220405857789,
+      "residual": 15791862.68779594,
+      "absolute_error": 15791862.68779594,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "c3cf662c0fe97186b9e757f7afa58c03908ce957411761f8943ee7e602756ce4",
+      "actual_future_value": 1173928.6005859375,
+      "predicted_cltv": 717567.5003929565,
+      "residual": 456361.10019298096,
+      "absolute_error": 456361.10019298096,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "c48ac8b1d1d0ebe8f380e9e0ea1d40954f373d38b560bb4fda4cd46bee2e5e55",
+      "actual_future_value": 5523227.015971184,
+      "predicted_cltv": 4746730.83385885,
+      "residual": 776496.1821123334,
+      "absolute_error": 776496.1821123334,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "c511cf88ccc6af5d0f79b37440672fa0a3930eb871d6553b25b5bf29137ac4bd",
+      "actual_future_value": 163932.30036735535,
+      "predicted_cltv": 182815.90870935467,
+      "residual": -18883.608341999323,
+      "absolute_error": 18883.608341999323,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "c5656137787b28a25647d390c58f9203d659ba94df85e571809a6fe412869c27",
+      "actual_future_value": 52274876.56335449,
+      "predicted_cltv": 24976547.291375887,
+      "residual": 27298329.271978606,
+      "absolute_error": 27298329.271978606,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "c6e583ff2ea97c750326299be7b07b20e63cf5b0083f663ccf09e9993109d333",
+      "actual_future_value": 15705910.437232971,
+      "predicted_cltv": 7174348.786720169,
+      "residual": 8531561.650512803,
+      "absolute_error": 8531561.650512803,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "c7fdd263ce28dbcd30b9c30fff54ce9fb5cd169bb2bbd3a9d1bdb3bae0a56a7d",
+      "actual_future_value": 215238.05802740157,
+      "predicted_cltv": 518131.75517898996,
+      "residual": -302893.6971515884,
+      "absolute_error": 302893.6971515884,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "c813220056135815a95d68ec7d593d0242dc57db41162d3db8186e9ef5e2390a",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 319.0060194017514,
+      "residual": -319.0060194017514,
+      "absolute_error": 319.0060194017514,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "c8ab5bd1f111605d79eafb6a96dd88b6fffa42dee502863a9c6ea37a6ae0f69e",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 9.461229797333269,
+      "residual": -9.461229797333269,
+      "absolute_error": 9.461229797333269,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "c8e075b6db8958b89b9b9d2f24b5aa585e66f3de106bce3601ac3d25a29f36fd",
+      "actual_future_value": 307500.318359375,
+      "predicted_cltv": 8519.610419371893,
+      "residual": 298980.70794000314,
+      "absolute_error": 298980.70794000314,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "c8efa0709306379378b192620a627fa0b01479df6596b2972fa1d2db6c5072c9",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 51377.6053278781,
+      "residual": -51377.6053278781,
+      "absolute_error": 51377.6053278781,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "cb207e2d9b7b46797166ae7cb9d5d161e77a1b8d0fd7611372dfd1aa2d455215",
+      "actual_future_value": 1914038.84375,
+      "predicted_cltv": 14061.730021848054,
+      "residual": 1899977.113728152,
+      "absolute_error": 1899977.113728152,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "cbffe64a7819a7dba8f109ce41cf9507a88e1556ed1489405aca6e56c82c0a42",
+      "actual_future_value": 2549954.361075878,
+      "predicted_cltv": 1123526.1944117125,
+      "residual": 1426428.1666641657,
+      "absolute_error": 1426428.1666641657,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "ccab57e0f40230cdf081605c3abf6d2bb7212b532892ac0e871d1dd90831592a",
+      "actual_future_value": 2442.5743103027344,
+      "predicted_cltv": 4905.666173065111,
+      "residual": -2463.091862762377,
+      "absolute_error": 2463.091862762377,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "cd16fe4c6cea220358b402230116dc43b2f151439ab8a6906aa88d6e746e440f",
+      "actual_future_value": 8002342.31980896,
+      "predicted_cltv": 4925288.757734759,
+      "residual": 3077053.562074201,
+      "absolute_error": 3077053.562074201,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "cd521f0ebf6b1ea02dc28ec038a8ad1ab85c83e3a3419e5d28213d536dd17517",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 281.0182329976644,
+      "residual": -281.0182329976644,
+      "absolute_error": 281.0182329976644,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "ce1542ad40331493a7393c8ed21e75c9111cbd084cf944075bc7a5047cc5112b",
+      "actual_future_value": 11876824.361328125,
+      "predicted_cltv": 16626970.490202496,
+      "residual": -4750146.128874371,
+      "absolute_error": 4750146.128874371,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "ce5ce86e4535ca902f86aa4a70c5f2e0d9f2dc3c0c7a409fcbe8d619ec9144de",
+      "actual_future_value": 1115293.2395019531,
+      "predicted_cltv": 2318838.184346027,
+      "residual": -1203544.944844074,
+      "absolute_error": 1203544.944844074,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "ceeb56abc0c88cb634d63af319c167c23cf54015629ba6112899a95a2d64c250",
+      "actual_future_value": 6025.939758300781,
+      "predicted_cltv": 744.6176576760109,
+      "residual": 5281.32210062477,
+      "absolute_error": 5281.32210062477,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "d026c70882806f1b8a0f22d33d07e7f7eb5d4000fd3e760178212e39a93252d2",
+      "actual_future_value": 164636.765625,
+      "predicted_cltv": 1147983.4755552928,
+      "residual": -983346.7099302928,
+      "absolute_error": 983346.7099302928,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "d1523a15fae51eb247943f72effa473931ca6241b66553ce3bc64fa5e18eab28",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 42.366086090242874,
+      "residual": -42.366086090242874,
+      "absolute_error": 42.366086090242874,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "d18a94b357b5e351407a3c2fba355e5ccfb26c45cf5bcf0e2b44b20586158fa1",
+      "actual_future_value": 1966856.2496056557,
+      "predicted_cltv": 109153053.13420025,
+      "residual": -107186196.88459459,
+      "absolute_error": 107186196.88459459,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "d22b6365bd6a10bb41b6d850e4cca447532bc8e3dce63d5e43a9571c39fc8b69",
+      "actual_future_value": 114419339.15148354,
+      "predicted_cltv": 73484897.51152638,
+      "residual": 40934441.63995716,
+      "absolute_error": 40934441.63995716,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "d2de9d240367514bcad3ce35e696e4faaafcad0a72c1a93fef709b0178b761e5",
+      "actual_future_value": 1493849.250492096,
+      "predicted_cltv": 2184045.090330096,
+      "residual": -690195.839838,
+      "absolute_error": 690195.839838,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "d35391cf9c20cee9c621752e774085dbed7c41d004c8d6932b2b20265250ebb5",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 28.216555311281695,
+      "residual": -28.216555311281695,
+      "absolute_error": 28.216555311281695,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "d407a302bc8a6f4b29f147354f738c062b58f4d8eee86dd28700ba7d697fce38",
+      "actual_future_value": 3369299.472088814,
+      "predicted_cltv": 2657621.1255062846,
+      "residual": 711678.3465825291,
+      "absolute_error": 711678.3465825291,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "d419055b90fdca0494f25b01be5edcabf931475ca8053c6500e5b3379daed7c8",
+      "actual_future_value": 42352126.29183984,
+      "predicted_cltv": 42527557.72996022,
+      "residual": -175431.43812038004,
+      "absolute_error": 175431.43812038004,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "d4611354072461c01a6ea7ed0838f395a6d8232a6456a50e779e277156fe9d06",
+      "actual_future_value": 6755334.0675086975,
+      "predicted_cltv": 12960403.019877683,
+      "residual": -6205068.952368986,
+      "absolute_error": 6205068.952368986,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "d4b5814ee243b2750be8efec6047cce270fe11cf2d65c5c43761e465b1e77735",
+      "actual_future_value": 350829.001953125,
+      "predicted_cltv": 417241.41107140714,
+      "residual": -66412.40911828214,
+      "absolute_error": 66412.40911828214,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "d589e595616469ecd23f80d534772e8ef01ab3b7cfd1e0416f49a6f112d5da06",
+      "actual_future_value": 416076.58642578125,
+      "predicted_cltv": 1280187.131446339,
+      "residual": -864110.5450205577,
+      "absolute_error": 864110.5450205577,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "d5e939a25a65fe5bcd3b982fab814b1fddeed8eac4939e2faf3e330b5cb3821a",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 318.41270145164003,
+      "residual": -318.41270145164003,
+      "absolute_error": 318.41270145164003,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "d7234fafddb47f1c29cc610b09ff51de8fa4544c0f00608caa332b3fe17476ca",
+      "actual_future_value": 971036.5670318604,
+      "predicted_cltv": 5216575.784395917,
+      "residual": -4245539.217364057,
+      "absolute_error": 4245539.217364057,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "d8da15301967eb72acb6766b94deb9750d7e10b2fe47f6a456de87c92fa98e88",
+      "actual_future_value": 45906.43603515625,
+      "predicted_cltv": 59190.562331744506,
+      "residual": -13284.126296588256,
+      "absolute_error": 13284.126296588256,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "da4b895186bc7d85eb6beed8947678c14c407c3e1fd59952859679437c6f5a72",
+      "actual_future_value": 4144768.0736083984,
+      "predicted_cltv": 11669459.285329593,
+      "residual": -7524691.211721195,
+      "absolute_error": 7524691.211721195,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "dce155d28216debc7b04e08c1a7f0c7e0a58439341b00eb168230893dcec0c64",
+      "actual_future_value": 1695108.8113708496,
+      "predicted_cltv": 1387758.3202230402,
+      "residual": 307350.4911478094,
+      "absolute_error": 307350.4911478094,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "ddd7a90a8e9fcfd5dbede81cc6a0233e9f97e648daf360419f4490c124e799a0",
+      "actual_future_value": 1694747.41796875,
+      "predicted_cltv": 3496737.3922742005,
+      "residual": -1801989.9743054505,
+      "absolute_error": 1801989.9743054505,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "de5451b7a56b93622c4016ef739efc3f51b264218749ef686bc9a1198f975925",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 22.09234278979,
+      "residual": -22.09234278979,
+      "absolute_error": 22.09234278979,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "de7b9de02e5ec78b28cc87cfa7bfabd28db5a758ab5fca099d2c18f41a025e94",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 696730.0805150794,
+      "residual": -696730.0805150794,
+      "absolute_error": 696730.0805150794,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "df6ea76331ec7b2effbfb75c222cffc28e705f28ef1f985b4c5dca0c6b6d7344",
+      "actual_future_value": 8419669.164791107,
+      "predicted_cltv": 10588984.362619113,
+      "residual": -2169315.197828006,
+      "absolute_error": 2169315.197828006,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "e045ffdd411688fa92daf55e7905315f9bcf4c195db2a85ca3c74bc49c1c32e0",
+      "actual_future_value": 2972185.8791131973,
+      "predicted_cltv": 2865412.266048292,
+      "residual": 106773.61306490516,
+      "absolute_error": 106773.61306490516,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "e09b0fff85a5380d3359f83c66a274e7f0413ad4653668265c3519f4a3bcc07b",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 42.366086090242874,
+      "residual": -42.366086090242874,
+      "absolute_error": 42.366086090242874,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "e32d528ab628984ab6d28abbf8ad222cd0a6245f66147c45b1efcf254ea708d3",
+      "actual_future_value": 24852463.836914062,
+      "predicted_cltv": 21974426.12147962,
+      "residual": 2878037.715434443,
+      "absolute_error": 2878037.715434443,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "e51ec8fb7c25a15893b82f2616ac6ff7ed151a818fcf763e1a22a83c5e32be11",
+      "actual_future_value": 12266546.383483887,
+      "predicted_cltv": 15981207.166339085,
+      "residual": -3714660.782855198,
+      "absolute_error": 3714660.782855198,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "e6a811000681bc10619e2e352fc37b1c6d05f712727a1629d2d52bf8d0a59980",
+      "actual_future_value": 2076850.6975898743,
+      "predicted_cltv": 2277329.792052259,
+      "residual": -200479.09446238494,
+      "absolute_error": 200479.09446238494,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "e6b14e42c7f84aa6ef41314acd56832bb9d4ecdd7814b676548b8d104143ab3e",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 131.12674703069584,
+      "residual": -131.12674703069584,
+      "absolute_error": 131.12674703069584,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "e7256fb2bc0f0a2320a8aaaa123d154414cb56c40980bd77b12b944b943a96f2",
+      "actual_future_value": 553635.84375,
+      "predicted_cltv": 313307.74329765135,
+      "residual": 240328.10045234865,
+      "absolute_error": 240328.10045234865,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "e73b792931dc2e7696219129e5312c3b741e4636bbd28c0bbdc07eae7d8dfe08",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 1890249.3244447322,
+      "residual": -1890249.3244447322,
+      "absolute_error": 1890249.3244447322,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "e80bfa2ed5f6a50f61408b6c36f913f9d096434f1484b49d9aa009856e6ec45f",
+      "actual_future_value": 644989.6320800781,
+      "predicted_cltv": 1896702.4334300794,
+      "residual": -1251712.8013500012,
+      "absolute_error": 1251712.8013500012,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "e8baea89cbea4b566021c453ddf0745a67e000384f03ab32258025a0ad7905eb",
+      "actual_future_value": 550254.0128479004,
+      "predicted_cltv": 233627.97404858386,
+      "residual": 316626.0387993165,
+      "absolute_error": 316626.0387993165,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "e99cde6b1d86e659765a6166a28d7d83512c71bc3bd424ed982e4dfd2cf5b160",
+      "actual_future_value": 12322834.269952208,
+      "predicted_cltv": 19872093.55612269,
+      "residual": -7549259.286170483,
+      "absolute_error": 7549259.286170483,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "e9a47bdc33cd481825b784f3aa0fe6887fdc39d83a59c0e0df3b10812cd0e797",
+      "actual_future_value": 18939205.153656006,
+      "predicted_cltv": 11282641.253031116,
+      "residual": 7656563.90062489,
+      "absolute_error": 7656563.90062489,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "e9ba4179d34b77dc86e9c6cad5b869654ed5af0b61bd343225dfc5deb6bf615a",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 71.60941492308004,
+      "residual": -71.60941492308004,
+      "absolute_error": 71.60941492308004,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "e9ede02a7a2475845341b2fcfb0e8215129717097610dc5e3865aa79e72a52dd",
+      "actual_future_value": 1362838.8319587708,
+      "predicted_cltv": 2079254.2929001495,
+      "residual": -716415.4609413787,
+      "absolute_error": 716415.4609413787,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "ec3d95c8b5d14348f90e387e4d2f2a5a9f64b71eb297dd970ec9c2a453a1912a",
+      "actual_future_value": 259451.65957641602,
+      "predicted_cltv": 175839.1302721189,
+      "residual": 83612.52930429712,
+      "absolute_error": 83612.52930429712,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "ece2ac96d7f592573b32ce32ccdd6915f171ea4f384eb42961344d672a974259",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 182.46160210337908,
+      "residual": -182.46160210337908,
+      "absolute_error": 182.46160210337908,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "ed21cd6435c65d2dc07589e9ba0ffecf103daf4f45c4352aa3dd616807b3d574",
+      "actual_future_value": 5485425.927963257,
+      "predicted_cltv": 12226279.337194705,
+      "residual": -6740853.409231449,
+      "absolute_error": 6740853.409231449,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "ee478cd215d0d1c61ded5a2a8345438c70a0a9c887ce2ea5f30220a040ae0322",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 24.440398816253637,
+      "residual": -24.440398816253637,
+      "absolute_error": 24.440398816253637,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "ee7ddf5e78a5d2169bf9db2cb991332631c124643a363e65f50f92f6cf25bc41",
+      "actual_future_value": 18622170.92160225,
+      "predicted_cltv": 15571108.568012737,
+      "residual": 3051062.3535895124,
+      "absolute_error": 3051062.3535895124,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "ef833dde301b06418e250b4c2e08650e4df943bf602b2cef81ee26955e4b9814",
+      "actual_future_value": 8372457.139770508,
+      "predicted_cltv": 26443676.562958203,
+      "residual": -18071219.423187695,
+      "absolute_error": 18071219.423187695,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "f0425c2bf89e29fc9e853462cf30e2bd6b3ae072b53a2c98a98adc4b54d4c8d7",
+      "actual_future_value": 5714384.320983887,
+      "predicted_cltv": 9037801.211714515,
+      "residual": -3323416.8907306287,
+      "absolute_error": 3323416.8907306287,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "f0ad5331de825bcedca8c03d51b0fe15a8ebdcdebf3cebd1668af594a6b78503",
+      "actual_future_value": 89215.1552734375,
+      "predicted_cltv": 1335731.6837774382,
+      "residual": -1246516.5285040007,
+      "absolute_error": 1246516.5285040007,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "f1139ea5ef4cd7277752840bb0b8b17ea76f3968da12f939f34c7b4d5a4dbf2e",
+      "actual_future_value": 682002.453125,
+      "predicted_cltv": 194115.07666589823,
+      "residual": 487887.3764591018,
+      "absolute_error": 487887.3764591018,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "f13e18ee564693fc0b59e8cc34866a3d8ef767d189580594709faba004a5ccd9",
+      "actual_future_value": 9277486.56739533,
+      "predicted_cltv": 6049553.136476519,
+      "residual": 3227933.430918811,
+      "absolute_error": 3227933.430918811,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "f16b7d6337f95a325db17ebbc59a7a81311d191676f659ef65563c2bbe83557a",
+      "actual_future_value": 455906.8225593567,
+      "predicted_cltv": 1372454.1707009282,
+      "residual": -916547.3481415715,
+      "absolute_error": 916547.3481415715,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "f187d99334a1802f1ce9c099920e6a92899030ea398c27169f286deaa798eb53",
+      "actual_future_value": 61.94379425048828,
+      "predicted_cltv": 223490.48469889248,
+      "residual": -223428.540904642,
+      "absolute_error": 223428.540904642,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "f26a99496372b8b3d1ae1333b63446ba609a7109ff718902ef1a8d7552182ec5",
+      "actual_future_value": 4351116.14875412,
+      "predicted_cltv": 1725232.9022249717,
+      "residual": 2625883.246529148,
+      "absolute_error": 2625883.246529148,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "f300b6c1f3f3206fb68a43545d4ae9d52c0f1cf105ed3bedd1634b87f32bcc3d",
+      "actual_future_value": 9899970.833808899,
+      "predicted_cltv": 8756135.712639522,
+      "residual": 1143835.1211693771,
+      "absolute_error": 1143835.1211693771,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "f35b0f8a1050ef59027cfa2a434b9c8af78b5f9bcb29a40140f5d9eaee3c3fd1",
+      "actual_future_value": 144530.31161499023,
+      "predicted_cltv": 421971.2846657884,
+      "residual": -277440.9730507982,
+      "absolute_error": 277440.9730507982,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "f3e3094f488c9307e89bf68081d3a5b83c4de624a87ef9fdd32632c4360b27f4",
+      "actual_future_value": 0.0,
+      "predicted_cltv": 459.97953906733795,
+      "residual": -459.97953906733795,
+      "absolute_error": 459.97953906733795,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "f3ee101de1a68ac111696a01e4c969dd029584c7d5973373cd1a3af5f06793d2",
+      "actual_future_value": 39316187.1804924,
+      "predicted_cltv": 49387982.034907945,
+      "residual": -10071794.854415543,
+      "absolute_error": 10071794.854415543,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "f50c10ba280542029fa23a58630fa3df12b917bd50cc71f4e61ffc71eb83c021",
+      "actual_future_value": 38340.91162109375,
+      "predicted_cltv": 547.620164485465,
+      "residual": 37793.29145660828,
+      "absolute_error": 37793.29145660828,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "f57d8a562b7b037dcc85a763838471ad651a1c474891a105f077333ee4dba688",
+      "actual_future_value": 11215991.396850586,
+      "predicted_cltv": 10731503.090862744,
+      "residual": 484488.3059878424,
+      "absolute_error": 484488.3059878424,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "f5f70c0efc85c8c67d9a8d8f7c2a509388487b6f097feb3b4210e0862ec18a03",
+      "actual_future_value": 8576.028762817383,
+      "predicted_cltv": 277.2356980496629,
+      "residual": 8298.79306476772,
+      "absolute_error": 8298.79306476772,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "f617e524ba20e3a9737bc1a7643cb3d39ec9f1de9da35667d5d29ef6f00e9130",
+      "actual_future_value": 24904951.802352905,
+      "predicted_cltv": 169287894.67823973,
+      "residual": -144382942.87588683,
+      "absolute_error": 144382942.87588683,
+      "error_bucket": "high"
+    },
+    {
+      "customer_id": "f8a7927d0bbdb18f38ebb891867a4a1256e1d475fd0d9265f547069da016af7f",
+      "actual_future_value": 5548002.489562988,
+      "predicted_cltv": 9230932.13506957,
+      "residual": -3682929.6455065813,
+      "absolute_error": 3682929.6455065813,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "f8b4d6e9289cb8c1aebac97323e1976adca553eaed15c5d956e0b436beac3a9d",
+      "actual_future_value": 471287.0859375,
+      "predicted_cltv": 1135.099985121581,
+      "residual": 470151.9859523784,
+      "absolute_error": 470151.9859523784,
+      "error_bucket": "low"
+    },
+    {
+      "customer_id": "fbc93bb628c880252c120b62a684e9696ac18288a25376ce00268a6728d72068",
+      "actual_future_value": 1245818.4551353455,
+      "predicted_cltv": 17969880.13370726,
+      "residual": -16724061.678571913,
+      "absolute_error": 16724061.678571913,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "fd78eb38c5a16dbe696cb19d2e2caf44aab39060cc69fe0b88edf14e0e407b38",
+      "actual_future_value": 51533454.58134079,
+      "predicted_cltv": 50116097.238715425,
+      "residual": 1417357.3426253647,
+      "absolute_error": 1417357.3426253647,
+      "error_bucket": "moderate"
+    },
+    {
+      "customer_id": "ffbb0b2c1cd43b59ba72cb9ffb9947ae1f40d50ecb854edca170dce17d15f90c",
+      "actual_future_value": 116.26151275634766,
+      "predicted_cltv": 5156.633918975468,
+      "residual": -5040.37240621912,
+      "absolute_error": 5040.37240621912,
+      "error_bucket": "low"
     }
   ],
   "feature_importance": [
     {
-      "feature": "account_count",
-      "importance_mean": 17662.01878778853,
-      "importance_std": 4905.14352104355
+      "feature": "total_txn_amt_90",
+      "importance_mean": 3652864.252883746,
+      "importance_std": 20107.697120462737
     },
     {
-      "feature": "avg_balance",
-      "importance_mean": 7775.423787357902,
-      "importance_std": 3598.4641872115603
+      "feature": "total_txn_amt_365",
+      "importance_mean": 2804405.6003630543,
+      "importance_std": 30852.343001679732
     },
     {
-      "feature": "occupation_freq",
-      "importance_mean": 4080.9177592377546,
-      "importance_std": 4032.4830486493543
-    },
-    {
-      "feature": "chosen_product_freq",
-      "importance_mean": 3959.6024844717376,
-      "importance_std": 2511.1776817235964
-    },
-    {
-      "feature": "age",
-      "importance_mean": 3899.874986459159,
-      "importance_std": 2208.6403177415227
+      "feature": "txn_count_90",
+      "importance_mean": 1904738.7064228947,
+      "importance_std": 67698.1429665227
     },
     {
       "feature": "recency_days",
-      "importance_mean": 3592.207484863234,
-      "importance_std": 3879.469243006296
+      "importance_mean": 1768012.8298206176,
+      "importance_std": 63392.95436589551
     },
     {
-      "feature": "customer_segment_freq",
-      "importance_mean": 3459.7395130207024,
-      "importance_std": 1890.1284960518192
+      "feature": "max_txn_amt_365",
+      "importance_mean": 157432.4975249319,
+      "importance_std": 26665.808694927542
     },
     {
-      "feature": "total_balance",
-      "importance_mean": 3457.337351150718,
-      "importance_std": 5111.116632673593
+      "feature": "tenure_days",
+      "importance_mean": 116099.74074628367,
+      "importance_std": 21245.424784775507
     },
     {
-      "feature": "state_freq",
-      "importance_mean": 3034.9539570804864,
-      "importance_std": 1751.451883578011
-    },
-    {
-      "feature": "active_account_count",
-      "importance_mean": 2815.406256805787,
-      "importance_std": 1164.5309748163004
-    },
-    {
-      "feature": "best_second_option_freq",
-      "importance_mean": 2391.673601300705,
-      "importance_std": 3543.0798309402285
-    },
-    {
-      "feature": "annual_income",
-      "importance_mean": 1631.094273795894,
-      "importance_std": 1657.292644855411
-    },
-    {
-      "feature": "lead_source_freq",
-      "importance_mean": 795.9668488166571,
-      "importance_std": 542.5556708546978
-    },
-    {
-      "feature": "lead_age_days",
-      "importance_mean": 627.2618699179056,
-      "importance_std": 3052.2185448744053
-    },
-    {
-      "feature": "marital_status_freq",
-      "importance_mean": 510.5343242737308,
-      "importance_std": 554.0861549330527
-    },
-    {
-      "feature": "gender_freq",
-      "importance_mean": 352.9362212564811,
-      "importance_std": 608.6879867276981
-    },
-    {
-      "feature": "credit_txn_count_365",
-      "importance_mean": 341.23623827336814,
-      "importance_std": 1925.644492965532
-    },
-    {
-      "feature": "closed_account_count",
-      "importance_mean": 57.9250458831375,
-      "importance_std": 356.415014968467
+      "feature": "avg_txn_amt_365",
+      "importance_mean": 112961.7893482931,
+      "importance_std": 13827.423990653351
     },
     {
       "feature": "active_days_365",
+      "importance_mean": 100624.00772198685,
+      "importance_std": 24804.940470163954
+    },
+    {
+      "feature": "txn_count_365",
+      "importance_mean": 38281.08435221785,
+      "importance_std": 13205.041919327035
+    },
+    {
+      "feature": "target_1_before",
+      "importance_mean": 0.5537262879079208,
+      "importance_std": 6.296028578651127
+    },
+    {
+      "feature": "target_2_before",
       "importance_mean": 0.0,
       "importance_std": 0.0
     },
     {
-      "feature": "txn_count_365",
-      "importance_mean": -4.273579485881783,
-      "importance_std": 913.6874812426272
+      "feature": "target_3_before",
+      "importance_mean": -15.629342590109445,
+      "importance_std": 25.188756925557882
     },
     {
-      "feature": "max_txn_amt_365",
-      "importance_mean": -297.28330123498745,
-      "importance_std": 2284.3176022321827
+      "feature": "target_4_before",
+      "importance_mean": -102.31081150798127,
+      "importance_std": 124.8163046825058
     },
     {
-      "feature": "risk_score",
-      "importance_mean": -350.4517574262536,
-      "importance_std": 7164.613149167519
-    },
-    {
-      "feature": "best_first_option_freq",
-      "importance_mean": -532.343341801421,
-      "importance_std": 571.1157023938306
-    },
-    {
-      "feature": "debit_txn_count_365",
-      "importance_mean": -846.373783038167,
-      "importance_std": 1204.8557749699023
-    },
-    {
-      "feature": "dormant_account_count",
-      "importance_mean": -1347.2496694054937,
-      "importance_std": 4120.865282576804
-    },
-    {
-      "feature": "city_freq",
-      "importance_mean": -1540.4370686521688,
-      "importance_std": 2771.4890622626504
-    },
-    {
-      "feature": "avg_txn_amt_365",
-      "importance_mean": -2657.022440412993,
-      "importance_std": 3410.9697268325876
-    },
-    {
-      "feature": "tenure_days",
-      "importance_mean": -3097.24630003755,
-      "importance_std": 2612.4258255104646
-    },
-    {
-      "feature": "total_txn_amt_365",
-      "importance_mean": -3260.97939402529,
-      "importance_std": 3454.264678128011
+      "feature": "products_taken_before",
+      "importance_mean": -4024.0925359844696,
+      "importance_std": 998.1193720557089
     }
   ]
 }

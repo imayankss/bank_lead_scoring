@@ -1,4 +1,4 @@
-import { GitBranch, IndianRupee, SlidersHorizontal } from "lucide-react";
+import { GitBranch, Wallet, SlidersHorizontal } from "lucide-react";
 import { MultiScenarioChart } from "@/components/charts/ForecastChart";
 import { AnimatedPage } from "@/components/dashboard/AnimatedPage";
 import { ChartCard } from "@/components/dashboard/ChartCard";
@@ -16,7 +16,7 @@ export default async function ScenarioPage() {
         Base, optimistic, and pessimistic cases are exported from Python; the slider simulates frontend sensitivity.
       </SectionHeader>
       <div className="mb-6 grid gap-4 md:grid-cols-3">
-        <MetricCard label="Base expected value" value={currency(scenarios.base_expected_value)} icon={IndianRupee} tone="mint" />
+        <MetricCard label="Base expected value" value={currency(scenarios.base_expected_value)} icon={Wallet} tone="mint" />
         <MetricCard label="Scenario paths" value="3" icon={GitBranch} tone="cyan" />
         <MetricCard label="Sensitivity controls" value="Active" icon={SlidersHorizontal} tone="amber" />
       </div>

@@ -41,7 +41,7 @@ export function ScenarioLab({ data }: { data: ScenarioData }) {
           className="mt-4 w-full accent-cyan"
         />
         <div className="mt-6 rounded-lg border border-line bg-white/[0.04] p-4">
-          <div className="text-sm text-slate-500">Adjusted 12 month value</div>
+          <div className="text-sm text-slate-500">Adjusted 3 month value</div>
           <div className="mt-2 text-2xl font-semibold text-white">{currency(finalValue)}</div>
         </div>
       </div>

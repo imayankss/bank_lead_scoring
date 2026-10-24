@@ -4,17 +4,17 @@
       "model_id": "cltv_hist_gradient_boosting",
       "display_name": "CLTV Gradient Boosting",
       "model_family": "HistGradientBoostingRegressor",
-      "target": "future_revenue_12m",
+      "target": "future_value",
       "role": "Revenue forecast",
-      "description": "Predicts 12 month customer transaction value from profile, account, and activity features."
+      "description": "Predicts the client's transaction value over the next 3 months from activity and product-history features."
     },
     {
       "model_id": "propensity_hist_gradient_boosting",
       "display_name": "Propensity Gradient Boosting",
       "model_family": "HistGradientBoostingClassifier",
-      "target": "converted_12m",
+      "target": "converted",
       "role": "Conversion propensity",
-      "description": "Ranks customers by probability of positive future activity over the target horizon."
+      "description": "Ranks clients by probability of taking any of the bank's 4 products in the next 3 months."
     },
     {
       "model_id": "expected_value_ranker",
@@ -27,253 +27,362 @@
   ],
   "leaderboard": [
     {
-      "model_id": "expected_value_ranker",
-      "model_name": "Expected Value Ranker",
-      "mae": 82075.93723474271,
-      "rmse": 145270.415282306,
-      "mape": 232.2602668174083,
-      "smape": 135.67062713972916,
-      "r2": -0.3671189634068792,
-      "forecast_bias": 40410.41425145137,
-      "auc": 0.9086452762923352,
-      "directional_accuracy": 0.78,
-      "precision_at_10pct": 1.0,
-      "precision_at_20pct": 1.0,
-      "production_model": true,
-      "business_score": 0.955161319073084,
+      "model_id": "propensity_gbm",
+      "model_name": "Propensity gradient boosting",
+      "role": "model",
+      "task": "propensity",
+      "auc": 0.7364805827191849,
+      "auc_ci_lower": 0.7262292261372764,
+      "auc_ci_upper": 0.747432569562886,
+      "pr_auc": 0.0686204428698917,
+      "pr_auc_ci_lower": 0.06284425521331723,
+      "pr_auc_ci_upper": 0.07681311478362454,
+      "lift_at_10pct": 3.234674273432319,
+      "lift_at_10pct_ci_lower": 3.0548191271517915,
+      "lift_at_10pct_ci_upper": 3.4056652720084784,
       "rank": 1,
-      "is_best": true
+      "is_best": true,
+      "mae": null,
+      "rmse": null,
+      "mape": null,
+      "smape": null,
+      "r2": null,
+      "forecast_bias": null,
+      "production_model": false
     },
     {
-      "model_id": "cltv_rank_baseline",
-      "model_name": "CLTV Rank Baseline",
-      "mae": 82075.93723474271,
-      "rmse": 145270.415282306,
-      "mape": 232.2602668174083,
-      "smape": 135.67062713972916,
-      "r2": -0.3671189634068792,
-      "forecast_bias": 40410.41425145137,
-      "auc": 0.9077540106951872,
-      "directional_accuracy": 0.78,
-      "precision_at_10pct": 1.0,
-      "precision_at_20pct": 1.0,
-      "production_model": false,
-      "business_score": 0.9049385026737968,
+      "model_id": "logistic_regression",
+      "model_name": "Logistic regression",
+      "role": "baseline",
+      "task": "propensity",
+      "auc": 0.7381497484453359,
+      "auc_ci_lower": 0.7278162209229377,
+      "auc_ci_upper": 0.7481545011276541,
+      "pr_auc": 0.07175739351310985,
+      "pr_auc_ci_lower": 0.06513504358720036,
+      "pr_auc_ci_upper": 0.08037295781790992,
+      "lift_at_10pct": 3.1800624911435063,
+      "lift_at_10pct_ci_lower": 3.008768278842025,
+      "lift_at_10pct_ci_upper": 3.3569459030092283,
       "rank": 2,
-      "is_best": false
+      "is_best": false,
+      "mae": null,
+      "rmse": null,
+      "mape": null,
+      "smape": null,
+      "r2": null,
+      "forecast_bias": null,
+      "production_model": false
     },
     {
-      "model_id": "propensity_rank_baseline",
-      "model_name": "Propensity Rank Baseline",
-      "mae": 102464.289266,
-      "rmse": 124243.59930613266,
-      "mape": 389.7165473294486,
-      "smape": 120.3017764596498,
-      "r2": 0.0,
-      "forecast_bias": -6.402842700481415e-12,
-      "auc": 0.9126559714795008,
-      "directional_accuracy": 0.74,
-      "precision_at_10pct": 1.0,
-      "precision_at_20pct": 1.0,
-      "production_model": false,
-      "business_score": 0.9021639928698753,
+      "model_id": "product_history_rule",
+      "model_name": "Product-history rule: took a product before, then most active",
+      "role": "baseline",
+      "task": "propensity",
+      "auc": 0.6326416679303275,
+      "auc_ci_lower": 0.6186552301076753,
+      "auc_ci_upper": 0.6459985891383904,
+      "pr_auc": 0.05789250759142418,
+      "pr_auc_ci_lower": 0.05261980780012025,
+      "pr_auc_ci_upper": 0.06549384030691263,
+      "lift_at_10pct": 2.858374548841146,
+      "lift_at_10pct_ci_lower": 2.674649812246026,
+      "lift_at_10pct_ci_upper": 3.029477197485667,
       "rank": 3,
-      "is_best": false
+      "is_best": false,
+      "mae": null,
+      "rmse": null,
+      "mape": null,
+      "smape": null,
+      "r2": null,
+      "forecast_bias": null,
+      "production_model": false
     },
     {
-      "model_id": "mean_value_baseline",
-      "model_name": "Mean Value Baseline",
-      "mae": 102464.289266,
-      "rmse": 124243.59930613266,
-      "mape": 389.7165473294486,
-      "smape": 120.3017764596498,
-      "r2": 0.0,
-      "forecast_bias": -6.402842700481415e-12,
-      "auc": 0.5,
-      "directional_accuracy": NaN,
-      "precision_at_10pct": 0.8,
-      "precision_at_20pct": 0.75,
-      "production_model": false,
-      "business_score": 0.5925,
+      "model_id": "expected_value_ranker",
+      "model_name": "Expected value ranker (lead score)",
+      "role": "model",
+      "task": "propensity",
+      "auc": 0.6544912601551314,
+      "auc_ci_lower": 0.6423224998246542,
+      "auc_ci_upper": 0.6660069513536525,
+      "pr_auc": 0.04848778819262896,
+      "pr_auc_ci_lower": 0.044346402471530225,
+      "pr_auc_ci_upper": 0.05320761749390881,
+      "lift_at_10pct": 2.719850842642275,
+      "lift_at_10pct_ci_lower": 2.558612714065347,
+      "lift_at_10pct_ci_upper": 2.9068310849456642,
       "rank": 4,
-      "is_best": false
+      "is_best": false,
+      "mae": null,
+      "rmse": null,
+      "mape": null,
+      "smape": null,
+      "r2": null,
+      "forecast_bias": null,
+      "production_model": true
+    },
+    {
+      "model_id": "activity_rule",
+      "model_name": "Activity rule: most transactions in last 90 days",
+      "role": "baseline",
+      "task": "propensity",
+      "auc": 0.638392326264012,
+      "auc_ci_lower": 0.6254994161327453,
+      "auc_ci_upper": 0.6503544557952713,
+      "pr_auc": 0.04599034854339178,
+      "pr_auc_ci_lower": 0.04274092428929675,
+      "pr_auc_ci_upper": 0.0513081990302752,
+      "lift_at_10pct": 2.6619044854404783,
+      "lift_at_10pct_ci_lower": 2.4750650196460438,
+      "lift_at_10pct_ci_upper": 2.87205868608491,
+      "rank": 5,
+      "is_best": false,
+      "mae": null,
+      "rmse": null,
+      "mape": null,
+      "smape": null,
+      "r2": null,
+      "forecast_bias": null,
+      "production_model": false
+    },
+    {
+      "model_id": "recency_rule",
+      "model_name": "Recency rule: most recent activity first",
+      "role": "baseline",
+      "task": "propensity",
+      "auc": 0.6044842559487165,
+      "auc_ci_lower": 0.5930899373981097,
+      "auc_ci_upper": 0.6161563496334725,
+      "pr_auc": 0.030235379256739435,
+      "pr_auc_ci_lower": 0.028764760163753934,
+      "pr_auc_ci_upper": 0.03189955468858355,
+      "lift_at_10pct": 1.5199530657086202,
+      "lift_at_10pct_ci_lower": 1.470139763578894,
+      "lift_at_10pct_ci_upper": 1.5663520936015813,
+      "rank": 6,
+      "is_best": false,
+      "mae": null,
+      "rmse": null,
+      "mape": null,
+      "smape": null,
+      "r2": null,
+      "forecast_bias": null,
+      "production_model": false
+    },
+    {
+      "model_id": "prior_baseline",
+      "model_name": "Prior rate (no ranking)",
+      "role": "baseline",
+      "task": "propensity",
+      "auc": 0.5,
+      "auc_ci_lower": 0.5,
+      "auc_ci_upper": 0.5,
+      "pr_auc": 0.021681433588761175,
+      "pr_auc_ci_lower": 0.02080290150063857,
+      "pr_auc_ci_upper": 0.02259987627713921,
+      "lift_at_10pct": 1.0,
+      "lift_at_10pct_ci_lower": 1.0,
+      "lift_at_10pct_ci_upper": 1.0,
+      "rank": 7,
+      "is_best": false,
+      "mae": null,
+      "rmse": null,
+      "mape": null,
+      "smape": null,
+      "r2": null,
+      "forecast_bias": null,
+      "production_model": false
+    },
+    {
+      "model_id": "last_90_days_baseline",
+      "model_name": "Last 90 days repeat",
+      "role": "baseline",
+      "task": "value",
+      "auc": null,
+      "auc_ci_lower": null,
+      "auc_ci_upper": null,
+      "pr_auc": null,
+      "pr_auc_ci_lower": null,
+      "pr_auc_ci_upper": null,
+      "lift_at_10pct": null,
+      "lift_at_10pct_ci_lower": null,
+      "lift_at_10pct_ci_upper": null,
+      "rank": 1,
+      "is_best": true,
+      "mae": 9577684.515017048,
+      "rmse": 107386639.82276496,
+      "mape": 436105.49883115134,
+      "smape": 89.94344678895237,
+      "r2": 0.6709495043521806,
+      "forecast_bias": -3832344.187960995,
+      "production_model": false
+    },
+    {
+      "model_id": "cltv_gbm",
+      "model_name": "CLTV gradient boosting",
+      "role": "model",
+      "task": "value",
+      "auc": null,
+      "auc_ci_lower": null,
+      "auc_ci_upper": null,
+      "pr_auc": null,
+      "pr_auc_ci_lower": null,
+      "pr_auc_ci_upper": null,
+      "lift_at_10pct": null,
+      "lift_at_10pct_ci_lower": null,
+      "lift_at_10pct_ci_upper": null,
+      "rank": 2,
+      "is_best": false,
+      "mae": 8215466.156753406,
+      "rmse": 180547539.20113036,
+      "mape": 346635.65104866575,
+      "smape": 101.88927181914318,
+      "r2": 0.06986670694619745,
+      "forecast_bias": 3365987.857835034,
+      "production_model": true
+    },
+    {
+      "model_id": "mean_baseline",
+      "model_name": "Mean of training clients",
+      "role": "baseline",
+      "task": "value",
+      "auc": null,
+      "auc_ci_lower": null,
+      "auc_ci_upper": null,
+      "pr_auc": null,
+      "pr_auc_ci_lower": null,
+      "pr_auc_ci_upper": null,
+      "lift_at_10pct": null,
+      "lift_at_10pct_ci_lower": null,
+      "lift_at_10pct_ci_upper": null,
+      "rank": 3,
+      "is_best": false,
+      "mae": 20992962.33656873,
+      "rmse": 187236355.95815894,
+      "mape": 31242705.021057576,
+      "smape": 148.3800329796984,
+      "r2": -0.00032794891120135894,
+      "forecast_bias": -3390174.6751886797,
+      "production_model": false
     }
   ],
   "metrics": {
-    "rows": 100.0,
-    "positive_rate": 0.66,
-    "propensity_auc": 0.9126559714795008,
-    "propensity_brier": 0.1255558418981466,
-    "cltv_rmse": 145270.415282306,
-    "cltv_mae": 82075.93723474271,
-    "precision_at_10pct": 1.0,
-    "precision_at_20pct": 1.0
+    "rows": 100224.0,
+    "positive_rate": 0.021681433588761175,
+    "propensity_auc": 0.7364805827191849,
+    "propensity_brier": 0.02081548489227961,
+    "cltv_rmse": 180547539.20113036,
+    "cltv_mae": 8215466.156753406,
+    "precision_at_10pct": 0.05897026541608461,
+    "precision_at_20pct": 0.046896826980642584,
+    "propensity_auc_ci_lower": 0.7262292261372764,
+    "propensity_auc_ci_upper": 0.747432569562886,
+    "pr_auc": 0.0686204428698917,
+    "pr_auc_ci_lower": 0.06284425521331723,
+    "pr_auc_ci_upper": 0.07681311478362454,
+    "lift_at_10pct": 3.234674273432319,
+    "lift_at_10pct_ci_lower": 3.0548191271517915,
+    "lift_at_10pct_ci_upper": 3.4056652720084784
   },
   "model_metadata": {
     "cltv_model": "HistGradientBoostingRegressor",
-    "cltv_rmse": 145270.415282306,
+    "cltv_rmse": 180547539.20113036,
     "evaluation": {
-      "cltv_mae": 82075.93723474271,
-      "cltv_rmse": 145270.415282306,
-      "positive_rate": 0.66,
-      "precision_at_10pct": 1.0,
-      "precision_at_20pct": 1.0,
-      "propensity_auc": 0.9126559714795008,
-      "propensity_brier": 0.1255558418981466,
-      "rows": 100.0
+      "cltv_mae": 8215466.156753406,
+      "cltv_rmse": 180547539.20113036,
+      "lift_at_10pct": 3.234674273432319,
+      "lift_at_10pct_ci_lower": 3.0548191271517915,
+      "lift_at_10pct_ci_upper": 3.4056652720084784,
+      "positive_rate": 0.021681433588761175,
+      "pr_auc": 0.0686204428698917,
+      "pr_auc_ci_lower": 0.06284425521331723,
+      "pr_auc_ci_upper": 0.07681311478362454,
+      "precision_at_10pct": 0.05897026541608461,
+      "precision_at_20pct": 0.046896826980642584,
+      "propensity_auc": 0.7364805827191849,
+      "propensity_auc_ci_lower": 0.7262292261372764,
+      "propensity_auc_ci_upper": 0.747432569562886,
+      "propensity_brier": 0.02081548489227961,
+      "rows": 100224.0
     },
-    "feature_count": 29,
-    "propensity_auc": 0.9126559714795008,
+    "feature_count": 14,
+    "propensity_auc": 0.7364805827191849,
     "propensity_model": "HistGradientBoostingClassifier",
-    "test_rows": 100,
-    "train_rows": 400,
-    "trained_at_utc": "2026-06-25T07:25:50.466650+00:00"
+    "test_rows": 100224,
+    "train_rows": 300672,
+    "trained_at_utc": "2026-10-24T20:24:29.143571+00:00"
   },
   "feature_importance": [
     {
-      "feature": "account_count",
-      "importance_mean": 17662.01878778853,
-      "importance_std": 4905.14352104355
+      "feature": "total_txn_amt_90",
+      "importance_mean": 3652864.252883746,
+      "importance_std": 20107.697120462737
     },
     {
-      "feature": "avg_balance",
-      "importance_mean": 7775.423787357902,
-      "importance_std": 3598.4641872115603
+      "feature": "total_txn_amt_365",
+      "importance_mean": 2804405.6003630543,
+      "importance_std": 30852.343001679732
     },
     {
-      "feature": "occupation_freq",
-      "importance_mean": 4080.9177592377546,
-      "importance_std": 4032.4830486493543
-    },
-    {
-      "feature": "chosen_product_freq",
-      "importance_mean": 3959.6024844717376,
-      "importance_std": 2511.1776817235964
-    },
-    {
-      "feature": "age",
-      "importance_mean": 3899.874986459159,
-      "importance_std": 2208.6403177415227
+      "feature": "txn_count_90",
+      "importance_mean": 1904738.7064228947,
+      "importance_std": 67698.1429665227
     },
     {
       "feature": "recency_days",
-      "importance_mean": 3592.207484863234,
-      "importance_std": 3879.469243006296
+      "importance_mean": 1768012.8298206176,
+      "importance_std": 63392.95436589551
     },
     {
-      "feature": "customer_segment_freq",
-      "importance_mean": 3459.7395130207024,
-      "importance_std": 1890.1284960518192
+      "feature": "max_txn_amt_365",
+      "importance_mean": 157432.4975249319,
+      "importance_std": 26665.808694927542
     },
     {
-      "feature": "total_balance",
-      "importance_mean": 3457.337351150718,
-      "importance_std": 5111.116632673593
+      "feature": "tenure_days",
+      "importance_mean": 116099.74074628367,
+      "importance_std": 21245.424784775507
     },
     {
-      "feature": "state_freq",
-      "importance_mean": 3034.9539570804864,
-      "importance_std": 1751.451883578011
-    },
-    {
-      "feature": "active_account_count",
-      "importance_mean": 2815.406256805787,
-      "importance_std": 1164.5309748163004
-    },
-    {
-      "feature": "best_second_option_freq",
-      "importance_mean": 2391.673601300705,
-      "importance_std": 3543.0798309402285
-    },
-    {
-      "feature": "annual_income",
-      "importance_mean": 1631.094273795894,
-      "importance_std": 1657.292644855411
-    },
-    {
-      "feature": "lead_source_freq",
-      "importance_mean": 795.9668488166571,
-      "importance_std": 542.5556708546978
-    },
-    {
-      "feature": "lead_age_days",
-      "importance_mean": 627.2618699179056,
-      "importance_std": 3052.2185448744053
-    },
-    {
-      "feature": "marital_status_freq",
-      "importance_mean": 510.5343242737308,
-      "importance_std": 554.0861549330527
-    },
-    {
-      "feature": "gender_freq",
-      "importance_mean": 352.9362212564811,
-      "importance_std": 608.6879867276981
-    },
-    {
-      "feature": "credit_txn_count_365",
-      "importance_mean": 341.23623827336814,
-      "importance_std": 1925.644492965532
-    },
-    {
-      "feature": "closed_account_count",
-      "importance_mean": 57.9250458831375,
-      "importance_std": 356.415014968467
+      "feature": "avg_txn_amt_365",
+      "importance_mean": 112961.7893482931,
+      "importance_std": 13827.423990653351
     },
     {
       "feature": "active_days_365",
+      "importance_mean": 100624.00772198685,
+      "importance_std": 24804.940470163954
+    },
+    {
+      "feature": "txn_count_365",
+      "importance_mean": 38281.08435221785,
+      "importance_std": 13205.041919327035
+    },
+    {
+      "feature": "target_1_before",
+      "importance_mean": 0.5537262879079208,
+      "importance_std": 6.296028578651127
+    },
+    {
+      "feature": "target_2_before",
       "importance_mean": 0.0,
       "importance_std": 0.0
     },
     {
-      "feature": "txn_count_365",
-      "importance_mean": -4.273579485881783,
-      "importance_std": 913.6874812426272
+      "feature": "target_3_before",
+      "importance_mean": -15.629342590109445,
+      "importance_std": 25.188756925557882
     },
     {
-      "feature": "max_txn_amt_365",
-      "importance_mean": -297.28330123498745,
-      "importance_std": 2284.3176022321827
+      "feature": "target_4_before",
+      "importance_mean": -102.31081150798127,
+      "importance_std": 124.8163046825058
     },
     {
-      "feature": "risk_score",
-      "importance_mean": -350.4517574262536,
-      "importance_std": 7164.613149167519
-    },
-    {
-      "feature": "best_first_option_freq",
-      "importance_mean": -532.343341801421,
-      "importance_std": 571.1157023938306
-    },
-    {
-      "feature": "debit_txn_count_365",
-      "importance_mean": -846.373783038167,
-      "importance_std": 1204.8557749699023
-    },
-    {
-      "feature": "dormant_account_count",
-      "importance_mean": -1347.2496694054937,
-      "importance_std": 4120.865282576804
-    },
-    {
-      "feature": "city_freq",
-      "importance_mean": -1540.4370686521688,
-      "importance_std": 2771.4890622626504
-    },
-    {
-      "feature": "avg_txn_amt_365",
-      "importance_mean": -2657.022440412993,
-      "importance_std": 3410.9697268325876
-    },
-    {
-      "feature": "tenure_days",
-      "importance_mean": -3097.24630003755,
-      "importance_std": 2612.4258255104646
-    },
-    {
-      "feature": "total_txn_amt_365",
-      "importance_mean": -3260.97939402529,
-      "importance_std": 3454.264678128011
+      "feature": "products_taken_before",
+      "importance_mean": -4024.0925359844696,
+      "importance_std": 998.1193720557089
     }
   ]
 }

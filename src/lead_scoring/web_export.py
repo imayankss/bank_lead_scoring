@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 from pathlib import Path
 from typing import Any
 
@@ -20,6 +21,8 @@ from lead_scoring.paths import (
 
 
 WEB_DATA_DIR = PROJECT_ROOT / "web" / "public" / "data"
+# The dashboard ships static JSON, so row-level arrays are sampled to keep pages light.
+SAMPLE_ROWS = 400
 
 
 def _read_csv(path: Path) -> pd.DataFrame:
@@ -35,14 +38,30 @@ def _read_json(path: Path) -> dict[str, Any]:
 def _write_json(name: str, payload: dict[str, Any]) -> Path:
     WEB_DATA_DIR.mkdir(parents=True, exist_ok=True)
     path = WEB_DATA_DIR / name
-    path.write_text(json.dumps(payload, indent=2, default=_json_default), encoding="utf-8")
+    # NaN/Infinity aren't valid JSON: the browser rejects the whole file, so they become null.
+    plain = json.loads(json.dumps(payload, default=_json_default))
+    path.write_text(json.dumps(_finite(plain), indent=2, allow_nan=False), encoding="utf-8")
     return path
+
+
+def _finite(value: Any) -> Any:
+    if isinstance(value, float) and not math.isfinite(value):
+        return None
+    if isinstance(value, dict):
+        return {key: _finite(item) for key, item in value.items()}
+    if isinstance(value, list):
+        return [_finite(item) for item in value]
+    return value
 
 
 def _json_default(value: Any) -> Any:
     if hasattr(value, "item"):
         return value.item()
     return str(value)
+
+
+def _sample(df: pd.DataFrame) -> pd.DataFrame:
+    return df.sample(n=min(SAMPLE_ROWS, len(df)), random_state=42).sort_index() if not df.empty else df
 
 
 def export_web_data() -> list[Path]:
@@ -68,13 +87,11 @@ def export_web_data() -> list[Path]:
     decile_lift = _read_csv(TABLES_DIR / "decile_lift.csv")
 
     category_counts = lead_scores["lead_category"].value_counts().to_dict() if not lead_scores.empty else {}
-    best_model = (
-        model_comparison.sort_values("rank").iloc[0].to_dict()
-        if not model_comparison.empty and "rank" in model_comparison.columns
-        else {}
-    )
+    rankers = model_comparison[model_comparison["task"] == "propensity"] if not model_comparison.empty else model_comparison
+    values = model_comparison[model_comparison["task"] == "value"] if not model_comparison.empty else model_comparison
+    best_model = rankers.sort_values("rank").iloc[0].to_dict() if not rankers.empty else {}
+    best_value_model = values.sort_values("rank").iloc[0].to_dict() if not values.empty else {}
     metric_row = metrics.iloc[0].to_dict() if not metrics.empty else {}
-    confidence = max(0.0, min(100.0, 100.0 - float(risk_summary.get("overall_risk_score", 50.0))))
 
     paths = [
         _write_json(
@@ -82,7 +99,8 @@ def export_web_data() -> list[Path]:
             {
                 "project": {
                     "name": "Lead Scoring Intelligence Platform",
-                    "description": "AI-powered customer prioritization platform with CLTV, propensity, risk signals, scenario analysis, and model diagnostics.",
+                    "description": "Lead prioritization built for a Bank of India-style relationship-manager workflow, "
+                    "demonstrated on Sber AI Lab's public MBD-mini data (100,224 business clients, CC BY 4.0).",
                     "domain": "Banking analytics",
                 },
                 "kpis": {
@@ -90,8 +108,13 @@ def export_web_data() -> list[Path]:
                     "features": int(len(feature_metadata.get("feature_cols", []))),
                     "models_trained": 2,
                     "best_model": best_model.get("model_name", "Expected Value Ranker"),
-                    "best_rmse": best_model.get("rmse", metric_row.get("cltv_rmse")),
-                    "forecast_confidence": confidence,
+                    "best_lift_at_10pct": best_model.get("lift_at_10pct"),
+                    "best_lift_ci": [best_model.get("lift_at_10pct_ci_lower"), best_model.get("lift_at_10pct_ci_upper")],
+                    "test_auc": metric_row.get("propensity_auc"),
+                    "test_auc_ci": [metric_row.get("propensity_auc_ci_lower"), metric_row.get("propensity_auc_ci_upper")],
+                    "test_positive_rate": metric_row.get("positive_rate"),
+                    "best_value_model": best_value_model.get("model_name"),
+                    "best_rmse": best_value_model.get("rmse", metric_row.get("cltv_rmse")),
                     "total_expected_value": float(lead_scores["expected_value"].sum()) if not lead_scores.empty else 0,
                 },
                 "lead_categories": category_counts,
@@ -102,7 +125,7 @@ def export_web_data() -> list[Path]:
         _write_json(
             "forecast.json",
             {
-                "actual_vs_predicted": test_predictions.to_dict(orient="records"),
+                "actual_vs_predicted": _sample(test_predictions).to_dict(orient="records"),
                 "forecast": scenarios.get("scenarios", []),
                 "latest": {
                     "total_expected_value": float(lead_scores["expected_value"].sum()) if not lead_scores.empty else 0,
@@ -125,7 +148,7 @@ def export_web_data() -> list[Path]:
             "diagnostics.json",
             {
                 "summary": residual_summary.iloc[0].to_dict() if not residual_summary.empty else {},
-                "residuals": residuals.to_dict(orient="records"),
+                "residuals": _sample(residuals).to_dict(orient="records"),
                 "feature_importance": feature_importance.to_dict(orient="records"),
             },
         ),
@@ -151,25 +174,31 @@ def export_web_data() -> list[Path]:
             "methodology.json",
             {
                 "pipeline": [
-                    "Raw banking CSVs",
-                    "Schema normalization",
-                    "Historical feature window",
-                    "Leakage-safe preprocessing",
+                    "MBD-mini parquet (pinned, SHA-256 checked)",
+                    "DuckDB aggregation, one process per client fold",
+                    "Month-end snapshots: 365-day features, 3-month targets",
+                    "Time split: train Jan/Apr/Jul 2022, test Oct 2022 snapshot",
+                    "Leakage guards that raise",
                     "CLTV and propensity training",
-                    "Model evaluation and diagnostics",
-                    "Risk scoring and scenario analysis",
+                    "Baselines and bootstrap 95% intervals",
+                    "Risk rules and scenario analysis",
                     "Static JSON export",
                     "Next.js dashboard",
                 ],
                 "leakage_prevention": feature_metadata.get("excluded_columns", []),
                 "limitations": [
-                    "Synthetic and small dataset.",
-                    "Metrics are prototype validation, not production proof.",
-                    "Scenario outputs are static portfolio simulations.",
+                    "Public Sber AI Lab data (business clients), not Bank of India customers.",
+                    "MBD adds noise to amounts and dates; amounts are capped at the 0.999 quantile.",
+                    "The 4 products are unnamed in the source data.",
+                    "Risk rules and scenarios are heuristics, not measured models.",
                 ],
                 "dataset": {
-                    "training_rows": int(len(customer_features)),
-                    "positive_customers": int(customer_features["converted"].sum()),
+                    # The stacked feature table also holds the test snapshot, so counts come from the split.
+                    "training_rows": int(feature_metadata.get("train_rows", 0)),
+                    "test_rows": int(feature_metadata.get("test_rows", 0)),
+                    "positive_customers": int(customer_features.loc[
+                        customer_features["snapshot_date"].isin(feature_metadata.get("train_snapshots", [])), "converted"
+                    ].sum()),
                     "feature_columns": feature_metadata.get("feature_cols", []),
                 },
             },

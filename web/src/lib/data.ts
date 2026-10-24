@@ -31,7 +31,12 @@ export const getOverview = () =>
       models_trained: 0,
       best_model: "Unavailable",
       best_rmse: 0,
-      forecast_confidence: 0,
+      best_value_model: "Unavailable",
+      best_lift_at_10pct: 0,
+      best_lift_ci: [0, 0],
+      test_auc: 0,
+      test_auc_ci: [0, 0],
+      test_positive_rate: 0,
       total_expected_value: 0
     },
     lead_categories: {},
@@ -50,5 +55,5 @@ export const getMethodology = () =>
     pipeline: [],
     leakage_prevention: [],
     limitations: [],
-    dataset: { training_rows: 0, positive_customers: 0, feature_columns: [] }
+    dataset: { training_rows: 0, test_rows: 0, positive_customers: 0, feature_columns: [] }
   });

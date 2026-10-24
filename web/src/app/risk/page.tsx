@@ -14,7 +14,7 @@ export default async function RiskPage() {
   return (
     <AnimatedPage>
       <SectionHeader eyebrow="Risk Intelligence" title="Outreach Risk and Confidence">
-        Risk combines stale activity, account status, uncertainty, credit score signals, and fallback rules.
+        Heuristic rules, not a fitted model: stale activity, a client cooling off (last 90 days under half their usual quarter) and a cold lead score each add risk.
       </SectionHeader>
       <div className="mb-6 grid gap-4 md:grid-cols-4">
         <MetricCard label="Average confidence" value={decimal(Number(summary.average_confidence), 1)} icon={ShieldCheck} tone="mint" />

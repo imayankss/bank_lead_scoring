@@ -1,20 +1,28 @@
 {
   "cltv_model": "HistGradientBoostingRegressor",
-  "cltv_rmse": 145270.415282306,
+  "cltv_rmse": 180547539.20113036,
   "evaluation": {
-    "cltv_mae": 82075.93723474271,
-    "cltv_rmse": 145270.415282306,
-    "positive_rate": 0.66,
-    "precision_at_10pct": 1.0,
-    "precision_at_20pct": 1.0,
-    "propensity_auc": 0.9126559714795008,
-    "propensity_brier": 0.1255558418981466,
-    "rows": 100.0
+    "cltv_mae": 8215466.156753406,
+    "cltv_rmse": 180547539.20113036,
+    "lift_at_10pct": 3.234674273432319,
+    "lift_at_10pct_ci_lower": 3.0548191271517915,
+    "lift_at_10pct_ci_upper": 3.4056652720084784,
+    "positive_rate": 0.021681433588761175,
+    "pr_auc": 0.0686204428698917,
+    "pr_auc_ci_lower": 0.06284425521331723,
+    "pr_auc_ci_upper": 0.07681311478362454,
+    "precision_at_10pct": 0.05897026541608461,
+    "precision_at_20pct": 0.046896826980642584,
+    "propensity_auc": 0.7364805827191849,
+    "propensity_auc_ci_lower": 0.7262292261372764,
+    "propensity_auc_ci_upper": 0.747432569562886,
+    "propensity_brier": 0.02081548489227961,
+    "rows": 100224.0
   },
-  "feature_count": 29,
-  "propensity_auc": 0.9126559714795008,
+  "feature_count": 14,
+  "propensity_auc": 0.7364805827191849,
   "propensity_model": "HistGradientBoostingClassifier",
-  "test_rows": 100,
-  "train_rows": 400,
-  "trained_at_utc": "2026-06-25T07:25:50.466650+00:00"
+  "test_rows": 100224,
+  "train_rows": 300672,
+  "trained_at_utc": "2026-10-24T20:24:29.143571+00:00"
 }

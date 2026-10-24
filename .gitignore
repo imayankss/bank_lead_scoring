@@ -28,3 +28,10 @@ web/.turbo/
 data/raw/mbd/
 data/processed/
 models/*.pkl
+
+# Row-per-client report tables (about 67 MB on MBD-mini); summaries stay committed.
+reports/tables/fallback_explanations.csv
+reports/tables/per_lead_explanations.csv
+reports/tables/residual_records.csv
+reports/tables/risk_signals.csv
+reports/tables/test_predictions.csv
