@@ -23,6 +23,8 @@ web/.next/
 web/out/
 web/.turbo/
 
-# Project data and report artifacts are intentionally trackable for the portfolio version.
-!data/raw/
-!data/raw/*.csv
+# Data and model artifacts are rebuilt by the pipeline, never committed.
+# MBD-mini is downloaded by scripts/fetch_mbd.py (CC BY 4.0, ~2 GB).
+data/raw/mbd/
+data/processed/
+models/*.pkl

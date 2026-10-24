@@ -18,11 +18,8 @@ TABLES_DIR = REPORTS_DIR / "tables"
 FIGURES_DIR = REPORTS_DIR / "figures"
 DOCS_DIR = PROJECT_ROOT / "docs"
 
-RAW_CUSTOMERS_FILE = RAW_DATA_DIR / "customers.csv"
-RAW_ACCOUNTS_FILE = RAW_DATA_DIR / "account_master.csv"
-RAW_TRANSACTIONS_HISTORY_FILE = RAW_DATA_DIR / "transactions_history.csv"
-RAW_TRANSACTIONS_RECENT_FILE = RAW_DATA_DIR / "transactions_recent.csv"
-RAW_TRANSACTION_CHANGE_LOG_FILE = RAW_DATA_DIR / "transaction_change_log.csv"
+# MBD-mini (Sber AI Lab, CC BY 4.0), downloaded by scripts/fetch_mbd.py and never committed.
+MBD_DIR = RAW_DATA_DIR / "mbd"
 
 CUSTOMER_FEATURES_FILE = PROCESSED_DATA_DIR / "customer_features.parquet"
 SCORING_FEATURES_FILE = PROCESSED_DATA_DIR / "scoring_features.parquet"
