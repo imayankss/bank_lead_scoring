@@ -1,38 +1,11 @@
 # Results Summary
 
-## Latest Pipeline Run
+The measured results, with 95% intervals and baselines, are in the [README](../README.md#results). The README is checked against the result files by `tests/test_readme_numbers.py`, so this page doesn't repeat the numbers.
 
-The latest run completed successfully with:
+Result files:
 
-- 500 training customer rows.
-- 500 current scoring customer rows.
-- 328 positive training customers.
-- 29 model feature columns.
-- 500 scored leads.
-
-## Evaluation Metrics
-
-| Metric | Value |
-| --- | ---: |
-| Test rows | 100 |
-| Positive rate | 66.0% |
-| Propensity AUC | 0.913 |
-| Propensity Brier score | 0.126 |
-| CLTV RMSE | INR 145,270 |
-| CLTV MAE | INR 82,076 |
-| Precision at top 10% | 1.000 |
-| Precision at top 20% | 1.000 |
-
-## Lead Distribution
-
-| Category | Customers |
-| --- | ---: |
-| Hot | 153 |
-| Medium | 200 |
-| Cold | 147 |
-
-## Interpretation
-
-The corrected pipeline is structurally sound enough for a portfolio presentation: it has no target leakage in the model matrix, scores all customers, and generates a useful score distribution.
-
-The dataset is still synthetic and small. The high propensity AUC and top-decile precision should be presented as prototype validation, not production model proof.
+- `reports/tables/model_comparison.csv`: every model and baseline on the test months.
+- `reports/tables/metrics_summary.csv`: headline metrics with intervals.
+- `reports/tables/decile_lift.csv`: conversion by lead-score decile, with Wilson intervals and cumulative reach.
+- `reports/tables/cltv_validation.csv`: CLTV estimator choice on the validation snapshot.
+- `reports/run_manifest.json`: git SHA, config, data revision and hashes, package versions.

@@ -1,49 +1,43 @@
 # Methodology
 
-## Data Sources
+## Question
 
-The project uses five source files:
+At a month-end snapshot, which clients will take any of the bank's 4 products in the next 3 months, and what will they transact over that period? The lead score combines both: `expected_value = predicted_cltv × predicted_propensity`, ranked to 0–100, Hot ≥ 70, Cold < 30.
 
-- `data/raw/customers.csv`
-- `data/raw/account_master.csv`
-- `data/raw/transactions_history.csv`
-- `data/raw/transactions_recent.csv`
-- `data/raw/transaction_change_log.csv`
+## Data
 
-The current pipeline uses the first four files. The change log is retained as a raw source for future audit or anomaly features.
+Sber AI Lab's MBD-mini (CC BY 4.0): 100,224 business clients, 38.8M transactions (Jan 2021 to Dec 2022), monthly purchase flags for 4 unnamed products (Feb 2022 to Jan 2023). See [data/README.md](../data/README.md).
 
-## Feature Window
+## Snapshots and targets
 
-The training table uses a 365 day lookback window ending one year before the latest transaction date. This creates historical customer features before the outcome period starts.
+For a month-end snapshot S (Moscow time; MBD stores UTC):
 
-The current scoring table uses the latest transaction date as the snapshot. It has no future target columns.
+- **Features:** transactions in (S − 365 days, S] and product labels for months before S.
+- **Targets:** `converted` = any product flag in a label month within (S, S + 3 months]; `future_value` = transaction amount in the same window.
+- **Amount cap:** every amount is capped at the 0.999 quantile of transactions up to the test snapshot, because MBD adds noise to amounts.
 
-## Targets
+| Role | Snapshots |
+|---|---|
+| Train | 2022-01-31, 2022-04-30, 2022-07-31 |
+| Test | 2022-10-31 (labels Nov 2022 to Jan 2023) |
+| Current scoring | 2022-12-31 |
 
-- `future_revenue_12m`: total customer transaction amount in the 365 days after the training snapshot.
-- `converted_12m`: binary label indicating whether `future_revenue_12m` is greater than zero.
+## Leakage guards (`src/lead_scoring/temporal.py`)
 
-This replaces the earlier logic that used the max transaction date as the snapshot and produced only 3 positive customers.
+Each raises `LeakageError` instead of warning:
 
-## Modeling
+- a training snapshot whose target window ends after the test snapshot;
+- a feature built from a transaction after its snapshot;
+- a target, identifier, date or unexplained column (`trans_count`, `diff_trans_date`) in the model matrix.
 
-The pipeline trains:
+## Evaluation
 
-- A CLTV model using `HistGradientBoostingRegressor` wrapped in a log-transformed target regressor.
-- A propensity model using `HistGradientBoostingClassifier`.
+- All models and baselines are scored on the same test rows and the same seeded bootstrap resamples (300 draws, percentile 95% intervals).
+- **Rankers** are ordered by lift in the top 10%. Ties at the cutoff count at their mean rate, so rules with many tied scores aren't flattered by row order.
+- **Baselines:** prior rate, recency rule, 90-day activity rule, product-history rule, logistic regression.
+- **Value models** are ordered by RMSE against the training mean and "last 90 days repeat".
+- The CLTV estimator was compared on the Jul 2022 validation snapshot (`scripts/cltv_validation.py`), never on test months.
 
-The project no longer depends on LightGBM, which makes the repository easier to run in a fresh Python environment.
+## Heuristics, labelled as such
 
-## Scoring
-
-Expected value is calculated as:
-
-```text
-predicted_cltv * predicted_propensity
-```
-
-Lead score is assigned from expected-value rank percentiles on a 0-100 scale. This avoids the previous two-value 0/100 score output.
-
-## Explainability
-
-The pipeline saves permutation feature importance for the CLTV model and lightweight per-lead driver summaries. These are designed for portfolio inspection, not regulatory model explanations.
+Risk scores, follow-up flags and scenarios are rules, not fitted models. They aren't evaluated and aren't presented as predictions.

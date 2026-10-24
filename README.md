@@ -1,321 +1,117 @@
-# Bank Lead Scoring Intelligence Platform
+# Bank Lead Scoring
 
-An end-to-end customer intelligence system for banking lead prioritization. The project combines transactional behavior, account metadata, customer profile attributes, CLTV modeling, propensity scoring, risk rules, residual diagnostics, scenario simulation, and a modern static-data Next.js dashboard.
+[![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![DuckDB](https://img.shields.io/badge/DuckDB-parallel_by_fold-FFF000?style=for-the-badge&logo=duckdb&logoColor=black)](src/lead_scoring/data.py)
+[![Next.js](https://img.shields.io/badge/Next.js-Dashboard-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](web/)
+[![CI](https://img.shields.io/badge/CI-pytest_%2B_web_build-success?style=for-the-badge)](.github/workflows/ci.yml)
 
-This is built as a portfolio-grade AI/ML analytics product rather than a notebook-only model experiment. Python owns the data science and model pipeline; the frontend consumes stable JSON exports.
+A lead-scoring platform for a bank's relationship managers: which clients to call first, how likely each is to take a product in the next 3 months, and what they are worth. It is built around a Bank of India-style RM workflow (CLTV model, propensity model, expected-value lead score, Hot/Medium/Cold tiers, risk flags, scenarios).
 
-## Problem Statement
+**Data:** the first version ran on 500 synthetic customers. This version runs on **real, public bank data**: Sber AI Lab's [MBD-mini](https://huggingface.co/datasets/ai-lab/MBD-mini) (CC BY 4.0), 100,224 business clients and 38.8M transactions from Jan 2021 to Dec 2022, with monthly purchase labels for 4 products. These are **not Bank of India customers**; no public customer-level Bank of India data exists.
 
-Retail and SME banking teams often need to answer:
+**Every number below is measured on later months than the model was trained on, against simple baselines, with a 95% bootstrap interval.** Leakage guards in [`src/lead_scoring/temporal.py`](src/lead_scoring/temporal.py) raise if a split or feature reaches into the future.
 
-- Which customers should relationship managers prioritize?
-- Which customers have high expected value but also high outreach risk?
-- How reliable are the model scores?
-- What product opportunities and portfolio scenarios should be surfaced to business users?
+![Dashboard overview: top-10% lift 3.23x and AUC 0.736 on the test months, with intervals](docs/assets/dashboard.png)
 
-This project turns raw customer, account, and transaction data into a ranked lead intelligence layer with model evaluation and product-style dashboarding.
+## Results
 
-## Core Capabilities
+**Question:** at a month-end snapshot, which clients will take any of the bank's 4 products in the next 3 months?
 
-- Historical snapshot based feature generation to prevent target leakage.
-- Separate CLTV and propensity models.
-- Expected value scoring: `predicted_cltv * predicted_propensity`.
-- 0-100 percentile lead score with Hot / Medium / Cold categories.
-- Model registry and model comparison leaderboard.
-- Residual diagnostics and error distribution.
-- Risk scoring and alert rules for outreach quality.
-- Scenario analysis for optimistic, base, and pessimistic portfolio value.
-- Seasonality and transaction trend summaries.
-- Static JSON export layer for web dashboards.
-- Modern Next.js dashboard with TypeScript, Tailwind, Recharts, Framer Motion, and Lucide icons.
-- Legacy Streamlit dashboard retained as a fallback.
+**Split:** train on snapshots Jan, Apr and Jul 2022 (300,672 client-snapshots, 3.3% take a product). Test on the 31 Oct 2022 snapshot, labels Nov 2022 to Jan 2023 (100,224 clients, 2.2% take a product).
 
-## Architecture
+### Who to call: ranking clients (test months)
+
+| Model | Lift in top 10% (95% CI) | ROC AUC |
+|---|---:|---:|
+| Propensity gradient boosting | **3.23 (3.05–3.41)** | 0.736 |
+| Logistic regression (baseline) | 3.18 (3.01–3.36) | 0.738 |
+| Rule: took a product before, then most active | 2.86 (2.67–3.03) | 0.633 |
+| Expected-value lead score (propensity × CLTV) | 2.72 (2.56–2.91) | 0.654 |
+| Rule: most transactions in last 90 days | 2.66 (2.48–2.87) | 0.638 |
+| Rule: most recent activity first | 1.52 (1.47–1.57) | 0.604 |
+| Prior rate (no ranking) | 1.00 (1.00–1.00) | 0.500 |
+
+Headline: calling the top 10% of clients ranked by the propensity model finds 3.2 times as many product takers as calling at random. ROC AUC is 0.736 (0.726–0.747).
+
+- **Gradient boosting ties logistic regression.** The intervals overlap almost completely, so the simpler model would do the same job.
+- **Both models beat the best rule**, but only just: the gradient boosting interval starts at 3.05, the rule's ends at 3.03.
+- **The expected-value lead score converts less than propensity alone.** Multiplying by CLTV moves high-value clients up even when they are unlikely to buy. Its top decile still holds 27% of all product takers.
+
+### What clients are worth: next-3-month value (test months)
+
+| Model | RMSE |
+|---|---:|
+| Last 90 days repeat (baseline) | **107M** |
+| CLTV gradient boosting | 181M |
+| Training-period mean (baseline) | 187M |
+
+The CLTV model loses to "the next 3 months look like the last 3". It was chosen before testing; on a separate validation snapshot (Jul 2022) none of four gradient-boosting variants beat that baseline either ([`cltv_validation.csv`](reports/tables/cltv_validation.csv)). Amounts are MBD's anonymised units, capped at the 0.999 quantile of pre-test transactions because MBD adds noise to amounts.
+
+Full tables: [`reports/tables/model_comparison.csv`](reports/tables/model_comparison.csv), [`metrics_summary.csv`](reports/tables/metrics_summary.csv), [`decile_lift.csv`](reports/tables/decile_lift.csv). Run details: [`reports/run_manifest.json`](reports/run_manifest.json) (git SHA, config, data revision and hashes, package versions).
+
+## What I fixed
+
+The original version reported ROC AUC 0.913 on 500 synthetic customers. An audit ([reports/project_audit.md](reports/project_audit.md)) found:
+
+- **Leakage from the accounts table.** Account count, balance and status were today's values, not values at the training snapshot; 66 of 700 accounts were opened after it. `account_count` alone scored 0.912.
+- **A random split** of customers from one snapshot, described as "historical".
+- **A leaderboard that favoured the production model**: the "baselines" reused the model's own predictions, and the ranking gave the production model a fixed +0.05 bonus.
+- **A CLTV model worse than predicting the mean** (R² −0.37), not mentioned anywhere.
+- **No reproducibility**: unpinned packages and no record of what produced the numbers.
+
+Now: real data, a snapshot time split with guards that raise, real baselines with no bonus, bootstrap intervals, pinned versions and a run manifest, and a test ([`tests/test_readme_numbers.py`](tests/test_readme_numbers.py)) that fails if any number above stops matching the result files.
+
+## How it works
 
 ```mermaid
-flowchart TD
-    A["Raw banking CSVs<br/>customers, accounts, transactions"] --> B["Data layer<br/>schema normalization + transaction cleanup"]
-    B --> C["Feature builder<br/>365 day lookback window"]
-    C --> D["Leakage-safe preprocessing<br/>target, IDs, dates, and PII excluded"]
-    D --> E["Model training<br/>CLTV regressor + propensity classifier"]
-    E --> F["Evaluation<br/>AUC, Brier, RMSE, MAE, lift"]
-    E --> G["Batch scoring<br/>expected value + 0-100 lead score"]
-    F --> H["Diagnostics<br/>residuals, error buckets, feature importance"]
-    G --> I["Risk intelligence<br/>confidence, alerts, fallback reasons"]
-    G --> J["Scenario engine<br/>base, optimistic, pessimistic"]
-    B --> K["Seasonality layer<br/>monthly transaction patterns"]
-    H --> L["Static web export<br/>web/public/data/*.json"]
-    I --> L
-    J --> L
-    K --> L
-    L --> M["Next.js dashboard<br/>AI command center UI"]
+flowchart LR
+    A["MBD-mini parquet<br/>pinned revision, SHA-256 checked"] --> B["DuckDB aggregation<br/>one process per client fold"]
+    B --> C["Month-end snapshots<br/>365-day features, 3-month targets"]
+    C --> D["Time split + leakage guards"]
+    D --> E["Propensity and CLTV models"]
+    E --> F["Baselines + bootstrap 95% CIs"]
+    E --> G["Expected-value lead score<br/>Hot / Medium / Cold"]
+    G --> H["Risk rules, scenarios,<br/>seasonality, explanations"]
+    F --> I["Static JSON export"]
+    H --> I
+    I --> J["Next.js dashboard<br/>(Streamlit legacy app)"]
 ```
 
-## Pipeline Flow
+- **Features** (14, all known at the snapshot): transaction count, value, maximum and active days over 365 days; count and value over 90 days; recency; tenure; and how many months each product was taken before.
+- **Excluded on purpose:** MBD's `trans_count` and `diff_trans_date`. No transaction window reproduces them (best match 11% of rows), so their timing is unknown.
+- **Scaling:** MBD's 5 client folds share no clients, so each fold is processed in its own process with DuckDB reading parquet directly. MBD-mini (38.8M transactions) builds a snapshot in about 13 seconds on a laptop; the same code runs the full 2.2M-client MBD fold by fold. The test suite checks that parallel and serial results are identical.
+- **Risk flags and scenarios** are heuristic rules, labelled as such, not fitted models.
 
-```text
-Raw Data
-  -> Data Loader
-  -> Validation and Schema Normalization
-  -> Customer Feature Engineering
-  -> Historical Train/Test Split
-  -> CLTV + Propensity Training
-  -> Model Evaluation and Comparison
-  -> Batch Lead Scoring
-  -> Diagnostics, Risk, Scenario, Seasonality
-  -> Static JSON Export
-  -> Next.js Dashboard
-```
-
-## Project Structure
-
-```text
-.
-  app/                      Legacy Streamlit dashboard
-  configs/                  Project, model, dashboard, and scenario config
-  data/raw/                 Source customer, account, and transaction CSVs
-  data/processed/           Feature tables, model matrices, and lead scores
-  docs/                     Architecture, methodology, installation, results notes
-  models/                   Trained model artifacts and metadata
-  reports/figures/          Calibration and importance figures
-  reports/tables/           Metrics, diagnostics, risks, scenarios, exports
-  scripts/                  Pipeline, audit, health check, and export entrypoints
-  src/lead_scoring/         Reusable Python ML package
-  tests/                    Backend contract, metrics, comparison, export tests
-  web/                      Next.js dashboard consuming static JSON exports
-```
-
-## Backend Modules
-
-| Module | Responsibility |
-| --- | --- |
-| `src/lead_scoring/data.py` | Raw table loading, transaction cleaning, account aggregation, target creation |
-| `src/lead_scoring/features.py` | Leakage-safe preprocessing and train/test/scoring matrix creation |
-| `src/lead_scoring/training.py` | CLTV and propensity model training |
-| `src/lead_scoring/evaluation.py` | Test-set metrics, calibration, decile lift, predictions |
-| `src/lead_scoring/model_registry.py` | Model metadata registry for docs and dashboard |
-| `src/lead_scoring/model_comparison.py` | Business-oriented model/baseline leaderboard |
-| `src/lead_scoring/diagnostics.py` | Residual records, error buckets, diagnostic summary |
-| `src/lead_scoring/risk.py` | Risk score, confidence score, and outreach alerts |
-| `src/lead_scoring/scenario.py` | Portfolio expected-value scenario simulation |
-| `src/lead_scoring/seasonality.py` | Monthly transaction trend and seasonality artifacts |
-| `src/lead_scoring/web_export.py` | Stable JSON contracts for Next.js |
-
-## Leakage Prevention
-
-The pipeline explicitly excludes target, identifier, date, and direct PII fields from model matrices:
-
-```text
-future_revenue_12m
-converted_12m
-customer_id
-first_name / last_name
-email / phone
-dob / postal_code
-first_txn / last_txn
-date_of_lead / snapshot_date
-```
-
-Training uses a historical snapshot:
-
-```text
-training snapshot = max_transaction_date - 365 days
-target window     = next 365 days after snapshot
-current scoring   = latest available transaction snapshot
-```
-
-This prevents the previous failure mode where the model saw target information or attached shuffled predictions to the wrong customer IDs.
-
-## Model and Scoring Design
-
-The scoring system has three core layers:
-
-1. **CLTV Model**
-   Predicts 12 month transaction value.
-
-2. **Propensity Model**
-   Predicts probability of future positive activity.
-
-3. **Expected Value Ranker**
-   Combines value and propensity:
-
-```text
-expected_value = predicted_cltv * predicted_propensity
-lead_score     = percentile_rank(expected_value) * 100
-```
-
-Lead categories:
-
-```text
-Hot    >= 70
-Medium 30-69
-Cold   < 30
-```
-
-## Current Results
-
-Latest rebuilt artifacts:
-
-| Metric | Value |
-| --- | ---: |
-| Scored customers | 500 |
-| Feature columns | 29 |
-| Test rows | 100 |
-| Test positive rate | 66.0% |
-| Propensity AUC | 0.913 |
-| Propensity Brier score | 0.126 |
-| CLTV RMSE | INR 145,270 |
-| CLTV MAE | INR 82,076 |
-
-Lead distribution:
-
-| Category | Customers |
-| --- | ---: |
-| Hot | 153 |
-| Medium | 200 |
-| Cold | 147 |
-
-## Product Intelligence Artifacts
-
-Key generated files:
-
-```text
-reports/tables/metrics_summary.csv
-reports/tables/model_comparison.csv
-reports/tables/decile_lift.csv
-reports/tables/residual_diagnostics.csv
-reports/tables/risk_signals.csv
-reports/tables/scenario_forecasts.csv
-reports/tables/seasonality_monthly.csv
-reports/tables/feature_importance.csv
-web/public/data/*.json
-```
-
-Frontend JSON contracts:
-
-```text
-web/public/data/overview.json
-web/public/data/forecast.json
-web/public/data/models.json
-web/public/data/diagnostics.json
-web/public/data/risks.json
-web/public/data/seasonality.json
-web/public/data/scenarios.json
-web/public/data/methodology.json
-```
-
-## Dashboard
-
-The primary dashboard is a Next.js app in `web/`.
-
-Pages:
-
-- Overview
-- Forecast
-- Models
-- Risk
-- Diagnostics
-- Seasonality
-- Scenario
-- Methodology
-
-Tech stack:
-
-```text
-Next.js App Router
-TypeScript
-Tailwind CSS
-Recharts
-Framer Motion
-Lucide React
-Static JSON data contracts
-```
-
-The legacy Streamlit dashboard remains in `app/streamlit_app.py`.
-
-## Quick Start
+## Run it
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-
-python scripts/run_pipeline.py
-python scripts/run_export_web_data.py
-python scripts/repo_health_check.py
-python -m pytest -q
-
-cd web
-npm install
-npm run dev
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+.venv/bin/python scripts/fetch_mbd.py        # ~2 GB download, SHA-256 checked, nothing committed
+.venv/bin/python scripts/run_pipeline.py     # about 5 minutes on a laptop
+.venv/bin/python scripts/cltv_validation.py  # CLTV model choice on the Jul 2022 validation snapshot
+.venv/bin/python scripts/repo_health_check.py
+.venv/bin/python -m pytest -q                # runs on small fixtures; no download needed
+cd web && npm install && npm run dev         # dashboard at http://localhost:3000
 ```
 
-Open:
+The legacy Streamlit app: `streamlit run app/streamlit_app.py`.
 
-```text
-http://localhost:3000
-```
+## Data and licence
 
-If port `3000` is busy:
+| Data | Source | Real? | In git? |
+|---|---|---|---|
+| MBD-mini `targets` and `detail/trx` | [Hugging Face ai-lab/MBD-mini](https://huggingface.co/datasets/ai-lab/MBD-mini), revision `4b0d5b4c` | Real, anonymised, noise added by the publisher | No (`scripts/fetch_mbd.py`) |
 
-```bash
-npm run dev -- --port 3001
-```
-
-## Makefile Commands
-
-```bash
-make train       # run full backend pipeline
-make export-web  # export dashboard JSON files
-make health      # verify artifact contracts
-make test        # run backend tests
-make dashboard   # launch legacy Streamlit dashboard
-```
-
-## Verification
-
-Commands verified during the latest upgrade:
-
-```bash
-python3 -m compileall src scripts tests
-pytest -q
-python3 -m scripts.run_project_audit
-python3 -m scripts.run_export_web_data
-python3 scripts/repo_health_check.py
-cd web && npm run lint
-cd web && npm run build
-```
-
-Status:
-
-```text
-Backend tests: 9 passed
-Health check: passed
-Next.js lint: passed
-Next.js production build: passed
-```
-
-## Dashboard Preview
-
-Screenshots can be added after local visual review:
-
-```text
-reports/figures/dashboard_overview.png
-reports/figures/dashboard_models.png
-reports/figures/dashboard_risk.png
-```
+Cite: Mollaev et al., *Multimodal Banking Dataset: Understanding Client Needs through Event Sequences*, [arXiv:2409.17587](https://arxiv.org/abs/2409.17587). Licence CC BY 4.0. Details in [data/README.md](data/README.md).
 
 ## Limitations
 
-- The dataset is synthetic and small.
-- Metrics are prototype validation, not production proof.
-- Scenario outputs are static simulations, not live causal forecasts.
-- The model leaderboard includes baselines and a production ranker; adding more independently trained model families would make comparison stronger.
+- Business clients of a Russian bank, not Bank of India retail customers; the workflow carries over, the numbers may not.
+- The 4 products are unnamed in the source data.
+- One test window (Nov 2022 to Jan 2023). The purchase rate fell from 3.3% in training to 2.2% in the test months, so calibration drifts.
 
-## Future Improvements
+## Resume bullets
 
-- Add more trained model candidates such as calibrated random forest, XGBoost, and logistic/ridge baselines.
-- Add drift monitoring and data-quality trend reports.
-- Add automated screenshot capture for dashboard documentation.
-- Deploy the Next.js dashboard.
-- Add CI checks for Python tests, web build, and JSON schema contracts.
+- Rebuilt a bank lead-scoring platform on 100,224 real business clients and 38.8M transactions (Sber MBD, 2021–2022), replacing 500 synthetic rows. Found and removed account-table leakage and a random split behind a reported 0.913 AUC.
+- Measured on later months with a leakage-guarded time split: top-10% lift 3.23 (95% CI 3.05–3.41) and AUC 0.736, beating the best business rule (2.86) and tying logistic regression; showed a last-90-days baseline beat the CLTV model on RMSE (107M vs 181M).
+- Scaled feature engineering with DuckDB processing client folds in parallel (one snapshot of 38.8M transactions in about 13 s), with pinned data hashes, a run manifest and CI tests that check every README number against the result files.

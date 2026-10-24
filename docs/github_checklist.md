@@ -2,10 +2,11 @@
 
 Before publishing:
 
-- Run `python scripts/run_pipeline.py`.
+- Run `python scripts/fetch_mbd.py` once, then `python scripts/run_pipeline.py` and `python scripts/cltv_validation.py`.
 - Run `python scripts/repo_health_check.py`.
 - Run `python -m pytest -q`.
-- Confirm `README.md` metrics match `reports/tables/metrics_summary.csv`.
+- `tests/test_readme_numbers.py` checks README numbers against `reports/tables/`; keep it passing.
 - Confirm dashboard opens with `streamlit run app/streamlit_app.py`.
 - Do not commit `.local/`, virtual environments, cache files, or OS metadata.
-- Keep the synthetic data limitation visible in the README and project page.
+- Keep the data source visible: Sber AI Lab MBD-mini, business clients, not Bank of India customers.
+- Never commit `data/raw/mbd/`, `data/processed/` or `models/*.pkl`.
