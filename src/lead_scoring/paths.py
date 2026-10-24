@@ -20,6 +20,12 @@ DOCS_DIR = PROJECT_ROOT / "docs"
 
 # MBD-mini (Sber AI Lab, CC BY 4.0), downloaded by scripts/fetch_mbd.py and never committed.
 MBD_DIR = RAW_DATA_DIR / "mbd"
+MBD_REVISION = "4b0d5b4c0b014e02af6c2e6b7b27851e6fb0d5c3"  # pinned Hugging Face commit of ai-lab/MBD-mini
+MBD_ARCHIVES = {  # archive name -> (SHA-256, members extracted)
+    "targets.tar.gz": ("6e9130a14ea0adeb4924f76a77430f0d57a376030410166679eb9f31864ccb0b", ("targets/",)),
+    "detail.tar.gz": ("3f5cba0deb0ace86a7c5dd76ffc39f3320c0920b01ee2e034bdf92c1835f7e11", ("detail/trx/",)),
+}
+RUN_MANIFEST_FILE = PROJECT_ROOT / "reports" / "run_manifest.json"
 
 CUSTOMER_FEATURES_FILE = PROCESSED_DATA_DIR / "customer_features.parquet"
 SCORING_FEATURES_FILE = PROCESSED_DATA_DIR / "scoring_features.parquet"

@@ -1,9 +1,12 @@
-pandas>=1.5
-numpy
-scikit-learn>=1.2
-joblib
-matplotlib
-pyarrow
-streamlit>=1.50.0
-plotly>=5.17.0
-pytest
+# Pinned to the versions that produced the committed results (see reports/run_manifest.json).
+pandas==3.1.0
+numpy==2.5.4
+scikit-learn==1.9.1
+duckdb==2.0.0
+pyarrow==26.0.0
+joblib==1.6.0
+matplotlib==3.11.2
+pytest==9.1.1
+# Legacy Streamlit dashboard only
+streamlit==1.66.1
+plotly==7.1.0

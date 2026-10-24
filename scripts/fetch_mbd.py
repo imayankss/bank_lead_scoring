@@ -17,14 +17,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from lead_scoring.paths import MBD_DIR
+from lead_scoring.paths import MBD_ARCHIVES as FILES
+from lead_scoring.paths import MBD_DIR, MBD_REVISION as REVISION
 
-REVISION = "4b0d5b4c0b014e02af6c2e6b7b27851e6fb0d5c3"
 BASE = f"https://huggingface.co/datasets/ai-lab/MBD-mini/resolve/{REVISION}"
-FILES = {
-    "targets.tar.gz": ("6e9130a14ea0adeb4924f76a77430f0d57a376030410166679eb9f31864ccb0b", ("targets/",)),
-    "detail.tar.gz": ("3f5cba0deb0ace86a7c5dd76ffc39f3320c0920b01ee2e034bdf92c1835f7e11", ("detail/trx/",)),
-}
 
 
 def sha256(path: Path) -> str:

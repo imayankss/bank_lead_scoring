@@ -9,6 +9,7 @@ from lead_scoring.evaluation import evaluate_models
 from lead_scoring.explainability import build_explainability_artifacts
 from lead_scoring.features import prepare_feature_sets
 from lead_scoring.model_comparison import build_model_comparison
+from lead_scoring.provenance import write_run_manifest
 from lead_scoring.risk import build_risk_signals
 from lead_scoring.scenario import build_scenarios
 from lead_scoring.scoring import build_fallback_explanations, score_batch
@@ -32,6 +33,7 @@ def run_pipeline(config: PipelineConfig = PipelineConfig()) -> dict[str, object]
     seasonality = build_seasonality_artifacts()
     explanation_paths = build_explainability_artifacts()
     web_paths = export_web_data()
+    manifest = write_run_manifest(config)
 
     return {
         "customer_features": [str(p) for p in feature_paths],
@@ -47,6 +49,7 @@ def run_pipeline(config: PipelineConfig = PipelineConfig()) -> dict[str, object]
         "seasonality_rows": int(len(seasonality)),
         "explainability": explanation_paths,
         "web_exports": [str(path) for path in web_paths],
+        "git_sha": manifest["git_sha"],
     }
 
 
