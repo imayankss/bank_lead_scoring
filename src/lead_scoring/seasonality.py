@@ -25,6 +25,9 @@ def build_seasonality_artifacts(mbd_dir: Path = MBD_DIR) -> pd.DataFrame:
         FROM tx GROUP BY ALL ORDER BY period""", {"trx": trx, "cap": amount_cap(mbd_dir)}).df()
     con.close()
     monthly["rolling_3m_amount"] = monthly["total_amount"].rolling(3, min_periods=1).mean()
+    # DuckDB sums in parallel, so the last float digits vary run to run; cents keep the table stable.
+    money = ["total_amount", "average_amount", "rolling_3m_amount"]
+    monthly[money] = monthly[money].round(2)
     monthly.to_csv(TABLES_DIR / "seasonality_monthly.csv", index=False)
 
     month_pattern = (
