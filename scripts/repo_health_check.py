@@ -11,27 +11,22 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from lead_scoring.features import DATE_COLUMNS, IDENTIFIER_COLUMNS, PII_COLUMNS, TARGET_COLUMNS
+from lead_scoring.features import FORBIDDEN_COLUMNS
 from lead_scoring.paths import (
     CUSTOMER_FEATURES_FILE,
     FEATURE_METADATA_FILE,
     LEAD_SCORES_FILE,
+    MBD_DIR,
     MODEL_METADATA_FILE,
     PREPROCESSED_DATA_DIR,
-    RAW_ACCOUNTS_FILE,
-    RAW_CUSTOMERS_FILE,
-    RAW_TRANSACTIONS_HISTORY_FILE,
-    RAW_TRANSACTIONS_RECENT_FILE,
     SCORING_FEATURES_FILE,
     TABLES_DIR,
 )
 
 
 REQUIRED_FILES = [
-    RAW_CUSTOMERS_FILE,
-    RAW_ACCOUNTS_FILE,
-    RAW_TRANSACTIONS_HISTORY_FILE,
-    RAW_TRANSACTIONS_RECENT_FILE,
+    MBD_DIR / "targets",
+    MBD_DIR / "detail" / "trx",
     CUSTOMER_FEATURES_FILE,
     SCORING_FEATURES_FILE,
     PREPROCESSED_DATA_DIR / "X_train.parquet",
@@ -57,28 +52,28 @@ def main() -> int:
             failures.append(f"missing required artifact: {path.relative_to(ROOT)}")
 
     if not failures:
-        customers = pd.read_csv(RAW_CUSTOMERS_FILE)
+        clients = pd.read_parquet(MBD_DIR / "targets", columns=["client_id"])["client_id"].nunique()
         training = pd.read_parquet(CUSTOMER_FEATURES_FILE)
         scoring = pd.read_parquet(SCORING_FEATURES_FILE)
         scores = pd.read_csv(LEAD_SCORES_FILE)
         X_train = pd.read_parquet(PREPROCESSED_DATA_DIR / "X_train.parquet")
 
-        if len(training) != len(customers):
-            failures.append(f"training features cover {len(training)} customers; expected {len(customers)}")
-        if len(scoring) != len(customers):
-            failures.append(f"scoring features cover {len(scoring)} customers; expected {len(customers)}")
-        if len(scores) != len(customers):
-            failures.append(f"lead scores cover {len(scores)} customers; expected {len(customers)}")
+        for snapshot, rows in training.groupby("snapshot_date").size().items():
+            if rows != clients:
+                failures.append(f"snapshot {snapshot} covers {rows} clients; expected {clients}")
+        if len(scoring) != clients:
+            failures.append(f"scoring features cover {len(scoring)} clients; expected {clients}")
+        if len(scores) != clients:
+            failures.append(f"lead scores cover {len(scores)} clients; expected {clients}")
         if scores["customer_id"].duplicated().any():
             failures.append("lead_scores.csv contains duplicate customer_id values")
 
-        forbidden = TARGET_COLUMNS | IDENTIFIER_COLUMNS | PII_COLUMNS | DATE_COLUMNS
-        leakage = sorted(forbidden.intersection(X_train.columns))
+        leakage = sorted(FORBIDDEN_COLUMNS.intersection(X_train.columns))
         if leakage:
             failures.append(f"model matrix contains forbidden columns: {leakage}")
 
         positive_rate = float(training["converted"].mean())
-        if positive_rate < 0.05:
+        if positive_rate < 0.005:
             warnings.append(f"low training conversion rate: {positive_rate:.2%}")
         if scores["lead_score"].nunique() < 5:
             warnings.append("lead scores have fewer than 5 unique values")

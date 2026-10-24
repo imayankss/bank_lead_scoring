@@ -63,30 +63,18 @@ def build_fallback_explanations() -> pd.DataFrame:
     ensure_directories()
     features = pd.read_parquet(SCORING_FEATURES_FILE)
 
-    rows = []
-    for _, row in features.iterrows():
-        reasons = []
-        if row.get("txn_count_365", 0) == 0:
-            reasons.append("no_transactions_in_last_365d")
-        if row.get("recency_days", 0) > 180:
-            reasons.append("stale_transaction_activity")
-        if row.get("active_account_count", 0) == 0:
-            reasons.append("no_active_account")
-        if pd.isna(row.get("annual_income")) or row.get("annual_income", 0) <= 0:
-            reasons.append("missing_income")
-        if pd.isna(row.get("risk_score")):
-            reasons.append("missing_risk_score")
-        elif row.get("risk_score", 0) < 500:
-            reasons.append("low_risk_score")
-
-        rows.append(
-            {
-                "customer_id": row["customer_id"],
-                "fallback_reasons": "; ".join(reasons) if reasons else "no_issue_detected",
-            }
-        )
-
-    output = pd.DataFrame(rows)
+    # Rules use only signals the bank data has; MBD publishes no income, credit score or account table.
+    flags = pd.DataFrame(
+        {
+            "no_transactions_in_last_365d": features["txn_count_365"].eq(0),
+            "stale_transaction_activity": features["recency_days"].gt(180),
+            "activity_dropping": features["txn_count_90"].lt(features["txn_count_365"] / 8),  # under half the usual quarter
+        }
+    )
+    reasons = flags.apply(lambda row: "; ".join(flags.columns[row.to_numpy()]), axis=1)
+    output = pd.DataFrame(
+        {"customer_id": features["customer_id"], "fallback_reasons": reasons.replace("", "no_issue_detected")}
+    )
     output.to_csv(TABLES_DIR / "fallback_explanations.csv", index=False)
     return output
 

@@ -6,6 +6,7 @@ import json
 
 import pandas as pd
 
+from lead_scoring.config import PipelineConfig
 from lead_scoring.paths import LEAD_SCORES_FILE, TABLES_DIR, ensure_directories
 
 
@@ -16,18 +17,18 @@ SCENARIO_MULTIPLIERS = {
 }
 
 
-def build_scenarios() -> dict[str, object]:
-    """Create static 12 month value scenarios for the frontend."""
+def build_scenarios(config: PipelineConfig = PipelineConfig()) -> dict[str, object]:
+    """Create static value scenarios over the scoring horizon for the frontend."""
     ensure_directories()
     scores = pd.read_csv(LEAD_SCORES_FILE)
     base_total = float(scores["expected_value"].sum())
-    months = list(range(1, 13))
+    months = list(range(1, config.horizon_months + 1))
 
     scenario_rows = []
     for name, multiplier in SCENARIO_MULTIPLIERS.items():
         cumulative = 0.0
         for month in months:
-            monthly_value = base_total * multiplier / 12
+            monthly_value = base_total * multiplier / len(months)
             cumulative += monthly_value
             scenario_rows.append(
                 {
