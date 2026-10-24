@@ -2,9 +2,18 @@ import math
 
 import numpy as np
 import pandas as pd
+import pytest
 from sklearn.metrics import roc_auc_score
 
-from lead_scoring.metrics import bootstrap_ci, decile_table, classification_metrics, lift_at_fraction, regression_metrics, wilson_interval
+from lead_scoring.metrics import (
+    bootstrap_ci,
+    classification_metrics,
+    decile_table,
+    lift_at_fraction,
+    precision_at_fraction,
+    regression_metrics,
+    wilson_interval,
+)
 
 
 def test_regression_metrics_returns_expected_keys():
@@ -65,3 +74,11 @@ def test_decile_table_orders_top_decile_first_with_lift_and_interval():
     assert top["decile"] == 10 and top["conversion_rate"] == 1.0 and top["lift"] == 10.0
     assert top["conversion_ci_lower"] < 1.0 <= top["conversion_ci_upper"]
     assert table["cumulative_share_of_converters"].iloc[0] == 1.0
+
+
+def test_precision_at_fraction_shares_ties_at_the_cutoff():
+    y = pd.Series([1, 0, 0, 0, 1, 0, 0, 0, 0, 0])
+    # All scores tie: any top-20% pick is a random draw, so precision is the base rate.
+    assert precision_at_fraction(y, pd.Series([0.0] * 10), 0.20) == pytest.approx(0.2)
+    # One clear leader, then a 9-way tie for the second slot holding 1 positive in 9.
+    assert precision_at_fraction(y, pd.Series([5.0] + [1.0] * 9), 0.20) == pytest.approx((1 + 1 / 9) / 2)

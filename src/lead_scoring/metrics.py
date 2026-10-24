@@ -66,11 +66,15 @@ def precision_at_fraction(y_true: pd.Series, scores: pd.Series | np.ndarray, fra
     """Precision among the top ranked rows."""
     if not 0 < fraction <= 1:
         raise ValueError("fraction must be between 0 and 1")
-    actual = pd.Series(y_true).astype(int).reset_index(drop=True)
-    score = pd.Series(scores).astype(float).reset_index(drop=True)
+    actual = np.asarray(y_true, dtype=float)
+    score = np.asarray(scores, dtype=float)
     n_top = max(1, int(len(score) * fraction))
-    top_idx = score.sort_values(ascending=False).head(n_top).index
-    return float(actual.loc[top_idx].mean())
+    cutoff = np.sort(score)[::-1][n_top - 1]
+    above = score > cutoff
+    tied = score == cutoff
+    # Rows tied at the cutoff fill the remaining slots in random order, so they count at their mean rate.
+    hits = actual[above].sum() + actual[tied].mean() * (n_top - above.sum())
+    return float(hits / n_top)
 
 
 def lift_at_fraction(y_true: pd.Series, scores: pd.Series | np.ndarray, fraction: float) -> float:

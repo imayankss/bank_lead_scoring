@@ -12,7 +12,7 @@ import pandas as pd
 from sklearn.calibration import calibration_curve
 from sklearn.metrics import average_precision_score, brier_score_loss, mean_absolute_error, mean_squared_error, roc_auc_score
 
-from lead_scoring.metrics import bootstrap_ci, decile_table, lift_at_fraction
+from lead_scoring.metrics import bootstrap_ci, decile_table, lift_at_fraction, precision_at_fraction
 
 from lead_scoring.paths import (
     CLTV_MODEL_FILE,
@@ -33,15 +33,6 @@ def _safe_auc(y_true: pd.Series, y_score: np.ndarray) -> float:
     if y_true.nunique() < 2:
         return float("nan")
     return float(roc_auc_score(y_true, y_score))
-
-
-def precision_at_k(y_true: pd.Series, scores: np.ndarray, fraction: float) -> float:
-    """Calculate precision among the top scoring fraction."""
-    if not 0 < fraction <= 1:
-        raise ValueError("fraction must be between 0 and 1.")
-    n_top = max(1, int(len(scores) * fraction))
-    top_idx = np.argsort(scores)[-n_top:]
-    return float(y_true.reset_index(drop=True).iloc[top_idx].mean())
 
 
 RANKING_METRICS = {
@@ -72,8 +63,8 @@ def evaluate_models() -> dict[str, float]:
         "propensity_brier": float(brier_score_loss(y_clf_test, pred_propensity)),
         "cltv_rmse": float(mean_squared_error(y_reg_test, pred_cltv) ** 0.5),
         "cltv_mae": float(mean_absolute_error(y_reg_test, pred_cltv)),
-        "precision_at_10pct": precision_at_k(y_clf_test, expected_value, 0.10),
-        "precision_at_20pct": precision_at_k(y_clf_test, expected_value, 0.20),
+        "precision_at_10pct": precision_at_fraction(y_clf_test, expected_value, 0.10),
+        "precision_at_20pct": precision_at_fraction(y_clf_test, expected_value, 0.20),
     }
     intervals = bootstrap_ci(y_clf_test, pred_propensity, RANKING_METRICS)
     for name, ci in intervals.items():
