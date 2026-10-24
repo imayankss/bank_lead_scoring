@@ -59,7 +59,8 @@ def _fold_features(fold: int, *, mbd_dir: Path, snapshot: str, include_target: b
         "snap_mon": snap.date().isoformat(), "horizon_mon": horizon_end.date().isoformat(),
     }
     any_product = "greatest(" + ", ".join(TARGETS) + ")"
-    con = duckdb.connect(config={"enable_progress_bar": False})
+    con = duckdb.connect()
+    con.execute("SET enable_progress_bar = false")
     clients = con.execute(f"""
         SELECT client_id,
                sum({any_product}) FILTER (WHERE mon < $snap_mon) AS products_taken_before,
