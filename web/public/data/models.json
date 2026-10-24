@@ -311,7 +311,7 @@
     "propensity_model": "HistGradientBoostingClassifier",
     "test_rows": 100224,
     "train_rows": 300672,
-    "trained_at_utc": "2026-10-24T20:24:29.143571+00:00"
+    "trained_at_utc": "2026-10-24T20:42:32.615264+00:00"
   },
   "feature_importance": [
     {
