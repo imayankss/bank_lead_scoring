@@ -45,12 +45,12 @@ The test snapshot is used once, for the final numbers. Every choice is made on v
 
 All features are computed in the existing DuckDB per-fold query, from events strictly before the end of the snapshot day.
 
-1. **Category mix:** for each of the 11 categorical columns, take the top 20 values by frequency in the fit snapshots and record transaction counts in the last 365 and 90 days for each. Other values are pooled as "other". This adds roughly 400 columns, mostly sparse.
+1. **Category mix:** for each of the 11 categorical columns, take the top 10 values by frequency in events up to the last fit snapshot, and record transaction counts in the last 365 and 90 days for each. That is 220 columns, mostly sparse, stored as int32. Top 20 would hold about 3 GB of int64 during the build, too much for 8 GB of RAM.
 2. **Trend:** transaction count and amount for each of the last 6 months; ratios of the last 30 days to 90 and of 90 to 365; days since the first and last transaction of each `event_type` among the top 10.
 3. **Fixed-window product history,** replacing the cumulative `target_*_before` and `products_taken_before`:
-   - For each product, a purchase flag in the last 2 months and months since the last purchase, capped at 2.
+   - For each product and for "any product", a purchase flag for each of the 2 label months before the snapshot month. Together the two flags also say how recent the purchase was. The snapshot month's own label is never used, matching the existing build.
    - When the window starts before 2022-02 (the first target month), the value is **missing (NaN)**, not 0.
-   - LightGBM handles NaN natively, and the linear baselines get the existing missing-value indicators.
+   - The model matrix keeps the pipeline's existing handling for every model: median imputation plus a `_missing` indicator column, so "unknown" stays distinct from "bought nothing".
    - With a 2-month window, history is complete from the 2022-04-30 snapshot onward. That covers 1 of 4 fit snapshots and 4 of 7 final snapshots.
    - Why 2 months: it is the longest window that is complete at any fit snapshot.
 4. The remaining 365-day and 90-day aggregates stay as they are.
@@ -61,8 +61,8 @@ Model: LightGBM binary, early-stopped on validation AUC, with a small grid on va
 ## 5. GRU on raw transactions (`sequences.py`, `gru.py`)
 
 - **Event store:** all 38.8M events are sorted by (client, time) once and cached as `.npy` arrays: 11 category codes as int16 (`src_type21` and `src_type31` hashed to 1,024 buckets), log1p of the capped amount as float32, and the timestamp as int64. A per-client offset index sits beside them. That is about 1.2 GB in RAM, which fits in 8 GB. The cache lives under `data/processed/` (gitignored).
-- **Sample:** for a given (client, snapshot), the last 512 events before the snapshot cutoff, found with a binary search on time. Each event gets 11 embeddings (16 dims each), log amount, log hours since the previous event and log days before the snapshot. Clients with no events get one padding token.
-- **Model:** one GRU layer with 128 hidden units and dropout 0.2. Its last state feeds 9 heads, trained jointly with summed binary cross-entropy: any product within 3 months (the headline), each of the 4 products within 3 months, and each of the 4 products in the next month (for the paper row). Only the "any" head is blended.
+- **Sample:** for a given (client, snapshot), the last 512 events before the snapshot cutoff, found with a binary search on time. Each event gets 11 embeddings (16 dims each), log amount, log hours since the previous event and log days before the snapshot. Clients with no events get one padding token. Every sequence is left-padded to a fixed 512, so a client's score never depends on which other clients share its batch.
+- **Model:** one GRU layer with 128 hidden units and dropout 0.2. Its last state feeds 9 heads, trained jointly with binary cross-entropy averaged over heads: any product within 3 months (the headline), each of the 4 products within 3 months, and each of the 4 products in the next month (for the paper row). Only the "any" head is blended.
 - **Training:** AdamW at 1e-3 and batch 256 on `mps` (falling back to CPU), up to 12 epochs, keeping the best epoch by validation AUC. The final refit trains for that many epochs on the 7 snapshots. Seeds are fixed. MPS training is not bit-reproducible, so the final weights are saved and inference runs on the CPU.
 - **Where it runs:** `scripts/train_gru.py` runs the validation fit and then the final fit, and writes `models/gru_final.pt` plus `reports/tables/gru_validation.csv`. `run_pipeline` loads `gru_final.pt` and only runs inference (about 3 min on CPU), so the pipeline stays fast and reproducible. Weights are about 2 MB and stay out of git, like `models/*.pkl`.
 
