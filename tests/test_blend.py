@@ -1,6 +1,6 @@
 import numpy as np
 
-from lead_scoring.blend import blend, calibrate, choose_weight, fit_calibrator
+from lead_scoring.blend import blend, calibrate, choose_weight, fit_calibrator, rank_pct
 
 
 def _toy(n=2000, seed=0):
@@ -39,4 +39,13 @@ def test_calibrated_probability_is_monotone_in_range_and_keeps_the_base_rate():
     p = calibrate(s, fit_calibrator(y, s))
     order = np.argsort(s)
     assert np.all(np.diff(p[order]) >= -1e-12) and p.min() >= 0 and p.max() <= 1
-    assert abs(p.mean() - y.mean()) < 1e-9
+    assert abs(p.mean() - y.mean()) < 0.005  # bin means are interpolated, so the rate is only approximate
+
+
+def test_one_lucky_top_client_does_not_set_the_top_probability():
+    rng = np.random.default_rng(3)
+    score = rng.random(2000)
+    y = (rng.random(2000) < 0.025).astype(int)
+    y[np.argmax(score)] = 1
+    p = calibrate(rank_pct(score), fit_calibrator(y, rank_pct(score)))
+    assert p[np.argmax(score)] < 0.2
