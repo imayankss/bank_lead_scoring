@@ -12,7 +12,7 @@ from importlib.metadata import PackageNotFoundError, version
 from lead_scoring.config import PipelineConfig
 from lead_scoring.paths import MBD_ARCHIVES, MBD_REVISION, PROJECT_ROOT, RUN_MANIFEST_FILE
 
-PACKAGES = ["pandas", "numpy", "scikit-learn", "duckdb", "pyarrow", "joblib"]
+PACKAGES = ["pandas", "numpy", "scikit-learn", "duckdb", "pyarrow", "joblib", "lightgbm", "torch"]
 
 
 def _git(*args: str) -> str | None:
