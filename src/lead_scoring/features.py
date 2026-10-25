@@ -9,6 +9,7 @@ from typing import Any
 import numpy as np
 import pandas as pd
 from lead_scoring.config import PipelineConfig
+from lead_scoring.data import LABELS
 from lead_scoring.paths import (
     CUSTOMER_FEATURES_FILE,
     FEATURE_METADATA_FILE,
@@ -19,30 +20,23 @@ from lead_scoring.paths import (
 from lead_scoring.temporal import assert_no_forbidden_columns, assert_target_windows_before
 
 
-TARGET_COLUMNS = {"future_value", "converted"}
+TARGET_COLUMNS = {"future_value", *LABELS}
 IDENTIFIER_COLUMNS = {"customer_id", "fold"}
 PII_COLUMNS = {"first_name", "last_name", "email", "phone", "dob", "postal_code"}
 DATE_COLUMNS = {"first_txn", "last_txn", "snapshot_date"}
 # MBD columns no transaction window reproduces (best match 11% of rows), so their timing is unknown.
 UNEXPLAINED_COLUMNS = {"trans_count", "diff_trans_date"}
-FORBIDDEN_COLUMNS = TARGET_COLUMNS | IDENTIFIER_COLUMNS | PII_COLUMNS | DATE_COLUMNS | UNEXPLAINED_COLUMNS
+# Cumulative history spans 0 months at the Jan-2022 snapshot and 8 at the test one (labels start 2022-02),
+# so the same value means different things in training and test. Kept for display and the rule baseline only.
+CUMULATIVE_HISTORY = {"products_taken_before", "target_1_before", "target_2_before", "target_3_before", "target_4_before"}
+FORBIDDEN_COLUMNS = TARGET_COLUMNS | IDENTIFIER_COLUMNS | PII_COLUMNS | DATE_COLUMNS | UNEXPLAINED_COLUMNS | CUMULATIVE_HISTORY
 
 NUMERIC_FEATURE_CANDIDATES = [
-    "total_txn_amt_365",
-    "txn_count_365",
-    "avg_txn_amt_365",
-    "max_txn_amt_365",
-    "active_days_365",
-    "txn_count_90",
-    "total_txn_amt_90",
-    "recency_days",
-    "tenure_days",
-    "products_taken_before",
-    "target_1_before",
-    "target_2_before",
-    "target_3_before",
-    "target_4_before",
+    "total_txn_amt_365", "txn_count_365", "avg_txn_amt_365", "max_txn_amt_365", "active_days_365",
+    "txn_count_90", "total_txn_amt_90", "recency_days", "tenure_days", "ratio_30_90", "ratio_90_365",
 ]
+# Built per vocabulary and window by lead_scoring.data, so they are matched by prefix.
+GENERATED_FEATURE_PREFIXES = ("hist_", "cat_", "txn_count_d30_", "txn_amt_d30_", "days_since_evt_")
 
 # MBD publishes no client attributes; frequency encoding stays for data sources that do.
 CATEGORICAL_FEATURE_CANDIDATES: list[str] = []
@@ -68,6 +62,7 @@ def split_training_data(
 def fit_preprocessor(train_df: pd.DataFrame) -> dict[str, Any]:
     """Fit simple numeric imputation and train-only frequency encoders."""
     numeric_cols = _available(train_df.columns, NUMERIC_FEATURE_CANDIDATES)
+    numeric_cols += [c for c in train_df.columns if c.startswith(GENERATED_FEATURE_PREFIXES)]
     categorical_cols = _available(train_df.columns, CATEGORICAL_FEATURE_CANDIDATES)
 
     medians = {}
@@ -114,7 +109,7 @@ def transform_features(df: pd.DataFrame, spec: dict[str, Any]) -> pd.DataFrame:
         mapping = spec["frequency_maps"].get(col, {})
         out[f"{col}_freq"] = values.map(mapping).fillna(0.0).astype(float)
 
-    return out.reindex(columns=spec["feature_cols"], fill_value=0.0)
+    return out.reindex(columns=spec["feature_cols"], fill_value=0.0).astype("float32")
 
 
 def _write_json(path: Path, payload: dict[str, Any]) -> None:
@@ -153,6 +148,8 @@ def prepare_feature_sets(config: PipelineConfig = PipelineConfig()) -> dict[str,
         "y_reg_test": PREPROCESSED_DATA_DIR / "y_reg_test.parquet",
         "y_clf_train": PREPROCESSED_DATA_DIR / "y_clf_train.parquet",
         "y_clf_test": PREPROCESSED_DATA_DIR / "y_clf_test.parquet",
+        "y_labels_train": PREPROCESSED_DATA_DIR / "y_labels_train.parquet",
+        "y_labels_test": PREPROCESSED_DATA_DIR / "y_labels_test.parquet",
         "train_ids": PREPROCESSED_DATA_DIR / "train_ids.csv",
         "test_ids": PREPROCESSED_DATA_DIR / "test_ids.csv",
         "scoring_ids": PREPROCESSED_DATA_DIR / "scoring_ids.csv",
@@ -166,6 +163,8 @@ def prepare_feature_sets(config: PipelineConfig = PipelineConfig()) -> dict[str,
     y_reg_test.to_frame("future_value").to_parquet(paths["y_reg_test"], index=False)
     y_clf_train.to_frame("converted").to_parquet(paths["y_clf_train"], index=False)
     y_clf_test.to_frame("converted").to_parquet(paths["y_clf_test"], index=False)
+    train_df[LABELS].astype("int8").to_parquet(paths["y_labels_train"], index=False)
+    test_df[LABELS].astype("int8").to_parquet(paths["y_labels_test"], index=False)
     train_df[["customer_id", "snapshot_date"]].to_csv(paths["train_ids"], index=False)
     test_df[["customer_id", "snapshot_date"]].to_csv(paths["test_ids"], index=False)
     scoring_df[["customer_id"]].to_csv(paths["scoring_ids"], index=False)
