@@ -3,14 +3,18 @@ import pandas as pd
 import pytest
 
 from lead_scoring.config import PipelineConfig
-from lead_scoring.data import amount_cap, build_customer_features
+from lead_scoring.data import CATEGORY_COLUMNS, LABELS, amount_cap, build_customer_features, category_vocab
 
 SNAP = "2022-01-31"
 CFG = PipelineConfig(workers=1)
 
 
-def _features(mbd_dir, snapshot=SNAP, include_target=True, cap=1_000.0, config=CFG):
-    df = build_customer_features(snapshot, include_target=include_target, config=config, mbd_dir=mbd_dir, amount_cap=cap)
+EMPTY_VOCAB = {c: [] for c in CATEGORY_COLUMNS}
+
+
+def _features(mbd_dir, snapshot=SNAP, include_target=True, cap=1_000.0, config=CFG, vocab=None):
+    df = build_customer_features(snapshot, include_target=include_target, config=config, mbd_dir=mbd_dir,
+                                 amount_cap=cap, vocab=vocab)
     return df.set_index("customer_id")
 
 
@@ -50,7 +54,57 @@ def test_product_history_uses_only_earlier_label_months(mbd_dir):
 
 def test_scoring_features_have_no_targets(mbd_dir):
     df = _features(mbd_dir, snapshot="2022-12-31", include_target=False)
-    assert not {"converted", "future_value"} & set(df.columns)
+    assert not {"future_value", *LABELS} & set(df.columns)
+
+
+def test_product_history_is_a_fixed_two_month_window(mbd_dir):
+    df = _features(mbd_dir, snapshot="2022-04-30")
+    assert df.loc["a", "hist_target_2_m1"] == 1 and df.loc["a", "hist_any_m1"] == 1  # Mar-2022
+    assert df.loc["c", "hist_target_4_m2"] == 1  # Feb-2022
+    assert df.loc["b", ["hist_any_m1", "hist_any_m2"]].tolist() == [0, 0]  # May-2022 is in the future
+
+
+def test_history_before_the_first_label_month_is_missing_not_zero(mbd_dir):
+    mar = _features(mbd_dir, snapshot="2022-03-31")
+    assert mar["hist_any_m2"].isna().all()  # Jan-2022 has no labels at all
+    assert mar.loc["c", "hist_target_4_m1"] == 1 and mar.loc["a", "hist_any_m1"] == 0
+    jan = _features(mbd_dir)
+    assert jan[[c for c in jan.columns if c.startswith("hist_")]].isna().all().all()
+
+
+def test_per_product_labels_for_three_months_and_next_month(mbd_dir):
+    df = _features(mbd_dir)
+    assert df.loc["a", ["y3_target_2", "y1_target_2"]].tolist() == [1, 0]  # bought in Mar, not Feb
+    assert df.loc["c", ["y3_target_4", "y1_target_4"]].tolist() == [1, 1]  # bought in Feb
+    assert df.loc["b", "y3_target_1"] == 0  # May is past the window
+
+
+def test_category_vocab_counts_only_events_before_the_cutoff(mbd_dir):
+    vocab = category_vocab(mbd_dir, before=SNAP, top=10)
+    assert set(vocab) == set(CATEGORY_COLUMNS)
+    assert vocab["event_type"] == [1, 2]  # type 3 happens at 01:00 Moscow on Feb 1
+
+
+def test_category_counts_follow_the_vocab_and_window(mbd_dir):
+    df = _features(mbd_dir, vocab={**EMPTY_VOCAB, "event_type": [1, 2]})
+    a = df.loc["a"]
+    assert a["cat_event_type_1_365"] == 1 and a["cat_event_type_2_365"] == 1  # Jun-2021 and the snapshot day
+    assert a["cat_event_type_2_90"] == 1 and a["cat_event_type_1_90"] == 0
+    assert "cat_event_type_3_365" not in df.columns and df["cat_event_type_1_365"].dtype == "int32"
+
+
+def test_trend_blocks_and_ratios(mbd_dir):
+    a = _features(mbd_dir).loc["a"]
+    assert a["txn_count_d30_1"] == 1 and a["txn_amt_d30_1"] == 50  # the snapshot-day transaction
+    assert a[[f"txn_count_d30_{i}" for i in range(2, 7)]].sum() == 0  # Jun-2021 is 8 months back
+    assert a["ratio_30_90"] == 1.0 and a["ratio_90_365"] == 0.5
+
+
+def test_days_since_each_event_type(mbd_dir):
+    df = _features(mbd_dir, vocab={**EMPTY_VOCAB, "event_type": [1, 2]})
+    assert df.loc["a", "days_since_evt_2"] == 0
+    assert df.loc["a", "days_since_evt_1"] == (pd.Timestamp(SNAP) - pd.Timestamp("2021-06-01 13:00")).days
+    assert df.loc["d", "days_since_evt_1"] == CFG.lookback_days + 1
 
 
 def test_unexplained_mbd_columns_never_become_features(mbd_dir):

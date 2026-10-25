@@ -15,8 +15,13 @@ def _write(df: pd.DataFrame, root: Path, table: str) -> None:
         part.drop(columns="fold").to_parquet(out / "part-0.parquet", index=False)
 
 
-def _tx(client, fold, utc_time, amount):
-    return {"client_id": client, "fold": fold, "event_time": pd.Timestamp(utc_time), "amount": float(amount), "event_type": 1}
+CATEGORY_DEFAULTS = {"event_subtype": 2, "currency": 11, "src_type11": 3, "src_type12": 4, "dst_type11": 5,
+                     "dst_type12": 6, "src_type21": 7, "src_type22": 8, "src_type31": 9, "src_type32": 10}
+
+
+def _tx(client, fold, utc_time, amount, event_type=1):
+    return {"client_id": client, "fold": fold, "event_time": pd.Timestamp(utc_time), "amount": float(amount),
+            "event_type": event_type, **CATEGORY_DEFAULTS}
 
 
 @pytest.fixture
@@ -24,8 +29,8 @@ def mbd_dir(tmp_path: Path) -> Path:
     """Snapshot of interest in the tests is 2022-01-31 (Moscow time, UTC+3)."""
     tx = [
         _tx("a", 0, "2021-06-01 10:00:00", 100),
-        _tx("a", 0, "2022-01-31 20:00:00", 50),   # 23:00 Moscow on snapshot day: counted
-        _tx("a", 0, "2022-01-31 22:00:00", 999),  # 01:00 Moscow on Feb 1: after snapshot
+        _tx("a", 0, "2022-01-31 20:00:00", 50, event_type=2),   # 23:00 Moscow on snapshot day: counted
+        _tx("a", 0, "2022-01-31 22:00:00", 999, event_type=3),  # 01:00 Moscow on Feb 1: after snapshot
         _tx("a", 0, "2022-03-15 10:00:00", 70),   # inside the 3-month target window
         _tx("a", 0, "2022-06-15 10:00:00", 500),  # after the target window
         _tx("b", 1, "2021-12-20 10:00:00", 10_000_000),  # extreme amount, capped
