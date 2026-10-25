@@ -144,14 +144,18 @@ def _fold_features(fold: int, *, mbd_dir: Path, snapshot: str, include_target: b
         df[cols] = np.nan if params[m] < first_label else df[cols].fillna(0)
     cat_cols = [c for c in df.columns if c.startswith("cat_")]
     df[cat_cols] = df[cat_cols].astype("int32")
-    df["recency_days"] = (snap - df["last_txn"]).dt.days.fillna(config.lookback_days + 1).clip(lower=0)
-    df["tenure_days"] = (snap - df["first_txn"]).dt.days.fillna(0).clip(lower=0)
-    df["ratio_30_90"] = df["txn_count_d30_1"] / df["txn_count_90"].clip(lower=1)
-    df["ratio_90_365"] = df["txn_count_90"] / df["txn_count_365"].clip(lower=1)
-    for code in vocab["event_type"]:
-        last = pd.to_datetime(df.pop(f"last_evt_{int(code)}"))
-        df[f"days_since_evt_{int(code)}"] = (snap - last).dt.days.fillna(config.lookback_days + 1).clip(lower=0)
-    df["fold"] = fold
+    evt_codes = [int(code) for code in vocab["event_type"]]
+    days_since = lambda ts: (snap - pd.to_datetime(ts)).dt.days.fillna(config.lookback_days + 1).clip(lower=0)  # noqa: E731
+    derived = {
+        "recency_days": days_since(df["last_txn"]),
+        "tenure_days": (snap - df["first_txn"]).dt.days.fillna(0).clip(lower=0),
+        "ratio_30_90": df["txn_count_d30_1"] / df["txn_count_90"].clip(lower=1),
+        "ratio_90_365": df["txn_count_90"] / df["txn_count_365"].clip(lower=1),
+        **{f"days_since_evt_{code}": days_since(df[f"last_evt_{code}"]) for code in evt_codes},
+        "fold": fold,
+    }
+    # One concat instead of many inserts: avoids a fragmented frame on 100k-row folds.
+    df = pd.concat([df.drop(columns=[f"last_evt_{code}" for code in evt_codes]), pd.DataFrame(derived, index=df.index)], axis=1)
     if include_target:
         df[LABELS] = df[LABELS].astype(int)
     else:

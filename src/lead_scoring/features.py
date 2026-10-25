@@ -94,22 +94,22 @@ def fit_preprocessor(train_df: pd.DataFrame) -> dict[str, Any]:
 
 def transform_features(df: pd.DataFrame, spec: dict[str, Any]) -> pd.DataFrame:
     """Transform a customer table into a model matrix using a fitted spec."""
-    out = pd.DataFrame(index=df.index)
+    out: dict[str, pd.Series] = {}
 
     for col in spec["numeric_cols"]:
         values = pd.to_numeric(df.get(col), errors="coerce")
-        out[col] = values.fillna(spec["numeric_medians"].get(col, 0.0)).astype(float)
+        out[col] = values.fillna(spec["numeric_medians"].get(col, 0.0)).astype("float32")
 
     for col in spec["missing_indicator_cols"]:
         values = pd.to_numeric(df.get(col), errors="coerce")
-        out[f"{col}_missing"] = values.isna().astype(int)
+        out[f"{col}_missing"] = values.isna().astype("float32")
 
     for col in spec["categorical_cols"]:
         values = df.get(col, pd.Series("missing", index=df.index)).fillna("missing").astype(str)
         mapping = spec["frequency_maps"].get(col, {})
-        out[f"{col}_freq"] = values.map(mapping).fillna(0.0).astype(float)
+        out[f"{col}_freq"] = values.map(mapping).fillna(0.0).astype("float32")
 
-    return out.reindex(columns=spec["feature_cols"], fill_value=0.0).astype("float32")
+    return pd.DataFrame(out, index=df.index).reindex(columns=spec["feature_cols"], fill_value=0.0).astype("float32")
 
 
 def _write_json(path: Path, payload: dict[str, Any]) -> None:
