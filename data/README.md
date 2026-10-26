@@ -17,3 +17,13 @@ Nothing in `data/` is committed except this file. Run `python scripts/fetch_mbd.
 - Only the `targets` and `detail/trx` tables are used; `geo` and `dialog` are not.
 - `trans_count` and `diff_trans_date` in `targets` are never used. No transaction window reproduces them, so their source is unknown.
 - The amount cap in `src/lead_scoring/data.py` limits the effect of the noise added to amounts.
+
+## Label timing
+
+A `targets` row stamped `mon = M` is read as "purchases made during month M". At a month-end snapshot, the snapshot month's own label is therefore known history, and the prediction window starts the month after. This is the best-supported reading, not a documented fact:
+
+1. The MBD paper shifts the purchase table by one month so labels run February 2022 to January 2023, while transactions end in December 2022.
+2. For first-time product-2 buyers, the first transaction of event type 12, 23 or 26 peaks inside the label month, not the month before. These types are 64–93× more common among buyers than non-buyers in that month.
+3. `trans_count` increments line up best with the calendar month before `mon` (correlation 0.36, against 0.34 for the same month), which fits rows built as "features up to the end of M−1, purchase during M".
+
+If this reading were wrong in the unsafe direction (a row stamped M meaning purchases in M+1), the snapshot-month flag `hist_*_m0` would leak. The single-feature check in `scripts/validate_propensity.py` stops the run if any feature alone passes 0.80 validation AUC.

@@ -72,6 +72,20 @@ def test_history_before_the_first_label_month_is_missing_not_zero(mbd_dir):
     assert jan[[c for c in jan.columns if c.startswith("hist_")]].isna().all().all()
 
 
+def test_snapshot_month_purchase_is_history_not_label(mbd_dir):
+    df = _features(mbd_dir, snapshot="2022-03-31")
+    assert df.loc["a", ["hist_target_2_m0", "hist_any_m0"]].tolist() == [1, 1]  # bought during March
+    assert df.loc["a", "converted"] == 0  # the label window starts in April
+    assert df.loc["c", "hist_any_m0"] == 0 and df.loc["c", "hist_any_m1"] == 1  # bought in February
+
+
+def test_months_since_last_purchase(mbd_dir):
+    df = _features(mbd_dir, snapshot="2022-04-30")
+    assert df.loc["a", ["hist_target_2_months_since", "hist_any_months_since"]].tolist() == [1, 1]  # March
+    assert df.loc["c", "hist_target_4_months_since"] == 2  # February
+    assert df.loc[["b", "d"], "hist_any_months_since"].isna().all()  # no purchase yet: unknown, not zero
+
+
 def test_per_product_labels_for_three_months_and_next_month(mbd_dir):
     df = _features(mbd_dir)
     assert df.loc["a", ["y3_target_2", "y1_target_2"]].tolist() == [1, 0]  # bought in Mar, not Feb

@@ -27,6 +27,7 @@ CATEGORY_COLUMNS = ["event_type", "event_subtype", "currency", "src_type11", "sr
 TOP_CATEGORIES = 10  # top 20 would hold ~3 GB of int64 during the build on an 8 GB machine
 # Any product within the horizon (headline), each product within the horizon, each product next month.
 LABELS = ["converted", *(f"y3_{t}" for t in TARGETS), *(f"y1_{t}" for t in TARGETS)]
+HISTORY_MONTHS = ("m0", "m1", "m2")  # the snapshot month and the two before it
 # MBD stores event_time in UTC; the bank's day boundaries are Moscow time.
 LOCAL_TS = "event_time + INTERVAL 3 HOUR"
 
@@ -90,8 +91,9 @@ def _fold_features(fold: int, *, mbd_dir: Path, snapshot: str, include_target: b
         "cutoff": day_after, "horizon_cutoff": horizon_end + pd.Timedelta(days=1),
         "snap_mon": snap.date().isoformat(), "horizon_mon": horizon_end.date().isoformat(),
         "next_mon": month_end(snap, 1).date().isoformat(),
-        # The two label months before the snapshot month; the snapshot month itself is never used.
-        "m1": month_end(snap, -1).date().isoformat(), "m2": month_end(snap, -2).date().isoformat(),
+        # A row stamped `mon` records purchases made during that month (evidence in data/README.md),
+        # so the snapshot month (m0) is complete history at the end of the snapshot day.
+        **{f"m{k}": month_end(snap, -k).date().isoformat() for k in range(3)},
         **{f"d30_{i}": day_after - pd.Timedelta(days=30 * i) for i in range(1, 7)},
     }
     any_product = "greatest(" + ", ".join(TARGETS) + ")"
@@ -103,12 +105,13 @@ def _fold_features(fold: int, *, mbd_dir: Path, snapshot: str, include_target: b
         SELECT client_id,
                sum({any_product}) FILTER (WHERE mon < $snap_mon) AS products_taken_before,
                {", ".join(f"sum({t}) FILTER (WHERE mon < $snap_mon) AS {t}_before" for t in TARGETS)},
-               {", ".join(f"max({col}) FILTER (WHERE mon = ${m}) AS hist_{name}_{m}" for name, col in history for m in ("m1", "m2"))},
+               {", ".join(f"max({col}) FILTER (WHERE mon = ${m}) AS hist_{name}_{m}" for name, col in history for m in HISTORY_MONTHS)},
+               {", ".join(f"datediff('month', CAST(max(mon) FILTER (WHERE {col} = 1 AND mon <= $snap_mon) AS DATE), CAST($snap_mon AS DATE)) AS hist_{name}_months_since" for name, col in history)},
                max({any_product}) FILTER (WHERE mon > $snap_mon AND mon <= $horizon_mon) AS converted,
                {", ".join(f"max({t}) FILTER (WHERE mon > $snap_mon AND mon <= $horizon_mon) AS y3_{t}" for t in TARGETS)},
                {", ".join(f"max({t}) FILTER (WHERE mon = $next_mon) AS y1_{t}" for t in TARGETS)}
         FROM read_parquet($targets) GROUP BY client_id""",
-        {k: params[k] for k in ("targets", "snap_mon", "horizon_mon", "next_mon", "m1", "m2")}).df()
+        {k: params[k] for k in ("targets", "snap_mon", "horizon_mon", "next_mon", *HISTORY_MONTHS)}).df()
     aggs = [
         "sum(amount) FILTER (WHERE ts >= $start AND ts < $cutoff) AS total_txn_amt_365",
         "count(*) FILTER (WHERE ts >= $start AND ts < $cutoff) AS txn_count_365",
@@ -138,7 +141,7 @@ def _fold_features(fold: int, *, mbd_dir: Path, snapshot: str, include_target: b
     filled = [c for c in df.columns if c.endswith(("_365", "_90", "_before"))
               or c.startswith(("cat_", "txn_count_d30_", "txn_amt_d30_")) or c in (*LABELS, "future_value")]
     df[filled] = df[filled].fillna(0)
-    for m in ("m1", "m2"):
+    for m in HISTORY_MONTHS:
         cols = [c for c in df.columns if c.startswith("hist_") and c.endswith(f"_{m}")]
         # A month before the first label month has no labels at all: unknown, not "bought nothing".
         df[cols] = np.nan if params[m] < first_label else df[cols].fillna(0)
