@@ -36,6 +36,12 @@ def mbd_dir(tmp_path: Path) -> Path:
         _tx("b", 1, "2021-12-20 10:00:00", 10_000_000),  # extreme amount, capped
         _tx("c", 1, "2020-12-31 21:30:00", 5),    # 00:30 Moscow on 1 Jan 2021: older than 365 days
     ]
+    dialogs = [  # only the timestamps are read; the 768-wide embeddings are not used
+        {"client_id": "a", "fold": 0, "event_time": pd.Timestamp("2021-12-01 10:00:00")},  # 61 days before
+        {"client_id": "a", "fold": 0, "event_time": pd.Timestamp("2022-01-31 22:00:00")},  # 01:00 Moscow on Feb 1
+        {"client_id": "d", "fold": 0, "event_time": pd.Timestamp("2022-01-20 10:00:00")},  # no transactions, but talks
+        {"client_id": "c", "fold": 1, "event_time": pd.Timestamp("2020-12-15 10:00:00")},  # older than 365 days
+    ]
     targets = []
     for client, fold in [("a", 0), ("b", 1), ("c", 1), ("d", 0)]:  # "d" has no transactions at all
         for mon in MONTHS:
@@ -47,5 +53,6 @@ def mbd_dir(tmp_path: Path) -> Path:
     t.loc[(t.client_id == "b") & (t.mon == "2022-05-31"), "target_1"] = 1  # after the window
     t.loc[(t.client_id == "c") & (t.mon == "2022-02-28"), "target_4"] = 1  # first label month
     _write(pd.DataFrame(tx), tmp_path / "detail", "trx")
+    _write(pd.DataFrame(dialogs), tmp_path / "detail", "dialog")
     _write(t, tmp_path, "targets")
     return tmp_path

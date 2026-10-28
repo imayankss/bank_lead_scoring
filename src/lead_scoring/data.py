@@ -84,9 +84,10 @@ def _fold_features(fold: int, *, mbd_dir: Path, snapshot: str, include_target: b
     day_after = snap + pd.Timedelta(days=1)
     horizon_end = month_end(snap, config.horizon_months)
     trx = str(mbd_dir / "detail" / "trx" / f"fold={fold}" / "*.parquet")
+    dialog = str(mbd_dir / "detail" / "dialog" / f"fold={fold}" / "*.parquet")
     targets = str(mbd_dir / "targets" / f"fold={fold}" / "*.parquet")
     params = {
-        "trx": trx, "targets": targets, "cap": cap,
+        "trx": trx, "dialog": dialog, "targets": targets, "cap": cap,
         "start": day_after - pd.Timedelta(days=config.lookback_days), "start90": day_after - pd.Timedelta(days=90),
         "cutoff": day_after, "horizon_cutoff": horizon_end + pd.Timedelta(days=1),
         "snap_mon": snap.date().isoformat(), "horizon_mon": horizon_end.date().isoformat(),
@@ -134,12 +135,24 @@ def _fold_features(fold: int, *, mbd_dir: Path, snapshot: str, include_target: b
                     FROM read_parquet($trx))
         SELECT client_id, {", ".join(aggs)} FROM tx GROUP BY client_id""",
         {k: params[k] for k in ("trx", "cap", "start", "start90", "cutoff", "horizon_cutoff", *(f"d30_{i}" for i in range(1, 7)))}).df()
+    # Dialog embeddings are left out: 16 PCA components of them added nothing on validation (S3 probe).
+    dlg = con.execute(f"""
+        WITH d AS (SELECT client_id, {LOCAL_TS} AS ts FROM read_parquet($dialog))
+        SELECT client_id,
+               count(*) FILTER (WHERE ts >= $d30_1 AND ts < $cutoff) AS dlg_count_30,
+               count(*) FILTER (WHERE ts >= $start90 AND ts < $cutoff) AS dlg_count_90,
+               count(*) FILTER (WHERE ts >= $start AND ts < $cutoff) AS dlg_count_365,
+               max(ts) FILTER (WHERE ts < $cutoff) AS last_dialog
+        FROM d GROUP BY client_id""",
+        {k: params[k] for k in ("dialog", "start", "start90", "cutoff", "d30_1")}).df()
     con.close()
 
-    df = clients.merge(tx, on="client_id", how="left").rename(columns={"client_id": "customer_id"})
+    df = (clients.merge(tx, on="client_id", how="left").merge(dlg, on="client_id", how="left")
+          .rename(columns={"client_id": "customer_id"}))
     assert_events_before(df["last_txn"], snap)
+    assert_events_before(df["last_dialog"], snap)
     filled = [c for c in df.columns if c.endswith(("_365", "_90", "_before"))
-              or c.startswith(("cat_", "txn_count_d30_", "txn_amt_d30_")) or c in (*LABELS, "future_value")]
+              or c.startswith(("cat_", "txn_count_d30_", "txn_amt_d30_", "dlg_count_")) or c in (*LABELS, "future_value")]
     df[filled] = df[filled].fillna(0)
     for m in HISTORY_MONTHS:
         cols = [c for c in df.columns if c.startswith("hist_") and c.endswith(f"_{m}")]
@@ -155,10 +168,12 @@ def _fold_features(fold: int, *, mbd_dir: Path, snapshot: str, include_target: b
         "ratio_30_90": df["txn_count_d30_1"] / df["txn_count_90"].clip(lower=1),
         "ratio_90_365": df["txn_count_90"] / df["txn_count_365"].clip(lower=1),
         **{f"days_since_evt_{code}": days_since(df[f"last_evt_{code}"]) for code in evt_codes},
+        "dlg_days_since": days_since(df["last_dialog"]),
         "fold": fold,
     }
     # One concat instead of many inserts: avoids a fragmented frame on 100k-row folds.
-    df = pd.concat([df.drop(columns=[f"last_evt_{code}" for code in evt_codes]), pd.DataFrame(derived, index=df.index)], axis=1)
+    dropped = ["last_dialog", *(f"last_evt_{code}" for code in evt_codes)]
+    df = pd.concat([df.drop(columns=dropped), pd.DataFrame(derived, index=df.index)], axis=1)
     if include_target:
         df[LABELS] = df[LABELS].astype(int)
     else:

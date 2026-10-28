@@ -47,11 +47,12 @@ def test_unexplained_mbd_columns_are_forbidden_and_never_features():
 def test_cumulative_history_is_forbidden_but_windowed_history_is_a_feature():
     df = _stacked(["2022-01-31", "2022-04-30"]).assign(
         products_taken_before=1, target_1_before=1, hist_any_m1=[None, 1.0], cat_event_type_1_365=3,
-        txn_count_d30_1=1, ratio_30_90=0.5, days_since_evt_1=4, y3_target_1=1, y1_target_1=0)
+        txn_count_d30_1=1, ratio_30_90=0.5, days_since_evt_1=4, dlg_count_30=2, dlg_days_since=9,
+        y3_target_1=1, y1_target_1=0)
     spec = fit_preprocessor(df)
     assert not {"products_taken_before", "target_1_before", "y3_target_1", "y1_target_1"} & set(spec["feature_cols"])
     assert {"hist_any_m1", "hist_any_m1_missing", "cat_event_type_1_365", "txn_count_d30_1",
-            "ratio_30_90", "days_since_evt_1"} <= set(spec["feature_cols"])
+            "ratio_30_90", "days_since_evt_1", "dlg_count_30", "dlg_days_since"} <= set(spec["feature_cols"])
 
 
 def test_model_matrix_is_float32():

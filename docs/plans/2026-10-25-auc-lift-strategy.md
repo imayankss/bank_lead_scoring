@@ -118,6 +118,8 @@ The gains are estimates, not measurements. Each one is confirmed or dropped on v
 
 S2 was reverted: S1 alone beat S1 + S2 on AUC in all four settings. The label-chosen codes (event types 12, 23 and 26) pushed out frequent codes that carried more of the any-product signal. It may still help per-product models (S6). The highest single-feature AUC is 0.645, well under the 0.80 leakage limit.
 
+**Checkpoint 2 result (2026-10-26, S3 dialogs):** **0.774 AUC, 3.55× lift** (63 leaves, min_child_samples 400), against 0.768 and 3.46 for S1 alone. The kept features are dialog counts over 30, 90 and 365 days and days since the last dialog. Dialogs before the snapshot cover 30–32% of clients at every snapshot. A pre-rebuild probe showed that 16 PCA components of the mean dialog embedding (PCA fitted on fit-snapshot dialogs) added nothing (0.772 against 0.773), so embeddings are not used. The best single dialog feature is days since the last dialog (0.613 AUC). The highest single feature is still 0.645. Lift is still below 3.7; the best lift setting (31 leaves) reaches 3.60.
+
 ## 7. Bigger jumps: what 0.85 AUC and 4–5× lift would take
 
 Added 2026-10-26. Measured on the validation snapshot, using the GRU's cached scores.

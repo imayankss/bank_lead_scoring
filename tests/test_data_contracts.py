@@ -121,6 +121,15 @@ def test_days_since_each_event_type(mbd_dir):
     assert df.loc["d", "days_since_evt_1"] == CFG.lookback_days + 1
 
 
+def test_dialog_counts_and_recency_stop_at_snapshot(mbd_dir):
+    df = _features(mbd_dir)
+    assert df.loc["a", ["dlg_count_30", "dlg_count_90", "dlg_count_365"]].tolist() == [0, 1, 1]  # Feb-1 Moscow excluded
+    assert df.loc["d", "dlg_count_30"] == 1  # no transactions, but a dialog on Jan 20
+    assert df.loc["d", "dlg_days_since"] == (pd.Timestamp(SNAP) - pd.Timestamp("2022-01-20 13:00")).days
+    assert df.loc["c", "dlg_count_365"] == 0 and df.loc["c", "dlg_days_since"] > CFG.lookback_days
+    assert df.loc["b", "dlg_days_since"] == CFG.lookback_days + 1  # never talked: same value as never transacted
+
+
 def test_unexplained_mbd_columns_never_become_features(mbd_dir):
     assert not {"trans_count", "diff_trans_date"} & set(_features(mbd_dir).columns)
 

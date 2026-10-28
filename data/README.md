@@ -14,7 +14,7 @@ Nothing in `data/` is committed except this file. Run `python scripts/fetch_mbd.
 ## How the project uses it
 
 - Timestamps are stored in UTC and converted to Moscow time (UTC+3) before any day or month boundary is applied.
-- Only the `targets` and `detail/trx` tables are used; `geo` and `dialog` are not.
+- Only the `targets`, `detail/trx` and `detail/dialog` tables are used; `geo` is not. From `dialog`, only the timestamps are used, not the text embeddings.
 - `trans_count` and `diff_trans_date` in `targets` are never used. No transaction window reproduces them, so their source is unknown.
 - The amount cap in `src/lead_scoring/data.py` limits the effect of the noise added to amounts.
 

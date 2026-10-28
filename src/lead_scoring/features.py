@@ -36,7 +36,7 @@ NUMERIC_FEATURE_CANDIDATES = [
     "txn_count_90", "total_txn_amt_90", "recency_days", "tenure_days", "ratio_30_90", "ratio_90_365",
 ]
 # Built per vocabulary and window by lead_scoring.data, so they are matched by prefix.
-GENERATED_FEATURE_PREFIXES = ("hist_", "cat_", "txn_count_d30_", "txn_amt_d30_", "days_since_evt_")
+GENERATED_FEATURE_PREFIXES = ("hist_", "cat_", "txn_count_d30_", "txn_amt_d30_", "days_since_evt_", "dlg_")
 
 # MBD publishes no client attributes; frequency encoding stays for data sources that do.
 CATEGORICAL_FEATURE_CANDIDATES: list[str] = []

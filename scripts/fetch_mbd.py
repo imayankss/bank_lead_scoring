@@ -2,7 +2,7 @@
 
 Source: https://huggingface.co/datasets/ai-lab/MBD-mini (pinned revision below).
 Paper: Mollaev et al., "Multimodal Banking Dataset", arXiv:2409.17587.
-Only the targets table and the transaction table are extracted (about 0.7 GB on disk).
+Only the targets, transaction and dialog tables are extracted (about 1.5 GB on disk).
 """
 
 from __future__ import annotations
