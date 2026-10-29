@@ -3,15 +3,17 @@
 ## Pipeline flow
 
 ```text
-scripts/fetch_mbd.py -> data/raw/mbd/{targets,detail/trx}     (pinned revision, SHA-256 checked; not committed)
+scripts/fetch_mbd.py -> data/raw/mbd/{targets,detail/trx,detail/dialog}  (pinned revision, SHA-256 checked; not committed)
   -> src/lead_scoring/data.py         DuckDB per client fold, in parallel processes
   -> data/processed/customer_features.parquet   (train snapshots + test snapshot, stacked)
   -> data/processed/scoring_features.parquet    (current snapshot, no targets)
   -> src/lead_scoring/features.py     snapshot time split, leakage guards, model matrices
-  -> src/lead_scoring/training.py     CLTV and propensity models -> models/*.pkl
+  -> scripts/train_gru.py             optional GRU validation scores (data/processed/events cache)
+  -> scripts/validate_propensity.py   LightGBM settings, blend weight, calibration -> models/propensity_choice.json
+  -> src/lead_scoring/training.py     CLTV model -> models/cltv_model.pkl; LightGBM refit -> models/propensity_lgbm.txt
   -> src/lead_scoring/evaluation.py   metrics with bootstrap CIs, decile table, calibration
   -> src/lead_scoring/scoring.py      lead scores and follow-up flags
-  -> model_comparison, diagnostics, risk, scenario, seasonality, explainability
+  -> model_comparison, paper_protocol, diagnostics, risk, scenario, seasonality, explainability
   -> src/lead_scoring/web_export.py   web/public/data/*.json (strict JSON)
   -> src/lead_scoring/provenance.py   reports/run_manifest.json
   -> web/ (Next.js) and app/streamlit_app.py
@@ -22,7 +24,11 @@ scripts/fetch_mbd.py -> data/raw/mbd/{targets,detail/trx}     (pinned revision, 
 - `paths.py`: file locations and the pinned MBD revision and hashes.
 - `config.py`: lookback, horizon, train/test/scoring snapshots, worker count.
 - `temporal.py`: leakage guards that raise `LeakageError`.
-- `data.py`: client-level features and targets per snapshot, amount cap.
+- `data.py`: client-level features and targets per snapshot (transactions, purchase history, dialogs), amount cap.
+- `propensity.py`: production propensity: the chosen LightGBM, ranked and calibrated with the validation map.
+- `blend.py`: rank blend, blend-weight choice and the isotonic calibrator.
+- `sequences.py`, `gru.py`: per-client transaction sequences and the GRU (validated, weight 0 in production).
+- `paper_protocol.py`: next-month per-product AUC next to the MBD paper.
 - `features.py`: time split, preprocessing, forbidden-column list.
 - `metrics.py`: lift, tie-aware top-k precision, bootstrap CIs, Wilson intervals, decile table.
 - `model_comparison.py`: models against rule, linear and prior baselines.

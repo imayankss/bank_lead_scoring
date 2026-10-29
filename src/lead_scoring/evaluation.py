@@ -13,16 +13,15 @@ from sklearn.calibration import calibration_curve
 from sklearn.metrics import average_precision_score, brier_score_loss, mean_absolute_error, mean_squared_error, roc_auc_score
 
 from lead_scoring.metrics import bootstrap_ci, decile_table, lift_at_fraction, precision_at_fraction
-
 from lead_scoring.paths import (
     CLTV_MODEL_FILE,
     FIGURES_DIR,
     MODEL_METADATA_FILE,
     PREPROCESSED_DATA_DIR,
-    PROPENSITY_MODEL_FILE,
     TABLES_DIR,
     ensure_directories,
 )
+from lead_scoring.propensity import score_propensity
 
 
 def _read_target(path: str, column: str) -> pd.Series:
@@ -50,23 +49,23 @@ def evaluate_models() -> dict[str, float]:
     y_clf_test = _read_target("y_clf_test.parquet", "converted").astype(int)
 
     cltv_model = joblib.load(CLTV_MODEL_FILE)
-    propensity_model = joblib.load(PROPENSITY_MODEL_FILE)
-
     pred_cltv = np.clip(cltv_model.predict(X_test), 0, None)
-    pred_propensity = propensity_model.predict_proba(X_test)[:, 1]
+    scores = score_propensity(X_test)
+    pred_propensity = scores["predicted_propensity"].to_numpy()
+    rank_score = scores["lgbm_score"].to_numpy()  # finer than the calibrated steps, so ties don't blur the ranking
     expected_value = pred_cltv * pred_propensity
 
     metrics = {
         "rows": float(len(X_test)),
         "positive_rate": float(y_clf_test.mean()),
-        "propensity_auc": _safe_auc(y_clf_test, pred_propensity),
+        "propensity_auc": _safe_auc(y_clf_test, rank_score),
         "propensity_brier": float(brier_score_loss(y_clf_test, pred_propensity)),
         "cltv_rmse": float(mean_squared_error(y_reg_test, pred_cltv) ** 0.5),
         "cltv_mae": float(mean_absolute_error(y_reg_test, pred_cltv)),
         "precision_at_10pct": precision_at_fraction(y_clf_test, expected_value, 0.10),
         "precision_at_20pct": precision_at_fraction(y_clf_test, expected_value, 0.20),
     }
-    intervals = bootstrap_ci(y_clf_test, pred_propensity, RANKING_METRICS)
+    intervals = bootstrap_ci(y_clf_test, rank_score, RANKING_METRICS)
     for name, ci in intervals.items():
         metrics[name] = ci["point"]
         metrics[f"{name}_ci_lower"] = ci["lower"]
@@ -80,6 +79,7 @@ def evaluate_models() -> dict[str, float]:
             "actual_future_value": y_reg_test.reset_index(drop=True),
             "actual_converted": y_clf_test.reset_index(drop=True),
             "predicted_cltv": pred_cltv,
+            "lgbm_score": rank_score,
             "predicted_propensity": pred_propensity,
             "expected_value": expected_value,
         }

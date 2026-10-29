@@ -24,13 +24,14 @@ MODEL_REGISTRY = {
         role="Revenue forecast",
         description="Predicts the client's transaction value over the next 3 months from activity and product-history features.",
     ),
-    "propensity_hist_gradient_boosting": ModelRegistryEntry(
-        model_id="propensity_hist_gradient_boosting",
-        display_name="Propensity Gradient Boosting",
-        model_family="HistGradientBoostingClassifier",
+    "propensity_lightgbm": ModelRegistryEntry(
+        model_id="propensity_lightgbm",
+        display_name="Propensity LightGBM",
+        model_family="LightGBM, isotonic calibration",
         target="converted",
         role="Conversion propensity",
-        description="Ranks clients by probability of taking any of the bank's 4 products in the next 3 months.",
+        description="Ranks clients by probability of taking any of the bank's 4 products in the next 3 months, from "
+                    "transaction-mix, purchase-history and dialog features; settings and calibration chosen on the July 2022 validation month.",
     ),
     "expected_value_ranker": ModelRegistryEntry(
         model_id="expected_value_ranker",

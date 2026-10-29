@@ -10,11 +10,11 @@ from lead_scoring.paths import (
     CLTV_MODEL_FILE,
     LEAD_SCORES_FILE,
     PREPROCESSED_DATA_DIR,
-    PROPENSITY_MODEL_FILE,
     SCORING_FEATURES_FILE,
     TABLES_DIR,
     ensure_directories,
 )
+from lead_scoring.propensity import score_propensity
 
 
 def _score_to_100(expected_value: pd.Series) -> pd.Series:
@@ -33,10 +33,8 @@ def score_batch() -> pd.DataFrame:
     scoring_ids = pd.read_csv(PREPROCESSED_DATA_DIR / "scoring_ids.csv")
 
     cltv_model = joblib.load(CLTV_MODEL_FILE)
-    propensity_model = joblib.load(PROPENSITY_MODEL_FILE)
-
     predicted_cltv = np.clip(cltv_model.predict(X_scoring), 0, None)
-    predicted_propensity = propensity_model.predict_proba(X_scoring)[:, 1]
+    predicted_propensity = score_propensity(X_scoring)["predicted_propensity"].to_numpy()
     expected_value = pd.Series(predicted_cltv * predicted_propensity)
     lead_score = _score_to_100(expected_value)
 

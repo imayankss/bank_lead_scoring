@@ -12,6 +12,7 @@ TABLES = ROOT / "reports" / "tables"
 COMPARISON = pd.read_csv(TABLES / "model_comparison.csv")
 METRICS = pd.read_csv(TABLES / "metrics_summary.csv").iloc[0]
 METHODOLOGY = json.loads((ROOT / "web" / "public" / "data" / "methodology.json").read_text())
+CHOICE = json.loads((ROOT / "models" / "propensity_choice.json").read_text())
 
 
 @pytest.mark.parametrize("row", COMPARISON[COMPARISON["task"] == "propensity"].to_dict("records"), ids=lambda r: r["model_id"])
@@ -46,3 +47,20 @@ def test_cltv_validation_claim_matches_validation_table():
     gbm = table[table["model"].str.startswith("GBM")]
     assert len(gbm) == 4 and table.iloc[0]["model"].startswith("Last 90 days repeat")
     assert "none of four gradient-boosting variants beat that baseline" in README
+
+
+def test_paper_protocol_rows_are_quoted():
+    table = pd.read_csv(TABLES / "paper_protocol.csv")
+    for row in table.to_dict("records"):
+        assert f"{row['mean_auc']:.3f}" in README
+
+
+def test_blend_weight_and_validation_auc_are_quoted():
+    assert f"GRU weight {CHOICE['blend']['weight']:.2f}" in README
+    assert f"validation AUC {CHOICE['blend']['auc']:.3f}" in README
+
+
+def test_test_month_result_matches_the_one_time_score():
+    row = pd.read_csv(TABLES / "propensity_test.csv").iloc[0]
+    assert row["test_auc"] == pytest.approx(METRICS["propensity_auc"])
+    assert row["test_lift_at_10pct"] == pytest.approx(METRICS["lift_at_10pct"])

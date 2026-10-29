@@ -1,6 +1,11 @@
 """Tiny MBD-shaped dataset so tests never need the real 2 GB download."""
 
+import os
 from pathlib import Path
+
+# On macOS, LightGBM and PyTorch each ship their own libomp; with more than one thread, a test
+# process that loads both crashes or hangs. Production scripts never load both.
+os.environ.setdefault("OMP_NUM_THREADS", "1")
 
 import pandas as pd
 import pytest

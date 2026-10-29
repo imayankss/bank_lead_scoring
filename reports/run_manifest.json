@@ -1,13 +1,24 @@
 {
-  "created_utc": "2026-10-24T20:44:03+00:00",
-  "git_sha": "4fd6d2decf48d67794a78e24da8dee9461214a2a",
-  "git_dirty": null,
+  "created_utc": "2026-10-29T18:23:46+00:00",
+  "git_sha": "371e4cccb56071906f3e95ea65cb8c8c0c7af41d",
+  "git_dirty": true,
   "config": {
     "lookback_days": 365,
     "horizon_months": 3,
+    "fit_snapshots": [
+      "2022-01-31",
+      "2022-02-28",
+      "2022-03-31",
+      "2022-04-30"
+    ],
+    "validation_snapshot": "2022-07-31",
     "train_snapshots": [
       "2022-01-31",
+      "2022-02-28",
+      "2022-03-31",
       "2022-04-30",
+      "2022-05-31",
+      "2022-06-30",
       "2022-07-31"
     ],
     "test_snapshot": "2022-10-31",
@@ -25,12 +36,14 @@
     }
   },
   "versions": {
-    "python": "3.12.14",
+    "python": "3.12.10",
     "pandas": "3.1.0",
     "numpy": "2.5.4",
     "scikit-learn": "1.9.1",
     "duckdb": "2.0.0",
     "pyarrow": "26.0.0",
-    "joblib": "1.6.0"
+    "joblib": "1.6.0",
+    "lightgbm": "4.7.0",
+    "torch": "2.14.1"
   }
 }

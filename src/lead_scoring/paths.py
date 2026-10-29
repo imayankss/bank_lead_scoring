@@ -33,7 +33,6 @@ LEAD_SCORES_FILE = PROCESSED_DATA_DIR / "lead_scores.csv"
 FEATURE_METADATA_FILE = PREPROCESSED_DATA_DIR / "feature_metadata.json"
 
 CLTV_MODEL_FILE = MODEL_DIR / "cltv_model.pkl"
-PROPENSITY_MODEL_FILE = MODEL_DIR / "propensity_model.pkl"
 MODEL_METADATA_FILE = MODEL_DIR / "model_metadata.json"
 PROPENSITY_LGBM_FILE = MODEL_DIR / "propensity_lgbm.txt"
 PROPENSITY_CHOICE_FILE = MODEL_DIR / "propensity_choice.json"  # committed: the choices made on validation

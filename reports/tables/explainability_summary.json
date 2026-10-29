@@ -5,10 +5,10 @@
   "cold_leads": 29566,
   "top_features": [
     "total_txn_amt_90",
+    "txn_amt_d30_1",
     "total_txn_amt_365",
-    "txn_count_90",
     "recency_days",
-    "max_txn_amt_365"
+    "txn_count_d30_1"
   ],
   "avg_recency_days": 39.09570561941251
 }
