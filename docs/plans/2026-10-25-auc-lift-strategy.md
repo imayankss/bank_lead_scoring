@@ -103,7 +103,7 @@ The gains are estimates, not measurements. Each one is confirmed or dropped on v
 
 1. S1 and S2 together, in one feature rebuild. **Checkpoint:** validation AUC and lift.
 2. S3 (dialogs). **Checkpoint.**
-3. S4. If the GRU reaches 0.755 or more, run S5.
+3. S4. If the GRU reaches 0.755 or more, run S5. (It reached 0.746; S5 skipped.)
 4. S6–S8 as polish.
 5. S9 only with your OK.
 
@@ -119,6 +119,15 @@ The gains are estimates, not measurements. Each one is confirmed or dropped on v
 S2 was reverted: S1 alone beat S1 + S2 on AUC in all four settings. The label-chosen codes (event types 12, 23 and 26) pushed out frequent codes that carried more of the any-product signal. It may still help per-product models (S6). The highest single-feature AUC is 0.645, well under the 0.80 leakage limit.
 
 **Checkpoint 2 result (2026-10-26, S3 dialogs):** **0.774 AUC, 3.55× lift** (63 leaves, min_child_samples 400), against 0.768 and 3.46 for S1 alone. The kept features are dialog counts over 30, 90 and 365 days and days since the last dialog. Dialogs before the snapshot cover 30–32% of clients at every snapshot. A pre-rebuild probe showed that 16 PCA components of the mean dialog embedding (PCA fitted on fit-snapshot dialogs) added nothing (0.772 against 0.773), so embeddings are not used. The best single dialog feature is days since the last dialog (0.613 AUC). The highest single feature is still 0.645. Lift is still below 3.7; the best lift setting (31 leaves) reaches 3.60.
+
+**Checkpoint 3 result (2026-10-29, S4 GRU):**
+
+| GRU | Best epoch | Val AUC | Top-10% lift | Best blend with LightGBM, ignoring the 0.005 bar |
+|---|---:|---:|---:|---|
+| Before (hidden 128) | 3 of 9 | 0.741 | 2.99 | +0.001 AUC at weight 0.15 |
+| **S4** (hidden 64, S1 history and a no-transactions flag beside the final GRU state) | 3 (stopped at 5) | **0.746** | **3.06** | +0.001 AUC at weight 0.15 |
+
+The GRU gained 0.004 AUC but missed the 0.755 gate for S5, so S5 is skipped. Its rank correlation with LightGBM rose from 0.805 to 0.815: it learned more of what LightGBM already knows rather than something new. The production blend stays LightGBM only, at 0.774 AUC and 3.55× lift. Clients with no transactions in the year before the snapshot (7.6% of clients, 15.8% of positives) are still barely ranked by either model: 0.551 AUC for the GRU, 0.569 for LightGBM. Early stopping (2 epochs without a gain) cut the run from 9 epochs to 5. Not tried from the S4 row: LR 3e-4 with cosine decay, embedding dropout, and a random cutoff per client each epoch.
 
 ## 7. Bigger jumps: what 0.85 AUC and 4–5× lift would take
 
