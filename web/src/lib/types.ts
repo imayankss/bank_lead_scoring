@@ -6,7 +6,12 @@ export interface Kpis {
   models_trained: number;
   best_model: string;
   best_rmse: number;
-  forecast_confidence: number;
+  best_value_model: string;
+  best_lift_at_10pct: number;
+  best_lift_ci: [number, number];
+  test_auc: number;
+  test_auc_ci: [number, number];
+  test_positive_rate: number;
   total_expected_value: number;
 }
 
@@ -29,8 +34,8 @@ export interface OverviewData {
 
 export interface ForecastPoint {
   customer_id?: string;
-  actual_future_revenue_12m?: number;
-  actual_converted_12m?: number;
+  actual_future_value?: number;
+  actual_converted?: number;
   predicted_cltv?: number;
   predicted_propensity?: number;
   expected_value?: number;
@@ -49,6 +54,7 @@ export interface ForecastData {
 export interface ModelRecord {
   model_id: string;
   model_name?: string;
+  task?: "propensity" | "value";
   display_name?: string;
   role?: string;
   description?: string;
@@ -58,7 +64,12 @@ export interface ModelRecord {
   smape?: number;
   r2?: number;
   auc?: number;
-  business_score?: number;
+  auc_ci_lower?: number;
+  auc_ci_upper?: number;
+  pr_auc?: number;
+  lift_at_10pct?: number;
+  lift_at_10pct_ci_lower?: number;
+  lift_at_10pct_ci_upper?: number;
   rank?: number;
   is_best?: boolean;
 }
@@ -99,6 +110,7 @@ export interface MethodologyData {
   limitations: string[];
   dataset: {
     training_rows: number;
+    test_rows: number;
     positive_customers: number;
     feature_columns: string[];
   };

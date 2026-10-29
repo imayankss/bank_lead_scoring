@@ -1,252 +1,234 @@
-"""Raw data loading and customer-level feature assembly."""
+"""Customer-level feature and target tables built from the MBD parquet files.
+
+Transactions are aggregated in DuckDB straight from parquet, one MBD client
+fold per worker process. Folds share no clients, so each is an independent
+partition: the same code runs MBD-mini locally or full MBD fold by fold.
+"""
 
 from __future__ import annotations
 
+import json
+from concurrent.futures import ProcessPoolExecutor
 from dataclasses import asdict
+from functools import partial
 from pathlib import Path
 
+import duckdb
 import numpy as np
 import pandas as pd
 
 from lead_scoring.config import PipelineConfig
-from lead_scoring.paths import (
-    CUSTOMER_FEATURES_FILE,
-    RAW_ACCOUNTS_FILE,
-    RAW_CUSTOMERS_FILE,
-    RAW_TRANSACTIONS_HISTORY_FILE,
-    RAW_TRANSACTIONS_RECENT_FILE,
-    SCORING_FEATURES_FILE,
-    ensure_directories,
-)
+from lead_scoring.paths import CUSTOMER_FEATURES_FILE, MBD_DIR, SCORING_FEATURES_FILE, ensure_directories
+from lead_scoring.temporal import assert_events_before, month_end
+
+TARGETS = ["target_1", "target_2", "target_3", "target_4"]
+CATEGORY_COLUMNS = ["event_type", "event_subtype", "currency", "src_type11", "src_type12", "dst_type11",
+                    "dst_type12", "src_type21", "src_type22", "src_type31", "src_type32"]
+TOP_CATEGORIES = 10  # top 20 would hold ~3 GB of int64 during the build on an 8 GB machine
+# Any product within the horizon (headline), each product within the horizon, each product next month.
+LABELS = ["converted", *(f"y3_{t}" for t in TARGETS), *(f"y1_{t}" for t in TARGETS)]
+HISTORY_MONTHS = ("m0", "m1", "m2")  # the snapshot month and the two before it
+# MBD stores event_time in UTC; the bank's day boundaries are Moscow time.
+LOCAL_TS = "event_time + INTERVAL 3 HOUR"
 
 
-DATE_COL = "transaction_date"
+def list_folds(mbd_dir: Path = MBD_DIR) -> list[int]:
+    """Client folds present in the MBD targets table."""
+    folds = sorted(int(p.name.split("=")[1]) for p in (mbd_dir / "targets").glob("fold=*"))
+    if not folds:
+        raise FileNotFoundError(f"No MBD folds under {mbd_dir / 'targets'}; run scripts/fetch_mbd.py")
+    return folds
 
 
-def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
-    """Return a copy with consistent snake_case columns."""
-    out = df.copy()
-    out.columns = [c.strip().lower().replace(" ", "_") for c in out.columns]
-    return out
+def amount_cap(mbd_dir: Path = MBD_DIR, before: str = PipelineConfig.test_snapshot) -> float:
+    """Upper bound applied to every transaction amount before aggregation.
+
+    MBD adds noise to amounts (max is about 1.4e12), so a few values dominate any sum.
+    """
+    # 0.999 trims only the noise tail; 0.99 would also flatten genuinely large clients, who matter most for lead value.
+    # Only amounts up to the end of the `before` day count, so the cap never sees the test months.
+    trx = str(mbd_dir / "detail" / "trx" / "fold=*" / "*.parquet")
+    cutoff = pd.Timestamp(before).normalize() + pd.Timedelta(days=1)
+    query = f"SELECT quantile_cont(amount, 0.999) FROM read_parquet($trx) WHERE {LOCAL_TS} < $cutoff"
+    return float(duckdb.execute(query, {"trx": trx, "cutoff": cutoff}).fetchone()[0])
 
 
-def load_raw_tables() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
-    """Load customers, accounts, and combined transactions."""
-    customers = normalize_columns(pd.read_csv(RAW_CUSTOMERS_FILE, low_memory=False))
-    accounts = normalize_columns(pd.read_csv(RAW_ACCOUNTS_FILE, low_memory=False))
-    tx_hist = normalize_columns(pd.read_csv(RAW_TRANSACTIONS_HISTORY_FILE, low_memory=False))
-    tx_recent = normalize_columns(pd.read_csv(RAW_TRANSACTIONS_RECENT_FILE, low_memory=False))
-
-    transactions = pd.concat([tx_hist, tx_recent], ignore_index=True, sort=False)
-    return customers, accounts, prepare_transactions(transactions)
-
-
-def prepare_transactions(transactions: pd.DataFrame) -> pd.DataFrame:
-    """Clean transaction dates, amounts, and statuses."""
-    tx = normalize_columns(transactions)
-    if DATE_COL not in tx.columns:
-        candidates = [c for c in tx.columns if "date" in c]
-        if not candidates:
-            raise ValueError("No transaction date column found.")
-        tx = tx.rename(columns={candidates[0]: DATE_COL})
-
-    required = {"customer_id", "amount", DATE_COL}
-    missing = sorted(required - set(tx.columns))
-    if missing:
-        raise ValueError(f"Missing required transaction columns: {missing}")
-
-    tx[DATE_COL] = pd.to_datetime(tx[DATE_COL], errors="coerce")
-    tx["amount"] = pd.to_numeric(tx["amount"], errors="coerce").fillna(0.0)
-    tx = tx.dropna(subset=["customer_id", DATE_COL])
-
-    if "transaction_status" in tx.columns:
-        completed = tx["transaction_status"].astype(str).str.lower().eq("completed")
-        tx = tx[completed].copy()
-
-    return tx.sort_values(["customer_id", DATE_COL]).reset_index(drop=True)
+def category_vocab(mbd_dir: Path = MBD_DIR, before: str = PipelineConfig.fit_snapshots[-1],
+                   top: int = TOP_CATEGORIES) -> dict[str, list[int]]:
+    """Most frequent values of each categorical column, counting events up to the end of the `before` day."""
+    trx = str(mbd_dir / "detail" / "trx" / "fold=*" / "*.parquet")
+    cutoff = pd.Timestamp(before).normalize() + pd.Timedelta(days=1)
+    con = duckdb.connect()
+    con.execute("SET enable_progress_bar = false")
+    vocab = {}
+    for col in CATEGORY_COLUMNS:
+        rows = con.execute(f"""SELECT {col} FROM read_parquet($trx)
+                               WHERE {LOCAL_TS} < $cutoff AND {col} IS NOT NULL
+                               GROUP BY 1 ORDER BY count(*) DESC, 1 LIMIT {int(top)}""",
+                           {"trx": trx, "cutoff": cutoff}).fetchall()
+        vocab[col] = [int(r[0]) for r in rows]
+    con.close()
+    return vocab
 
 
-def _empty_tx_agg() -> pd.DataFrame:
-    return pd.DataFrame(
-        columns=[
-            "customer_id",
-            "total_txn_amt_365",
-            "txn_count_365",
-            "avg_txn_amt_365",
-            "max_txn_amt_365",
-            "credit_txn_count_365",
-            "debit_txn_count_365",
-            "active_days_365",
-            "first_txn",
-            "last_txn",
-        ]
-    )
+def _block(i: int) -> str:
+    """Count and amount in the i-th 30-day block before the snapshot (1 = the latest)."""
+    upper = "$cutoff" if i == 1 else f"$d30_{i - 1}"
+    window = f"ts >= $d30_{i} AND ts < {upper}"
+    return f"count(*) FILTER (WHERE {window}) AS txn_count_d30_{i}, sum(amount) FILTER (WHERE {window}) AS txn_amt_d30_{i}"
 
 
-def aggregate_transactions(transactions: pd.DataFrame, snapshot_date: pd.Timestamp, lookback_days: int) -> pd.DataFrame:
-    """Aggregate customer activity in the lookback window ending at snapshot_date."""
-    feature_start = snapshot_date - pd.Timedelta(days=lookback_days)
-    window = transactions[
-        (transactions[DATE_COL] > feature_start)
-        & (transactions[DATE_COL] <= snapshot_date)
-    ].copy()
-    if window.empty:
-        return _empty_tx_agg()
-
-    transaction_type = (
-        window["transaction_type"].astype(str).str.lower()
-        if "transaction_type" in window.columns
-        else pd.Series("", index=window.index)
-    )
-    window["is_credit"] = transaction_type.eq("credit").astype(int)
-    window["is_debit"] = transaction_type.eq("debit").astype(int)
-
-    agg = (
-        window.groupby("customer_id")
-        .agg(
-            total_txn_amt_365=("amount", "sum"),
-            txn_count_365=("amount", "count"),
-            avg_txn_amt_365=("amount", "mean"),
-            max_txn_amt_365=("amount", "max"),
-            credit_txn_count_365=("is_credit", "sum"),
-            debit_txn_count_365=("is_debit", "sum"),
-            active_days_365=(DATE_COL, lambda x: x.dt.date.nunique()),
-            first_txn=(DATE_COL, "min"),
-            last_txn=(DATE_COL, "max"),
-        )
-        .reset_index()
-    )
-    return agg
-
-
-def aggregate_accounts(accounts: pd.DataFrame) -> pd.DataFrame:
-    """Aggregate account-level customer signals."""
-    accounts = normalize_columns(accounts)
-    if accounts.empty or "customer_id" not in accounts.columns:
-        return pd.DataFrame(columns=["customer_id"])
-
-    accounts["balance"] = pd.to_numeric(accounts.get("balance", 0), errors="coerce").fillna(0.0)
-    status = accounts.get("account_status", pd.Series("", index=accounts.index)).astype(str).str.lower()
-    accounts["is_active_account"] = status.eq("active").astype(int)
-    accounts["is_dormant_account"] = status.eq("dormant").astype(int)
-    accounts["is_closed_account"] = status.eq("closed").astype(int)
-
-    return (
-        accounts.groupby("customer_id")
-        .agg(
-            account_count=("account_id", "count"),
-            active_account_count=("is_active_account", "sum"),
-            dormant_account_count=("is_dormant_account", "sum"),
-            closed_account_count=("is_closed_account", "sum"),
-            total_balance=("balance", "sum"),
-            avg_balance=("balance", "mean"),
-        )
-        .reset_index()
-    )
-
-
-def build_target(transactions: pd.DataFrame, snapshot_date: pd.Timestamp, horizon_days: int) -> pd.DataFrame:
-    """Build future revenue and conversion labels after the snapshot date."""
-    target_end = snapshot_date + pd.Timedelta(days=horizon_days)
-    target_tx = transactions[
-        (transactions[DATE_COL] > snapshot_date)
-        & (transactions[DATE_COL] <= target_end)
+def _fold_features(fold: int, *, mbd_dir: Path, snapshot: str, include_target: bool,
+                   config: PipelineConfig, cap: float, vocab: dict[str, list[int]]) -> pd.DataFrame:
+    snap = pd.Timestamp(snapshot)
+    day_after = snap + pd.Timedelta(days=1)
+    horizon_end = month_end(snap, config.horizon_months)
+    trx = str(mbd_dir / "detail" / "trx" / f"fold={fold}" / "*.parquet")
+    dialog = str(mbd_dir / "detail" / "dialog" / f"fold={fold}" / "*.parquet")
+    targets = str(mbd_dir / "targets" / f"fold={fold}" / "*.parquet")
+    params = {
+        "trx": trx, "dialog": dialog, "targets": targets, "cap": cap,
+        "start": day_after - pd.Timedelta(days=config.lookback_days), "start90": day_after - pd.Timedelta(days=90),
+        "cutoff": day_after, "horizon_cutoff": horizon_end + pd.Timedelta(days=1),
+        "snap_mon": snap.date().isoformat(), "horizon_mon": horizon_end.date().isoformat(),
+        "next_mon": month_end(snap, 1).date().isoformat(),
+        # A row stamped `mon` records purchases made during that month (evidence in data/README.md),
+        # so the snapshot month (m0) is complete history at the end of the snapshot day.
+        **{f"m{k}": month_end(snap, -k).date().isoformat() for k in range(3)},
+        **{f"d30_{i}": day_after - pd.Timedelta(days=30 * i) for i in range(1, 7)},
+    }
+    any_product = "greatest(" + ", ".join(TARGETS) + ")"
+    history = [*((t, t) for t in TARGETS), ("any", any_product)]
+    con = duckdb.connect()
+    con.execute("SET enable_progress_bar = false")
+    first_label = str(con.execute("SELECT min(mon) FROM read_parquet($targets)", {"targets": targets}).fetchone()[0])
+    clients = con.execute(f"""
+        SELECT client_id,
+               sum({any_product}) FILTER (WHERE mon < $snap_mon) AS products_taken_before,
+               {", ".join(f"sum({t}) FILTER (WHERE mon < $snap_mon) AS {t}_before" for t in TARGETS)},
+               {", ".join(f"max({col}) FILTER (WHERE mon = ${m}) AS hist_{name}_{m}" for name, col in history for m in HISTORY_MONTHS)},
+               {", ".join(f"datediff('month', CAST(max(mon) FILTER (WHERE {col} = 1 AND mon <= $snap_mon) AS DATE), CAST($snap_mon AS DATE)) AS hist_{name}_months_since" for name, col in history)},
+               max({any_product}) FILTER (WHERE mon > $snap_mon AND mon <= $horizon_mon) AS converted,
+               {", ".join(f"max({t}) FILTER (WHERE mon > $snap_mon AND mon <= $horizon_mon) AS y3_{t}" for t in TARGETS)},
+               {", ".join(f"max({t}) FILTER (WHERE mon = $next_mon) AS y1_{t}" for t in TARGETS)}
+        FROM read_parquet($targets) GROUP BY client_id""",
+        {k: params[k] for k in ("targets", "snap_mon", "horizon_mon", "next_mon", *HISTORY_MONTHS)}).df()
+    aggs = [
+        "sum(amount) FILTER (WHERE ts >= $start AND ts < $cutoff) AS total_txn_amt_365",
+        "count(*) FILTER (WHERE ts >= $start AND ts < $cutoff) AS txn_count_365",
+        "avg(amount) FILTER (WHERE ts >= $start AND ts < $cutoff) AS avg_txn_amt_365",
+        "max(amount) FILTER (WHERE ts >= $start AND ts < $cutoff) AS max_txn_amt_365",
+        "count(DISTINCT CAST(ts AS DATE)) FILTER (WHERE ts >= $start AND ts < $cutoff) AS active_days_365",
+        "count(*) FILTER (WHERE ts >= $start90 AND ts < $cutoff) AS txn_count_90",
+        "sum(amount) FILTER (WHERE ts >= $start90 AND ts < $cutoff) AS total_txn_amt_90",
+        "min(ts) FILTER (WHERE ts < $cutoff) AS first_txn",
+        "max(ts) FILTER (WHERE ts < $cutoff) AS last_txn",
+        "sum(amount) FILTER (WHERE ts >= $cutoff AND ts < $horizon_cutoff) AS future_value",
+        *(_block(i) for i in range(1, 7)),
+        *(f"count(*) FILTER (WHERE ts >= ${w} AND ts < $cutoff AND {col} = {int(code)}) AS cat_{col}_{int(code)}_{days}"
+          for col, codes in vocab.items() for code in codes for w, days in (("start", 365), ("start90", 90))),
+        *(f"max(ts) FILTER (WHERE ts < $cutoff AND event_type = {int(code)}) AS last_evt_{int(code)}"
+          for code in vocab["event_type"]),
     ]
-    if target_tx.empty:
-        return pd.DataFrame(columns=["customer_id", "future_revenue_12m", "converted_12m"])
+    tx = con.execute(f"""
+        WITH tx AS (SELECT client_id, {LOCAL_TS} AS ts, least(amount, $cap) AS amount, {", ".join(CATEGORY_COLUMNS)}
+                    FROM read_parquet($trx))
+        SELECT client_id, {", ".join(aggs)} FROM tx GROUP BY client_id""",
+        {k: params[k] for k in ("trx", "cap", "start", "start90", "cutoff", "horizon_cutoff", *(f"d30_{i}" for i in range(1, 7)))}).df()
+    # Dialog embeddings are left out: 16 PCA components of them added nothing on validation (S3 probe).
+    dlg = con.execute(f"""
+        WITH d AS (SELECT client_id, {LOCAL_TS} AS ts FROM read_parquet($dialog))
+        SELECT client_id,
+               count(*) FILTER (WHERE ts >= $d30_1 AND ts < $cutoff) AS dlg_count_30,
+               count(*) FILTER (WHERE ts >= $start90 AND ts < $cutoff) AS dlg_count_90,
+               count(*) FILTER (WHERE ts >= $start AND ts < $cutoff) AS dlg_count_365,
+               max(ts) FILTER (WHERE ts < $cutoff) AS last_dialog
+        FROM d GROUP BY client_id""",
+        {k: params[k] for k in ("dialog", "start", "start90", "cutoff", "d30_1")}).df()
+    con.close()
 
-    targets = (
-        target_tx.groupby("customer_id")
-        .agg(future_revenue_12m=("amount", "sum"))
-        .reset_index()
-    )
-    targets["converted_12m"] = (targets["future_revenue_12m"] > 0).astype(int)
-    return targets
+    df = (clients.merge(tx, on="client_id", how="left").merge(dlg, on="client_id", how="left")
+          .rename(columns={"client_id": "customer_id"}))
+    assert_events_before(df["last_txn"], snap)
+    assert_events_before(df["last_dialog"], snap)
+    filled = [c for c in df.columns if c.endswith(("_365", "_90", "_before"))
+              or c.startswith(("cat_", "txn_count_d30_", "txn_amt_d30_", "dlg_count_")) or c in (*LABELS, "future_value")]
+    df[filled] = df[filled].fillna(0)
+    for m in HISTORY_MONTHS:
+        cols = [c for c in df.columns if c.startswith("hist_") and c.endswith(f"_{m}")]
+        # A month before the first label month has no labels at all: unknown, not "bought nothing".
+        df[cols] = np.nan if params[m] < first_label else df[cols].fillna(0)
+    cat_cols = [c for c in df.columns if c.startswith("cat_")]
+    df[cat_cols] = df[cat_cols].astype("int32")
+    evt_codes = [int(code) for code in vocab["event_type"]]
+    days_since = lambda ts: (snap - pd.to_datetime(ts)).dt.days.fillna(config.lookback_days + 1).clip(lower=0)  # noqa: E731
+    derived = {
+        "recency_days": days_since(df["last_txn"]),
+        "tenure_days": (snap - df["first_txn"]).dt.days.fillna(0).clip(lower=0),
+        "ratio_30_90": df["txn_count_d30_1"] / df["txn_count_90"].clip(lower=1),
+        "ratio_90_365": df["txn_count_90"] / df["txn_count_365"].clip(lower=1),
+        **{f"days_since_evt_{code}": days_since(df[f"last_evt_{code}"]) for code in evt_codes},
+        "dlg_days_since": days_since(df["last_dialog"]),
+        "fold": fold,
+    }
+    # One concat instead of many inserts: avoids a fragmented frame on 100k-row folds.
+    dropped = ["last_dialog", *(f"last_evt_{code}" for code in evt_codes)]
+    df = pd.concat([df.drop(columns=dropped), pd.DataFrame(derived, index=df.index)], axis=1)
+    if include_target:
+        df[LABELS] = df[LABELS].astype(int)
+    else:
+        df = df.drop(columns=["future_value", *LABELS])
+    return df
 
 
 def build_customer_features(
+    snapshot_date: str,
     *,
-    snapshot_date: pd.Timestamp | None = None,
     include_target: bool = True,
     config: PipelineConfig = PipelineConfig(),
+    mbd_dir: Path = MBD_DIR,
+    amount_cap: float,
+    vocab: dict[str, list[int]] | None = None,
 ) -> pd.DataFrame:
-    """Create a customer-level modeling or scoring table."""
-    customers, accounts, transactions = load_raw_tables()
-    max_txn_date = transactions[DATE_COL].max().normalize()
-    if snapshot_date is None:
-        snapshot_date = max_txn_date - pd.Timedelta(days=config.target_horizon_days) if include_target else max_txn_date
-    snapshot_date = pd.Timestamp(snapshot_date).normalize()
-
-    base = customers.copy()
-    tx_agg = aggregate_transactions(transactions, snapshot_date, config.lookback_days)
-    account_agg = aggregate_accounts(accounts)
-
-    dataset = base.merge(tx_agg, on="customer_id", how="left").merge(account_agg, on="customer_id", how="left")
-
-    numeric_defaults = {
-        "total_txn_amt_365": 0.0,
-        "txn_count_365": 0,
-        "avg_txn_amt_365": 0.0,
-        "max_txn_amt_365": 0.0,
-        "credit_txn_count_365": 0,
-        "debit_txn_count_365": 0,
-        "active_days_365": 0,
-        "account_count": 0,
-        "active_account_count": 0,
-        "dormant_account_count": 0,
-        "closed_account_count": 0,
-        "total_balance": 0.0,
-        "avg_balance": 0.0,
-    }
-    for col, default in numeric_defaults.items():
-        if col not in dataset.columns:
-            dataset[col] = default
-        dataset[col] = pd.to_numeric(dataset[col], errors="coerce").fillna(default)
-
-    dataset["last_txn"] = pd.to_datetime(dataset["last_txn"], errors="coerce")
-    dataset["first_txn"] = pd.to_datetime(dataset["first_txn"], errors="coerce")
-    dataset["recency_days"] = (snapshot_date - dataset["last_txn"]).dt.days
-    dataset["recency_days"] = dataset["recency_days"].fillna(config.lookback_days + 1).clip(lower=0)
-    dataset["tenure_days"] = (snapshot_date - dataset["first_txn"]).dt.days
-    dataset["tenure_days"] = dataset["tenure_days"].fillna(0).clip(lower=0)
-
-    dataset["dob"] = pd.to_datetime(dataset.get("dob"), errors="coerce")
-    dataset["age"] = ((snapshot_date - dataset["dob"]).dt.days // 365).astype("float")
-    dataset["date_of_lead"] = pd.to_datetime(dataset.get("date_of_lead"), errors="coerce")
-    dataset["lead_age_days"] = (snapshot_date - dataset["date_of_lead"]).dt.days
-    dataset["lead_age_days"] = dataset["lead_age_days"].clip(lower=0)
-
-    if include_target:
-        targets = build_target(transactions, snapshot_date, config.target_horizon_days)
-        dataset = dataset.merge(targets, on="customer_id", how="left")
-        dataset["future_revenue_12m"] = pd.to_numeric(dataset["future_revenue_12m"], errors="coerce").fillna(0.0)
-        dataset["converted_12m"] = pd.to_numeric(dataset["converted_12m"], errors="coerce").fillna(0).astype(int)
-
-    dataset["snapshot_date"] = snapshot_date.date().isoformat()
-    dataset["target_window_days"] = config.target_horizon_days if include_target else 0
-    return dataset
+    """One row per client: features known at the snapshot and, optionally, the next-horizon targets."""
+    vocab = vocab if vocab is not None else category_vocab(mbd_dir, before=config.fit_snapshots[-1])
+    work = partial(_fold_features, mbd_dir=mbd_dir, snapshot=snapshot_date, include_target=include_target,
+                   config=config, cap=amount_cap, vocab=vocab)
+    folds = list_folds(mbd_dir)
+    if config.workers > 1:
+        with ProcessPoolExecutor(max_workers=min(config.workers, len(folds))) as pool:
+            parts = list(pool.map(work, folds))
+    else:
+        parts = [work(f) for f in folds]
+    df = pd.concat(parts, ignore_index=True)
+    df["snapshot_date"] = pd.Timestamp(snapshot_date).date().isoformat()
+    return df.sort_values("customer_id").reset_index(drop=True)
 
 
-def save_customer_features(config: PipelineConfig = PipelineConfig()) -> tuple[Path, Path]:
-    """Build and save training and current scoring feature tables."""
+def save_customer_features(config: PipelineConfig = PipelineConfig(), mbd_dir: Path = MBD_DIR) -> tuple[Path, Path]:
+    """Build stacked training/test snapshots and the current scoring table."""
     ensure_directories()
-    training_features = build_customer_features(include_target=True, config=config)
-    scoring_features = build_customer_features(include_target=False, config=config)
-
-    training_features.to_parquet(CUSTOMER_FEATURES_FILE, index=False)
-    scoring_features.to_parquet(SCORING_FEATURES_FILE, index=False)
-
-    metadata = pd.DataFrame(
-        [
-            {
-                "training_rows": len(training_features),
-                "scoring_rows": len(scoring_features),
-                "positive_training_customers": int(training_features["converted_12m"].sum()),
-                **asdict(config),
-            }
-        ]
+    cap = amount_cap(mbd_dir, before=config.test_snapshot)
+    vocab = category_vocab(mbd_dir, before=config.fit_snapshots[-1])
+    snapshots = [*config.train_snapshots, config.test_snapshot]
+    training = pd.concat(
+        [build_customer_features(s, config=config, mbd_dir=mbd_dir, amount_cap=cap, vocab=vocab) for s in snapshots],
+        ignore_index=True,
     )
-    metadata.to_csv(CUSTOMER_FEATURES_FILE.with_suffix(".metadata.csv"), index=False)
+    scoring = build_customer_features(config.score_snapshot, include_target=False, config=config,
+                                      mbd_dir=mbd_dir, amount_cap=cap, vocab=vocab)
+    training.to_parquet(CUSTOMER_FEATURES_FILE, index=False)
+    scoring.to_parquet(SCORING_FEATURES_FILE, index=False)
+
+    metadata = {
+        "training_rows": len(training),
+        "scoring_rows": len(scoring),
+        "positive_training_rows": int(training["converted"].sum()),
+        "amount_cap": cap,
+        "category_vocab": json.dumps(vocab),
+        **{k: str(v) for k, v in asdict(config).items()},
+    }
+    pd.DataFrame([metadata]).to_csv(CUSTOMER_FEATURES_FILE.with_suffix(".metadata.csv"), index=False)
     return CUSTOMER_FEATURES_FILE, SCORING_FEATURES_FILE
 
 

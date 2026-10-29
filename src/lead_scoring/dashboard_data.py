@@ -4,23 +4,22 @@ from __future__ import annotations
 
 import pandas as pd
 
-from lead_scoring.paths import LEAD_SCORES_FILE, RAW_CUSTOMERS_FILE, TABLES_DIR
+from lead_scoring.paths import LEAD_SCORES_FILE, SCORING_FEATURES_FILE, TABLES_DIR
+
+ACTIVITY_COLUMNS = [
+    "customer_id", "recency_days", "txn_count_365", "txn_count_90", "total_txn_amt_365",
+    "products_taken_before", "target_1_before", "target_2_before", "target_3_before", "target_4_before",
+]
 
 
 def load_dashboard_data() -> pd.DataFrame:
-    """Load scored leads merged with customer profile fields."""
+    """Load scored leads with each client's activity and product history at the scoring snapshot."""
     scores = pd.read_csv(LEAD_SCORES_FILE)
-    customers = pd.read_csv(RAW_CUSTOMERS_FILE)
-    customers.columns = customers.columns.str.strip()
-
-    if "lead_category" not in scores.columns:
-        scores["lead_category"] = pd.cut(
-            scores["lead_score"],
-            bins=[-1, 29, 69, 100],
-            labels=["Cold", "Medium", "Hot"],
-        ).astype(str)
-
-    data = scores.merge(customers, left_on="customer_id", right_on="Customer_ID", how="left")
+    activity = pd.read_parquet(SCORING_FEATURES_FILE, columns=ACTIVITY_COLUMNS)
+    data = scores.merge(activity, on="customer_id", how="left")
+    fallbacks = TABLES_DIR / "fallback_explanations.csv"
+    if fallbacks.exists():
+        data = data.merge(pd.read_csv(fallbacks), on="customer_id", how="left")
     return data
 
 

@@ -23,7 +23,7 @@ const grid = { stroke: "rgba(255,255,255,0.08)" };
 export function ActualVsPredictedChart({ data }: { data: ForecastPoint[] }) {
   const chartData = data.slice(0, 40).map((row, index) => ({
     name: row.customer_id ?? `${index + 1}`,
-    actual: row.actual_future_revenue_12m ?? 0,
+    actual: row.actual_future_value ?? 0,
     predicted: row.predicted_cltv ?? 0
   }));
 

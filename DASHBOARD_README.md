@@ -1,40 +1,19 @@
-# Lead Scoring Dashboard
+# Streamlit Dashboard (legacy)
 
-The dashboard is a Streamlit app for exploring corrected lead scores, customer segments, product recommendations, model quality, and feature importance.
-
-## Run
+The main dashboard is the Next.js app in `web/`. The Streamlit app is kept for interactive exploration of lead scores.
 
 ```bash
 streamlit run app/streamlit_app.py
 ```
 
-The legacy command also works:
-
-```bash
-streamlit run dashboard.py
-```
-
-## Required Artifacts
-
-Run the pipeline first if these files are missing or stale:
-
-```bash
-python scripts/run_pipeline.py
-```
-
-The dashboard reads:
-
-- `data/processed/lead_scores.csv`
-- `data/raw/customers.csv`
-- `reports/tables/metrics_summary.csv`
-- `reports/tables/decile_lift.csv`
-- `reports/tables/feature_importance.csv`
-- `reports/tables/per_lead_explanations.csv`
+Run `python scripts/run_pipeline.py` first. The app reads `data/processed/lead_scores.csv`, `data/processed/scoring_features.parquet` and the tables in `reports/tables/`.
 
 ## Views
 
-- Overview: scored customer counts, category distribution, score distribution, and top product recommendations.
-- Leads: filtered lead table with export.
-- Customer Detail: selected customer profile with masked contact fields and product alignment.
-- Model Quality: test-set metrics and decile lift.
-- Explainability: global feature importance table and chart.
+- **Overview:** lead tiers, score distribution, clients who already took each product.
+- **Leads:** filterable table (top 1,000 shown; the download has every client).
+- **Customer Detail:** activity at the scoring date, product history and follow-up flags for the top 500 leads.
+- **Model Quality:** test-month metrics with 95% intervals and the decile table.
+- **Explainability:** permutation feature importance.
+
+Data is Sber AI Lab's public MBD-mini (business clients, CC BY 4.0), not Bank of India customers. Amounts are anonymised units.

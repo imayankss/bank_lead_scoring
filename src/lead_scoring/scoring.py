@@ -10,11 +10,11 @@ from lead_scoring.paths import (
     CLTV_MODEL_FILE,
     LEAD_SCORES_FILE,
     PREPROCESSED_DATA_DIR,
-    PROPENSITY_MODEL_FILE,
     SCORING_FEATURES_FILE,
     TABLES_DIR,
     ensure_directories,
 )
+from lead_scoring.propensity import score_propensity
 
 
 def _score_to_100(expected_value: pd.Series) -> pd.Series:
@@ -33,10 +33,8 @@ def score_batch() -> pd.DataFrame:
     scoring_ids = pd.read_csv(PREPROCESSED_DATA_DIR / "scoring_ids.csv")
 
     cltv_model = joblib.load(CLTV_MODEL_FILE)
-    propensity_model = joblib.load(PROPENSITY_MODEL_FILE)
-
     predicted_cltv = np.clip(cltv_model.predict(X_scoring), 0, None)
-    predicted_propensity = propensity_model.predict_proba(X_scoring)[:, 1]
+    predicted_propensity = score_propensity(X_scoring)["predicted_propensity"].to_numpy()
     expected_value = pd.Series(predicted_cltv * predicted_propensity)
     lead_score = _score_to_100(expected_value)
 
@@ -63,30 +61,18 @@ def build_fallback_explanations() -> pd.DataFrame:
     ensure_directories()
     features = pd.read_parquet(SCORING_FEATURES_FILE)
 
-    rows = []
-    for _, row in features.iterrows():
-        reasons = []
-        if row.get("txn_count_365", 0) == 0:
-            reasons.append("no_transactions_in_last_365d")
-        if row.get("recency_days", 0) > 180:
-            reasons.append("stale_transaction_activity")
-        if row.get("active_account_count", 0) == 0:
-            reasons.append("no_active_account")
-        if pd.isna(row.get("annual_income")) or row.get("annual_income", 0) <= 0:
-            reasons.append("missing_income")
-        if pd.isna(row.get("risk_score")):
-            reasons.append("missing_risk_score")
-        elif row.get("risk_score", 0) < 500:
-            reasons.append("low_risk_score")
-
-        rows.append(
-            {
-                "customer_id": row["customer_id"],
-                "fallback_reasons": "; ".join(reasons) if reasons else "no_issue_detected",
-            }
-        )
-
-    output = pd.DataFrame(rows)
+    # Rules use only signals the bank data has; MBD publishes no income, credit score or account table.
+    flags = pd.DataFrame(
+        {
+            "no_transactions_in_last_365d": features["txn_count_365"].eq(0),
+            "stale_transaction_activity": features["recency_days"].gt(180),
+            "activity_dropping": features["txn_count_90"].lt(features["txn_count_365"] / 8),  # under half the usual quarter
+        }
+    )
+    reasons = flags.apply(lambda row: "; ".join(flags.columns[row.to_numpy()]), axis=1)
+    output = pd.DataFrame(
+        {"customer_id": features["customer_id"], "fallback_reasons": reasons.replace("", "no_issue_detected")}
+    )
     output.to_csv(TABLES_DIR / "fallback_explanations.csv", index=False)
     return output
 

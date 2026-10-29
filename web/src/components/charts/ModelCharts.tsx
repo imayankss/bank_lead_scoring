@@ -11,8 +11,7 @@ const grid = { stroke: "rgba(255,255,255,0.08)" };
 export function ModelMetricChart({ data }: { data: ModelRecord[] }) {
   const chartData = data.map((row) => ({
     model: row.model_name ?? row.display_name ?? row.model_id,
-    business_score: row.business_score ?? 0,
-    rmse: row.rmse ?? 0
+    lift: row.lift_at_10pct ?? 0
   }));
 
   return (
@@ -23,7 +22,7 @@ export function ModelMetricChart({ data }: { data: ModelRecord[] }) {
           <XAxis type="number" {...axis} tickFormatter={(value) => decimal(Number(value), 2)} />
           <YAxis type="category" dataKey="model" {...axis} width={140} />
           <Tooltip formatter={(value) => decimal(Number(value), 3)} contentStyle={tooltipStyle} />
-          <Bar dataKey="business_score" fill="#34d399" radius={[0, 6, 6, 0]} />
+          <Bar dataKey="lift" fill="#34d399" radius={[0, 6, 6, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>

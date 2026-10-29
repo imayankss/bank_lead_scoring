@@ -26,17 +26,19 @@ def build_explainability_artifacts() -> dict[str, str]:
     """Save global feature importance and per-lead top driver summaries."""
     ensure_directories()
     X_test = pd.read_parquet(PREPROCESSED_DATA_DIR / "X_test.parquet")
-    y_test = pd.read_parquet(PREPROCESSED_DATA_DIR / "y_reg_test.parquet")["future_revenue_12m"]
+    y_test = pd.read_parquet(PREPROCESSED_DATA_DIR / "y_reg_test.parquet")["future_value"]
     X_scoring = pd.read_parquet(PREPROCESSED_DATA_DIR / "X_scoring.parquet")
     scoring_ids = pd.read_csv(PREPROCESSED_DATA_DIR / "scoring_ids.csv")
     scoring_features = pd.read_parquet(SCORING_FEATURES_FILE)
     scores = pd.read_csv(LEAD_SCORES_FILE)
 
     model = joblib.load(CLTV_MODEL_FILE)
+    # shortcut: 20k-row sample keeps permutation importance to seconds; use all rows if rankings look unstable.
+    sample = X_test.sample(n=min(20_000, len(X_test)), random_state=42)
     result = permutation_importance(
         model,
-        X_test,
-        y_test,
+        sample,
+        y_test.loc[sample.index],
         n_repeats=8,
         random_state=42,
         scoring="neg_mean_absolute_error",
@@ -62,20 +64,14 @@ def build_explainability_artifacts() -> dict[str, str]:
 
     baseline = X_scoring.median(numeric_only=True)
     weights = importance.set_index("feature")["importance_mean"].clip(lower=0)
-    rows = []
-    for idx, row in X_scoring.iterrows():
-        deviations = ((row - baseline).abs() * weights.reindex(X_scoring.columns).fillna(0)).sort_values(ascending=False)
-        top_features = [feature for feature, value in deviations.head(3).items() if value > 0]
-        if not top_features:
-            top_features = list(importance["feature"].head(3))
-        rows.append(
-            {
-                "customer_id": scoring_ids.loc[idx, "customer_id"],
-                "top_drivers": "; ".join(top_features),
-            }
-        )
+    deviations = (X_scoring - baseline).abs() * weights.reindex(X_scoring.columns).fillna(0)
+    columns = deviations.columns.to_numpy()
+    order = np.argsort(-deviations.to_numpy(), axis=1)[:, :3]
+    top = np.take_along_axis(deviations.to_numpy(), order, axis=1)
+    fallback = "; ".join(importance["feature"].head(3))
+    drivers = ["; ".join(columns[o][v > 0]) or fallback for o, v in zip(order, top)]
 
-    explanations = pd.DataFrame(rows).merge(scores[["customer_id", "lead_score", "lead_category"]], on="customer_id", how="left")
+    explanations = pd.DataFrame({"customer_id": scoring_ids["customer_id"], "top_drivers": drivers}).merge(scores[["customer_id", "lead_score", "lead_category"]], on="customer_id", how="left")
     explanations.to_csv(TABLES_DIR / "per_lead_explanations.csv", index=False)
 
     summary = _build_explanation_summary(scoring_features, scores, importance)

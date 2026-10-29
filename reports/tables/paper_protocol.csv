@@ -1,0 +1,4 @@
+model,source,mean_auc,auc_y1_target_1,auc_y1_target_2,auc_y1_target_3,auc_y1_target_4
+"LightGBM, one model per product",ours,0.8317511162979159,0.8225207534413352,0.819596140943714,0.8147699650706515,0.870117605735963
+"Published: transaction aggregates (full MBD, client folds)",paper,0.783,,,,
+"Published best: supervised RNN, transactions + geo + dialogs",paper,0.824,,,,

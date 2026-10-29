@@ -1,14 +1,14 @@
 {
-  "scored_customers": 500,
-  "hot_leads": 153,
-  "medium_leads": 200,
-  "cold_leads": 147,
+  "scored_customers": 100224,
+  "hot_leads": 30569,
+  "medium_leads": 40089,
+  "cold_leads": 29566,
   "top_features": [
-    "account_count",
-    "avg_balance",
-    "occupation_freq",
-    "chosen_product_freq",
-    "age"
+    "total_txn_amt_90",
+    "txn_amt_d30_1",
+    "total_txn_amt_365",
+    "recency_days",
+    "txn_count_d30_1"
   ],
-  "avg_recency_days": 194.478
+  "avg_recency_days": 39.09570561941251
 }

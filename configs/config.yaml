@@ -1,10 +1,15 @@
 project:
   name: "Lead Scoring Intelligence Platform"
   domain: "Banking customer analytics"
-  target: "12 month customer value and conversion propensity"
+  target: "3 month product take-up propensity and transaction value"
+  data: "MBD-mini (Sber AI Lab, CC BY 4.0), see data/README.md"
 
+# Mirrors src/lead_scoring/config.py (the pipeline reads the dataclass).
 pipeline:
   lookback_days: 365
-  target_horizon_days: 365
-  test_size: 0.2
+  horizon_months: 3
+  train_snapshots: ["2022-01-31", "2022-04-30", "2022-07-31"]
+  test_snapshot: "2022-10-31"
+  score_snapshot: "2022-12-31"
   random_state: 42
+  workers: 5

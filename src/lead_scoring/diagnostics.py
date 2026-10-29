@@ -12,15 +12,18 @@ def build_residual_diagnostics() -> dict[str, object]:
     """Save residual records and summary diagnostics."""
     ensure_directories()
     predictions = pd.read_csv(TABLES_DIR / "test_predictions.csv")
-    residuals = predictions["actual_future_revenue_12m"] - predictions["predicted_cltv"]
+    residuals = predictions["actual_future_value"] - predictions["predicted_cltv"]
     absolute_error = residuals.abs()
 
-    records = predictions[["customer_id", "actual_future_revenue_12m", "predicted_cltv"]].copy()
+    records = predictions[["customer_id", "actual_future_value", "predicted_cltv"]].copy()
     records["residual"] = residuals
     records["absolute_error"] = absolute_error
+    # Errors are judged against what clients actually transact: below a median client's
+    # 3-month value is low, above a top-1% client's is extreme.
+    q50, q90, q99 = predictions["actual_future_value"].quantile([0.5, 0.9, 0.99])
     records["error_bucket"] = pd.cut(
         absolute_error,
-        bins=[-1, 25_000, 75_000, 150_000, np.inf],
+        bins=[-1, q50, q90, q99, np.inf],
         labels=["low", "moderate", "high", "extreme"],
     ).astype(str)
     records.to_csv(TABLES_DIR / "residual_records.csv", index=False)

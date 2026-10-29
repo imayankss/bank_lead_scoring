@@ -30,22 +30,14 @@ st.set_page_config(
 
 
 def _format_currency(value: float) -> str:
+    # MBD amounts are anonymised and noised, so no currency is shown.
     if pd.isna(value):
         return "N/A"
-    return f"INR {value:,.0f}"
+    return f"{value:,.0f}"
 
 
-def _mask_email(value: object) -> str:
-    text = "" if pd.isna(value) else str(value)
-    if "@" not in text:
-        return "N/A"
-    name, domain = text.split("@", 1)
-    return f"{name[:2]}***@{domain}"
-
-
-def _mask_phone(value: object) -> str:
-    text = "" if pd.isna(value) else str(value)
-    return f"******{text[-4:]}" if len(text) >= 4 else "N/A"
+def _short_id(customer_id: str) -> str:
+    return str(customer_id)[:12]
 
 
 @st.cache_data
@@ -68,17 +60,14 @@ def _sidebar_filters(data: pd.DataFrame) -> pd.DataFrame:
     max_score = int(data["lead_score"].max())
     selected_score = st.sidebar.slider("Lead score", min_score, max_score, (min_score, max_score))
 
-    segments = sorted(data["Customer_Segment"].dropna().unique().tolist())
-    selected_segments = st.sidebar.multiselect("Customer segment", segments, default=segments)
-
-    products = sorted(data["Best_First_Option"].dropna().unique().tolist())
-    selected_products = st.sidebar.multiselect("Primary product", products, default=products)
+    history = st.sidebar.radio("Product history", ["All clients", "Took a product before", "Never took a product"])
+    took = data["products_taken_before"].gt(0)
+    keep = {"All clients": took | ~took, "Took a product before": took, "Never took a product": ~took}[history]
 
     return data[
         data["lead_category"].isin(selected_categories)
         & data["lead_score"].between(selected_score[0], selected_score[1])
-        & data["Customer_Segment"].isin(selected_segments)
-        & data["Best_First_Option"].isin(selected_products)
+        & keep
     ].copy()
 
 
@@ -116,28 +105,30 @@ def _render_overview(data: pd.DataFrame) -> None:
         )
         st.plotly_chart(fig, width="stretch")
 
-    product_counts = data["Best_First_Option"].value_counts().head(10).reset_index()
-    product_counts.columns = ["product", "leads"]
+    product_counts = pd.DataFrame(
+        {"product": [f"Product {k}" for k in range(1, 5)],
+         "clients": [int(data[f"target_{k}_before"].gt(0).sum()) for k in range(1, 5)]}
+    )
     fig = px.bar(
         product_counts,
         x="product",
-        y="leads",
-        color="leads",
+        y="clients",
+        color="clients",
         color_continuous_scale="Tealgrn",
-        title="Top Primary Product Recommendations",
+        title="Clients Who Already Took Each Product (MBD products are unnamed)",
     )
     st.plotly_chart(fig, width="stretch")
 
 
 def _render_leads(data: pd.DataFrame) -> None:
     view = data.sort_values(["lead_score", "expected_value"], ascending=False).copy()
+    view["client"] = view["customer_id"].map(_short_id)
     table = view[
         [
-            "Customer_ID",
-            "First_Name",
-            "Last_Name",
-            "Customer_Segment",
-            "Best_First_Option",
+            "client",
+            "recency_days",
+            "txn_count_90",
+            "products_taken_before",
             "lead_category",
             "lead_score",
             "predicted_propensity",
@@ -146,11 +137,10 @@ def _render_leads(data: pd.DataFrame) -> None:
         ]
     ].rename(
         columns={
-            "Customer_ID": "Customer ID",
-            "First_Name": "First Name",
-            "Last_Name": "Last Name",
-            "Customer_Segment": "Segment",
-            "Best_First_Option": "Primary Product",
+            "client": "Client",
+            "recency_days": "Days Since Last Txn",
+            "txn_count_90": "Txns (90d)",
+            "products_taken_before": "Products Taken",
             "lead_category": "Category",
             "lead_score": "Score",
             "predicted_propensity": "Propensity",
@@ -161,7 +151,7 @@ def _render_leads(data: pd.DataFrame) -> None:
     table["Propensity"] = table["Propensity"].map(lambda x: f"{x:.1%}")
     table["Predicted CLTV"] = table["Predicted CLTV"].map(_format_currency)
     table["Expected Value"] = table["Expected Value"].map(_format_currency)
-    st.dataframe(table, width="stretch", height=460, hide_index=True)
+    st.dataframe(table.head(1000), width="stretch", height=460, hide_index=True)  # top 1,000; download has all
     st.download_button(
         "Download filtered leads",
         data=view.to_csv(index=False),
@@ -171,17 +161,14 @@ def _render_leads(data: pd.DataFrame) -> None:
 
 
 def _render_customer_detail(data: pd.DataFrame, explanations: pd.DataFrame) -> None:
-    options = data.sort_values("lead_score", ascending=False)
-    labels = [
-        f"{row.Customer_ID} | {row.First_Name} {row.Last_Name} | {row.lead_score} ({row.lead_category})"
-        for row in options.itertuples()
-    ]
-    if not labels:
+    options = data.sort_values("lead_score", ascending=False).head(500)  # a 100k-option picker freezes the browser
+    if options.empty:
         st.info("No customers match the active filters.")
         return
-    selected = st.selectbox("Customer", labels)
-    customer_id = selected.split(" | ", 1)[0]
-    customer = data.loc[data["Customer_ID"] == customer_id].iloc[0]
+    labels = {f"{_short_id(row.customer_id)} | {row.lead_score} ({row.lead_category})": row.customer_id
+              for row in options.itertuples()}
+    customer_id = labels[st.selectbox("Client (top 500 by score)", list(labels))]
+    customer = data.loc[data["customer_id"] == customer_id].iloc[0]
 
     col1, col2, col3, col4 = st.columns(4)
     col1.metric("Lead score", f"{customer['lead_score']}/100")
@@ -189,31 +176,21 @@ def _render_customer_detail(data: pd.DataFrame, explanations: pd.DataFrame) -> N
     col3.metric("Propensity", f"{customer['predicted_propensity']:.1%}")
     col4.metric("Expected value", _format_currency(customer["expected_value"]))
 
-    profile, products = st.columns(2)
-    with profile:
-        st.subheader("Profile")
+    activity, products = st.columns(2)
+    with activity:
+        st.subheader("Activity at scoring date")
         st.write(
             {
-                "Name": f"{customer['First_Name']} {customer['Last_Name']}",
-                "Segment": customer["Customer_Segment"],
-                "Occupation": customer["Occupation"],
-                "Annual income": _format_currency(customer["Annual_Income"]),
-                "Risk score": int(customer["Risk_Score"]),
-                "Email": _mask_email(customer["Email"]),
-                "Phone": _mask_phone(customer["Phone"]),
+                "Days since last transaction": int(customer["recency_days"]),
+                "Transactions, last 365 days": int(customer["txn_count_365"]),
+                "Transactions, last 90 days": int(customer["txn_count_90"]),
+                "Value, last 365 days": _format_currency(customer["total_txn_amt_365"]),
+                "Follow-up flags": customer.get("fallback_reasons", "N/A"),
             }
         )
     with products:
-        st.subheader("Product alignment")
-        st.write(
-            {
-                "Primary recommendation": customer["Best_First_Option"],
-                "Secondary recommendation": customer["Best_Second_Option"],
-                "Chosen product": customer["Chosen_Product"],
-                "Matches primary": customer["Chosen_Product"] == customer["Best_First_Option"],
-                "Matches secondary": customer["Chosen_Product"] == customer["Best_Second_Option"],
-            }
-        )
+        st.subheader("Product history")
+        st.write({f"Product {k}: months taken": int(customer[f"target_{k}_before"]) for k in range(1, 5)})
 
     if not explanations.empty:
         match = explanations.loc[explanations["customer_id"] == customer_id]
@@ -230,7 +207,8 @@ def _render_model_quality(metrics: pd.DataFrame, lift: pd.DataFrame) -> None:
     col1, col2, col3, col4 = st.columns(4)
     col1.metric("Test rows", f"{int(row['rows']):,}")
     col2.metric("Positive rate", f"{row['positive_rate']:.1%}")
-    col3.metric("Propensity AUC", f"{row['propensity_auc']:.3f}")
+    col3.metric("Propensity AUC (95% CI)", f"{row['propensity_auc']:.3f}",
+                f"{row['propensity_auc_ci_lower']:.3f} to {row['propensity_auc_ci_upper']:.3f}", delta_color="off")
     col4.metric("CLTV RMSE", _format_currency(row["cltv_rmse"]))
 
     if not lift.empty:
@@ -272,6 +250,8 @@ def main() -> None:
         return
 
     st.title("Lead Scoring and CLTV Dashboard")
+    st.caption("Built for a Bank of India-style lead workflow; data is Sber AI Lab's public MBD-mini "
+               "(business clients, CC BY 4.0), not Bank of India customers.")
     filtered = _sidebar_filters(data)
     if filtered.empty:
         st.warning("No leads match the active filters.")

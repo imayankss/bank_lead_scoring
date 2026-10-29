@@ -1,0 +1,15 @@
+import re
+
+from lead_scoring.config import PipelineConfig
+from lead_scoring.provenance import build_run_manifest
+
+
+def test_manifest_records_code_data_config_and_versions():
+    cfg = PipelineConfig(workers=2)
+    manifest = build_run_manifest(cfg)
+    # Tests always run inside the repository, so the commit must be found even without a working git binary.
+    assert re.fullmatch(r"[0-9a-f]{40}", manifest["git_sha"])
+    assert manifest["git_dirty"] in (True, False, None)  # None means "could not tell", never a guessed False
+    assert manifest["config"]["workers"] == 2 and manifest["config"]["test_snapshot"] == cfg.test_snapshot
+    assert manifest["data"]["revision"] and len(manifest["data"]["archives"]["detail.tar.gz"]) == 64
+    assert {"python", "pandas", "scikit-learn", "duckdb", "numpy"} <= set(manifest["versions"])

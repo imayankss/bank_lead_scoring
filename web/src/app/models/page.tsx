@@ -10,20 +10,29 @@ import { getModels } from "@/lib/data";
 
 export default async function ModelsPage() {
   const models = await getModels();
-  const best = models.leaderboard.find((model) => model.is_best) ?? models.leaderboard[0];
+  const rankers = models.leaderboard.filter((model) => model.task === "propensity");
+  const best = rankers.find((model) => model.is_best) ?? rankers[0];
+  const bestValue = models.leaderboard.find((model) => model.task === "value" && model.is_best);
   return (
     <AnimatedPage>
       <SectionHeader eyebrow="Model Leaderboard" title="Model Battle Arena">
-        Models and baselines compete on business-oriented lead prioritization metrics.
+        Every model and baseline is scored on the same later test months (Nov 2022 to Jan 2023), ranked by
+        conversion lift in the top 10% of clients, with 95% bootstrap intervals. No candidate gets a bonus.
       </SectionHeader>
       <div className="mb-6 grid gap-4 md:grid-cols-3">
         <MetricCard label="Best model" value={best?.model_name ?? "Unavailable"} icon={Medal} tone="mint" />
-        <MetricCard label="Business score" value={decimal(best?.business_score, 3)} icon={Target} tone="cyan" />
-        <MetricCard label="Best RMSE" value={currency(best?.rmse)} icon={BrainCircuit} tone="amber" />
+        <MetricCard
+          label="Top-10% lift"
+          value={`${decimal(best?.lift_at_10pct, 2)}x`}
+          detail={`95% CI ${decimal(best?.lift_at_10pct_ci_lower, 2)}–${decimal(best?.lift_at_10pct_ci_upper, 2)}`}
+          icon={Target}
+          tone="cyan"
+        />
+        <MetricCard label="Best value model (RMSE)" value={bestValue?.model_name ?? "Unavailable"} detail={currency(bestValue?.rmse)} icon={BrainCircuit} tone="amber" />
       </div>
       <div className="grid gap-5 xl:grid-cols-[1.05fr_0.95fr]">
-        <ChartCard title="Business Score Comparison">
-          <ModelMetricChart data={models.leaderboard} />
+        <ChartCard title="Top-10% Lift by Model (1.0 = random)">
+          <ModelMetricChart data={rankers} />
         </ChartCard>
         <div className="glass rounded-lg p-5">
           <h3 className="mb-4 text-base font-semibold text-white">Leaderboard</h3>

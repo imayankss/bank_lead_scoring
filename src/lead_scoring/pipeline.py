@@ -9,6 +9,8 @@ from lead_scoring.evaluation import evaluate_models
 from lead_scoring.explainability import build_explainability_artifacts
 from lead_scoring.features import prepare_feature_sets
 from lead_scoring.model_comparison import build_model_comparison
+from lead_scoring.paper_protocol import write_paper_protocol
+from lead_scoring.provenance import write_run_manifest
 from lead_scoring.risk import build_risk_signals
 from lead_scoring.scenario import build_scenarios
 from lead_scoring.scoring import build_fallback_explanations, score_batch
@@ -25,13 +27,15 @@ def run_pipeline(config: PipelineConfig = PipelineConfig()) -> dict[str, object]
     evaluation_metrics = evaluate_models()
     scores = score_batch()
     fallbacks = build_fallback_explanations()
-    model_comparison = build_model_comparison()
+    model_comparison = build_model_comparison(config)
+    paper = write_paper_protocol()
     diagnostics = build_residual_diagnostics()
     risks = build_risk_signals()
     scenarios = build_scenarios()
     seasonality = build_seasonality_artifacts()
     explanation_paths = build_explainability_artifacts()
     web_paths = export_web_data()
+    manifest = write_run_manifest(config)
 
     return {
         "customer_features": [str(p) for p in feature_paths],
@@ -41,12 +45,14 @@ def run_pipeline(config: PipelineConfig = PipelineConfig()) -> dict[str, object]
         "scored_rows": int(len(scores)),
         "fallback_rows": int(len(fallbacks)),
         "model_comparison_rows": int(len(model_comparison)),
+        "paper_protocol_rows": int(len(paper)),
         "residual_diagnostics": diagnostics["summary"],
         "risk_rows": int(len(risks)),
         "scenario_rows": int(len(scenarios.get("scenarios", []))),
         "seasonality_rows": int(len(seasonality)),
         "explainability": explanation_paths,
         "web_exports": [str(path) for path in web_paths],
+        "git_sha": manifest["git_sha"],
     }
 
 

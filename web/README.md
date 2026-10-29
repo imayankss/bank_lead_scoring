@@ -16,6 +16,8 @@ Regenerate them from the project root:
 python3 scripts/run_export_web_data.py
 ```
 
+The export writes strict JSON (no NaN), because the browser rejects a whole file over one NaN. `tests/test_web_exporter.py` checks the committed JSON against `reports/tables/`.
+
 ## Development
 
 ```bash

@@ -2,33 +2,32 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+
+import duckdb
 import pandas as pd
 
-from lead_scoring.data import load_raw_tables
-from lead_scoring.paths import TABLES_DIR, ensure_directories
+from lead_scoring.data import LOCAL_TS, amount_cap
+from lead_scoring.paths import MBD_DIR, TABLES_DIR, ensure_directories
 
 
-def build_seasonality_artifacts() -> pd.DataFrame:
-    """Aggregate transaction history by month for dashboard trend visuals."""
+def build_seasonality_artifacts(mbd_dir: Path = MBD_DIR) -> pd.DataFrame:
+    """Aggregate transactions by Moscow-time month in DuckDB, without loading them into memory."""
     ensure_directories()
-    _, _, transactions = load_raw_tables()
-    tx = transactions.copy()
-    tx["period"] = tx["transaction_date"].dt.to_period("M").astype(str)
-    tx["month"] = tx["transaction_date"].dt.month
-    tx["year"] = tx["transaction_date"].dt.year
-
-    monthly = (
-        tx.groupby(["period", "year", "month"])
-        .agg(
-            transaction_count=("amount", "size"),
-            total_amount=("amount", "sum"),
-            average_amount=("amount", "mean"),
-            active_customers=("customer_id", "nunique"),
-        )
-        .reset_index()
-        .sort_values("period")
-    )
+    trx = str(mbd_dir / "detail" / "trx" / "fold=*" / "*.parquet")
+    con = duckdb.connect()
+    con.execute("SET enable_progress_bar = false")
+    monthly = con.execute(f"""
+        WITH tx AS (SELECT client_id, {LOCAL_TS} AS ts, least(amount, $cap) AS amount FROM read_parquet($trx))
+        SELECT strftime(ts, '%Y-%m') AS period, year(ts) AS year, month(ts) AS month,
+               count(*) AS transaction_count, sum(amount) AS total_amount, avg(amount) AS average_amount,
+               count(DISTINCT client_id) AS active_customers
+        FROM tx GROUP BY ALL ORDER BY period""", {"trx": trx, "cap": amount_cap(mbd_dir)}).df()
+    con.close()
     monthly["rolling_3m_amount"] = monthly["total_amount"].rolling(3, min_periods=1).mean()
+    # DuckDB sums in parallel, so the last float digits vary run to run; cents keep the table stable.
+    money = ["total_amount", "average_amount", "rolling_3m_amount"]
+    monthly[money] = monthly[money].round(2)
     monthly.to_csv(TABLES_DIR / "seasonality_monthly.csv", index=False)
 
     month_pattern = (

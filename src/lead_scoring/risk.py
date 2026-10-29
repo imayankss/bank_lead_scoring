@@ -18,6 +18,19 @@ def _risk_category(score: float) -> str:
     return "Low"
 
 
+def risk_composite(df: pd.DataFrame) -> pd.Series:
+    """0-100 outreach risk from heuristic rules (not a fitted model).
+
+    Stale activity, a cooling client (last 90 days under half their usual quarter) and a
+    cold lead score each add risk. A 0.5-centred "uncertainty" term was dropped: with a
+    2% base rate every probability sits near 0, so it never contributed.
+    """
+    recency_risk = df["recency_days"].clip(0, 365) / 365 * 40
+    activity_drop_risk = np.where(df["txn_count_90"] < df["txn_count_365"] / 8, 30, 0)
+    score_risk = np.where(df["lead_score"] < 30, 30, 0)
+    return pd.Series(recency_risk + activity_drop_risk + score_risk, index=df.index).clip(0, 100)
+
+
 def build_risk_signals() -> pd.DataFrame:
     """Create customer-level risk and confidence signals."""
     ensure_directories()
@@ -32,24 +45,15 @@ def build_risk_signals() -> pd.DataFrame:
                 "customer_id",
                 "recency_days",
                 "txn_count_365",
-                "active_account_count",
-                "risk_score",
+                "txn_count_90",
                 "total_txn_amt_365",
-                "avg_balance",
             ]
         ],
         on="customer_id",
         how="left",
     ).merge(fallbacks, on="customer_id", how="left")
 
-    uncertainty = 1 - (df["predicted_propensity"] - 0.5).abs() * 2
-    recency_risk = (df["recency_days"].clip(0, 365) / 365) * 25
-    account_risk = np.where(df["active_account_count"].fillna(0) <= 0, 20, 0)
-    credit_risk = np.where(df["risk_score"].fillna(650) < 500, 20, 0)
-    uncertainty_risk = uncertainty.clip(0, 1) * 25
-    score_risk = np.where(df["lead_score"] < 30, 10, 0)
-
-    df["risk_score_composite"] = (recency_risk + account_risk + credit_risk + uncertainty_risk + score_risk).clip(0, 100)
+    df["risk_score_composite"] = risk_composite(df)
     df["risk_category"] = df["risk_score_composite"].map(_risk_category)
     df["confidence_score"] = (100 - df["risk_score_composite"]).clip(0, 100)
     df["alert"] = np.where(
