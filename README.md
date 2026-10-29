@@ -14,7 +14,9 @@ A lead-scoring platform for a bank's relationship managers: which clients to cal
 
 **Live results dashboard: [bank-lead-scoring-one.vercel.app](https://bank-lead-scoring-one.vercel.app)**
 
-[![Results dashboard: top-10% lift 4.01x and AUC 0.787 on the test month, with intervals](docs/assets/dashboard.png)](https://bank-lead-scoring-one.vercel.app)
+[![Lead Desk: the ranked call list with each client's next best product](docs/assets/dashboard.png)](https://bank-lead-scoring-one.vercel.app)
+
+The dashboard opens on the **Lead Desk**, the view an RM team works from: the top 1,000 clients of the 31 Dec 2022 book ranked by lead score, each with a next best product, the chance of each product, the three strongest reasons behind the score, recent activity and rule-based flags. Filter by product, sort, search, and click a client for detail. The model evidence is one click away at [`/results`](https://bank-lead-scoring-one.vercel.app/results).
 
 ## Results
 
@@ -60,6 +62,16 @@ Tried and not kept, each judged on validation: label-chosen category codes (lowe
 | Published best: supervised RNN, transactions + geo + dialogs | 0.824 | | | | |
 
 This is not a like-for-like comparison. The paper ([arXiv 2409.17587](https://arxiv.org/abs/2409.17587)) uses full MBD (2.2M clients) with client folds; this repo uses MBD-mini, a time split, and transactions plus dialog timestamps. Product 4 at 0.870 is above the project's 0.85 audit line. The audit found no single feature that explains it (the best scores 0.72), and every feature is built from events before the snapshot. Product 2 has only about 50 next-month buyers in the validation month, so its numbers are noisy.
+
+### What to offer: next best product (test months)
+
+One LightGBM per product predicts who takes it in the next 3 months, reusing the any-product settings chosen on validation. The client is offered the product ranked highest.
+
+| Measure | LightGBM per product | Baseline: most popular product |
+|---|---:|---:|
+| Buyers whose product was ranked first (2,173 buyers) | **54.2%** | 34.1% |
+
+Per-product 3-month AUC: 0.781, 0.804, 0.775 and 0.858 for products 1–4. Product 4 is above the 0.85 audit line; its strongest single feature scores 0.74. Table: [`next_product_test.csv`](reports/tables/next_product_test.csv).
 
 ### What clients are worth: next-3-month value (test months)
 

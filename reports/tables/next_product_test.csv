@@ -1,0 +1,7 @@
+measure,product,model,value,buyers
+auc,y3_target_1,lightgbm,0.7814123919448976,741
+auc,y3_target_2,lightgbm,0.8044525598603048,134
+auc,y3_target_3,lightgbm,0.7749793704424036,727
+auc,y3_target_4,lightgbm,0.8584739085119691,695
+top1_hit_rate_among_buyers,any,lightgbm,0.5416474919466175,2173
+top1_hit_rate_among_buyers,any,most_popular_product,0.34100322135296823,2173

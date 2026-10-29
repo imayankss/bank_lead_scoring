@@ -64,3 +64,11 @@ def test_test_month_result_matches_the_one_time_score():
     row = pd.read_csv(TABLES / "propensity_test.csv").iloc[0]
     assert row["test_auc"] == pytest.approx(METRICS["propensity_auc"])
     assert row["test_lift_at_10pct"] == pytest.approx(METRICS["lift_at_10pct"])
+
+
+def test_next_best_product_results_are_quoted():
+    table = pd.read_csv(TABLES / "next_product_test.csv")
+    hits = table[table["measure"] == "top1_hit_rate_among_buyers"].set_index("model")["value"]
+    assert f"**{hits['lightgbm']:.1%}** | {hits['most_popular_product']:.1%}" in README
+    aucs = table[table["measure"] == "auc"]["value"]
+    assert ", ".join(f"{v:.3f}" for v in aucs.iloc[:3]) + f" and {aucs.iloc[3]:.3f}" in README

@@ -9,12 +9,16 @@ from typing import Any
 
 import pandas as pd
 
+from lead_scoring.config import PipelineConfig
+from lead_scoring.data import TARGETS
 from lead_scoring.model_registry import registry_as_records
+from lead_scoring.next_product import DRIVERS_FILE, FAMILIES, NEXT_PRODUCT_SCORES_FILE
 from lead_scoring.paths import (
     CUSTOMER_FEATURES_FILE,
     FEATURE_METADATA_FILE,
     MODEL_METADATA_FILE,
     PROJECT_ROOT,
+    SCORING_FEATURES_FILE,
     TABLES_DIR,
     ensure_directories,
 )
@@ -23,6 +27,8 @@ from lead_scoring.paths import (
 WEB_DATA_DIR = PROJECT_ROOT / "web" / "public" / "data"
 # The dashboard ships static JSON, so row-level arrays are sampled to keep pages light.
 SAMPLE_ROWS = 400
+# An RM team's realistic quarter of calls; the summary still covers the whole book.
+CRM_CLIENTS = 1000
 
 
 def _read_csv(path: Path) -> pd.DataFrame:
@@ -83,7 +89,68 @@ def results_payload(tables_dir: Path = TABLES_DIR, manifest_path: Path = PROJECT
         "gru_epochs": _read_csv(tables_dir / "gru_validation.csv").to_dict(orient="records"),
         "paper": _read_csv(tables_dir / "paper_protocol.csv").to_dict(orient="records"),
         "cltv_validation": _read_csv(tables_dir / "cltv_validation.csv").to_dict(orient="records"),
+        "next_product": _read_csv(tables_dir / "next_product_test.csv").to_dict(orient="records"),
         "run": {"git_sha": manifest.get("git_sha"), "created_utc": manifest.get("created_utc")},
+    }
+
+
+def crm_payload(top_n: int = CRM_CLIENTS) -> dict[str, Any]:
+    """The RM call list: book-wide summary plus the top `top_n` clients of the current snapshot."""
+    probs = [f"p_{t}" for t in TARGETS]
+    facts = ["customer_id", "total_txn_amt_90", "txn_count_90", "recency_days", "dlg_count_90",
+             *(f"txn_amt_d30_{i}" for i in range(6, 0, -1)),
+             *(f"hist_{t}_months_since" for t in TARGETS), *(f"{t}_before" for t in TARGETS)]
+    book = (
+        pd.read_csv(PROJECT_ROOT / "data" / "processed" / "lead_scores.csv")
+        .merge(pd.read_csv(NEXT_PRODUCT_SCORES_FILE), on="customer_id", validate="1:1")
+        .merge(pd.read_csv(DRIVERS_FILE), on="customer_id", validate="1:1")
+        .merge(_read_csv(TABLES_DIR / "fallback_explanations.csv"), on="customer_id", how="left", validate="1:1")
+        .merge(pd.read_parquet(SCORING_FEATURES_FILE, columns=facts), on="customer_id", validate="1:1")
+        .sort_values("expected_value", ascending=False, kind="mergesort")
+        .reset_index(drop=True)
+    )
+    # Per-product models are uncalibrated; split the calibrated any-product chance across products by their scores,
+    # so a product never shows a higher chance than "any product". Rankings within a client are unchanged.
+    book[probs] = book[probs].div(book[probs].sum(axis=1), axis=0).mul(book["predicted_propensity"], axis=0)
+
+    def client(rank: int, row: pd.Series) -> dict[str, Any]:
+        flags = str(row.get("fallback_reasons") or "no_issue_detected")
+        return {
+            "rank": rank + 1,
+            "id": row["customer_id"][:10],
+            "score": int(row["lead_score"]),
+            "tier": row["lead_category"],
+            "p_any": round(row["predicted_propensity"], 5),
+            "p": [round(row[c], 5) for c in probs],
+            "next": int(row["next_product"]),
+            "value": round(row["predicted_cltv"]),
+            "ev": round(row["expected_value"]),
+            "vol90": round(row["total_txn_amt_90"]),
+            "txn90": int(row["txn_count_90"]),
+            "recency": int(row["recency_days"]),
+            "dialogs90": int(row["dlg_count_90"]),
+            "spend": [round(row[f"txn_amt_d30_{i}"]) for i in range(6, 0, -1)],  # oldest 30-day window first
+            "months_since": [None if pd.isna(row[f"hist_{t}_months_since"]) else int(row[f"hist_{t}_months_since"]) for t in TARGETS],
+            "bought_before": [int(row[f"{t}_before"]) for t in TARGETS],
+            "drivers": {f: round(row[f], 3) for f in FAMILIES},
+            "flags": [] if flags == "no_issue_detected" else flags.split("; "),
+        }
+
+    return {
+        "snapshot": PipelineConfig().score_snapshot,
+        "summary": {
+            "clients": int(len(book)),
+            "tiers": book["lead_category"].value_counts().to_dict(),
+            "expected_takers": float(book["predicted_propensity"].sum()),
+            "expected_value": float(book["expected_value"].sum()),
+            "shown": int(min(top_n, len(book))),
+        },
+        "products": [
+            {"product": k + 1, "next_for": int((book["next_product"] == k + 1).sum()), "expected_takers": float(book[c].sum())}
+            for k, c in enumerate(probs)
+        ],
+        "test": _read_csv(TABLES_DIR / "next_product_test.csv").to_dict(orient="records"),
+        "clients": [client(i, row) for i, row in book.head(top_n).iterrows()],
     }
 
 
@@ -118,6 +185,7 @@ def export_web_data() -> list[Path]:
 
     paths = [
         _write_json("results.json", results_payload()),
+        _write_json("crm.json", crm_payload()),
         _write_json(
             "overview.json",
             {

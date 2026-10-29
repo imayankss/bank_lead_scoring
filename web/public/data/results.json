@@ -385,6 +385,50 @@
       "forecast_bias": -91915167813653.62
     }
   ],
+  "next_product": [
+    {
+      "measure": "auc",
+      "product": "y3_target_1",
+      "model": "lightgbm",
+      "value": 0.7814123919448976,
+      "buyers": 741
+    },
+    {
+      "measure": "auc",
+      "product": "y3_target_2",
+      "model": "lightgbm",
+      "value": 0.8044525598603048,
+      "buyers": 134
+    },
+    {
+      "measure": "auc",
+      "product": "y3_target_3",
+      "model": "lightgbm",
+      "value": 0.7749793704424036,
+      "buyers": 727
+    },
+    {
+      "measure": "auc",
+      "product": "y3_target_4",
+      "model": "lightgbm",
+      "value": 0.8584739085119691,
+      "buyers": 695
+    },
+    {
+      "measure": "top1_hit_rate_among_buyers",
+      "product": "any",
+      "model": "lightgbm",
+      "value": 0.5416474919466175,
+      "buyers": 2173
+    },
+    {
+      "measure": "top1_hit_rate_among_buyers",
+      "product": "any",
+      "model": "most_popular_product",
+      "value": 0.34100322135296823,
+      "buyers": 2173
+    }
+  ],
   "run": {
     "git_sha": "371e4cccb56071906f3e95ea65cb8c8c0c7af41d",
     "created_utc": "2026-10-29T18:23:46+00:00"
