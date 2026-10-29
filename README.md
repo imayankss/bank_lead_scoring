@@ -3,6 +3,7 @@
 [![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![DuckDB](https://img.shields.io/badge/DuckDB-parallel_by_fold-FFF000?style=for-the-badge&logo=duckdb&logoColor=black)](src/lead_scoring/data.py)
 [![Next.js](https://img.shields.io/badge/Next.js-Dashboard-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](web/)
+[![Live dashboard](https://img.shields.io/badge/Live-bank--lead--scoring--one.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://bank-lead-scoring-one.vercel.app)
 [![CI](https://img.shields.io/badge/CI-pytest_%2B_web_build-success?style=for-the-badge)](.github/workflows/ci.yml)
 
 A lead-scoring platform for a bank's relationship managers: which clients to call first, how likely each is to take a product in the next 3 months, and what they are worth. It is built around a Bank of India-style RM workflow (CLTV model, propensity model, expected-value lead score, Hot/Medium/Cold tiers, risk flags, scenarios).
@@ -11,7 +12,9 @@ A lead-scoring platform for a bank's relationship managers: which clients to cal
 
 **Every number below is measured on later months than the model was trained on, against simple baselines, with a 95% bootstrap interval.** Every model setting was chosen on a separate validation month, and the test month was scored once. Leakage guards in [`src/lead_scoring/temporal.py`](src/lead_scoring/temporal.py) raise if a split or feature reaches into the future.
 
-![Dashboard overview: top-10% lift 4.01x and AUC 0.787 on the test months, with intervals](docs/assets/dashboard.png)
+**Live results dashboard: [bank-lead-scoring-one.vercel.app](https://bank-lead-scoring-one.vercel.app)**
+
+[![Results dashboard: top-10% lift 4.01x and AUC 0.787 on the test month, with intervals](docs/assets/dashboard.png)](https://bank-lead-scoring-one.vercel.app)
 
 ## Results
 
@@ -95,7 +98,7 @@ flowchart LR
     G --> H["Risk rules, scenarios,<br/>seasonality, explanations"]
     F --> I["Static JSON export"]
     H --> I
-    I --> J["Next.js dashboard<br/>(Streamlit legacy app)"]
+    I --> J["One-page Next.js results dashboard<br/>(Streamlit legacy app)"]
 ```
 
 - **Features** (297, all known at the snapshot): transaction counts and amounts over 365 and 90 days and for each of the last 6 months; counts of the 10 most common values of each transaction category; days since each common event type; purchase flags for the snapshot month and the 2 months before it, and months since the last purchase, per product; dialog counts over 30, 90 and 365 days and days since the last dialog.

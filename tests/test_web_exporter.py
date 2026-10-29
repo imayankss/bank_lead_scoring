@@ -9,7 +9,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 WEB = ROOT / "web" / "public" / "data"
 TABLES = ROOT / "reports" / "tables"
-CONTRACT = ["overview", "forecast", "models", "diagnostics", "risks", "seasonality", "scenarios", "methodology"]
+CONTRACT = ["results", "overview", "forecast", "models", "diagnostics", "risks", "seasonality", "scenarios", "methodology"]
 
 
 def _reject(constant):
@@ -45,3 +45,13 @@ def test_overview_names_the_real_data_source_and_no_synthetic_claims():
     assert "MBD" in overview["project"]["description"]
     assert overview["kpis"]["customers"] == 100_224
     assert not any("synthetic" in item.lower() for item in _json("methodology")["limitations"])
+
+
+def test_results_page_matches_result_tables():
+    results = _json("results")
+    table = pd.read_csv(TABLES / "model_comparison.csv").set_index("model_id")
+    for ranker in results["rankers"]:
+        assert ranker["lift_at_10pct"] == pytest.approx(table.loc[ranker["model_id"], "lift_at_10pct"])
+    # The frontier's top decile is the expected-value lead score's measured lift.
+    assert results["gains"][0]["lift"] == pytest.approx(table.loc["expected_value_ranker", "lift_at_10pct"], abs=0.01)
+    assert results["test"]["test_auc"] == pytest.approx(table.loc["lightgbm", "auc"])
