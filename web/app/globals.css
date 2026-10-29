@@ -164,3 +164,60 @@ pre { background: var(--surface-2); border: 1px solid var(--rule); padding: 1rem
   .chart { height: 240px; }
   .chart.tall { height: 320px; }
 }
+
+/* Lead Desk: a working layout, wider than the editorial pages. */
+.page.desk { max-width: 84rem; padding-top: 3rem; }
+.subtitle { color: var(--text-muted); font-size: 0.78rem; margin: 0.5rem 0 0; }
+.desk .claim { max-width: 52rem; }
+.desk-h { font-family: var(--serif), Georgia, serif; font-size: 1.15rem; font-weight: 600; margin: 2.5rem 0 0; }
+.desk-h .hint { display: inline; margin-left: 0.75rem; }
+.cells.products { margin-top: 0.75rem; }
+button.cell { text-align: left; font: inherit; color: inherit; cursor: pointer; border-top: 0; border-left: 0; }
+button.cell:hover { background: var(--surface-3); }
+button.cell[aria-pressed="true"] { box-shadow: inset 0 0 0 2px var(--series-1); }
+.desk-controls { margin: 1.5rem 0 0; }
+.field { display: flex; align-items: center; gap: 0.5rem; }
+.field select, .field input { font-family: var(--mono), ui-monospace, monospace; font-size: 0.8rem; background: var(--surface); color: var(--text-primary); border: 1px solid var(--rule); padding: 0.4rem 0.55rem; border-radius: 0; }
+.desk-table { max-height: 70vh; overflow: auto; border: 1px solid var(--rule); margin-top: 1rem; }
+.desk-table thead th { position: sticky; top: 0; background: var(--surface); z-index: 1; white-space: nowrap; }
+.desk-table td { white-space: nowrap; }
+.desk-table td.flags { white-space: normal; min-width: 10rem; font-size: 0.8rem; color: var(--invalid); }
+tr.row { cursor: pointer; }
+tr.row:hover td, tr.row[aria-selected="true"] td { background: var(--series-1-soft); color: var(--text-primary); }
+tr.row:focus-visible { outline: 2px solid var(--series-1); outline-offset: -2px; }
+.tier { font-family: var(--mono), ui-monospace, monospace; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.15rem 0.45rem; border: 1px solid currentColor; }
+.tier-Hot { color: var(--invalid); }
+.tier-Medium { color: var(--series-2); }
+.tier-Cold { color: var(--text-muted); }
+.chip.more { margin-top: 0.75rem; }
+
+.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(30rem, 100vw); overflow-y: auto; background: var(--surface); border-left: 1px solid var(--rule); padding: 1.5rem 1.5rem 3rem; z-index: 10; box-shadow: -12px 0 32px #0000002e; }
+.drawer-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+.drawer-head h3 { font-size: 1.2rem; margin: 0.3rem 0 0; }
+.drawer h4 { margin: 1.75rem 0 0.6rem; font-weight: 400; }
+.drawer .cells { margin: 1rem 0; }
+.drawer .cells .cell { min-width: 0; }
+.bars { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+.bars li { display: grid; grid-template-columns: 9.5rem 1fr 4rem; align-items: center; gap: 0.75rem; font-size: 0.85rem; color: var(--text-secondary); }
+.bars li.best { color: var(--text-primary); font-weight: 600; }
+.bars .mono { text-align: right; }
+.bar { height: 8px; background: var(--surface-3); }
+.bar i { display: block; height: 100%; background: var(--text-muted); }
+.bars li.best .bar i { background: var(--series-1); }
+.reasons { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; font-family: var(--serif), Georgia, serif; color: var(--text-secondary); }
+.reasons span { display: inline-block; width: 1.4rem; font-size: 0.7rem; }
+.reasons .up { color: var(--series-1); }
+.reasons .down { color: var(--series-2); }
+.spark { display: flex; align-items: flex-end; gap: 4px; height: 56px; }
+.spark i { flex: 1; background: var(--series-1); opacity: 0.75; }
+.facts { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.25rem; margin: 1.75rem 0 0; }
+.facts dt { font-family: var(--mono), ui-monospace, monospace; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+.facts dd { margin: 0.3rem 0 0; font-family: var(--mono), ui-monospace, monospace; font-size: 0.85rem; }
+.facts .hint { display: inline; margin: 0; }
+
+@media (max-width: 640px) {
+  .page.desk { padding: 2rem 1rem 4rem; }
+  .drawer { padding: 1.25rem 1rem 3rem; }
+  .bars li { grid-template-columns: 7rem 1fr 3.5rem; }
+  .facts { grid-template-columns: 1fr; }
+}

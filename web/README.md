@@ -1,8 +1,11 @@
 # Results dashboard
 
-A single static page (Next.js) that shows the committed results of the lead-scoring rebuild on MBD-mini. Live at https://bank-lead-scoring-one.vercel.app.
+A static Next.js app with two pages. Live at https://bank-lead-scoring-one.vercel.app.
 
-Every control switches between measured results read from `public/data/results.json`; nothing is recomputed in the browser. The other JSON files in `public/data/` are the exporter's older data contract, kept for its tests and the Streamlit app.
+- `/` **Lead Desk:** the RM call list from `public/data/crm.json`: the top 1,000 clients of the current book, next best product, reasons and flags.
+- `/results`: the measured model results from `public/data/results.json`.
+
+Nothing is recomputed in the browser. The other JSON files in `public/data/` are the exporter's older data contract, kept for its tests and the Streamlit app.
 
 ## Run
 

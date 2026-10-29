@@ -9,6 +9,7 @@ from lead_scoring.evaluation import evaluate_models
 from lead_scoring.explainability import build_explainability_artifacts
 from lead_scoring.features import prepare_feature_sets
 from lead_scoring.model_comparison import build_model_comparison
+from lead_scoring.next_product import write_next_product
 from lead_scoring.paper_protocol import write_paper_protocol
 from lead_scoring.provenance import write_run_manifest
 from lead_scoring.risk import build_risk_signals
@@ -26,6 +27,7 @@ def run_pipeline(config: PipelineConfig = PipelineConfig()) -> dict[str, object]
     training_metrics = train_models(config)
     evaluation_metrics = evaluate_models()
     scores = score_batch()
+    next_product = write_next_product()
     fallbacks = build_fallback_explanations()
     model_comparison = build_model_comparison(config)
     paper = write_paper_protocol()
@@ -43,6 +45,7 @@ def run_pipeline(config: PipelineConfig = PipelineConfig()) -> dict[str, object]
         "training_metrics": training_metrics,
         "evaluation_metrics": evaluation_metrics,
         "scored_rows": int(len(scores)),
+        "next_product_rows": int(len(next_product)),
         "fallback_rows": int(len(fallbacks)),
         "model_comparison_rows": int(len(model_comparison)),
         "paper_protocol_rows": int(len(paper)),

@@ -39,3 +39,4 @@ reports/tables/risk_signals.csv
 reports/tables/test_predictions.csv
 .vercel
 .env*
+*.tsbuildinfo
