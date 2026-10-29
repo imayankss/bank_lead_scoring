@@ -1,0 +1,392 @@
+{
+  "test": {
+    "model": "lightgbm",
+    "test_snapshot": "2022-10-31",
+    "rows": 100224,
+    "positives": 2173,
+    "base_rate": 0.021681433588761175,
+    "test_auc": 0.787241230806082,
+    "test_lift_at_10pct": 4.013045574930735,
+    "validation_auc": 0.7739553648308463,
+    "rounds": 224
+  },
+  "rankers": [
+    {
+      "model_id": "lightgbm",
+      "model_name": "LightGBM on transaction-mix, history and dialog features",
+      "role": "model",
+      "auc": 0.787241230806082,
+      "auc_ci_lower": 0.7776616606450275,
+      "auc_ci_upper": 0.7962721786367264,
+      "lift_at_10pct": 4.013045574930735,
+      "lift_at_10pct_ci_lower": 3.8491305190776126,
+      "lift_at_10pct_ci_upper": 4.251526185786627
+    },
+    {
+      "model_id": "logistic_regression",
+      "model_name": "Logistic regression",
+      "role": "baseline",
+      "auc": 0.7754107912970692,
+      "auc_ci_lower": 0.7659667631393486,
+      "auc_ci_upper": 0.7840362300627697,
+      "lift_at_10pct": 3.7645312847400696,
+      "lift_at_10pct_ci_lower": 3.581366121005792,
+      "lift_at_10pct_ci_upper": 3.9813943310730378
+    },
+    {
+      "model_id": "previous_gbm",
+      "model_name": "Previous model: gradient boosting on 14 features",
+      "role": "baseline",
+      "auc": 0.7377899448000387,
+      "auc_ci_lower": 0.7276997525483754,
+      "auc_ci_upper": 0.7484269378155538,
+      "lift_at_10pct": 3.2352878889636543,
+      "lift_at_10pct_ci_lower": 3.0412330845122524,
+      "lift_at_10pct_ci_upper": 3.3973266821001804
+    },
+    {
+      "model_id": "expected_value_ranker",
+      "model_name": "Expected value ranker (lead score)",
+      "role": "model",
+      "auc": 0.6857500170265084,
+      "auc_ci_lower": 0.6733504870717251,
+      "auc_ci_upper": 0.6964932088384217,
+      "lift_at_10pct": 3.152449792233432,
+      "lift_at_10pct_ci_lower": 2.987070430642548,
+      "lift_at_10pct_ci_upper": 3.3537757439537024
+    },
+    {
+      "model_id": "product_history_rule",
+      "model_name": "Product-history rule: took a product before, then most active",
+      "role": "baseline",
+      "auc": 0.6326416679303275,
+      "auc_ci_lower": 0.6186552301076753,
+      "auc_ci_upper": 0.6459985891383904,
+      "lift_at_10pct": 2.858374548841146,
+      "lift_at_10pct_ci_lower": 2.674649812246026,
+      "lift_at_10pct_ci_upper": 3.029477197485667
+    },
+    {
+      "model_id": "activity_rule",
+      "model_name": "Activity rule: most transactions in last 90 days",
+      "role": "baseline",
+      "auc": 0.638392326264012,
+      "auc_ci_lower": 0.6254994161327453,
+      "auc_ci_upper": 0.6503544557952713,
+      "lift_at_10pct": 2.6619044854404783,
+      "lift_at_10pct_ci_lower": 2.4750650196460438,
+      "lift_at_10pct_ci_upper": 2.87205868608491
+    },
+    {
+      "model_id": "recency_rule",
+      "model_name": "Recency rule: most recent activity first",
+      "role": "baseline",
+      "auc": 0.6044842559487165,
+      "auc_ci_lower": 0.5930899373981097,
+      "auc_ci_upper": 0.6161563496334725,
+      "lift_at_10pct": 1.5199530657086202,
+      "lift_at_10pct_ci_lower": 1.470139763578894,
+      "lift_at_10pct_ci_upper": 1.5663520936015813
+    },
+    {
+      "model_id": "prior_baseline",
+      "model_name": "Prior rate (no ranking)",
+      "role": "baseline",
+      "auc": 0.5,
+      "auc_ci_lower": 0.5,
+      "auc_ci_upper": 0.5,
+      "lift_at_10pct": 1.0,
+      "lift_at_10pct_ci_lower": 1.0,
+      "lift_at_10pct_ci_upper": 1.0
+    }
+  ],
+  "value": [
+    {
+      "model_id": "last_90_days_baseline",
+      "model_name": "Last 90 days repeat",
+      "role": "baseline",
+      "rmse": 107386634.9887531,
+      "mae": 9577684.47970722
+    },
+    {
+      "model_id": "cltv_gbm",
+      "model_name": "CLTV gradient boosting",
+      "role": "model",
+      "rmse": 137865811.47188115,
+      "mae": 7847035.972658335
+    },
+    {
+      "model_id": "mean_baseline",
+      "model_name": "Mean of training clients",
+      "role": "baseline",
+      "rmse": 187234198.78423843,
+      "mae": 20904377.47079249
+    }
+  ],
+  "gains": [
+    {
+      "decile": 10,
+      "n": 10023,
+      "converters": 685,
+      "conversion_rate": 0.068342811533473,
+      "lift": 3.152135270653842,
+      "cumulative_share_of_converters": 0.31523239760699495
+    },
+    {
+      "decile": 9,
+      "n": 10022,
+      "converters": 358,
+      "conversion_rate": 0.035721412891638396,
+      "lift": 1.6475577016344072,
+      "cumulative_share_of_converters": 0.47998159226875287
+    },
+    {
+      "decile": 8,
+      "n": 10022,
+      "converters": 250,
+      "conversion_rate": 0.024945120734384353,
+      "lift": 1.1505291212530775,
+      "cumulative_share_of_converters": 0.5950299125632765
+    },
+    {
+      "decile": 7,
+      "n": 10023,
+      "converters": 160,
+      "conversion_rate": 0.015963284445774717,
+      "lift": 0.7362651727074667,
+      "cumulative_share_of_converters": 0.6686608375517717
+    },
+    {
+      "decile": 6,
+      "n": 10022,
+      "converters": 138,
+      "conversion_rate": 0.013769706645380164,
+      "lift": 0.6350920749316988,
+      "cumulative_share_of_converters": 0.7321675103543488
+    },
+    {
+      "decile": 5,
+      "n": 10022,
+      "converters": 117,
+      "conversion_rate": 0.011674316503691879,
+      "lift": 0.5384476287464404,
+      "cumulative_share_of_converters": 0.786010124252186
+    },
+    {
+      "decile": 4,
+      "n": 10023,
+      "converters": 114,
+      "conversion_rate": 0.011373840167614486,
+      "lift": 0.52458893555407,
+      "cumulative_share_of_converters": 0.8384721583064887
+    },
+    {
+      "decile": 3,
+      "n": 10022,
+      "converters": 86,
+      "conversion_rate": 0.008581121532628218,
+      "lift": 0.3957820177110587,
+      "cumulative_share_of_converters": 0.8780487804878049
+    },
+    {
+      "decile": 2,
+      "n": 10022,
+      "converters": 225,
+      "conversion_rate": 0.02245060866094592,
+      "lift": 1.0354762091277698,
+      "cumulative_share_of_converters": 0.9815922687528762
+    },
+    {
+      "decile": 1,
+      "n": 10023,
+      "converters": 40,
+      "conversion_rate": 0.003990821111443679,
+      "lift": 0.18406629317686668,
+      "cumulative_share_of_converters": 1.0
+    }
+  ],
+  "validation_grid": [
+    {
+      "model": "lightgbm",
+      "num_leaves": 31.0,
+      "min_child_samples": 100.0,
+      "best_iteration": 177.0,
+      "val_auc": 0.7725442334787649,
+      "val_lift_at_10pct": 3.4890827403299967,
+      "gru_weight": null,
+      "validation_snapshot": "2022-07-31"
+    },
+    {
+      "model": "lightgbm",
+      "num_leaves": 31.0,
+      "min_child_samples": 400.0,
+      "best_iteration": 109.0,
+      "val_auc": 0.772254470298116,
+      "val_lift_at_10pct": 3.5978971919901874,
+      "gru_weight": null,
+      "validation_snapshot": "2022-07-31"
+    },
+    {
+      "model": "lightgbm",
+      "num_leaves": 63.0,
+      "min_child_samples": 100.0,
+      "best_iteration": 111.0,
+      "val_auc": 0.7726009504494742,
+      "val_lift_at_10pct": 3.531204463553296,
+      "gru_weight": null,
+      "validation_snapshot": "2022-07-31"
+    },
+    {
+      "model": "lightgbm",
+      "num_leaves": 63.0,
+      "min_child_samples": 400.0,
+      "best_iteration": 128.0,
+      "val_auc": 0.7739553648308463,
+      "val_lift_at_10pct": 3.5487551815630045,
+      "gru_weight": null,
+      "validation_snapshot": "2022-07-31"
+    },
+    {
+      "model": "gru",
+      "num_leaves": null,
+      "min_child_samples": null,
+      "best_iteration": null,
+      "val_auc": 0.7457809478451327,
+      "val_lift_at_10pct": 3.060845220893116,
+      "gru_weight": null,
+      "validation_snapshot": "2022-07-31"
+    },
+    {
+      "model": "production_blend",
+      "num_leaves": null,
+      "min_child_samples": null,
+      "best_iteration": null,
+      "val_auc": 0.7739553648308463,
+      "val_lift_at_10pct": 3.5487551815630045,
+      "gru_weight": 0.0,
+      "validation_snapshot": "2022-07-31"
+    }
+  ],
+  "gru_epochs": [
+    {
+      "epoch": 1,
+      "train_loss": 0.058808459270517144,
+      "val_auc": 0.7280998697378671,
+      "val_lift_at_10pct": 2.976601774446516,
+      "epoch_seconds": 676.2681059837341
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.047721301575368545,
+      "val_auc": 0.740171248520414,
+      "val_lift_at_10pct": 3.064355364495057,
+      "epoch_seconds": 688.4178190231323
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.046727601887175334,
+      "val_auc": 0.7457809478451327,
+      "val_lift_at_10pct": 3.060845220893116,
+      "epoch_seconds": 766.4823203086853
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.04595486307100394,
+      "val_auc": 0.7431397490550251,
+      "val_lift_at_10pct": 3.057335077291174,
+      "epoch_seconds": 839.4895839691162
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.04516381771561819,
+      "val_auc": 0.7392887318073454,
+      "val_lift_at_10pct": 2.969581487242633,
+      "epoch_seconds": 2175.4715051651
+    }
+  ],
+  "paper": [
+    {
+      "model": "LightGBM, one model per product",
+      "source": "ours",
+      "mean_auc": 0.8317511162979159,
+      "auc_y1_target_1": 0.8225207534413352,
+      "auc_y1_target_2": 0.819596140943714,
+      "auc_y1_target_3": 0.8147699650706515,
+      "auc_y1_target_4": 0.870117605735963
+    },
+    {
+      "model": "Published: transaction aggregates (full MBD, client folds)",
+      "source": "paper",
+      "mean_auc": 0.783,
+      "auc_y1_target_1": null,
+      "auc_y1_target_2": null,
+      "auc_y1_target_3": null,
+      "auc_y1_target_4": null
+    },
+    {
+      "model": "Published best: supervised RNN, transactions + geo + dialogs",
+      "source": "paper",
+      "mean_auc": 0.824,
+      "auc_y1_target_1": null,
+      "auc_y1_target_2": null,
+      "auc_y1_target_3": null,
+      "auc_y1_target_4": null
+    }
+  ],
+  "cltv_validation": [
+    {
+      "model": "Last 90 days repeat (baseline)",
+      "validation_snapshot": "2022-07-31",
+      "mae": 9447728.39836961,
+      "rmse": 76959014.60437372,
+      "mape": 308784.18336084794,
+      "smape": 85.2377104727008,
+      "r2": 0.9277109761454393,
+      "forecast_bias": 1540715.4564744094
+    },
+    {
+      "model": "GBM on change from last 90 days",
+      "validation_snapshot": "2022-07-31",
+      "mae": 9862026.550163575,
+      "rmse": 88870790.72527479,
+      "mape": 2934158.3846439254,
+      "smape": 103.46170545051466,
+      "r2": 0.903601238916928,
+      "forecast_bias": 1343217.2247475092
+    },
+    {
+      "model": "GBM, squared error",
+      "validation_snapshot": "2022-07-31",
+      "mae": 13345255.15744791,
+      "rmse": 242354102.23515603,
+      "mape": 14145316.430059984,
+      "smape": 119.68433532009568,
+      "r2": 0.28310737225915394,
+      "forecast_bias": 1618993.0624900449
+    },
+    {
+      "model": "GBM, log target (pipeline model)",
+      "validation_snapshot": "2022-07-31",
+      "mae": 10860216.396909643,
+      "rmse": 279555859.94357455,
+      "mape": 110264.1551066051,
+      "smape": 100.179733672593,
+      "r2": 0.046126981968198644,
+      "forecast_bias": 8051886.017570154
+    },
+    {
+      "model": "GBM, Poisson loss",
+      "validation_snapshot": "2022-07-31",
+      "mae": 91915182030102.3,
+      "rmse": 1.2976553834623328e+16,
+      "mape": 70905362.17798653,
+      "smape": 131.31612824902774,
+      "r2": -2055285268332833.2,
+      "forecast_bias": -91915167813653.62
+    }
+  ],
+  "run": {
+    "git_sha": "371e4cccb56071906f3e95ea65cb8c8c0c7af41d",
+    "created_utc": "2026-10-29T18:23:46+00:00"
+  }
+}

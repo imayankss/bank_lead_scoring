@@ -64,6 +64,29 @@ def _sample(df: pd.DataFrame) -> pd.DataFrame:
     return df.sample(n=min(SAMPLE_ROWS, len(df)), random_state=42).sort_index() if not df.empty else df
 
 
+def results_payload(tables_dir: Path = TABLES_DIR, manifest_path: Path = PROJECT_ROOT / "reports" / "run_manifest.json") -> dict[str, Any]:
+    """Committed results for the one-page dashboard; reads committed result tables only, never the raw data."""
+    comparison = _read_csv(tables_dir / "model_comparison.csv")
+    manifest = _read_json(manifest_path)
+    return {
+        "test": _read_csv(tables_dir / "propensity_test.csv").iloc[0].to_dict(),
+        "rankers": comparison[comparison["task"] == "propensity"][
+            ["model_id", "model_name", "role", "auc", "auc_ci_lower", "auc_ci_upper",
+             "lift_at_10pct", "lift_at_10pct_ci_lower", "lift_at_10pct_ci_upper"]
+        ].to_dict(orient="records"),
+        "value": comparison[comparison["task"] == "value"][["model_id", "model_name", "role", "rmse", "mae"]].to_dict(orient="records"),
+        # Deciles of the expected-value lead score (the list RMs get), top decile first.
+        "gains": _read_csv(tables_dir / "decile_lift.csv").sort_values("decile", ascending=False)[
+            ["decile", "n", "converters", "conversion_rate", "lift", "cumulative_share_of_converters"]
+        ].to_dict(orient="records"),
+        "validation_grid": _read_csv(tables_dir / "propensity_validation.csv").to_dict(orient="records"),
+        "gru_epochs": _read_csv(tables_dir / "gru_validation.csv").to_dict(orient="records"),
+        "paper": _read_csv(tables_dir / "paper_protocol.csv").to_dict(orient="records"),
+        "cltv_validation": _read_csv(tables_dir / "cltv_validation.csv").to_dict(orient="records"),
+        "run": {"git_sha": manifest.get("git_sha"), "created_utc": manifest.get("created_utc")},
+    }
+
+
 def export_web_data() -> list[Path]:
     """Write all frontend JSON data contracts."""
     ensure_directories()
@@ -94,6 +117,7 @@ def export_web_data() -> list[Path]:
     metric_row = metrics.iloc[0].to_dict() if not metrics.empty else {}
 
     paths = [
+        _write_json("results.json", results_payload()),
         _write_json(
             "overview.json",
             {

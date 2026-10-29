@@ -1,36 +1,27 @@
-# Lead Scoring Intelligence Web Dashboard
+# Results dashboard
 
-Modern Next.js dashboard for the lead scoring project.
+A single static page (Next.js) that shows the committed results of the lead-scoring rebuild on MBD-mini. Live at https://bank-lead-scoring-one.vercel.app.
 
-## Data Contract
+Every control switches between measured results read from `public/data/results.json`; nothing is recomputed in the browser. The other JSON files in `public/data/` are the exporter's older data contract, kept for its tests and the Streamlit app.
 
-The frontend reads static JSON files from:
-
-```text
-web/public/data/
-```
-
-Regenerate them from the project root:
+## Run
 
 ```bash
-python3 scripts/run_export_web_data.py
-```
-
-The export writes strict JSON (no NaN), because the browser rejects a whole file over one NaN. `tests/test_web_exporter.py` checks the committed JSON against `reports/tables/`.
-
-## Development
-
-```bash
+PYTHONPATH=src .venv/bin/python -m lead_scoring.web_export   # from the repo root: rebuild the JSON from reports/tables/
 cd web
 npm install
 npm run dev
 ```
 
-## Production Build
+## Check
 
 ```bash
-cd web
+npm run lint
 npm run build
 ```
 
-The dashboard does not train models or duplicate ML logic. Python exports the artifacts; Next.js presents them.
+`tests/test_web_exporter.py` checks the committed JSON against `reports/tables/`.
+
+## Deploy
+
+Vercel project `bank-lead-scoring` with root directory `web`; every push to `main` redeploys.
