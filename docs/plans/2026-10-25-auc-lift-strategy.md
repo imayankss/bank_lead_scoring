@@ -104,7 +104,7 @@ The gains are estimates, not measurements. Each one is confirmed or dropped on v
 1. S1 and S2 together, in one feature rebuild. **Checkpoint:** validation AUC and lift.
 2. S3 (dialogs). **Checkpoint.**
 3. S4. If the GRU reaches 0.755 or more, run S5. (It reached 0.746; S5 skipped.)
-4. S6–S8 as polish.
+4. S6–S8 as polish. (None added more than 0.002 AUC; none shipped.)
 5. S9 only with your OK.
 
 **Checkpoint 1 result (2026-10-26, validation 2022-07-31, best of the 4-setting LightGBM grid):**
@@ -128,6 +128,30 @@ S2 was reverted: S1 alone beat S1 + S2 on AUC in all four settings. The label-ch
 | **S4** (hidden 64, S1 history and a no-transactions flag beside the final GRU state) | 3 (stopped at 5) | **0.746** | **3.06** | +0.001 AUC at weight 0.15 |
 
 The GRU gained 0.004 AUC but missed the 0.755 gate for S5, so S5 is skipped. Its rank correlation with LightGBM rose from 0.805 to 0.815: it learned more of what LightGBM already knows rather than something new. The production blend stays LightGBM only, at 0.774 AUC and 3.55× lift. Clients with no transactions in the year before the snapshot (7.6% of clients, 15.8% of positives) are still barely ranked by either model: 0.551 AUC for the GRU, 0.569 for LightGBM. Early stopping (2 epochs without a gain) cut the run from 9 epochs to 5. Not tried from the S4 row: LR 3e-4 with cosine decay, embedding dropout, and a random cutoff per client each epoch.
+
+**Checkpoint 4 result (2026-10-29, S6 per-product LightGBM, scratch probe, no pipeline change):**
+
+| Ranker for "any product in 3 months" | AUC | Top-10% lift |
+|---|---:|---:|
+| Any-product LightGBM (63 leaves, min_child_samples 400; 0.774 in `validate_propensity.py`, which builds its dataset once for the whole grid) | 0.7735 | 3.57 |
+| S6: one LightGBM per product (3-month label, settings chosen per product), combined as 1 − Π(1 − pₖ) | 0.7732 | 3.52 |
+| Rank blend: 0.4 × S6 + 0.6 × any-product | 0.7754 | 3.60 |
+
+Each product's own model beats the any-product model on that product: 0.766 against 0.730 for product 1, 0.798 against 0.764 for product 2, 0.790 against 0.782 for product 3 and 0.845 against 0.809 for product 4. The combination still doesn't rank "any product" better (rank correlation 0.961 with the any-product model). Much of each per-product gain comes from separating one product's buyers from other products' buyers, which doesn't matter when the target is any product. The best blend adds 0.002 AUC, below the 0.005 bar the GRU had to clear, and its weight was picked on the same month that set early stopping, so S6 is not shipped. Leakage checks pass: the highest model AUC is 0.845 (product 4), and the highest single feature against any one product's label is 0.78 (product 2, only 147 validation buyers).
+
+**Checkpoint 5 result (2026-10-29, S7 and S8, scratch probe, no pipeline change).** Reference: the any-product LightGBM on Jan–Apr at 0.7735 AUC / 3.57 lift.
+
+| Variant | AUC | Top-10% lift |
+|---|---:|---:|
+| S7: drop January | 0.7740 | 3.54 |
+| S7: drop January and February | 0.7715 | 3.61 |
+| S7: weight each snapshot by 1 + months of known purchase history | 0.7745 | 3.58 |
+| S8: rank mean of 5 seeds | 0.7746 | 3.60 |
+| S8: `rank_xendcg` grouped by snapshot | 0.7694 | 3.59 |
+
+Nothing adds more than 0.001 AUC, and every lift is within about ±0.1 of 3.57, the noise level for ~1,000 top-decile buyers. `lambdarank` could not run: LightGBM caps a query at 10,000 rows and a snapshot has 100,224. Nothing is shipped. The polish steps are exhausted: the model stays at 0.774 AUC / 3.55× lift on validation, and 3.7× would need new information (S9, more clients) rather than more tuning.
+
+**Test result (2026-10-29, scored once with `scripts/test_propensity.py`):** LightGBM (63 leaves, min_child_samples 400, 224 rounds), refit on all 7 training snapshots (Jan–Jul 2022) and scored on 2022-10-31: **0.787 AUC, 4.01× top-10% lift** (100,224 clients, 2,173 buyers, base rate 2.17%). Validation was 0.774 / 3.55. Two likely reasons the test month scores higher: the refit sees 7 snapshots with more purchase history than the 4 fit snapshots, and October's lower base rate (2.17% against 2.84%) raises the lift ceiling. 0.787 is under the 0.85 audit line. The test month must not be used to change the model; the script refuses to run again while `reports/tables/propensity_test.csv` exists.
 
 ## 7. Bigger jumps: what 0.85 AUC and 4–5× lift would take
 

@@ -1,0 +1,2 @@
+model,test_snapshot,rows,positives,base_rate,test_auc,test_lift_at_10pct,validation_auc,rounds
+lightgbm,2022-10-31,100224,2173,0.021681433588761175,0.787241230806082,4.013045574930735,0.7739553648308463,224
