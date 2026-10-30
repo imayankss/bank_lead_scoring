@@ -40,3 +40,4 @@ reports/tables/test_predictions.csv
 .vercel
 .env*
 *.tsbuildinfo
+.claude/
