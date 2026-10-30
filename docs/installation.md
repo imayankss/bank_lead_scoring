@@ -16,6 +16,6 @@ python3 -m venv .venv
 Dashboards:
 
 ```bash
-cd web && npm install && npm run dev           # Next.js, http://localhost:3000
+cd web && npm install && npm run dev           # Lead Desk at http://localhost:3000, results at /results
 streamlit run app/streamlit_app.py             # legacy Streamlit app
 ```

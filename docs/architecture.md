@@ -13,10 +13,12 @@ scripts/fetch_mbd.py -> data/raw/mbd/{targets,detail/trx,detail/dialog}  (pinned
   -> src/lead_scoring/training.py     CLTV model -> models/cltv_model.pkl; LightGBM refit -> models/propensity_lgbm.txt
   -> src/lead_scoring/evaluation.py   metrics with bootstrap CIs, decile table, calibration
   -> src/lead_scoring/scoring.py      lead scores and follow-up flags
+  -> src/lead_scoring/next_product.py one 3-month LightGBM per product -> next best product; per-client reasons (SHAP by feature family)
   -> model_comparison, paper_protocol, diagnostics, risk, scenario, seasonality, explainability
   -> src/lead_scoring/web_export.py   web/public/data/*.json (strict JSON)
   -> src/lead_scoring/provenance.py   reports/run_manifest.json
-  -> web/ (Next.js) and app/streamlit_app.py
+  -> web/ (Next.js): Lead Desk at / (crm.json), model results at /results (results.json); Vercel, root web
+  -> app/streamlit_app.py (legacy)
 ```
 
 ## Key modules

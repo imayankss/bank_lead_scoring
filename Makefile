@@ -19,4 +19,4 @@ health:
 	python3 scripts/repo_health_check.py
 
 dashboard:
-	streamlit run app/streamlit_app.py
+	cd web && npm run dev
